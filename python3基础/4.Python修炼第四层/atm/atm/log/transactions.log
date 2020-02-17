@@ -1,0 +1,7 @@
+2017-10-13 23:26:11,163 - transaction - INFO - account:1234   action:withdraw    amount:7201.0   interest:360.05
+2017-10-13 23:43:23,788 - transaction - INFO - account:1234   action:withdraw    amount:7168.0   interest:358.40000000000003
+2017-10-13 23:51:22,044 - transaction - INFO - account:1234   action:withdraw    amount:7201.0   interest:360.05
+2017-10-13 23:56:09,836 - transaction - INFO - account:1234   action:repay    amount:8000.0   interest:240.0
+2017-10-13 23:58:46,633 - transaction - INFO - account:1234   action:withdraw    amount:500.0   interest:25.0
+2017-10-13 23:59:05,681 - transaction - INFO - account:1234   action:withdraw    amount:7201.0   interest:360.05
+2017-10-13 23:59:20,871 - transaction - INFO - account:1234   action:repay    amount:8888.0   interest:266.64

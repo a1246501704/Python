@@ -1,0 +1,26 @@
+logging ：日志
+    1、通过函数去控制
+    2、logger对象
+re ：正则
+time&datetime 时间
+    时间戳:记录一个时间节点
+    格式化时间：给人看的
+    结构化时间：计算机计算
+os：和操作系统交互
+sys：和python解释器交互
+hashlib：摘要算法模块
+    1、文件的一致性校验
+    2、用户的加密认证
+    3、不可逆性、撞库和加盐
+json/pickle/shelve
+    1、为什么要序列化：数据存储、网络传输
+    2、json：通用的序列化格式、支持的数据类型有限
+    3、pickle：只能python程序使用、游戏
+    4、shelve:把数据当成一个字典操作、操作简单
+configpaser
+    1、特殊格式的配置文件
+random 随机数
+    1、验证码
+
+# subprocess : 多进程
+# xml：tomcat的配置文件

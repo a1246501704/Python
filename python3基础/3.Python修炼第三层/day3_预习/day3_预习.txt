@@ -1,0 +1,47 @@
+
+函数
+
+海峰老师博客
+http://www.cnblogs.com/linhaifeng/articles/6883726.html
+
+文件处理
+函数
+
+字符编码：
+    什么是字符编码？
+        把人类的字符翻译成计算机能认识的数字
+    什么是字符编码表？
+        就是一张字符与数字对应的关系表
+        ascii
+        gbk
+        utf-8
+        unicode 与其它编码之间有一层转换关系
+        unicode --> encode('utf-8') --> bytes
+        bytes --> decode('utf-8') --> unicode
+        内存里面用 unicode  保证速度
+        硬盘里面用啥可以 gbk utf-8都可以  utf-8节约空间
+
+    原则：
+        字符以什么格式编译的，就要以什么格式解码
+
+    ps:
+        python3中的字符串分为两种
+            x='egon' 存放 unincode
+            y=x.encode('utf-8') 存成bytes
+
+        python2中字符串也分为两种
+            x=u'egon' 与python3的字符串一样
+            y='alex' 与python3的bytes一样
+
+
+
+
+
+
+
+
+
+
+
+
+

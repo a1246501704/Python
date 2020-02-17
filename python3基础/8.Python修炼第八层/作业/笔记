@@ -1,0 +1,16 @@
+
+
+
+FTP 功能
+
+put
+get
+ls
+cd
+pwd
+mkdir
+mv
+rm
+copy src dest
+
+

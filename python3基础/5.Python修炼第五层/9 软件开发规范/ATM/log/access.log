@@ -1,0 +1,5 @@
+[2019-01-13 00:08:56,956][MainThread:140736083301248][task_id:core.src][src.py:19][INFO][登录成功]
+[2019-01-13 00:10:03,978][MainThread:140736083301248][task_id:core.src][src.py:19][INFO][登录成功]
+[2019-01-13 00:10:48,308][MainThread:140736083301248][task_id:core.src][src.py:19][INFO][登录成功]
+[2019-01-13 00:10:58,285][MainThread:140736083301248][task_id:core.src][src.py:24][ERROR][用户名不存在]
+[2019-01-13 00:11:05,804][MainThread:140736083301248][task_id:core.src][src.py:19][INFO][登录成功]

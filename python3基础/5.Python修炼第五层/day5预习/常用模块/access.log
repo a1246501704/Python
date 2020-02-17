@@ -1,0 +1,5 @@
+2017-09-29 18:43:59 PM - root - DEBUG -日志模块:  debug
+2017-09-29 18:43:59 PM - root - INFO -日志模块:  info
+2017-09-29 18:43:59 PM - root - WARNING -日志模块:  warning
+2017-09-29 18:43:59 PM - root - ERROR -日志模块:  error
+2017-09-29 18:43:59 PM - root - CRITICAL -日志模块:  critical

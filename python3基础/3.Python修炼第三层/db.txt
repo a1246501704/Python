@@ -1,0 +1,7 @@
+# 加个分隔符区分
+1,peigen1,38,male,1234563378
+2,peigen2,28,female,1234335678
+3,peigen3,18,male,123145678
+4,peigen4,8,male,1234115678
+5,peigen5,48,female,1232245678
+6,peigen6,58,male,1234335678

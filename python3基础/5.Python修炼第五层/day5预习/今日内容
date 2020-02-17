@@ -1,0 +1,97 @@
+
+协程函数
+    #yield:
+        #1:把函数的执行结果封装好__iter__和__next__,即得到一个迭代器
+        #2：与ruturn功能类似，都可以返回值，
+        #   但不同的是，return只能返回一次值，而yield可以返回多次值
+        #3：函数暂停与再继续运行的状态是有yield保存
+
+面向过程编程
+    #面向过程：核心是过程二字，过程即解决问题的步骤，
+    #         基于面向过程去设计程序就像是在设计一条工业流水线，是一种机械式的思维方式
+    #优点：程序结构清晰，可以把复杂的问题简单化，流程化
+    #缺点：可扩展性差，一条流线只是用来解决一个问题
+    #应用场景: linux内核，git,httpd,shell脚本
+
+递归与二分法
+    #递归调用：
+    #再调用一个函数的过程中，直接或间接地调用函数本身
+    # 递归：递推，回溯
+
+
+#内置函数  lambda
+
+
+模块与包的使用
+import
+    #导入模块干了哪些事：
+    #1 执行源文件
+    #2 以一个源文件的全局名称空间
+    #3 在当前位置拿到一个模块名，指向2创建的名称空间
+
+    # as 两个应用场景
+        # 1 给一些长的模块名 起个简单的别名
+        # 2 根据模块的功能不同 起相同名字 最后调用结果也不同
+
+from ...  import ...
+    # 优点：使用源文件内的名字时无需加前缀，使用方便
+    # 缺点：容易与当前文件的名称空间内的名字混淆
+
+    # 不推荐使用 *  只有在源文件里面的名字太多了，而且调用的也多的情况下才使用
+    # * 表示 除了 _ 下滑线开头名字 以外的名字
+
+    __all__=['money','x']  #对 from spam import * 有用
+
+
+如何区分python文件的两种用途
+    #文件当做脚本运行时__name__等于__main__
+    #文件当做模块被加载运行时__name__等于模块名
+    print(__name__)
+    if __name__ == '__main__':
+        #当做脚本使用
+    一种当做脚本
+        定义函数，调用然后执行
+    一种当做模块
+        定义函数不执行，当调用时才执行
+
+
+模块路劲搜索
+    #结论：
+    #注意： 自定义的模块名一定不要与Python自带的模块重名
+    # 内存中 --> 内置模块 --> 硬盘中
+    # 内存中 --> 内置模块 --> sys.path
+
+导入模块
+    #模块在第一次导入时才会执行，之后的导入都是直接引用内存已存在的结果
+    import sys
+    print(sys.modules)  #存放的是已经加载到内存的模块
+
+包
+    #凡是在导入时带点的，点的左边都必须是一个包
+    #只有在导入包的时候才能在文件名后面加. 导入模块时不能用.
+
+包的导入
+    import sys
+    sys.path.append(r'D:\python编码\py_s19\day5\day5预习\a')
+    import glance_v1
+    glance_v1.get()
+
+    glance_v1下init文件
+    # 绝对导入
+        # from glance_v1.api.policy import get
+        # from glance_v1.api.versions import create_resource
+        # from glance_v1.cmd.manage import main
+        # from glance_v1.db.models import register_models
+    #相对导入
+        # from .api.policy import get
+        # from .api.versions import create_resource
+        # from .cmd.manage import main
+        # from .db.models import register_models
+
+
+常用模块
+
+
+
+
+
