@@ -1,5 +1,4 @@
-#文件db的内容为：{"count":1}
-#注意一定要用双引号，不然json无法识别
+# 文件db.txt的内容为：{"count":1}  注意一定要用双引号，不然json无法识别。
 
 from multiprocessing import Process,Lock
 import json
@@ -24,30 +23,43 @@ def get():
 # 把上面两个功能放在task功能中
 def task(lock): # 互斥锁：比如合租使用厕所，厕所有门。进去就锁上，否则别人进去就做你身上了。
     # lock.acquire() # 加锁
-    # search() # 不能放在里面，这样和join一样。
+    # search()       # 不能放在锁里面，这样就和join一样。
     # get()
     # lock.release() # 释放锁，容易忘记释放锁。此功能支持上下文管理，使用with会自动调acquire和release。
 
+    # search()
     # with lock: # 简便写法
-    #     search()
     #     get()
 
-    search() # 把它拿出来，别所在里面。大家就都能查票了。
-    lock.acquire()
+    search() # 把它拿出来，别所在锁里面。大家就都能查票了。
+    lock.acquire() 
     get()
     lock.release()
 
 if __name__ == '__main__':
-    lock=Lock() # 只能 acuquire 一次
+    lock=Lock() # 同时只能 acuquire 一次
     for i in range(10):
         p=Process(target=task,args=(lock,))
         p.start()
         # p.join() # 如果join住就是串行执行了，这么做不合理。其他人连票都看不到。使用互斥锁解决此问题。
 
+'''结果：并发查票，串行买票
+剩余票数是 1
+剩余票数是 1
+剩余票数是 1
+剩余票数是 1
+剩余票数是 1
+剩余票数是 1
+剩余票数是 1
+剩余票数是 1
+剩余票数是 1
+剩余票数是 1
+48636 购票成功
+'''
 
 
 
-# mutex(互斥)一定要传给子进程
+# mutex(互斥锁)一定要传给子进程
 # 互斥锁：比如合租使用厕所，厕所有门。进去就锁上，否则别人进去就做你身上了。
 from multiprocessing import Process,Lock
 import json
@@ -78,8 +90,10 @@ def task():
 
 if __name__ == '__main__':
     for i in range(10):
-        p=Process(target=task) # args=(lock,)互斥锁一定要传给子进程，否则会一人拿到一把锁。
+        p=Process(target=task,) # args=(lock,)互斥锁一定要传给子进程，否则会一人拿到一把锁。
         p.start()
+
+
 
 # 完整互斥锁代码
 from multiprocessing import Process,Lock
@@ -115,7 +129,7 @@ if __name__ == '__main__':
         p.start()
 
 
-# 总结: join是把整体串行,Lock是把局部串行。
+\总结: join是把整体串行,Lock是把局部串行。
 
 # 加锁可以保证多个进程修改同一块数据时，同一时间只能有一个任务可以进行修改，即串行的修改，没错，速度是慢了，但牺牲了速度却保证了数据安全。
 虽然可以用文件共享数据实现进程间通信，但问题是：
