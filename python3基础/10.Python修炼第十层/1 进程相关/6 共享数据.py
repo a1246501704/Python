@@ -7,10 +7,9 @@ from multiprocessing import Process,Manager,Lock # manager就能创建出来一�
 import time
 
 def task(d,lock):
-    with lock:
-        temp=d['count']
+    with lock: # 不加锁而操作共享的数据,肯定会出现数据错乱
         time.sleep(1)
-        d['count']=temp-1
+        d['count'] -= 1
 
 if __name__ == '__main__':
     lock=Lock()

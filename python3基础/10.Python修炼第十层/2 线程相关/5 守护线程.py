@@ -35,7 +35,7 @@ import time
 def foo():
     print(123)
     time.sleep(1)
-    print("end123")# 执行它是因为非守护线程还没执行完。
+    print("end123")# 可以到执行它是因为非守护线程还没执行完。
 
 def bar():
     print(456)
@@ -57,6 +57,7 @@ main-------
 end123
 end456
 '''
+
 from threading import Thread
 import time
 def foo():

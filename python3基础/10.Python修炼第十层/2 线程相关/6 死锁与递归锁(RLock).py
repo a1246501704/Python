@@ -67,14 +67,14 @@ class Mythread(Thread):
         self.f2()
 
     def f1(self):
-        mutexA.acquire() # 递归锁可以acquire多次，counter加1。
+        mutexA.acquire() # 递归锁可以acquire多次，每次counter加1。
         print('%s 拿到A锁' %self.name) #current_thread().getName()
 
         mutexB.acquire()
         print('%s 拿到B锁' %self.name)
         
         mutexB.release()
-        mutexA.release() # counter减为0时其他线程才可以抢这把锁。
+        mutexA.release() # release一次counter计数减1，减为0时其他线程才可以抢这把锁。
 
     def f2(self):
         mutexB.acquire()

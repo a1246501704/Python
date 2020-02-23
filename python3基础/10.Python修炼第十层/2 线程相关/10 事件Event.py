@@ -23,14 +23,14 @@ def conn_mysql():
         if count > 3:
             raise TimeoutError('链接超时')
         print('<%s>第%s次尝试链接' % (threading.current_thread().getName(), count))
-        event.wait(0.5)
+        event.wait(0.5)  # 当event.isSet()==False时将阻塞线程，等待有执行event.set()时才变为就绪态。
         count+=1
     print('<%s>链接成功' %threading.current_thread().getName())
 
 def check_mysql():
     print('\033[45m[%s]正在检查mysql\033[0m' % threading.current_thread().getName())
-    time.sleep(random.randint(2,4))
-    event.set()
+    time.sleep(random.randint(2,4)) # 缩短这个时间或者加大wait的时间可以看到链接成功的效果。
+    event.set() # 设置event的状态值为True，所有阻塞池的线程激活进入就绪状态
 
 if __name__ == '__main__':
     event=Event()
@@ -41,3 +41,31 @@ if __name__ == '__main__':
     conn1.start()
     conn2.start()
     check.start()
+'''
+<Thread-1>第1次尝试链接
+<Thread-2>第1次尝试链接
+[Thread-3]正在检查mysql
+<Thread-1>第2次尝试链接
+<Thread-2>第2次尝试链接
+<Thread-1>第3次尝试链接
+<Thread-2>第3次尝试链接
+Exception in thread Thread-1:
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/threading.py", line 917, in _bootstrap_inner
+    self.run()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/threading.py", line 865, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/zhanghongyang/PycharmProjects/Project-python3/test.py", line 3628, in conn_mysql
+    raise TimeoutError('链接超时')
+TimeoutError: 链接超时
+
+Exception in thread Thread-2:
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/threading.py", line 917, in _bootstrap_inner
+    self.run()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/threading.py", line 865, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/zhanghongyang/PycharmProjects/Project-python3/test.py", line 3628, in conn_mysql
+    raise TimeoutError('链接超时')
+TimeoutError: 链接超时
+'''

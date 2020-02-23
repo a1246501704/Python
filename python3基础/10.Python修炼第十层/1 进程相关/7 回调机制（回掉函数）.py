@@ -63,7 +63,7 @@ if __name__ == '__main__':
 
 
 
-# 使用回调机制实现
+\使用回调机制实现
 from concurrent.futures import ThreadPoolExecutor,ProcessPoolExecutor
 import requests
 import os
@@ -76,7 +76,7 @@ def get(url):
         return {'url':url,'text':response.text}
 
 def parse(res):
-    res=res.result() # 取结果
+    res=res.result() # 取结果，取到get的返回的字典。
     url=res['url']
     text=res['text']
     print('%s parse %s res:%s' %(os.getpid(),url,len(text)))
@@ -94,19 +94,19 @@ if __name__ == '__main__':
     start=time.time()
     for url in urls:
         future=p.submit(get, url) # 向进程池异步提交任务
-        future.add_done_callback(parse) # 回调
+        future.add_done_callback(parse) # 回调函数。等到future对象执行有结果了就会触发add_done_callback执行并将future的执行结果通过行参的形式传给回调函数。
 # 相当于给future也就是p.submit绑定了一个回调函数，当p.submit的执行有返回值了就会触发add_done_callback中指定的parse函数。
-# PS: 给每个任务发了一个遥控器，干完活就按遥控器进行下一步。
+# PS: 给每个任务配了个遥控器，干完活就按遥控器进行下一步。
 
     p.shutdown(wait=True)# 关闭进程池
     print(time.time()-start) # 0.3529038715362549
     print(os.getpid()) # 可以看到是主进程去做的回调
 
-# 执行结果
+'''
 43706 GET https://www.baidu.com
 43707 GET https://www.cnblogs.com
 43708 GET https://www.hao123.com
-43700 parse https://www.baidu.com res:2443 # 在其他url还在爬的时候，第一个已经有返回了。
+43700 parse https://www.baidu.com res:2443   # 在其他url还在爬的时候，第一个已经有返回了。
 43709 GET https://www.jd.com/
 43706 GET http://www.sina.com.cn/
 43700 parse https://www.jd.com/ res:109287
@@ -115,4 +115,5 @@ if __name__ == '__main__':
 43700 parse https://www.hao123.com res:497497
 0.3529038715362549
 43700
+'''
 # 执行效果: 批量爬取，谁先爬完就去做解析。节省时间和资源，如果爬100个网页只需要开启101个进程。

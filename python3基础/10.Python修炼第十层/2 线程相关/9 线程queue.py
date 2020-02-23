@@ -1,7 +1,7 @@
+# queue队列 ：使用import queue，用法与进程Queue一样
 
-import queue
 
-# class queue.Queue(maxsize=0) # 队列，先进先出
+\class queue.Queue(maxsize=0) # 队列(吃完拉)，先进先出
 import queue
 
 q=queue.Queue()
@@ -19,7 +19,7 @@ second
 third
 '''
 
-# # class queue.LifoQueue(maxsize=0) # 堆栈，后进先出。last in fisrt out，
+\class queue.LifoQueue(maxsize=0) # 堆栈(吃完吐)，后进先出。last in fisrt out，
 import queue
 
 q=queue.LifoQueue()
@@ -36,7 +36,8 @@ print(q.get())
 2
 1
 '''
-# # class queue.PriorityQueue(maxsize=0) # 元组， 存储数据时可设置优先级的队列。
+
+\class queue.PriorityQueue(maxsize=0) # 优先级的队列。以元祖的形式存储。
 import queue
 
 q=queue.PriorityQueue()

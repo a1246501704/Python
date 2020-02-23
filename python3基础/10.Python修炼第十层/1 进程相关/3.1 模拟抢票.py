@@ -37,7 +37,7 @@ def task(lock): # 互斥锁：比如合租使用厕所，厕所有门。进去�
     lock.release()
 
 if __name__ == '__main__':
-    lock=Lock() # 同时只能 acuquire 一次
+    lock=Lock() # 同一把锁同时只能 acuquire 一次
     for i in range(10):
         p=Process(target=task,args=(lock,))
         p.start()
@@ -67,7 +67,6 @@ import time
 import random
 import os
 
-lock=Lock() # 全局变量Lock()方法
 
 def search():
     data=json.load(open('db.txt',encoding='utf-8'))
@@ -81,7 +80,7 @@ def get():
         json.dump(data,open('db.txt','w',encoding='utf-8'))
         print('%s 购票成功' %os.getpid())
 
-def task():
+def task(lock):
     search()
     lock.acquire()
     get()
@@ -90,9 +89,31 @@ def task():
 
 if __name__ == '__main__':
     for i in range(10):
-        p=Process(target=task,) # args=(lock,)互斥锁一定要传给子进程，否则会一人拿到一把锁。
+        lock=Lock()   # 不能放在这，否则会一人拿到一把锁。
+        p=Process(target=task,args=(lock,)) # args=(lock,)互斥锁一定要传给子进程。
         p.start()
-
+'''
+剩余票数是: 1
+剩余票数是: 1
+剩余票数是: 1
+剩余票数是: 1
+剩余票数是: 1
+剩余票数是: 1
+剩余票数是: 1
+剩余票数是: 1
+剩余票数是: 1
+剩余票数是: 1
+49380 购票成功
+49381 购票成功
+49383 购票成功
+49387 购票成功
+49388 购票成功
+49389 购票成功
+49382 购票成功
+49386 购票成功
+49384 购票成功
+49385 购票成功
+'''
 
 
 # 完整互斥锁代码
@@ -102,7 +123,7 @@ import time
 import random
 import os
 
-lock=Lock()
+lock=Lock()  # 全局变量Lock()方法
 
 def search():
     data=json.load(open('db.txt',encoding='utf-8'))
@@ -136,6 +157,8 @@ if __name__ == '__main__':
 1.效率低（共享数据基于文件，而文件是硬盘上的数据）
 2.需要自己加锁处理
 
-# 因此我们最好找寻一种解决方案能够兼顾：1、效率高（多个进程共享一块内存的数据）2、帮我们处理好锁问题。这就是mutiprocessing模块为我们提供的基于消息的IPC通信机制：队列和管道。
+# 因此我们最好找寻一种解决方案能够兼顾：
+# 1、效率高（多个进程共享一块内存的数据）
+# 2、帮我们处理好锁问题。这就是mutiprocessing模块为我们提供的基于消息的IPC通信机制：队列和管道。
 1 队列和管道都是将数据存放于内存中
 2 队列又是基于（管道+锁）实现的，可以让我们从复杂的锁问题中解脱出来，我们应该尽量避免使用共享数据，尽可能使用消息传递和队列，避免处理复杂的同步和锁问题，而且在进程数目增多时，往往可以获得更好的可获展性。

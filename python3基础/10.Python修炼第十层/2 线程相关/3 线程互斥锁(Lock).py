@@ -1,6 +1,7 @@
 from threading import Thread,Lock
 import time
-n=100
+
+n=50
 
 def task():
     global n
@@ -11,7 +12,7 @@ def task():
     lock.release() # 解锁
 
 if __name__ == '__main__':
-    lock=Lock() # 创建锁,子线程
+    lock=Lock()    # 创建锁,子线程
     t_l=[]
     for i in range(50):
         t=Thread(target=task)
@@ -19,4 +20,4 @@ if __name__ == '__main__':
         t.start()
     for t in t_l:
         t.join()
-    print('主',n)
+    print('主',n)  # 主 0
