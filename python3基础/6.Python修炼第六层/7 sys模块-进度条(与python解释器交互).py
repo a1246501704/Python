@@ -171,6 +171,32 @@ while recv_size < data_size:
 
 
 
+\自制一个python下载文件的进度条模块
+import  requests
+import time
+
+def downloader(url,path):
+    start_time = time.time() # 开始时间
+    size = 0
+    response = requests.get(url,stream=True) # stream属性不许带上
+    chunk_size = 1024 # 每次下载的数据大小
+    content_size = int(response.headers['content-length']) # 数据总大小
+    if response.status_code == 200:
+        print('[文件大小]%0.2f MB' %(content_size / chunk_size / 1024)) # 换算单位并打印
+        with open(path,'wb') as file:
+            for data in response.iter_content(chunk_size=chunk_size):
+                file.write(data)
+                size +=len(data) # 已下载数据大小
+                # \r指定行第一个字符开始，搭配end属性完成覆盖进度条
+                print('\r'+'[下载进度]:%s%.2f%%' %('>' * int(size*50 / content_size),float(size / content_size * 100)),end="")
+    end_time = time.time() # 结束时间
+    print('\n' + "全部下载完成！用时%.2f秒" %(end_time - start_time))
+
+if __name__ == '__main__':
+    # url可指定下载的文件的url，name可带路径
+    url = 'http://13114864.ch1.unicom.data.tv002.com/down/b5d68c550afa878fdb2da4a7e0a53ff1/WinZip_7.0.4564_xclient.info.dmg?cts=wt-f-D106A39A149A55F1f0f0&ctp=106A39A149A55&ctt=1582558631&limit=1&spd=30000&ctk=b5d68c550afa878fdb2da4a7e0a53ff1&chk=3c99a6980b9d846da8a7785a74328a6f-20068864&mtd=1'
+    downloader(url=url,path='aaa.dmg')
+
 
 
 
