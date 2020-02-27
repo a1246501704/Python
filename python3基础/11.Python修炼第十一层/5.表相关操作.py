@@ -85,24 +85,24 @@ MariaDB [db1]> show create table t1\G; #查看表详细结构，可加\G
 
 2. 增加字段
       ALTER TABLE 表名
-            ADD 字段名  数据类型 [完整性约束条件…],
-            ADD 字段名  数据类型 [完整性约束条件…];
+                        ADD 字段名  数据类型 [完整性约束条件…],
+                        ADD 字段名  数据类型 [完整性约束条件…];
       ALTER TABLE 表名
-            ADD 字段名  数据类型 [完整性约束条件…]  FIRST;  # FIRST将字段放入第一个字段
+                        ADD 字段名  数据类型 [完整性约束条件…]  FIRST;  # FIRST将字段放入第一个字段
       ALTER TABLE 表名
-            ADD 字段名  数据类型 [完整性约束条件…]  AFTER 字段名; # AFTER将字段放入最后一个字段
+                        ADD 字段名  数据类型 [完整性约束条件…]  AFTER 字段名; # AFTER将字段放入最后一个字段
                             
 3. 删除字段
       ALTER TABLE 表名 
-            DROP 字段名;
+                        DROP 字段名;
 
 4. 修改字段
       ALTER TABLE 表名 
-            MODIFY  字段名 数据类型 [完整性约束条件…];
+                        MODIFY  字段名 数据类型 [完整性约束条件…];
       ALTER TABLE 表名 
-            CHANGE 旧字段名 新字段名 旧数据类型 [完整性约束条件…];
+                        CHANGE 旧字段名 新字段名 旧数据类型 [完整性约束条件…];
       ALTER TABLE 表名 
-            CHANGE 旧字段名 新字段名 新数据类型 [完整性约束条件…];
+                        CHANGE 旧字段名 新字段名 新数据类型 [完整性约束条件…];
 
 # 示例：
 # 修改存储引擎
@@ -153,10 +153,11 @@ mysql> truncate t1;
 # 复制表结构＋记录 （key不会复制: 主键、外键和索引）
 mysql> create table new_service select * from service;
 
-# 只复制表结构
+# 查询表
 mysql> select * from service where 1=2;  # 条件为假，查不到任何记录只有表结构。
 Empty set (0.00 sec)
 
+# 只复制表结构
 mysql> create table new1_service select * from service where 1=2;  
 Query OK, 0 rows affected (0.00 sec)
 Records: 0  Duplicates: 0  Warnings: 0
