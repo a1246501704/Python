@@ -33,6 +33,20 @@ create table 表名(
         外键 foreign key  # 约束
         索引 (index,unique key) # 索引+约束
 
+primary key 有两个作用，一是约束作用（constraint），用来规范一个存储主键和唯一性，但同时也在此key上建立了一个主键索引；    
+    PRIMARY KEY 约束：唯一标识数据库表中的每条记录；
+        主键必须包含唯一的值；
+        主键列不能包含 NULL 值；
+        每个表都应该有一个主键，并且每个表只能有一个主键。（PRIMARY KEY 拥有自动定义的 UNIQUE 约束）
+
+unique key 也有两个作用，一是约束作用（constraint），规范数据的唯一性，但同时也在这个key上建立了一个唯一索引；
+    UNIQUE 约束：唯一标识数据库表中的每条记录。
+        UNIQUE 和 PRIMARY KEY 约束均为列或列集合提供了唯一性的保证。
+        （每个表可以有多个 UNIQUE 约束，但是每个表只能有一个 PRIMARY KEY 约束）
+
+foreign key 也有两个作用，一是约束作用（constraint），规范数据的引用完整性，但同时也在这个key上建立了一个index；
+
+
 \not null与default
 是否可空，null表示空，非字符串
 not null - 不可空
@@ -97,7 +111,7 @@ mysql> select * from student;
 | egon |  18 | male | play,music |
 +------+-----+------+------------+
 
-\unique key （标识该字段的值是唯一的，不能重复。）
+\unique key（索引） （标识该字段的值是唯一的，不能重复。）
 ===========================设置唯一约束 UNIQUE KEY==============================
 方法一：
 create table department1(
@@ -140,7 +154,7 @@ id int primary key auto_increment,
 name varchar(20),
 host varchar(15) not null,
 port int not null,
-unique(host,port) #联合唯一
+unique(host,port) #联合唯一,表示ip+port唯一
 );
 
 mysql> desc service
@@ -167,7 +181,7 @@ mysql> insert into service(name,host,port) values('nginx','192.168.0.10',80);
 ERROR 1062 (23000): Duplicate entry '192.168.0.10-80' for key 'host'
 
 
-\primary key
+\primary key（主键）
 从约束角度看primary key字段的值不为空且唯一，那我们直接使用not null+unique不就可以了吗，要它干什么？
 主键primary key是innodb存储引擎组织数据的依据，innodb称之为索引组织表，一张表中必须有且只有一个主键。
 
@@ -179,7 +193,7 @@ ERROR 1062 (23000): Duplicate entry '192.168.0.10-80' for key 'host'
 ===========================单列做主键==============================
 #方法一：not null+unique
 create table department1(
-id int not null unique, #主键
+id int not null unique, #当没有设置primary key时发现第一个not null unique就会设置为主键
 name varchar(20) not null unique,
 comment varchar(100)
 );
@@ -196,37 +210,20 @@ rows in set (0.01 sec)
 
 #方法二：在某一个字段后用primary key
 create table department2(
-id int primary key, #主键
+id int primary key auto_increment, #主键
 name varchar(20),
 comment varchar(100)
 );
 
 mysql> desc department2;
-+---------+--------------+------+-----+---------+-------+
-| Field   | Type         | Null | Key | Default | Extra |
-+---------+--------------+------+-----+---------+-------+
-| id      | int(11)      | NO   | PRI | NULL    |       |
-| name    | varchar(20)  | YES  |     | NULL    |       |
-| comment | varchar(100) | YES  |     | NULL    |       |
-+---------+--------------+------+-----+---------+-------+
++---------+--------------+------+-----+---------+----------------+
+| Field   | Type         | Null | Key | Default | Extra          |
++---------+--------------+------+-----+---------+----------------+
+| id      | int(11)      | NO   | PRI | NULL    | auto_increment |
+| name    | varchar(20)  | YES  |     | NULL    |                |
+| comment | varchar(100) | YES  |     | NULL    |                |
++---------+--------------+------+-----+---------+----------------+
 rows in set (0.00 sec)
-
-#方法三：在所有字段后单独定义primary key
-create table department3(
-id int,
-name varchar(20),
-comment varchar(100),
-constraint pk_name primary key(id); #创建主键并为其命名pk_name
-
-mysql> desc department3;
-+---------+--------------+------+-----+---------+-------+
-| Field   | Type         | Null | Key | Default | Extra |
-+---------+--------------+------+-----+---------+-------+
-| id      | int(11)      | NO   | PRI | NULL    |       |
-| name    | varchar(20)  | YES  |     | NULL    |       |
-| comment | varchar(100) | YES  |     | NULL    |       |
-+---------+--------------+------+-----+---------+-------+
-rows in set (0.01 sec)
 
 
 # 多列主键
@@ -235,9 +232,8 @@ create table service(
 ip varchar(15),
 port char(5),
 service_name varchar(10) not null,
-primary key(ip,port)
+primary key(ip,port) # 联合唯一
 );
-
 
 mysql> desc service;
 +--------------+-------------+------+-----+---------+-------+
@@ -260,7 +256,7 @@ mysql> insert into service values ('172.16.45.10','3306','nginx');
 ERROR 1062 (23000): Duplicate entry '172.16.45.10-3306' for key 'PRIMARY'
 
 
-\auto_increment
+\auto_increment（自动增长）
 约束字段为自动增长，被约束的字段必须同时被key约束
 #不指定id，则自动增长
 create table student(
@@ -277,10 +273,7 @@ mysql> desc student;
 | name  | varchar(20)           | YES  |     | NULL    |                |
 | sex   | enum('male','female') | YES  |     | male    |                |
 +-------+-----------------------+------+-----+---------+----------------+
-mysql> insert into student(name) values
-    -> ('egon'),
-    -> ('alex')
-    -> ;
+mysql> insert into student(name) values('egon'),('alex');
 
 mysql> select * from student;
 +----+------+------+
@@ -309,8 +302,8 @@ mysql> select * from student;
 +----+------+--------+
 
 
-#对于自增的字段，在用delete删除后，再插入值，该字段仍按照删除前的位置继续增长
-mysql> delete from student;
+#对于自增的字段，在用delete删除后，再插入值，该字段仍按照删除前的值继续增长
+mysql> delete from student;   # 清空表
 Query OK, 4 rows affected (0.00 sec)
 
 mysql> select * from student;
@@ -340,13 +333,14 @@ mysql> select * from student;
 row in set (0.00 sec)
 
 # 了解知识
-步长:auto_increment_increment,起始偏移量:auto_increment_offset
+步长:auto_increment
+起始偏移量:auto_increment_offset
 #在创建完表后，修改自增字段的起始值
 mysql> create table student(
-    -> id int primary key auto_increment,
-    -> name varchar(20),
-    -> sex enum('male','female') default 'male'
-    -> );
+id int primary key auto_increment,
+name varchar(20),
+sex enum('male','female') default 'male'
+);
 
 mysql> alter table student auto_increment=3;
 
@@ -386,6 +380,7 @@ sqlserver：自增步长
     ）engine=innodb,auto_increment=2 步长=2 default charset=utf8
 
 mysql自增的步长：
+    #查看当前全局设置
     show session variables like 'auto_inc%';
     
     #基于会话级别
@@ -412,9 +407,10 @@ mysql> show variables like 'auto_incre%'; #需要退出重新登录
 +--------------------------+-------+
 | Variable_name            | Value |
 +--------------------------+-------+
-| auto_increment_increment | 1     |
-| auto_increment_offset    | 1     |
+| auto_increment_increment | 5     |
+| auto_increment_offset    | 3     |
 +--------------------------+-------+
+2 rows in set (0.00 sec)
 
 
 create table student(
@@ -433,7 +429,7 @@ mysql> select * from student;
 | 13 | egon3 | male |
 +----+-------+------+
 
-\foreign key
+\foreign key（外键）表和表之间紧耦合，不好用。
 # 一 快速理解foreign key
 员工信息表有三个字段：工号  姓名  部门
 公司有3个部门，但是有1个亿的员工，那意味着部门这个字段需要重复存储，部门名字越长，越浪费
@@ -444,9 +440,10 @@ mysql> select * from student;
 
 
 示范:
-#表类型必须是innodb存储引擎，且被关联的字段，即references指定的另外一个表的字段，必须保证唯一
+# 表类型必须是innodb存储引擎，且被关联的字段，即references指定的另外一个表的字段，必须保证唯一
+# 被关联的字段必须是一个key 通常是id字段。被关联的表要先创建。
 create table department(
-id int primary key,
+id int primary key auto_increment,
 name varchar(20) not null
 )engine=innodb;
 
@@ -455,19 +452,35 @@ create table employee(
 id int primary key,
 name varchar(20) not null,
 dpt_id int,
-constraint fk_name foreign key(dpt_id)
-references department(id)
-on delete cascade
-on update cascade 
+constraint fk_name foreign key(dpt_id) # 将表的dpt_id字段和父表的id字段关联
+references department(id)  # 关联父表id字段
+on delete cascade # 同步删除
+on update cascade # 同步更新
 )engine=innodb;
 
+mysql> show create table employee;
+| employee | CREATE TABLE `employee` (
+  `id` int(11) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `dpt_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_name` (`dpt_id`),
+  CONSTRAINT `fk_name` FOREIGN KEY (`dpt_id`) REFERENCES `department` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 |
 
 #先往父表department中插入记录
 insert into department values
 (1,'欧德博爱技术有限事业部'),
 (2,'艾利克斯人力资源部'),
 (3,'销售部');
-
+mysql> select * from department;
++----+-----------------------------------+
+| id | name                              |
++----+-----------------------------------+
+|  1 | 欧德博爱技术有限事业部                |
+|  2 | 艾利克斯人力资源部                   |
+|  3 | 销售部                             |
++----+-----------------------------------+
 
 #再往子表employee中插入记录
 insert into employee values
@@ -479,9 +492,22 @@ insert into employee values
 (6,'刘飞机',3),
 (7,'张火箭',3),
 (8,'林子弹',3),
-(9,'加特林',3)
-;
-
+(9,'加特林',3);
+mysql> select * from employee;
++----+-----------+--------+
+| id | name      | dpt_id |
++----+-----------+--------+
+|  1 | egon      |      1 |
+|  2 | alex1     |      2 |
+|  3 | alex2     |      2 |
+|  4 | alex3     |      2 |
+|  5 | 李坦克     |      3 |
+|  6 | 刘飞机     |      3 |
+|  7 | 张火箭     |      3 |
+|  8 | 林子弹     |      3 |
+|  9 | 加特林     |      3 |
++----+-----------+--------+
+9 rows in set (0.00 sec)
 
 #删父表department，子表employee中对应的记录跟着删
 mysql> delete from department where id=3;
@@ -510,11 +536,11 @@ mysql> select * from employee;
 
 # 二 如何找出两张表之间的关系 
 分析步骤：
-#1、先站在左表的角度去找
-是否左表的多条记录可以对应右表的一条记录，如果是，则证明左表的一个字段foreign key 右表一个字段（通常是id）
+    #1、先站在左表的角度去找
+    是否左表的多条记录可以对应右表的一条记录，如果是，则证明左表的一个字段foreign key 右表一个字段（通常是id）
 
-#2、再站在右表的角度去找
-是否右表的多条记录可以对应左表的一条记录，如果是，则证明右表的一个字段foreign key 左表一个字段（通常是id）
+    #2、再站在右表的角度去找
+    是否右表的多条记录可以对应左表的一条记录，如果是，则证明右表的一个字段foreign key 左表一个字段（通常是id）
 
 #3、总结：
 #多对一：
@@ -533,7 +559,7 @@ mysql> select * from employee;
 一对多（或多对一）：一个出版社可以出版多本书
 关联方式：foreign key
 
-=====================多对一=====================
+===================== 多对一 =====================
 create table press(
 id int primary key auto_increment,
 name varchar(20)
@@ -564,7 +590,7 @@ insert into book(name,press_id) values
 ('葵花宝典',3);
 
 其他例子：
-一夫多妻制 #妻子表的丈夫id外键到丈夫表的id
+一夫多妻制 #妻子表的丈夫id 外键到丈夫表的id
 
 
 #多对多
@@ -572,7 +598,7 @@ insert into book(name,press_id) values
 多对多：一个作者可以写多本书，一本书也可以有多个作者，双向的一对多，即多对多
 关联方式：foreign key+一张新的表
 
-=====================多对多=====================
+===================== 多对多 =====================
 create table author(
 id int primary key auto_increment,
 name varchar(20)
@@ -597,23 +623,23 @@ primary key(author_id,book_id)
 #插入四个作者，id依次排开
 insert into author(name) values('egon'),('alex'),('yuanhao'),('wpq');
 
-#每个作者与自己的代表作如下
+#每个作者与自己的代表作如下,book表
 egon: 
-九阳神功
-九阴真经
-九阴白骨爪
-独孤九剑
-降龙十巴掌
-葵花宝典
+    九阳神功
+    九阴真经
+    九阴白骨爪
+    独孤九剑
+    降龙十巴掌
+    葵花宝典
 alex: 
-九阳神功
-葵花宝典
-yuanhao:
-独孤九剑
-降龙十巴掌
-葵花宝典
+    九阳神功
+    葵花宝典
+    yuanhao:
+    独孤九剑
+    降龙十巴掌
+    葵花宝典
 wpq:
-九阳神功
+    九阳神功
 
 
 insert into author2book(author_id,book_id) values
@@ -674,40 +700,6 @@ insert into customer(name,qq,phone) values
 ;
 
 
-#增加学生
-insert into student(class_name,customer_id) values
-('脱产3班',3),
-('周末19期',4),
-('周末19期',5);
+#增加学生,customer表中的id要有 下面的 3 4 5
+insert into student(class_name,customer_id) values('脱产3班',3),('周末19期',4),('周末19期',5);
 
-
-# 其他例子
-例一：一个用户只有一个博客
-
-    用户表：
-    id  name
-   egon
-   alex
-   wupeiqi
-
-
-    博客表   
-           fk+unique
-    id url name_id
- xxxx   1
- yyyy   3
- zzz    2
-
-
-
-例二：一个管理员唯一对应一个用户
-    用户表：
-    id user  password
- egon    xxxx
- alex    yyyy
-
-    管理员表：
-       fk+unique
-    id user_id password
-  1      xxxxx
-  2      yyyyy
