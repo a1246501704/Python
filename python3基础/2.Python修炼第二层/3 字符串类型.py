@@ -112,6 +112,8 @@ print(msg.endswith('SB'))     # True
 msg='alex say i have one telsa, my name is alex'
 print(msg.replace('alex','SB'))   # 全部替换，会得到一个新的字符串并不改变原来的值。
 print(msg.replace('alex','SB',1)) # 替换次数
+k8s_deploy_yaml.replace('app: {}'.format(old_namespace),'app: {}'.format(new_namespace))
+k8s_deploy_yaml.replace(('app: %s' %old_namespace),('app: %s' %new_namespace))
 
 \字符串格式化: format
 print('my name is %s my age is %s' %('egon',18))
