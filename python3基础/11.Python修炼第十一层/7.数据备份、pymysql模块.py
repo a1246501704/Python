@@ -168,25 +168,36 @@ secure_file_priv='C:\\' #只能将数据导出到C:\\下
 #安装
 pip3 install pymysql
 
-一 链接、执行sql、关闭（游标）
+\一 链接、执行sql、关闭（游标）
+# 导入pymysql模块
 import pymysql
 user=input('用户名: ').strip()
 pwd=input('密码: ').strip()
 
-#链接
-conn=pymysql.connect(host='localhost',user='root',password='123',database='egon',charset='utf8')
-#游标
-cursor=conn.cursor() #执行完毕返回的结果集默认以元组显示
-#cursor=conn.cursor(cursor=pymysql.cursors.DictCursor)
+# 连接database
+# conn = pymysql.connect(host=“你的数据库地址”, user=“用户名”,password=“密码”,database=“数据库名”,charset=“utf8”)
+conn = pymysql.connect(host='localhost',user='root',password='123',database='egon',charset='utf8')
+
+# 得到一个可以执行SQL语句的光标对象。其实就是获取mysql>游标
+cursor=conn.cursor() # 执行完毕返回的结果集默认以元组显示
+#cursor=conn.cursor(cursor=pymysql.cursors.DictCursor) # 得到一个可以执行SQL语句并且将结果作为字典返回的游标
 
 
-#执行sql语句
-sql='select * from userinfo where name="%s" and password="%s"' %(user,pwd) #注意%s需要加引号
+# 定义要执行的SQL语句
+sql='select * from userinfo where name="%s" and password="%s";' %(user,pwd) #注意%s需要加引号
 print(sql)
-res=cursor.execute(sql) #执行sql语句，返回sql查询成功的记录数目
+
+#执行sql语句，返回sql查询成功的记录数目
+res=cursor.execute(sql) 
 print(res)
 
+# conn.rollback # 回退
+conn.commit() # 提交执行
+
+# 关闭光标对象
 cursor.close()
+
+# 关闭数据库连接
 conn.close()
 
 if res:
@@ -194,31 +205,57 @@ if res:
 else:
     print('登录失败')
 
-
-二 execute()之sql注入
+\二 execute()之sql注入
 注意：符号--会注释掉它之后的sql，正确的语法：--后至少有一个任意字符
-根本原理：就根据程序的字符串拼接name='%s'，我们输入一个xxx' -- haha,用我们输入的xxx加'在程序中拼接成一个判断条件name='xxx' -- haha'
+根本原理：就根据程序的字符串拼接 name='%s'，上面的代码我们输入一个 xxx' -- haha , 用我们输入的   xxx加'  在程序中拼接成一个判断条件  name='xxx' -- haha'
+最后那一个空格，在一条sql语句中如果遇到 select * from t1 where id > 3 -- and name='egon'; # 则 -- 之后的条件被注释掉了 select * from t1 where id > 3;
 
-最后那一个空格，在一条sql语句中如果遇到select * from t1 where id > 3 -- and name='egon';则--之后的条件被注释掉了
 
-#1、sql注入之：用户存在，绕过密码
-egon' -- 任意字符
+select * from userinfo where name="%s" and password="%s";' %(user,pwd)
+select * from userinfo where name="egon" -- xxxx" and password="%s";' %(user,pwd)  # 则 -- 之后的条件被注释掉了
+
+#1、sql注入之：只要用户存在，绕过密码
+egon" -- xxxx  # xxxx部分传什么都不重要
 
 #2、sql注入之：用户不存在，绕过用户与密码
-xxx' or 1=1 -- 任意字符
+xxx" or 1=1 -- 任意字符
 
-解决方法：
-# 原来是我们对sql进行字符串拼接
-# sql="select * from userinfo where name='%s' and password='%s'" %(user,pwd)
-# print(sql)
-# res=cursor.execute(sql)
+# 解决方法：
+原来是我们对sql进行字符串拼接
+sql="select * from userinfo where name='%s' and password='%s'" %(user,pwd)
+print(sql)
+res=cursor.execute(sql)
 
 #改写为（execute帮我们做字符串拼接，我们无需且一定不能再为%s加引号了）
 sql="select * from userinfo where name=%s and password=%s" #！！！注意%s需要去掉引号，因为pymysql会自动为我们加上
 res=cursor.execute(sql,[user,pwd]) #pymysql模块自动帮我们解决sql注入的问题，只要我们按照pymysql的规矩来。
 
 
-三 增、删、改：conn.commit()
+\插入数据失败回滚
+# 在执行增删改操作时，如果不想提交前面的操作，可以使用 rollback() 回滚取消操作。
+# 导入pymysql模块
+import pymysql
+# 连接database
+conn = pymysql.connect(host=“你的数据库地址”, user=“用户名”,password=“密码”,database=“数据库名”,charset=“utf8”)
+# 得到一个可以执行SQL语句的光标对象
+cursor = conn.cursor()
+sql = "INSERT INTO USER1(name, age) VALUES (%s, %s);"
+username = "luban"
+age = 18
+try:
+    # 执行SQL语句
+    cursor.execute(sql, [username, age])
+    # 提交事务
+    conn.commit()
+except Exception as e:
+    # 有异常，回滚事务
+    conn.rollback()
+cursor.close()
+conn.close()
+
+
+
+\三 增、删、改：conn.commit()
 import pymysql
 #链接
 conn=pymysql.connect(host='localhost',user='root',password='123',database='egon')
@@ -227,51 +264,74 @@ cursor=conn.cursor()
 
 #执行sql语句
 #part1
-# sql='insert into userinfo(name,password) values("root","123456");'
-# res=cursor.execute(sql) #执行sql语句，返回sql影响成功的行数
-# print(res)
+sql='insert into userinfo(name,password) values("root","123456");' # values("root",password("123456")) ,mysql自带的password函数可以加密密码，需要注意字段要支持这个长度。
+res=cursor.execute(sql) #执行sql语句，返回sql影响成功的行数
+print(res)
 
-#part2
+#part2：execute
 # sql='insert into userinfo(name,password) values(%s,%s);'
 # res=cursor.execute(sql,("root","123456")) #执行sql语句，返回sql影响成功的行数
 # print(res)
 
-#part3
-sql='insert into userinfo(name,password) values(%s,%s);'
-res=cursor.executemany(sql,[("root","123456"),("lhf","12356"),("eee","156")]) #执行sql语句，返回sql影响成功的行数
-print(res)
+#part3：executemany
+# sql='insert into userinfo(name,password) values(%s,%s);'
+# res=cursor.executemany(sql,[("root","123456"),("lhf","12356"),("eee","156")]) #执行sql语句，返回sql影响成功的行数
+# print(res)
 
 conn.commit() #提交后才发现表中插入记录成功
 cursor.close()
 conn.close()
 
 
-四 查：fetchone，fetchmany，fetchall
+\批量循环执行
 import pymysql
 #链接
 conn=pymysql.connect(host='localhost',user='root',password='123',database='egon')
 #游标
 cursor=conn.cursor()
 
+userinfo=[
+    (3,"alex"),
+    (3,"lxx"),
+    (5,"yxx")
+]
+# for user in userinfo:
+#     sql = 'insert into t1 values(%s,"%s");' %(user[0],user[1])
+#     print(sql)
+#     cursor.execute(sql)
+
+# 用pymysql 模块executemany方法实现,本质就是实现上面的for
+sql = 'insert into t1 valuses(%s,%s);'
+cursor.executemany(sql,userinfo)
+
+
+\四 查：fetchone，fetchmany，fetchall
+import pymysql
+#链接
+conn=pymysql.connect(host='localhost',user='root',password='123',database='egon')
+#游标
+cursor=conn.cursor()
+#cursor=conn.cursor(cursor=pymysql.cursors.DictCursor) # 得到一个可以执行SQL语句并且将结果作为字典返回的游标
+
+
 #执行sql语句
 sql='select * from userinfo;'
-rows=cursor.execute(sql) #执行sql语句，返回sql影响成功的行数rows,将结果放入一个集合，等待被查询
+rows=cursor.execute(sql) #执行sql语句，返回sql影响成功的行数rows,将结果放入一个集合，等待被查询。如果用上面的 cursors.DictCursor 这里返回的就是字典。
 
-# cursor.scroll(3,mode='absolute') # 相对绝对位置移动
-# cursor.scroll(3,mode='relative') # 相对当前位置移动
-res1=cursor.fetchone()
+
+# cursor.scroll(3,mode='absolute') # 从查询结果中移动光标，相对绝对位置移动
+# cursor.scroll(3,mode='relative') # 从查询结果中移动光标，相对当前位置移动（继续从上面移动过的位置继续）
+res1=cursor.fetchone()   # 从查询结果中一条一条拿
 res2=cursor.fetchone()
 res3=cursor.fetchone()
-res4=cursor.fetchmany(2)
-res5=cursor.fetchall()
+res4=cursor.fetchmany(2) # 从查询结果中获取指定数量的数据
+res5=cursor.fetchall()   # 从查询结果中取所有的查询结果
 print(res1)
 print(res2)
 print(res3)
 print(res4)
 print(res5)
 print('%s rows in set (0.00 sec)' %rows)
-
-
 
 conn.commit() #提交后才发现表中插入记录成功
 cursor.close()
@@ -287,15 +347,59 @@ rows in set (0.00 sec)
 '''
 
 
+import pymysql
+ 
+# 获取连接对象
+conn=pymysql.connect(
+    host='127.0.0.1',
+    port=3306,
+    user='root',
+    password='123',
+    database='db42',
+    charset='utf8'
+)
+# 获取接受sql语句的对象(dictcursor 是以字典的形式返回)
+cursor=conn.cursor(pymysql.cursors.DictCursor)
+ 
+# 执行sql语句，返回的是执行成功受影响的行数
+rows=cursor.execute('select * from class;')
+print(rows)
+ 
+# fetchone()一次只查取一个
+print(cursor.fetchone())
+print(cursor.fetchone())
+ 
+# fetchmany(num)一次只查取num个
+print(cursor.fetchmany(2))
+ 
+# fetchall()一次取完存在列表中
+print(cursor.fetchall())
+# 第二次取全部则取出空列表
+print(cursor.fetchall())
+ 
+ 
+print(cursor.fetchall())
+# 重置指针位置absolute是最开始的位置，3代表往后移动三条，取到第四条输出
+cursor.scroll(3,'absolute')
+print(cursor.fetchone())
+ 
+print(cursor.fetchone()) #第一条输出
+print(cursor.fetchone()) # 第二条输出
+# 相对于当前位置往后走一条
+cursor.scroll(1,'relative') #当前第二条，往后走一条
+print(cursor.fetchone())# 输出第三条
+ 
+cursor.close()
+conn.close()
 
-五 获取插入的最后一条数据的自增ID
+\五 获取插入的最后一条数据的自增ID
 import pymysql
 conn=pymysql.connect(host='localhost',user='root',password='123',database='egon')
 cursor=conn.cursor()
 
 sql='insert into userinfo(name,password) values("xxx","123");'
 rows=cursor.execute(sql)
-print(cursor.lastrowid) #在插入语句后查看
+print(cursor.lastrowid) # 在插入语句后查看
 
 conn.commit()
 
