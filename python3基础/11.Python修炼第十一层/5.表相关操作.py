@@ -147,7 +147,11 @@ mysql> alter table student10 drop primary key;
 
 # 清空表
 mysql> truncate t1;
+mysql> delete t1;
 
+从效果上来看：truncate是删除整个表，然后重构整个表。delete只是删除逐条删除没一条数据。
+从空间上来看：delete会产生碎片，并不会释放空间，而truncate不会产生碎片。
+从事务的角度：truncate不可以回滚，delete可以回滚。
 
 \复制表
 # 复制表结构＋记录 （key不会复制: 主键、外键和索引）
