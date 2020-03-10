@@ -419,41 +419,33 @@ dd：defination description，自定义描述
 \表格属性
 #1、宽度和高度
     可以给table和td设置width和height属性
-    
     1.1 默认情况下表格的宽高是按照内容的尺寸来调整的，也可以通过给table标签设置widht和height来手动指定表格的宽高
-
     1.2 如果给td标签设置width和height属性，会修改当前单元格的宽度和高度，只要不超过table的宽高，则不会影响整个表格的宽度和高度
 
 
 #2、水平对齐和垂直对齐
-    水平对齐align可以给table、tr、td标签设置
-    垂直对齐valign只能给tr、td标签设置
+    水平对齐 align   可以给table、tr、td标签设置
+    垂直对齐 valign  只能给tr、td标签设置
 
     ========水平对齐===========
     取值
-    align=“left”
-    align=“center”
-    align=“right”
-
-    2.1 给table标签设置水平对齐，可以让表格在水平方向上对齐
-          强调：table只能设置水平方向
-
+    align=“left”    # 左对齐
+    align=“center”  # 中间对齐
+    align=“right”   # 右对齐
+    2.1 给table标签设置水平对齐，可以让表格在水平方向上对齐。强调：table只能设置水平方向
     2.2 给tr设置水平对齐，可以控制当前行所有单元格内容都水平对齐
-
     2.3 给td设置水平对齐，可以控制当前单元格内容水平对齐，tr与td冲突的情况下，以td为准
 
     ========垂直对齐===========
     取值
-    valign=“top”
-    valign=“center”
-    valign=“bottom”
-    
+    valign=“top”     # 上对齐
+    valign=“center”  # 中对齐
+    valign=“bottom”  # 下对齐
     2.4 给tr设置垂直对齐可以让当前行所有单元格内容都垂直对齐
     2.5 给td设置垂直对齐可以让当前单元格内容垂直对齐
 
 #3、外边距和内边距
     只能给table设置
-
     3.1 外边距：单元格与单元格之间的间隔，cellspacing="3px"，默认值为2px
     3.2 内边距：单元格边框与文字之间的距离:cellpadding="200px"
 
@@ -559,8 +551,6 @@ dd：defination description，自定义描述
             表格的高度变化而变化
 
 #4、表尾信息:tfoot
-
-
 <html>
 <head>
     <meta charset="utf-8"/>
