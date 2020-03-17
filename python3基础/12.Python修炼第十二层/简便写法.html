@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>后代选择器</title>
+
+        <style type="text/css">
+            div {
+                width: 500px;
+                height: 500px;
+                background-color: red;
+                /*background-image: url("https://images2018.cnblogs.com/blog/1036857/201805/1036857-20180510215639652-367382094.jpg");*/
+                /*background-repeat: no-repeat;*/
+                /*background-position: right bottom;*/
+                /*background-size: 100px 100px;*/
+                /*background: red url("https://images2018.cnblogs.com/blog/1036857/201805/1036857-20180510215639652-367382094.jpg") no-repeat right bottom/100px 100px;*/
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <!-- ui>li*3>a[s=$]{我是a标签}+span 一回车就会自动生成下面的代码，嵌套的用大于号。同级的用加号。-->
+            <ui>
+                <li><a href="" s="1">我是a标签</a><span></span></li>
+                <li><a href="" s="2">我是a标签</a><span></span></li>
+                <li><a href="" s="3">我是a标签</a><span></span></li>
+            </ui>
+            <!-- div#d2 一回车就会自动生成下面的代码 -->
+            <div id="d2"></div>
+        </div>
+    </body>
+</html>
+
+
