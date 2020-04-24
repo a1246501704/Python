@@ -74,6 +74,7 @@ while True:
     print(count)
     count+=1
 
+
 count=0
 while count <= 10:
     print(count)
@@ -166,6 +167,7 @@ while True:
             cmd = input('>>: ')
             if cmd == 'quit':
                break               ## 结束本层循环（把本层while退出掉了）
+            #    break 2           # 不支持
             print('run %s' % cmd)
         break                      ## 跳出最外层的while。
     else:

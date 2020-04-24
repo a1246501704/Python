@@ -34,13 +34,14 @@ print(AGE_OF_OLDBOY)
 \如何定义变量
 # 变量名(相当于门牌号，指向值所在的空间)，等号，变量值。
 name='Egon'
-sex='male'
+sex='male'  # 单引号双引号没区别
+sex="male"
 age=18
 age = 18
 level=10
 aaa=level # 10
 level2=10+age # 28
-x,y=1,2
+x,y=1,2   # 多元赋值
 print(x,y)
 # 多行注释也可以赋值给变量
 name1='''
@@ -66,10 +67,13 @@ print(name1,name2)
 
 \定义方式
     #驼峰体
-    AgeOfOldboy = 56 
+    AgeOfOldboy = 56  # 大驼峰
+    ageOfOldboy = 56  # 小驼峰
     NumberOfStudents = 80
+
     #下划线(推荐使用)
     age_of_oldboy = 56 
+    
     number_of_students = 80
 
 \定义变量名不好的方式
@@ -135,7 +139,7 @@ print('testvar' in locals().keys())
 # dict_keys(['__name__', '__doc__', '__package__', '__loader__', '__spec__', '__annotations__', '__builtins__', '__file__', '__cached__', 'os', 'testvar'])
 # True
 
-第二种方法使用内置函数dir()：
+第二种方法使用内置函数dir()： 列出一个对象的所有属性和方法
 print(dir())
 print('testvar' in dir())
 # ['__annotations__', '__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'testvar', 'os']
