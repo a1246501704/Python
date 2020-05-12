@@ -47,6 +47,7 @@ print(name*10)  # 重复10次
 用字符串也能存多个值，但是不好取。
 # hobbies='play read music movie'   
 # print(hobbies)
+# print(hobbies.split()[0])
 列表：定义在[]内，用逗号分隔开的多个元素，每个元素可以是任意类型。
 定义：students=['egon','alex','wupeiqi',] # students=list(['egon','alex','wupeiqi',]) 
 表示：存取放多个值，比如存放人的爱好，人的信息，
