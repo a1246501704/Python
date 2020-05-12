@@ -1,4 +1,4 @@
-1、HTTP协议
+\HTTP协议
     1、什么是HTTP协议：
         超文本传输协议
 
@@ -15,7 +15,7 @@
                 解决方法：
                     keepalive
             II：无状态
-                cookie与session
+                cookie与session，cookie离开session无法工作。
         3、HTTP之request
             GET url HTTP/1.1\r\n
             k1:v1\r\n
@@ -67,24 +67,36 @@
         只站在html角度，按照能否嵌套子标签，可以将标签分为两大类：
             容器类标签：可以嵌套任意其他类型的标签
             文本类标签：只能嵌套文字、图片、超链接
-    
 
+\Web服务本质
+import socket
+sk = socket.socket()
+sk.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
 
+sk.bind(("127.0.0.1", 8080))
+sk.listen(5)
 
+while True:
+    conn, addr = sk.accept()
+    data = conn.recv(8096)
+    conn.send(b"HTTP/1.1 200 OK\r\n\r\n")
+    conn.send(b"<h1>Hello world!</h1>")
+    conn.close()
+浏览器发请求 --> HTTP协议 --> 服务端接收请求 --> 服务端返回响应 --> 服务端把HTML文件内容发给浏览器 --> 浏览器渲染页面
 
 \前端语言
 HTML       # 内容
 CSS        # 样式
-JavaScript # 动态（雷锋和雷锋台）
+JavaScript # 动态（雷锋和雷锋塔，名字上沾边。本质上没关系。）
 
 \框架
-CSS：Bootstrap
-JS：jQuery
+CSS # Bootstrap
+JS  # jQuery
 
 \每部分需要学习的内容
-HTML ： 标签
-CSS ： 选择器、属性
-JS： 基础语法、BOM&DOM
+HTML  # 标签
+CSS   # 选择器、属性
+JS    # 基础语法、BOM & DOM
 
 
 
@@ -109,14 +121,9 @@ JS： 基础语法、BOM&DOM
 
 \各部分解释
 #1、<!DOCTYPE HTML>是文档声明，必须写在HTML文档的第一行，位于<html>标签之前，表明该文档是HTML5文档。
-
 #2、<html></html> 称为根标签，所有的网页标签都在<html></html>中。
-    HTML的lang属性可用于网页或部分网页的语言。通常用于搜索引擎和浏览器     
-    的统计分析,不定义也没什么影响
-    根据 W3C 推荐标准，您应该通过 <html> 标签中的 lang 属性对每张页面    
-    中的主要语言进行声明，比如：
-    <html lang="en"></html>
-
+    HTML的lang属性可用于网页或部分网页的语言。通常用于搜索引擎和浏览器的统计分析,不定义也没什么影响
+    根据 W3C 推荐标准，您应该通过 <html> 标签中的 lang 属性对每张页面中的主要语言进行声明，比如：<html lang="en"></html>,用于搜索引擎识别
 #3、<head></head> 标签用于定义文档的头部，它是所有头部元素的容器。常见的头部元素有<title>、<script>、<style>、<link>和<meta>等标签，头部标签在下一节中会有详细介绍，<head>与</head>之间的内容不会在浏览器的文档窗口显示，但是其间的元素有特殊重要的意义。
 #4、在<body>和</body>标签之间的内容是网页的主要内容，最终会在浏览器中显示出来。
 
@@ -124,29 +131,74 @@ JS： 基础语法、BOM&DOM
 #1、并列（兄弟／平级）
     head与body
 #2、嵌套（父子／上下级）
-    html内有body
-
-
+    html内 有head 有body 
 
 \HTML标签格式
-HTML标签是由尖括号包围的关键字，如<html>, <div>等
-HTML标签通常是成对出现的， 比如：<div>和</div>，第一个标签是开始，第二个标签是结束。结束标签会有斜线。
-也有一部分标签是单独呈现的，比如：<br/>、<hr/>、<img src="1.jpg" />等。
+# 双标签
+    HTML标签是由尖括号包围的关键字，比如<html>, <div>等
+    HTML标签通常是成对出现的， 比如：<div>和</div>，第一个标签是开始，第二个标签是结束。结束标签会有斜线。
+# 单标签
+    也有一部分标签是单独呈现的，比如：<br/>、<hr/>、<img src="1.jpg" />等。
+
 标签里面可以有若干属性，也可以不带属性。
 
-标签的语法：
+
+\标签的语法
     <标签名 属性1=“属性值1” 属性2=“属性值2”……>内容部分</标签名>
     <标签名 属性1=“属性值1” 属性2=“属性值2”…… />
 
-几个很重要的属性：
+\HTML中标签分类
+单从是否可以嵌套子标签的角度去分，标签分为两类
+#1、容器类标签
+    容器类标签可以简单的理解为能嵌套其它所有标签的标签。
+    常见容器级的标签: 
+        h系列 
+        ul>li
+        ol>li
+        dl>dt+dd
+        div
+
+#2、文本类标签
+    文本级的标签对应容器级标签，只能嵌套文字/图片/超链接的标签。
+    常见文本级的标签:
+        p
+        span
+        strong
+        em
+        ins
+        del
+
+#3、块级标签、行内标签和行内块标签
+块级标签：
+div、h1-h6、p、ol、ul、li、dd、dt、dl、form、table、menu、address、dir、fieldset、noframe、hr、pre
+
+行内标签：
+a、label、select、span、b/strong、br、img、input、font、bdo、big、small、cite、em、i、kbd、sub、sup、textarea
+
+行内块标签
+img、input
+
+控制标签类型的样式
+display：block块级 、inline行内 、inline-block行内块 、none隐藏
+
+给标签设置基点
+vertical-align：top/middle/bottom
+
+内联元素是指本身属性为 display:inline的元素，其宽度随元素的内容而变化。因为他自身的特点，我们通常使用内联元素来进行文字、小图片（小结构）的搭建。
+内联元素的特点：
+内联元素会和其他元素从左到右显示在一行。
+内联元素不能直接控制宽度、高度以及盒子模型的相关css属性，但是可以设置内外边距的水平方向的值。也就是说对于内联元素的margin和padding，只有margin-left/margin-right和padding-left/padding-right是有效的，但是竖直方向的margin和padding无效果。
+内联元素的宽高是由内容本身的大小决定的（文字、图片等）。
+内联元素只能容纳文本或者其他内联元素（不要在内联元素中嵌套块级元素）。
+
+\标签中几个很重要的属性
     id：   # 规定元素的唯一 id
     class：# 为html元素定义一个或多个类名（classname）(CSS样式类名)
     style：# 规定元素的行内样式（CSS样式）
-    title  # 规定元素的额外信息（可在工具提示中显示）
+    title  # 规定元素的额外信息（可在工具提示中显示）,已知title标签没有title属性。
 
 \HTML注释
 <!--注释内容-->  # 注释是代码之母。--摘自哪吒语录
-
 无论我们学习什么编程语言，一定要重视的就是注释，HTML中注释的格式:
 
 <!--这里是注释的内容-->
@@ -156,8 +208,8 @@ HTML标签通常是成对出现的， 比如：<div>和</div>，第一个标签�
 <!-- xx部分 开始 -->
     这里放你xx部分的HTML代码
 <!-- xx部分 结束 -->
-HTML注释的注意事项：
 
+HTML注释的注意事项：
 #1、HTML注释不支持嵌套。
 #2、HTML注释不能写在HTML标签中。
 

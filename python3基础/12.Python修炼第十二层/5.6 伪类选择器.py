@@ -38,34 +38,32 @@ focus只给input标签使用
 # 示例
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>后代选择器</title>
+  <head>
+      <meta charset="UTF-8">
+      <title>后代选择器</title>
 
-    <style type="text/css">
-        a:link {
-            color: #cccccc;
-        }
-        a:visited {
-            color: #55BBBB;
-        }
-        a:hover {
-            color: green;
-        }
-        a:active {
-            color: red;
-        }
+      <style type="text/css">
+          a:link {
+              color: #cccccc;
+          }
+          a:visited {
+              color: #55BBBB;
+          }
+          a:hover {
+              color: green;
+          }
+          a:active {
+              color: red;
+          }
 
-        input:hover {
-            outline: none;
-            background-color: #cccccc;
-
-        }
-
-    </style>
-</head>
-<body>
-<a href="https://www.baidu.com/a/b/c/d.html">点击我</a>
-<input type="text">
-</body>
+          input:hover {
+              outline: none;
+              background-color: #cccccc;
+          }
+      </style>
+  </head>
+  <body>
+    <a href="https://www.baidu.com/a/b/c/d.html">点击我</a>
+    <input type="text">
+  </body>
 </html>

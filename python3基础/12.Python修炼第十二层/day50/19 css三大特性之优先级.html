@@ -2,7 +2,8 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>后代选择器</title>
+        <title>优先级</title>
+
         <style type="text/css">
             #id1 {
                 color: red;
@@ -10,16 +11,17 @@
             .ppp {
                 color: green;
             }
-            /*p {*/
-            /*    color: blue;*/
-            /*}*/
-            /*.ccc ul li{*/
-            /*    color: red;*/
-            /*}*/
-            /*.bbb li {*/
-            /*    color: yellow;*/
-            /*}*/
+            p {
+                color: blue;
+            }
+            .ccc ul li{
+                color: red;
+            }
+            .bbb li {
+                color: yellow;
+            }
         </style>
+        <link rel="stylesheet" href="my1.css">
     </head>
     <body>
         <div id="id1" class="ccc">

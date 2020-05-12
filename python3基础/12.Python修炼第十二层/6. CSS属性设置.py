@@ -13,7 +13,7 @@ normal	# 默认值，标准粗细
 bord	# 粗体
 border	# 更粗
 lighter	# 更细
-100~900	# 设置具体粗细，400等同于normal，而700等同于bold
+100~900	# 设置具体粗细，400等同于normal，而700等同于bord
 inherit	# 继承父元素字体的粗细值
 
 

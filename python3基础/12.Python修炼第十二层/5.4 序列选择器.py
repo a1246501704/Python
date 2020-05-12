@@ -4,10 +4,10 @@ css3中新推出的选择器中，最具代表性的的9个，又称为序列选
 
 #2、格式
 #2.1 同级别
-:first-child    p:first-child    同级别的第一个
-:last-child     p:last-child     同级别的最后一个
-:nth-child(n)                    同级别的第n个
-:nth-last-child(n)               同级别的倒数第n个
+:first-child    p:first-child    同级别的第一个，body中所有标签层级中，每个层级中同级的第一个。并且得是一个p标签。
+:last-child     p:last-child     同级别的最后一个，body中所有标签层级中，每个层级中同级的最后一个。并且得是一个p标签。
+:nth-child(n)   p:nth-child(5)   同级别的第n个，body中所有标签层级中，每个层级中同级的第5个标签。并且得是一个p标签。
+:nth-last-child(n)  p:nth-last-child(5) 同级别的倒数第n个，body中所有标签层级中，每个层级中同级倒数第5个。并且得是一个p标签。
 
 #2.2 同级别同类型
 :first-of-type                   同级别同类型的第一个
@@ -119,7 +119,7 @@ p:nth-last-child(3) {
 
 
 
-\示例:同级同类型
+\示例:同级同类型（同级别得不同类型得标签不算数）
 <h1>我是标题</h1>
 <p>我是段落1</p>
 <p>我是段落2</p>
@@ -179,7 +179,7 @@ p:only-of-type {
 
 “我是段落7“被选中
 
-#2、同级别的唯一一个该标签，不能有同类型及其他。
+#2、同级别的唯一一个该标签，同级别中不能有其他类型标签。
 p:only-child {
     color: red;
 }

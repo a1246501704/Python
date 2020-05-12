@@ -35,9 +35,9 @@ CSS全称Cascading Style Sheet层叠样式表，是专用用来为HTML标签添�
 </html>
 
 这么做的缺点是
-#1、记忆困难：需要记忆每个标签的所有样式相关属性，如果标签没有某个样式相关的属性，那么设置了也没有效果
-#2、代码耦合度高：HTML语义与样式耦合到一起
-#3、扩展性差：当某一类样式需要修改时，我们需要找到所有设置了该样式标签进行修改
+    #1、记忆困难：需要记忆每个标签的所有样式相关属性，如果标签没有某个样式相关的属性，那么设置了也没有效果
+    #2、代码耦合度高：HTML语义与样式耦合到一起
+    #3、扩展性差：当某一类样式需要修改时，我们需要找到所有设置了该样式标签进行修改
 于是CSS应运而生，很好地解决了以上三个问题
 <!DOCTYPE html>
 <html>
@@ -111,8 +111,7 @@ h1,p  称为选择器，用于body中哪些标签
 </head>
 
 
-
-详细解释
+\详细解释
 #1、行内式
 行内式是在标签的style属性中设定CSS样式。这种方式没有体现出CSS的优势，不推荐使用。
 <p style="color: red;font-size: 50px;text-align: center">Egon是一个非常了不起的人</p>
@@ -121,21 +120,19 @@ h1,p  称为选择器，用于body中哪些标签
 嵌入式是将CSS样式集中写在网页<head></head>标签内的的<style></style>标签对中。格式如下：
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <style>
-        p {
-            color: red;
-            font-size: 50px;
-            text-align: center
-        }
-    </style>
-</head>
-<body>
-
-<p>Egon是一个非常了不起的人</p>
-
-</body>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            p {
+                color: red;
+                font-size: 50px;
+                text-align: center
+            }
+        </style>
+    </head>
+    <body>
+        <p>Egon是一个非常了不起的人</p>
+    </body>
 </html>
 
 
@@ -150,35 +147,31 @@ p {
 #3、导入式
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <style>
-        /*形式一：*/
-        /*@import "css/mystyle.css";*/
-        /*形式二：*/
-        @import url("css/mystyle.css");
+    <head>
+        <meta charset="utf-8">
+        <style>
+            /*形式一：*/
+            /*@import "css/mystyle.css";*/
+            /*形式二：*/
+            @import url("css/mystyle.css");
 
-    </style>
-</head>
-<body>
-
-<p>Egon是一个非常了不起的人</p>
-
-</body>
+        </style>
+    </head>
+    <body>
+        <p>Egon是一个非常了不起的人</p>
+    </body>
 </html>
 
 #4、外链式（推荐使用） 
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="css/mystyle.css">
-</head>
-<body>
-
-<p>Egon是一个非常了不起的人</p>
-
-</body>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/mystyle.css">
+    </head>
+    <body>
+        <p>Egon是一个非常了不起的人</p>
+    </body>
 </html>
 
 
@@ -195,8 +188,6 @@ p {
 2、type属性其实可以不用写，默认就是type="text/css"
 3、设置样式时必须按照固定的格式来设置，key:value;
     其中;不能省略，最后一个属性其实可以省略，但我们可以简单地统一记成不能省略就行了
-
-
 
 
 

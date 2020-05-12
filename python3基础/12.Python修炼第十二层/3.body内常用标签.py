@@ -1,9 +1,10 @@
 \HTML常用标签
+# 所有标签：https://www.w3school.com.cn/tags/tag_link.asp
 
 \标签分类:
-	块儿级标签（单独占一行的）<h1> ~ <h6>,<div>,<p>,<hr>,<ul>,<li>, <ol>, <h1>, <table>
-		默认占浏览器宽度
-		能设置长和宽
+	块儿级标签（单独占一行的）<h1> ~ <h6>,<div>,<p>,<hr>,<ul>,<li>, <ol>, <table>
+		默认占浏览器宽度（在浏览器中单独占一行的）
+		可以设置长和宽
 	内联标签(行内标签)      <a>,<img> ,<u>, <s>, <i>, <b>,<td>, <span>、<input>     
 		根据内容决定长度
 		不能设置长和宽
@@ -19,32 +20,26 @@
     我是帅气逼人的Egon老师
     我是帅气逼人的Egon老师
     我是帅气逼人的Egon老师
-
 #2、<hr> 分割线
-
 #3、<font> 修改文字大小，颜色
     <font color="red" size="10px">我是哈哈哈</font>
-
 #4、<b>加粗</b> 加粗
     <b>论颜值，我秒杀宇宙</b>
-
 #5、<u>下划线</u> 下划线
-
 #6、<i>斜体</i> 倾斜
-
 #7、<s>删除</s> 删除线
 
 html5中推出了一些新的标签
-        strong == b
-        ins    == u
-        em     == i
-        del    == s
+    strong == b
+    ins    == u
+    em     == i
+    del    == s
 
 新的标签是有语义的，而老的只是单纯的添加样式（这是CSS干的事）
-        strong的语义：定义重要性强调的文字
-        ins的语义（inserted）：定义插入的文字
-        em的语义（emphasized）：定义强调的文字
-        del的语义（deleted）：定义被删除的文字
+    strong的语义：加粗，定义重要性强调的文字
+    ins的语义（inserted）：下划线，定义插入的文字
+    em的语义（emphasized）：倾斜，定义强调的文字
+    del的语义（deleted）：删除线，定义被删除的文字
 
 \字符实体
 #1、在HTML中对空格／回车／tab不敏感，会把多个空格／回车／tab当作一个空格来处理
@@ -67,8 +62,8 @@ html5中推出了一些新的标签
 
 \h系列标签 标题
 # 语义：标记内容为一个标题，全称headline
-h系列标签从h1-h6共6个，没有h7标签，标记内容为1~6级标题，h1用作主标题（代表最重要的），其实是h2。。。
-虽然h1-h6标签的显示样式是从大到小，但再次强调：记忆HTML标签的显示样式是没有意义的
+h系列标签从h1-h6共6个，没有h7标签，标记内容为1~6级标题，h1用作主标题（代表最重要的），其次是h2。。。
+虽然h1-h6标签的显示样式是从大到小，但再次强调：记忆HTML标签的显示样式是没有意义的。
 
 <!DOCTYPE HTML>
 <html>
@@ -88,7 +83,8 @@ h系列标签从h1-h6共6个，没有h7标签，标记内容为1~6级标题，h1
 </html>
 
 <h1> 定义标题的开始。
-<h1 align="center">      # 拥有关于对齐方式的附加信息。居中排列标题
+<h1 align="center">      # 拥有关于对齐方式的附加信息。居中排列标题 。 align属性的值：left center right justify。不推荐使用。请使用CSS样式替代它。
+
 <body bgcolor="yellow">  # 拥有关于背景颜色的附加信息。
 
 注意：在企业开发中一定要慎用h系列标签，特别是h1标签，在企业开发中一般一个界面中只能出现一个h1标签（出于SEO考虑，搜索引擎会使用标题将网页的结构和内容编制索引）,比如www.163.com。
@@ -115,7 +111,7 @@ h系列标签从h1-h6共6个，没有h7标签，标记内容为1~6级标题，h1
 # 语义：标记一个图片，全称image
 # 用法
 <img src="本地或网络图片地址" alt="图片加载失败时显示的内容" title = "鼠标悬停到图片上时显示的内容" />
-<img src="本地或网络图片地址" alt="图片加载失败时显示的内容" title = "鼠标悬浮时提示信息" width="宽" height="高(宽高两个属性只用一个会自动等比缩放)">
+<img src="本地或网络图片地址" alt="图片加载失败时显示的内容" title = "鼠标悬浮时提示信息" width="宽" height="高(宽高两个属性只用一个会自动等比缩放,不设置宽和高则显示原图大小)">
 
 #2、注意
 2.1 src指定的图片地址可以是网络地址，也可以是一个本地地址，本地地址可以用绝对或相对路径，但通常用相对路径，相对路径是以html文件当前所在路径为基准进行的
@@ -124,7 +120,7 @@ h系列标签从h1-h6共6个，没有h7标签，标记内容为1~6级标题，h1
 2.3 alt="图片加载失败时显示的内容"  为img标签加上该属性可用于支持搜索引擎和盲人读屏软件。
 2.4 title = "鼠标悬停到图片上时显示的内容"
 2.5 如果没有指定图片的width和height则按照图片默认的宽高显示，如果指定图片的width和height则可能让图片变形，那如果又想指定宽度和高度，又不想让图片变形，我们可以只指定宽度和高度的一个值即可
-只要指定了一个值，浏览器会根据该值计算另外一个值，并且都是等比拉伸的，图片将不会变形
+只要指定了一个值，浏览器会根据该值计算另外一个值，并且都是等比拉伸的，图片将不会变形。
 
 
 
@@ -132,14 +128,14 @@ h系列标签从h1-h6共6个，没有h7标签，标记内容为1~6级标题，h1
 # 语义：标记一个内容为超链接，全称anchor，锚
 # 超链接标签是超文本文件的精髓，可以控制页面与页面之间的跳转。 
 # HTML 链接是通过 <a> 标签进行定义的，在 href 属性中指定链接的地址。
-所谓的超链接是指从一个网页指向一个目标的连接关系，这个目标可以是另一个网页，也可以是相同网页上的不同位置，还可以是一个图片，一个电子邮件地址，一个文件，甚至是一个应用程序。
+所谓的超链接是指从一个网页指向一个目标的连接关系，这个目标可以是另一个网页，这是正常的超链接。也可以是相同网页上的不同位置，这是锚链接。还可以是一个图片，一个电子邮件地址，一个文件，甚至是一个应用程序。这是功能性链接。
   <a href="跳转到的目标页面地址" target="是否在新页面中打开" title="鼠标悬浮显示的内容">需要展现给用户查看的内容/也可以是图片</a>
   <a href="http://www.oldboyedu.com" target="_blank" >点我</a>
   <a href="http://www.w3school.com.cn/">Visit W3School</a>
   <p><a href="/index.html">本文本</a> 是一个指向本网站中的一个页面的链接。</p>
   <p><a href="http://www.microsoft.com/">本文本</a> 是一个指向万维网上的页面的链接。</p>
   # 将图像作为链接
-  <p>您也可以使用图像来作链接：<a href="/example/html/lastpage.html"><img border="0" src="/i/eg_buttonnext.gif" /></a></p>
+  <p>您也可以使用图像来作链接：<a href="http://www.baidu.com"><img border="0" src="/i/eg_buttonnext.gif" /></a></p>
 
 href属性指定目标网页地址。该地址可以有几种类型：
     绝对URL - 指向另一个站点（比如 href="http://www.jd.com）
@@ -171,7 +167,7 @@ name 属性：
 2.1 a标签不仅可以标记文字，也可以标记图片
     <a href="https://www.baidu.com"><img src="mv.png" />百度一下，你就知道</a>
 
-2.2 a标签必须有href属性，href的值必须是http://或https://开头
+2.2 a标签必须有href属性，href的值必须是 http:// 或 https:// 开头
 
 2.3 a标签还可以跳转到自己的页面
     <a href="template/aaa.html">锤你胸口</a>
@@ -183,6 +179,7 @@ name 属性：
 
 2.5 title="鼠标悬浮显示的内容"
 
+
 假链接
 #1、什么是假链接？
     就是点击之后不会跳转的链接，我们称之为假链接
@@ -193,15 +190,14 @@ name 属性：
 
 #3、假链接的定义格式
     1、href="#"   :会自动回到网页的顶部
-    2、href="javascript:" ：不会返回顶部
+    2、href="javascript:" :不会返回顶部
 
 页面内锚点
 #1、要想通过a标签跳转到指定的位置，那么必须告诉a标签一个独一无二的身份证号码，
 这样a标签才能在当前界面中找到需要跳转到的目标位置
 
 #2、如何为html中的标签绑定一个独一无二的身份证号码呢？
-在html中，每一个标签都有一个名称叫做id的属性
-这个属性就是用来给标签指定一个独一无二的身份证号码的
+在html中，每一个标签都有一个名称叫做id的属性,这个属性就是用来给标签指定一个独一无二的身份证号码的。
 
 #3、所以要想实现通过a标签跳转到指定的位置，分为两步
 3.1、给目标位置的标签添加一个id属性，然后指定一个独一无二的值
@@ -255,15 +251,15 @@ p标签不能包含块级标签，p标签也不能包含p标签。
 
 \HTML 列表     https://www.w3school.com.cn/html/html_lists.asp
 语义：标记一堆数据是一个整体/列表
-html中列表标签分为三种
+html中列表标签分为三种：无序列表（ul-li） 、有序列表（ol-li） 、自定义列表（dl-dt-dl）
 # ul通常应该只嵌套li标签
 # 而li标签却可以嵌套任意其他标签
 
-\小技巧：在pycharm中输入 ul>li*5  按下tab键就会快速生成表结构。
+# 小技巧：在pycharm中输入 ul>li*5  按下tab键就会快速生成表结构。
 
-1、无序列表（列表标签中使用最多的一种，非常重要）：unordered list
-#1、作用：制作导航条、商品列表、新闻列表等
-#2、组合使用ul>li
+1、无序列表（列表标签中使用最多的一种，非常重要）：unordered list（缩写ul）
+#1、作用：制作导航条、商品列表、新闻列表等。
+#2、组合使用 ul > li
     <ul>
         <li>秒杀</li>
         <li>优惠券</li>
@@ -297,36 +293,36 @@ ul与li是组合标签应该一起出现，并且ul的子标签只应该是li，
 # 无序列表练习
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <h1>物品清单</h1>
-    <ul>
-        <li>
-            <h2>蔬菜</h2>
-            <ul>
-                <li>西红柿</li>
-                <li>花瓜</li>
-                <li>芹菜</li>
-            </ul>
-        </li>
-        <li>
-            <h2>水果</h2>
-            <ul>
-                <li>香蕉</li>
-                <li>菠萝</li>
-                <li>火龙果</li>
-            </ul>
-        </li>
-    </ul>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <h1>物品清单</h1>
+        <ul>
+            <li>
+                <h2>蔬菜</h2>
+                <ul>
+                    <li>西红柿</li>
+                    <li>花瓜</li>
+                    <li>芹菜</li>
+                </ul>
+            </li>
+            <li>
+                <h2>水果</h2>
+                <ul>
+                    <li>香蕉</li>
+                    <li>菠萝</li>
+                    <li>火龙果</li>
+                </ul>
+            </li>
+        </ul>
+    </body>
 </html>
 
 
 
-2、有序列表（极少使用），前面带序号
+2、有序列表（极少使用），前面自动带序号（默认为数字）：order list
 <h1>智商排名</h1>
     <ol>
         <li>Egon</li>
@@ -336,7 +332,7 @@ ul与li是组合标签应该一起出现，并且ul的子标签只应该是li，
         <li>元昊</li>
     </ol>
 
-    <!--有序列表能干的事，完全可以用无序列表取代-->
+    <!--有序列表能干的事，完全可以用无序列表取代。-->
     <h1>智商排名</h1>
     <ul style="list-style: none">
         <li>1. Egon</li>
@@ -348,12 +344,12 @@ ul与li是组合标签应该一起出现，并且ul的子标签只应该是li，
 
 
 
-3、自定义列表（也会经常使用）
+3、自定义列表（也会经常使用）：definition list
 #1、作用分析
 选择用什么标签的唯一标准，是看文本的实际语义，而不是看长什么样子
 无序列表：内容是并列的,没有先后顺序
 有序列表：内容是有先后顺序的
-自定义列表：对一个题目进行解释说明的时候，用自定义列表,可以做网站尾部相关信息，网易注册界面的输入框
+自定义列表：对一个题目进行解释说明的时候，用自定义列表,可以做网站尾部相关信息，例如：网易注册界面的输入框。
 
 #2、自定义列表也是一个组合标签：dl>dt+dd
 dl: defination list，自定义列表
@@ -375,16 +371,37 @@ dd：defination description，自定义描述
     <dd>描述2<dd>
     <dd>描述3<dd>
 </dl>
- #3、注意: 3.1 dl>dt+dd应该组合出现，dl中只应该存放dt和dd，而可以在dt和dd中添加任意其他标签 
- #        3.2 一个dt可以可以没有对应的dd，也可以有多个，但建议一个dt对应一个dd
+ #3、注意: 
+ # 3.1 dl>dt+dd应该组合出现，dl中只应该存放dt和dd，而可以在dt和dd中添加任意其他标签 
+ # 3.2 一个dt可以可以没有对应的dd，也可以有多个，但建议一个dt对应一个dd
 
 
 \table 标签 表格  https://www.w3school.com.cn/html/html_tables.asp
 # 语义：标记一段数据为表格
+#1、作用
+表格标签是一种数据的展现形式，当数据量非常大的时候，使用表格的形式来展示被认为是最清晰的.
+
+#2、格式
+<table>
+    <tr>
+        <td></td>
+    </tr>
+</table>
+
+tr # 代表表格的一行数据
+td # 表一行中的一个普通单元格
+th # 表示表头单元格
+
+#3、注意点：
+表格标签有一个边框属性，这个属性决定了边框的宽度。默认情况下这个属性的值为0，所以看不到边框。
+
 表格是一个二维数据空间，一个表格由若干行组成，一个行又有若干单元格组成，单元格里可以包含文字、列表、图案、表单、数字符号、预置文本和其它的表格等内容。
 表格最重要的目的是显示表格类数据。表格类数据是指最适合组织为表格格式（即按行和列组织）的数据。
-表格的基本结构：
-  表格由 <table> 标签来定义。每个表格均有若干行（由 <tr> 标签定义），每行被分割为若干单元格（由 <td> 标签定义）。字母 td 指表格数据（table data），即数据单元格的内容。
+
+#4、表格的基本结构
+  表格的表头由<th>标签来定义，默认剧中加粗。table head
+  表格由 <table> 标签来定义。每个表格均有若干行（由 <tr> 标签定义）。table row
+  每行被分割为若干单元格（由 <td> 标签定义）。字母 td 指表格数据，即数据单元格的内容。table data
   数据单元格可以包含文本、图片、列表、段落、表单、水平线、表格等等。
 <table border="1" cellpadding="10" cellspacing="10">
   <thead>
@@ -409,25 +426,29 @@ dd：defination description，自定义描述
 </table>
 
 属性:
-    border:  # 表格边框.
-    cellpadding: # 内边距
-    cellspacing: # 外边距.
-    width:   # 像素 百分比.（最好通过css来设置长宽）
-    rowspan: # 单元格竖跨多少行
-    colspan: # 单元格横跨多少列（即合并单元格）
+    border:      # 表格边框
+    cellpadding: # 内边距 - 单元格边距
+    cellspacing: # 外边距 - 单元格间距
+    width:   # 宽度  像素 百分比.（最好通过css来设置长宽）
+    height   # 高度  像素 百分比.（最好通过css来设置长宽）
+    rowspan: # 单元格竖跨多少行（即横着合并单元格）
+    colspan: # 单元格横跨多少列（即竖着合并单元格）
 
 \表格属性
 #1、宽度和高度
-    可以给table和td设置width和height属性
-    1.1 默认情况下表格的宽高是按照内容的尺寸来调整的，也可以通过给table标签设置widht和height来手动指定表格的宽高
-    1.2 如果给td标签设置width和height属性，会修改当前单元格的宽度和高度，只要不超过table的宽高，则不会影响整个表格的宽度和高度
+    可以给 table 和 td 设置width和height属性
+        给table 设置的 width和height 是代表整个表格的总体高和宽
+        给td 设置的 width和height 是代表给这一行设置的高和宽
+    在不超过table 的 width和height的情况下 td 设置的高和宽优先级高
 
+    1.1 默认情况下表格的宽高是按照内容的尺寸来调整的，也可以通过给table标签设置width和height来手动指定表格的宽高.
+    1.2 如果给td标签设置width和height属性，会修改当前单元格的宽度和高度，只要不超过table的宽高，则不会影响整个表格的宽度和高度.
 
-#2、水平对齐和垂直对齐
-    水平对齐 align   可以给table、tr、td标签设置
-    垂直对齐 valign  只能给tr、td标签设置
+#2、表格的内容 水平对齐和垂直对齐
+    水平对齐 align   # 可以给table、tr、td标签设置
+    垂直对齐 valign  # 只能给tr、td标签设置
 
-    ========水平对齐===========
+    # ========水平对齐===========
     取值
     align=“left”    # 左对齐
     align=“center”  # 中间对齐
@@ -436,7 +457,7 @@ dd：defination description，自定义描述
     2.2 给tr设置水平对齐，可以控制当前行所有单元格内容都水平对齐
     2.3 给td设置水平对齐，可以控制当前单元格内容水平对齐，tr与td冲突的情况下，以td为准
 
-    ========垂直对齐===========
+    # ========垂直对齐===========
     取值
     valign=“top”     # 上对齐
     valign=“center”  # 中对齐
@@ -444,7 +465,7 @@ dd：defination description，自定义描述
     2.4 给tr设置垂直对齐可以让当前行所有单元格内容都垂直对齐
     2.5 给td设置垂直对齐可以让当前单元格内容垂直对齐
 
-#3、外边距和内边距
+#3、外边距（表格和表格间的）和内边距（表格和表格内的内容）
     只能给table设置
     3.1 外边距：单元格与单元格之间的间隔，cellspacing="3px"，默认值为2px
     3.2 内边距：单元格边框与文字之间的距离:cellpadding="200px"
@@ -478,6 +499,7 @@ dd：defination description，自定义描述
         <td>84</td>
     </tr>
 </table>
+
 #2、方式二
  细线表格的制作方式：
         1、给table标签设置bgcolor
@@ -514,7 +536,7 @@ dd：defination description，自定义描述
 </table>
 
 #3、方式三（style="border-collapse: collapse;border: 1px solid red"）
-<table border="1px" style="border-collapse: collapse;border: 1px solid red">
+<table border="1px" style="border-collapse: collapse; border: 1px solid red">
     <tr>
         <td>姓名</td>
         <td>性别</td>
@@ -538,15 +560,15 @@ dd：defination description，自定义描述
 #1、表格的标题:caption
     特点:相对于表格宽度自动居中对齐
     注意:
-        1.1 该标签一定要写在table标签里，否则无效
-        1.2 caption一定要紧跟在table标签内的第一个
+        1.1 该标签一定要写在table标签里，否则无效。
+        1.2 规范是将caption一定要紧跟在table标签内的第一个。 # 亲测其他位置也行
 
 #2、表格的表头信息:thead
     特点：专门用来存储每一列的标题，只要将当前列的标题存储在这个标签中就会自动居中+加粗文字
 
 #3、表格的主体信息:tbody
     注意：
-        3.1 如果没有添加tbody，浏览器会自动添加
+        3.1 如果没有添加tbody，浏览器会自动添加.
         3.2 如果指定了thread和tfoot，那么在修改整个表格的高度时，thead和tfoot有自己默认的高度，不会随着
             表格的高度变化而变化
 
@@ -557,7 +579,6 @@ dd：defination description，自定义描述
 </head>
 <body>
     <table bgcolor="black" border="1" width="300px" height="300px" cellspacing="1px">
-
         <caption>学员信息统计</caption>
         <thead>
             <tr bgcolor="white">
@@ -601,16 +622,17 @@ dd：defination description，自定义描述
 
   
 \单元格合并
-#1、水平向上的单元格colspan
+#1、水平向上的单元格colspan(跨列)
     可以给td标签添加一个colspan属性，来把水平方向的单元格当做多个单元格来看待
     <td colspan="2"></td>
 
-#2、垂直向上的单元格rowspan
+#2、垂直向上的单元格rowspan(跨行)
     可以给td标签设置一个rowspan属性，来把垂直方向的的单元格当成多个去看待
+    <td rowspan="2"></td>
 
 #注意注意注意:
-1、由于把某一个单元格当作了多个单元格来看待，所以就会多出一些单元格，所以需要删掉一些单元格
-2、一定要记住，单元格合并永远是向后或者向下合并，而不能向前或向上合并
+1、由于把某一个单元格当作了多个单元格来看待，所以就会多出一些单元格，所以需要删掉一些单元格。
+2、一定要记住，单元格合并永远是向右或者向下合并，而不能向左或向上合并
 
 \传统布局
 传统的布局方式就是使用table来做整体页面的布局，布局的技巧归纳为如下几点：
@@ -623,6 +645,7 @@ dd：defination description，自定义描述
 #1、快速制作用于演示的html页面
 #2、商业推广EDM制作(广告邮件)
 
+# 课程表例子
 <!DOCTYPE HTML>
 <html>
     <head lang='en'>
@@ -711,11 +734,11 @@ dd：defination description，自定义描述
 
 
 \form 标签 表单
-# 思维导图：https://www.processon.com/view/link/5aeea789e4b084d6e4bf6911#map
+# 重点 ：思维导图：https://www.processon.com/view/link/5aeea789e4b084d6e4bf6911#map
 # 语义：标记表单
 # form ：前后端有数据交互的时候用form表单
 #1、什么是表单？
-    表单就是专门用来接收用户输入或采集用户信息的，最后将输入的数据交给action去提交
+    表单就是专门用来接收用户输入或采集用户信息的，最后将输入的数据交给action去提交。
     表单元素指的是不同类型的 input 元素、复选框、单选按钮、提交按钮等等。
 
 #2、表单的格式
@@ -733,32 +756,32 @@ form表单提交数据的几个注意事项:
     表单能够包含input系列标签，比如文本字段、复选框、单选框、提交按钮等等。
     表单还可以包含textarea、select、fieldset和 label标签。
 
-# Form 属性
+#3、form表单中的属性
 HTML <form> 元素，已设置所有可能的属性，是这样的：
 实例
-<form action="action_page.php" method="GET" target="_blank" accept-charset="UTF-8"
-ectype="application/x-www-form-urlencoded" autocomplete="off" novalidate>
+<form action="action_page.php" method="GET" target="_blank" accept-charset="UTF-8" enctype="application/x-www-form-urlencoded" autocomplete="off" novalidate>
 .
-form elements
+form elements(元素)
 .
 </form> 
 
-# 1、下面是 <form> 属性的列表：
-属性	                      描述
-accept-charset # 规定在被提交表单中使用的字符集（默认：页面字符集）。
-action	       # 规定向何处提交表单的地址（URL）（提交页面）。
-autocomplete   # 规定浏览器应该自动完成表单（默认：开启）。
-enctype	       # 规定被提交数据的编码（默认：url-encoded）。
-method	       # 规定在提交表单时所用的 HTTP 方法（默认：GET）。
-name	       # 规定识别表单的名称（对于 DOM 使用：document.forms.name）。
-novalidate	   # 规定浏览器不验证表单。
-target	       # 规定 action 属性中地址的目标（默认：_self）。
+#下面是 <form> 属性的列表：
+    属性	                      描述
+    accept-charset # 规定在被提交表单中使用的字符集（默认：页面字符集）。
+    action	       # 规定向何处提交表单的地址（URL）（提交页面）。
+    autocomplete   # 规定浏览器应该自动完成表单（默认：开启）。
+    enctype	       # 规定被提交数据的编码（默认：url-encoded）。
+    method	       # 规定在提交表单时所用的 HTTP 方法，get和post（默认：GET）。
+    name	       # 规定识别表单的名称（对于 DOM 使用：document.forms.name）。
+    novalidate	   # 规定浏览器不验证表单。
+    target	       # 规定 action 属性中地址的目标，_self 和 _blank（默认：_self）。
 
 # action 属性
 action 属性定义在提交表单时执行的动作。向服务器提交表单的通常做法是使用提交按钮。
 通常，表单会被提交到 web 服务器上的网页。在上面的例子中，指定了某个服务器脚本来处理被提交表单：
 <form action="action_page.php">
 如果省略 action 属性，则 action 会被设置为当前页面。
+
 
 # method 属性
 method 属性规定在提交表单时所用的 HTTP 方法（GET 或 POST）：
@@ -769,7 +792,7 @@ method 属性规定在提交表单时所用的 HTTP 方法（GET 或 POST）：
     您能够使用 GET（默认方法）：如果表单提交是被动的（比如搜索引擎查询），并且没有敏感信息。
 
     当您使用 GET 时，表单数据在页面地址栏中是可见的：
-    action_page.php?firstname=Mickey&lastname=Mouse
+    如 https://www.aaa.com/action_page.php?firstname=Mickey&lastname=Mouse
     注释：GET 最适合少量数据的提交。浏览器会设定容量限制。
 
     # 何时使用 POST？
@@ -777,10 +800,15 @@ method 属性规定在提交表单时所用的 HTTP 方法（GET 或 POST）：
     POST 的安全性更加，因为在页面地址栏中被提交的数据是不可见的。
 
 # enctype 属性
+ form表单中enctype属性可以用来控制对表单数据的发送前的如何进行编码，enctype有三种，
+ 分别为：
+    multipart/form-data   # 不对字符编码，用于发送二进制的文件，其他两种类型不能用于发送文件；
+    text/plain            # 用于发送纯文本内容，空格转换为 "+" 加号，不对特殊字符进行编码，一般用于email之类的；
+    application/x-www-form-urlencoded # 在发送前会编码所有字符，即在发送到服务器之前，所有字符都会进行编码（空格转换为 "+" 加号，"+"加号转换为空格，特殊符号转换为 ASCII HEX 值）。
+ 其中application/x-www-form-urlencoded为默认类型。 
 
 
-
-# 2、表单元素
+# 4、form表单中的元素
 基本概念：
     HTML表单是HTML元素中较为复杂的部分，表单往往和脚本、动态页面、数据处理等功能相结合，因此它是制作动态网站很重要的内容。
     表单一般用来收集用户的输入信息
@@ -790,7 +818,27 @@ method 属性规定在提交表单时所用的 HTTP 方法（GET 或 POST）：
 
 # <input> 元素
 <input> 元素是最重要的表单元素。
+属性：
+    type         # 给input设置类型
+    name         # 给表单中的值定义一个 key
+    value        # 给表单中的key赋值 value
+    disabled     # 禁用，不往上提交。
+    placeholder  # 占位符（浅灰色提示信息）,placeholder主要是input中的提示信息，这个和value不同当input获取到焦点的时候这个会自动消失。
 <input> 元素有很多形态，根据不同的 type 属性。
+    #type属性的以及还有很多属性接下来先对常见type的值做一个介绍
+        text     # 单行文本框（注意这个是单行文本框并且还是input里type属性的值。多行文本框是一个标签）
+        password # 密码域（这个会将输入将输入的文本用粗黑点表示）
+        checkbox # 复选框
+        radio    # 单选框
+        file     # 文件域（file后面是要有name的在file中name是只读的）
+        name     # 数据的名字（相当于给数据写名字）
+        value    # 提交数据（如果给了一个value还给了属性值那么这个属性值会默认的出现在input中的。如果要将input中的数据提交要有一个那么name）
+        button   # 提交按钮（这个要配合js使用）
+        submint  # 提交按钮（为保险起见不同浏览器编译出的不同在写这个属性是后面要加value属性）
+        reset    # 重置按钮（（为保险起见不同浏览器编译出的不同在写这个属性是后面要加value属性）
+        image    # 图像域（会将form表单的数据进行点击图片提交，同时会将鼠标的坐标进行提交，这个的作用主要就是可以把一张图片当成一个提交按钮）
+        hideden  # 隐藏域(常用场景：不想让用户看到的地方使用。主要作用是将input隐藏)
+
 
 
 # label 元素  定义：<label> 标签为 input 元素定义标注（标记）。
@@ -798,16 +846,28 @@ method 属性规定在提交表单时所用的 HTTP 方法（GET 或 POST）：
     label 元素不会向用户呈现任何特殊效果。
     <label> 标签的 for 属性值应当与相关元素的 id 属性值相同。
 
-当点到"用户名“字样上时也就选中了，无须点到圈里
+作用：关联文本与表单元素，实现点击文本时如同点击表单元素一样。如 点击 性别二字就如同点击了勾选。
+
+当点到 "用户名“ 字样上时也就选中了，无须点到圈里。
 <form action="">
-  <input type="text"  name="username" id="username"><label for="username">用户名</label>
+  <input type="text"  name="username" id="un"><label for="un">用户名</label>
 </form>
 
 
 # select 元素  下拉列表
 <option> 元素定义待选择的选项。
-列表通常会把首个选项显示为被选选项。
-您能够通过添加 selected 属性来定义预定义选项。
+列表通常会把首个选项显示为被选选项。您能够通过添加 selected 属性来定义默认选中。
+select标签里有两个属性name和size
+    name  # 起名字的作用
+    size &nbnsp; # 想让列表出现几个选项属性值就填几
+
+# <option> 元素 定义待选择的选项。
+option也有两个属性value和selected
+    value    # 属性是在option选项中写的，value的值适合后台商量好的值。
+    selected # 默认选择到选项
+
+实例
+<option value="fiat" selected>Fiat</option>
 
 实例
 <form action="" method="post">
@@ -829,32 +889,34 @@ method 属性规定在提交表单时所用的 HTTP 方法（GET 或 POST）：
 </form>
 
 属性说明：
-    multiple：# 布尔属性，设置后为多选，否则默认单选
-    disabled：# 禁用
-    selected：# 默认选中该项
-    value：   # 定义提交时的选项值
-    size：    # 同一时间显示几条
-    optgroup:#  分组
+    multiple # 布尔属性，设置后为多选，否则默认单选
+    disabled # 禁用
+    selected # 默认选中该项
+    value    # 定义提交时的选项值
+    size     # 同一时间显示几条
+    optgroup # 分组
 
 
 # textarea 元素 定义多行文本输入字段（文本域）
+# https://www.w3school.com.cn/tags/tag_textarea.asp
 <textarea name="memo" id="memo" cols="30" rows="10">
   默认内容
   ....
 </textarea>
 
-属性说明：
-    name：# 名称
-    rows：# 行数
-    cols：# 列数
-    disabled：# 禁用
-
-
-# <option> 元素 定义待选择的选项。
-列表通常会把首个选项显示为被选选项。您能够通过添加 selected 属性来定义预定义选项。
-实例
-<option value="fiat" selected>Fiat</option>
-
+# 属性	        值	            描述
+autofocus	autofocus	规定在页面加载后文本区域自动获得焦点。
+cols	    number	    规定文本区内的可见宽度。
+disabled	disabled	规定禁用该文本区。
+form	    form_id	    规定文本区域所属的一个或多个表单。
+maxlength	number	    规定文本区域的最大字符数。
+name	    name_of_textarea	规定文本区的名称。
+placeholder	text	    规定描述文本区域预期值的简短提示。
+readonly	readonly	规定文本区为只读。
+required	required	规定文本区域是必填的。
+rows	    number	    规定文本区内的可见行数。
+wrap	    hard        规定当在表单中提交时，文本区域中的文本如何换行.
+            soft
 
 # <button> 元素 定义可点击的按钮
 实例
@@ -878,7 +940,7 @@ method 属性规定在提交表单时所用的 HTTP 方法（GET 或 POST）：
 </datalist> 
 </form>
 
-# <fieldset> 元素 组合表单数据，给表单加个框
+# <fieldset> 元素 组合表单数据，给表单加个框.
 <fieldset> 元素组合表单中的相关数据
 <legend> 元素为 <fieldset> 元素定义标题。
 
@@ -886,13 +948,13 @@ method 属性规定在提交表单时所用的 HTTP 方法（GET 或 POST）：
 <form action="action_page.php">
     <fieldset>
         <legend>Personal information:</legend>
-        First name:<br>
-        <input type="text" name="firstname" value="Mickey">
-        <br>
-        Last name:<br>
-        <input type="text" name="lastname" value="Mouse">
-        <br><br>
-        <input type="submit" value="Submit">
+            First name:<br>
+            <input type="text" name="firstname" value="Mickey">
+            <br>
+            Last name:<br>
+            <input type="text" name="lastname" value="Mouse">
+            <br><br>
+            <input type="submit" value="Submit">
     </fieldset>
 </form> 
 
@@ -954,10 +1016,8 @@ method 属性规定在提交表单时所用的 HTTP 方法（GET 或 POST）：
                     <input type="submit" value="注册">&nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="reset" value="清空">
                 </p>
-
             </fieldset>
         </form>
-
     </body>
 </html>
 
@@ -996,8 +1056,10 @@ radio	       单选框	    <input type="radio"  />
 submit	       提交按钮	    <input type="submit" value="提交" />
 reset	       重置按钮	    <input type="reset" value="重置"  />
 button	       普通按钮	    <input type="button" value="普通按钮"  />
-hidden	       隐藏输入框	 <input type="hidden"  />
-file	       文本选择框	 <input type="file"  />
+image	       图片按钮     <input type="image" src="images/1.jpg" onclick="alert(111111)">
+hidden	       隐藏输入框	<input type="hidden"  />
+file	       文本选择框	<input type="file"  />
+
 
 # 属性说明:
     name： # 表单提交时的“键”，注意和id的区别
@@ -1005,7 +1067,7 @@ file	       文本选择框	 <input type="file"  />
         type="button", "reset", "submit"时，# 为按钮上显示的文本年内容
         type="text","password","hidden"时， # 为输入框的初始值
         type="checkbox", "radio", "file"时，# 为输入相关联的值
-    checked： # radio和checkbox默认被选中的项
+    checked： # radio和checkbox 设置默认被选中的项
     readonly：# text和password设置只读
     disabled：# 所有input均适用
 
@@ -1016,7 +1078,7 @@ file	       文本选择框	 <input type="file"  />
     <input type="text"> 定义用于文本输入的单行输入字段：
 
     # 定义按钮 https://www.w3school.com.cn/tiy/t.asp?f=html_input_button
-    <input type="button> 定义按钮。
+    <input type="button> 定义普通按钮，必须绑定一个事件onclick。
     实例
     <body>
         <button type="button" onclick="alert('Hello World!')">Click Me!</button>
@@ -1025,7 +1087,7 @@ file	       文本选择框	 <input type="file"  />
 
     # 单选按钮输入（选择多个选择之一） https://www.w3school.com.cn/tiy/t.asp?f=html_input_radio
     <input type="radio"> 定义单选按钮。
-    单选按钮允许用户在有限数量的选项中选择其中之一：name属性值同名就会产生互斥的效果、checked 设置默认被选中项
+    单选按钮允许用户在有限数量的选项中选择其中之一：name属性值同名就会产生互斥的效果、checked 设置默认被选中项.
     <form action="/demo/demo_form.asp">
         <input type="radio" name="sex" value="male" checked="checked">Male
         <br>

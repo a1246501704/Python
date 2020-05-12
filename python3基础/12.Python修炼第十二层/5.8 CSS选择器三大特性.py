@@ -7,7 +7,7 @@
     2、a标签的文字颜色和下划线是不能继承别人的
     3、h标签的文字大小是不能继承别人的，会变大，但是会在原来字体大小的基础上变大
     
-    ps:打开浏览器审查元素可以看到一些inherited from。。。的属性
+    ps:打开浏览器审查元素可以看到一些inherited from。。。的属性，就是代表继承自谁。
 #3、应用场景：
     通常基于继承性统一设置网页的文字颜色，字体，文字大小等样式
 
@@ -51,7 +51,7 @@
 
 #2、注意：
 1、层叠性只有在多个选择器选中了同一个标签，然后设置了相同的属性，才会发生层叠性
-2、后面的覆盖前面的
+2、层叠性由优先级来确定哪个生效。
 ps：通过谷歌浏览器可以查看到，一些属性被划掉了
 
 # 示例
@@ -235,44 +235,45 @@ ps：通过谷歌浏览器可以查看到，一些属性被划掉了
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>后代选择器</title>
+    <head>
+        <meta charset="UTF-8">
+        <title>后代选择器</title>
 
-    <style type="text/css">
-        /*打开浏览器依次去掉优先级高的来进行验证*/
-        #id1 {
-            color: red;
-        }
-        .ppp {
-            color: green;
-        }
-        p {
-            color: blue;
-        }
-        * {
-            color: yellow !important;
-        }
-        li {
-            color: #7e1487;
-        }
+        <style type="text/css">
+            /*打开浏览器依次去掉优先级高的来进行验证*/
+            #id1 {
+                color: red;
+            }
+            .ppp {
+                color: green;
+            }
+            p {
+                color: blue;
+            }
+            * {
+                color: yellow !important;
+            }
+            li {
+                color: #7e1487;
+            }
 
-    </style>
-</head>
-<body>
-
-    <ul>
-        <li>
-            <p id="id1" class="ppp">我是span</p>
-        </li>
-    </ul>
-</body>
+        </style>
+    </head>
+    <body>
+        <ul>
+            <li>
+                <p id="id1" class="ppp">我是span</p>
+            </li>
+        </ul>
+    </body>
 </html>
 
 
 6、优先级之权重计算
 #1、强调
-如果都是直接选中，并且混杂了一系列其他的选择器一起使用时，则需要通过计算机权重来判定优先级
+如果都是直接选中，并且混杂了一系列其他的选择器一起使用时，则需要通过计算权重来判定优先级.
+如果都是非直接选中，哪个选择器离得近则生效。
+如果离的都一样近，比较id多的优先级高，id一样多则比较类。以此类推。
 
 #2、计算方式（到达目标标签的距离相同时）
     #1、id数多的优先级高
