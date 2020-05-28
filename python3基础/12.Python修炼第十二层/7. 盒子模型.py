@@ -1,8 +1,8 @@
-# 1、什么是CSS盒子模型？
+\1、什么是CSS盒子模型？
 HTML文档中的每个元素都被比喻成矩形盒子， 盒子模型通过四个边界来描述：
     margin（外边距）    # 用于控制元素与元素之间的距离；margin的最基本用途就是控制元素周围空间的间隔，从视觉角度上达到相互隔开的目的。
     border（边框）      # 用于控制内容与边框之间的距离；
-    padding（内填充）   # 围绕在内边距和内容外的边框。
+    padding（内填充）   # 围绕在内边距和内容外的边框。可以用来把标签撑起来。
     content（内容区域） # 盒子的内容，显示文本和图像。
     
     如果把一个盒子比喻成一个壁挂相片，那么
@@ -12,48 +12,56 @@ HTML文档中的每个元素都被比喻成矩形盒子， 盒子模型通过四
         # 宽度width/高度height ===== 指定可以存放内容/相片的区域
 提示：可以通过谷歌开发者工具查看盒子的各部分属性
 #如图所示：
-   盒子模型
+   盒子模型：内容 —— 内填充 —— 边框 —— 外边距
+        想要调整内容和边框之间的距离用： padding
+        想要调整不同标签之间的距离用：margin
 
 
-# margin外边距
+# margin 外边距
 <style type="text/css">
     .margin-test {
-    margin-top:5px;
-    margin-right:10px;
-    margin-bottom:15px;
-    margin-left:20px;
+        margin-top:5px;
+        margin-right:10px;
+        margin-bottom:15px;
+        margin-left:20px;
     }
 </style>
 
-推荐使用简写：
+四个值简写：顺序（上右下左）
 <style type="text/css">
     .margin-test {
-    margin: 5px 10px 15px 20px;
+        margin: 5px 10px 15px 20px;
     }
 </style>
 
-顺序：上右下左
-常见居中：
+三个值简写：顺序（上 左右 下）
+<style type="text/css">
+    .margin-test {
+        margin: 5px 10px 20px;
+    }
+</style>
+
+常见居中简写：顺序（上下 右左）
 <style type="text/css">
     .mycenter {
-    margin: 0 auto;  # 0是上下   auto是左右
+        margin: 0 auto;  # 0是上下   auto是左右
     }
 </style>
 
-# padding内填充
+# padding 内填充
 <style type="text/css">
     .padding-test {
-    padding-top: 5px;
-    padding-right: 10px;
-    padding-bottom: 15px;
-    padding-left: 20px;
+        padding-top: 5px;
+        padding-right: 10px;
+        padding-bottom: 15px;
+        padding-left: 20px;
     }
 </style>
 
 推荐使用简写：
 <style type="text/css">
     .padding-test {
-    padding: 5px 10px 15px 20px;
+        padding: 5px 10px 15px 20px;
     }
 </style>
 
@@ -65,7 +73,7 @@ HTML文档中的每个元素都被比喻成矩形盒子， 盒子模型通过四
     提供四个参数值，将按上－右－下－左的顺序作用于四边；
 
 
-# 2、盒子模型的宽度和高度
+\2、盒子模型的宽度和高度
     1、内容的宽度和高度
         通过标签的width和height属性设置
 
@@ -119,9 +127,9 @@ HTML文档中的每个元素都被比喻成矩形盒子， 盒子模型通过四
 相似的例子：可以查看qq注册界面https://ssl.zc.qq.com/v3/index-chs.html
 
 
-# 3、！！！css显示模式:块级、行内、行内块级
-在HTML中HTML将所有标签分为两类，分别是容器级和文本级
-在CSS中CSS也将所有标签分为两类，分别是容器级是块级元素和行内元素
+\3、！！！css显示模式:块级、行内、行内块级
+在HTML中HTML将所有标签分为两类，分别是 容器级 和 文本级
+在CSS中CSS也将所有标签分为两类，分别是容器级是 块级元素 和 行内元素
 
 1、HTML中容器级与文本级
     容器级标签：可以嵌套其他的所有标签
@@ -201,7 +209,7 @@ HTML文档中的每个元素都被比喻成矩形盒子， 盒子模型通过四
 </html>
 
 
-# 4、！！！CSS显示模式转换
+\4、！！！CSS显示模式转换
 属性	            描述	                                        值
 display     可以通过标签的display属性设置显示模式        none HTML文档中元素存在，但是在浏览器中不显示。一般用于配合JavaScript代码使用
                                                     block 块级
@@ -211,7 +219,7 @@ display:"none"与visibility:hidden的区别：           visibility:hidden: 可�
                                                   display:none: 可以隐藏某个元素，且隐藏的元素不会占用任何空间。也就是说，该元素不但被隐藏了，而且该元素原本占用的空间也会从页面布局中消失。
 
 
-# 5、div与span
+\5、div与span
 布局都是用块级元素，而行内元素是控制内容显示的。
 1、div标签
    一般用于配合css完成网页的基本布局
@@ -316,8 +324,8 @@ display:"none"与visibility:hidden的区别：           visibility:hidden: 可�
     </body>
 </html>
 
-# 五 盒子模型各部分详解
-1、border边框
+\6、盒子模型各部分详解
+# 1、border边框
 同时设置四条边的边框	  border:边框的宽度 边框的样式 边框的颜色
 
 分别设置四条边的边框	  border-left:边框的宽度 边框的样式 边框的颜色
@@ -326,15 +334,14 @@ display:"none"与visibility:hidden的区别：           visibility:hidden: 可�
                        border-bottom:边框的宽度 边框的样式 边框的颜色
 
 分别指定宽度、格式、颜色   1、连写：（分别设置四条边的边框）
-                        bord-width: 上 右 下 左
+                        border-width: 上 右 下 左
                         border-style:上 右 下 左
                         border-color：上 右 下 左
                         2 、注意点：
                             1、这三个属性时按照顺时针，即上、右、下、左来赋值的
                             2、这三个属性的取值省略时的规律
-                                省略右面，右面默认同左边
-                                省略下部，下面默认跟上面一样
-
+                                省略右面，右面默认同左面一样
+                                省略下面，下面默认跟上面一样
                                 只留一个，那么其余三边都跟这一个一样
 
 了解非连写                border-left-width: ;
@@ -507,12 +514,13 @@ border-radius	        /* 单独设置一个角：数值越大，弧度越大*/
 
 
 
-2、padding内边距：边框与内容的距离就是内边距
+# 2、padding内边距：边框与内容的距离就是内边距
 非连写          padding-top：20px；
                padding-right：20px；
                padding-bottom：20px；
                padding-left：20px；
 连写            padding：上 右 下 左;
+
 注意	    1 给标签设置内边距后，标签内容占有的宽度和高度会发生变化，设置padding之后标签内容的宽高是在原宽高的基础上加上padding值。如果不想改变实际大小，那就在用宽高减掉padding对应方向的值
            2 padding是添加给父级的，改变的是父级包含的内容的位置
            3 内边距也会有背景颜色
@@ -584,7 +592,7 @@ border-radius	        /* 单独设置一个角：数值越大，弧度越大*/
 </html>
 
 
-# 添加边框与padding后保持盒子大小不变：方式一做减法
+# 添加边框与padding后保持盒子大小不变：方式一 做减法
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -609,7 +617,7 @@ border-radius	        /* 单独设置一个角：数值越大，弧度越大*/
     </body>
 </html>
 
-# 添加边框与padding后保持盒子大小不变：方式二box-sizing
+# 添加边框与padding后保持盒子大小不变：方式二 box-sizing
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -635,8 +643,8 @@ border-radius	        /* 单独设置一个角：数值越大，弧度越大*/
 </html>
 
 
-3、外边距：标签与标签之间的距离就是外边距
-非连写          margin-top：20px；
+# 3、外边距：标签与标签之间的距离就是外边距
+非连写           margin-top：20px；
                 margin-right：20px；
                 margin-bottom：20px；
                 margin-left：20px；
@@ -749,7 +757,7 @@ border-radius	        /* 单独设置一个角：数值越大，弧度越大*/
 
 
 
-4、内边距vs外边距
+# 4、内边距vs外边距
 #1、在企业开发中，一般情况下如果需要控制嵌套关系盒子之间的距离
        应该首先考虑padding
        其次再考虑margin
@@ -842,7 +850,7 @@ border-radius	        /* 单独设置一个角：数值越大，弧度越大*/
     </body>
 </html>
 
-5、盒子居中与内容居中
+# 5、盒子居中与内容居中
 内容居中
 1、让一行内容在盒子中水平且垂直居中
     /*水平居中*/
@@ -939,7 +947,7 @@ margin: 0 auto;
 </html>
 
 
-6、防止文字溢出word-break: break-all;
+# 6、防止文字溢出word-break: break-all;
 <!DOCTYPE html>
 <html>
     <head>
@@ -982,7 +990,7 @@ margin: 0 auto;
 </html>
 
 
-7、清除默认边距
+# 7、清除默认边距
 #1、为什么要清空默认边距（外边距和内边距）
 浏览器会自动附加边距，在企业开发中为了更好的控制盒子的宽高和计算盒子的宽高等等
 编写代码之前的第一件事情就是清空默认的边距，不同的浏览器可能默认的边距大小不太一样。

@@ -413,11 +413,11 @@ solid	# 实线边框。
 
 除了可以统一设置边框 还可以单独为边框某一个边设置样式，如下所示：
 #d1 {
-  border-top-style:dotted;
+  border-top-style: dotted;
   border-top-color: red;
-  border-right-style:solid;
-  border-bottom-style:dotted;
-  border-left-style:none;
+  border-right-style: solid;
+  border-bottom-style: dotted;
+  border-left-style: none;
 }
 
 # border-radius
