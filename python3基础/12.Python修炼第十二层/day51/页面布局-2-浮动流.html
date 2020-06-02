@@ -1262,7 +1262,7 @@
 <!--<html lang="en">-->
 <!--    <head>-->
 <!--        <meta charset="UTF-8">-->
-<!--        <title>Title</title>-->
+<!--        <title>overflow溢出之圆形的头像示例</title>-->
 <!--        <style type="text/css">-->
 <!--            * {-->
 <!--                margin: 0;-->
@@ -1337,40 +1337,75 @@
 <!--</html>-->
 
 <!--防止父盒子被顶下来-->
-<!DOCTYPE html>
-<html lang="en">
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--    <head>-->
+<!--        <meta charset="UTF-8">-->
+<!--        <title>清除浮动方式六</title>-->
+
+<!--        <style>-->
+<!--            * {-->
+<!--                margin: 0px;-->
+<!--                padding: 0px;-->
+<!--            }-->
+
+<!--            .box1 {-->
+<!--                width: 200px;-->
+<!--                height: 200px;-->
+<!--                background-color: red;-->
+
+<!--                border: 1px solid #000;-->
+<!--                /*overflow: hidden;*/-->
+<!--            }-->
+<!--            .box2 {-->
+<!--                width: 100px;-->
+<!--                height: 100px;-->
+<!--                background-color: blue;-->
+
+<!--                /*因为它有边框，box1会被往下顶*/-->
+<!--                margin-top: 100px;-->
+<!--            }-->
+<!--        </style>-->
+<!--    </head>-->
+<!--    <body>-->
+<!--        <div class="box1">-->
+<!--            <div class="box2"></div>-->
+<!--        </div>-->
+<!--    </body>-->
+<!--</html>-->
+
+
+<!--圆形头像示例-->
+<!DOCTYPE HTML>
+<html>
     <head>
         <meta charset="UTF-8">
-        <title>清除浮动方式六</title>
-
+        <meta http-equiv="x-ua-compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>overflow溢出之圆形的头像示例</title>
         <style>
             * {
-                margin: 0px;
-                padding: 0px;
+                margin: 0;
+                padding: 0;
+                background-color: #eeeeee;
             }
-
-            .box1 {
-                width: 200px;
-                height: 200px;
-                background-color: red;
-
-                border: 1px solid #000;
-                /*overflow: hidden;*/
+            .header-img {
+                width: 150px;
+                height: 150px;
+                border: 3px solid white;
+                border-radius: 50%;
+                /*溢出修剪*/
+                overflow: hidden;
             }
-            .box2 {
-                width: 100px;
-                height: 100px;
-                background-color: blue;
-
-                /*因为它有边框，box1会被往下顶*/
-                margin-top: 100px;
+            .header-img>img {
+                /*img的大小不能超过父标签的大小*/
+                max-width: 100%;
             }
         </style>
     </head>
     <body>
-        <div class="box1">
-            <div class="box2"></div>
+        <div class="header-img">
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1591121887502&di=d1da827af532e0c0c8d5c9170aa9f191&imgtype=0&src=http%3A%2F%2Fimg2.imgtn.bdimg.com%2Fit%2Fu%3D1801881897%2C2508577962%26fm%3D214%26gp%3D0.jpg" alt="">
         </div>
     </body>
 </html>
-

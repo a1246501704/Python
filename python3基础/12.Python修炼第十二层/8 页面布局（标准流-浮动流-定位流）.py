@@ -1672,7 +1672,7 @@ inherit	规定应该从父元素继承 overflow 属性的值。
 \四 定位流（position）
 1、定位流就是相对于自己以前在标准流中的位置来移动
 格式：
-　　position：relative
+　　position：static | relative | absolute | fixed
 
 # 定位（position）
 ## static（静态定位）
@@ -1684,11 +1684,11 @@ static 默认值，无定位，不能当作绝对定位的参照物，并且设�
 
 ## absolute（绝对定位-相对已经定位过的父标签）
 定义：设置为绝对定位的元素框会从文档流完全删除，并相对于最近的已定位父级元素再定位，如果元素的父级元素没有定位，就会往上继续找已经定位过的父级标签，如果都没有那么它的位置就会相对于最初的包含块（即body元素）。元素原先在正常文档流中所占的空间会关闭，就好像该元素原来不存在一样。元素定位后生成一个块级框，而不论原来它在正常流中生成何种类型的框。
-重点：如果父级设置了position属性，例如position:relative;，那么子元素就会以父级的左上角为原始点进行定位。这样能很好的解决自适应网站的标签偏离问题，即父级为自适应的，那我子元素就设置position:absolute;父元素设置position:relative;，然后Top、Right、Bottom、Left用百分比宽度表示。
+重点：如果父级设置了position属性，例如 position:relative;，那么子元素就会以父级的左上角为原始点进行定位。这样能很好的解决自适应网站的标签偏离问题，即父级为自适应的，那我子元素就设置position:absolute;父元素设置position:relative;，然后Top、Right、Bottom、Left用百分比宽度表示。
 另外，对象脱离正常文档流，使用top，right，bottom，left等属性进行绝对定位。而其层叠通过z-index属性定义。
 
 ## fixed（固定定位-相对浏览器窗口）
-fixed：对象脱离正常文档流，使用top，right，bottom，left等属性以窗口为参考点进行定位，当出现滚动条时，对象不会随着滚动。而其层叠通过z-index属性 定义。 
+fixed：对象脱离正常文档流，使用 top，right，bottom，left 等属性以窗口为参考点进行定位，当出现滚动条时，对象不会随着滚动。而其层叠通过z-index属性定义。 
 注意点： 一个元素若设置了 position:absolute | fixed; 则该元素就不能设置float。这是一个常识性的知识点，因为这是两个不同的流，一个是浮动流，另一个是“定位流”。但是 relative 却可以。因为它原本所占的空间仍然占据文档流。
 在理论上，被设置为fixed的元素会被定位于浏览器窗口的一个指定坐标，不论窗口是否滚动，它都会固定在这个位置。
 
@@ -1699,7 +1699,7 @@ fixed：对象脱离正常文档流，使用top，right，bottom，left等属性
         <meta charset="UTF-8">
         <meta http-equiv="x-ua-compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>返回顶部示例</title>
+        <title>固定定位</title>
         <style>
             * {
                 margin: 0;
@@ -1727,13 +1727,13 @@ fixed：对象脱离正常文档流，使用top，right，bottom，left等属性
 </html>
 
 
-
-需要配合以下四个属性一起使用
+定位需要配合以下四个属性一起使用
         上  top:20px;
         左  left:30px;
         右  right:40px;
         下  bottom:50px;
 
+1、相对定位 -相对自己原来在的位置
 示范
 <!DOCTYPE html>
 <html lang="en">
@@ -1811,11 +1811,12 @@ fixed：对象脱离正常文档流，使用top，right，bottom，left等属性
 
             .box2 {
                 background-color: green;
+                /*相对定位*/
                 position: relative;
                 top: 20px;
                 left: 20px;
 
-                /*相对于该标签原来的位置进行偏移*/
+                /*基于相对定位后的位置 再进行偏移*/
                 margin-top: 50px;
             }
 
@@ -1857,8 +1858,8 @@ fixed：对象脱离正常文档流，使用top，right，bottom，left等属性
             }
 
             input:focus {
-            outline: none;
-            background-color: #eee;
+                outline: none;
+                background-color: #eee;
             }
 
             img {
@@ -1870,9 +1871,11 @@ fixed：对象脱离正常文档流，使用top，right，bottom，left等属性
     </head>
     <body>
         <input type="text" name="call" placeholder="请输入图片中的验证码">
-        <img src="call.jpeg" alt="">
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1591121887502&di=d1da827af532e0c0c8d5c9170aa9f191&imgtype=0&src=http%3A%2F%2Fimg2.imgtn.bdimg.com%2Fit%2Fu%3D1801881897%2C2508577962%26fm%3D214%26gp%3D0.jpg" alt="">
     </body>
 </html>
+
+
 
 
 2、绝对定位就是相对于body或者某个定位流中的祖先元素来定位
@@ -2367,17 +2370,20 @@ fixed：对象脱离正常文档流，使用top，right，bottom，left等属性
 
 
 
-\overflow溢出属性
-# 值	            描述
-visible	默认值。溢出的内容不会被修剪，会呈现在元素框之外。
-hidden	内容会被修剪，并且溢出的内容是不可见的。
-scroll	溢出的内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容。
-auto	如果溢出的内容被修剪，则浏览器会显示滚动条以便查看其余的内容。
-inherit	规定应该从父元素继承 overflow 属性的值。
-
+\overflow溢出属性和值
 overflow（水平和垂直均设置）
 overflow-x（设置水平方向）
 overflow-y（设置垂直方向）
+
+\overflow溢出属性的值
+# 值	            描述
+visible	 # 默认值。溢出的内容不会被修剪，会呈现在元素框之外。
+hidden	 # 内容会被修剪，并且溢出的内容是不可见的。
+scroll	 # 溢出的内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容。
+auto	 # 如果溢出的内容被修剪，则浏览器会显示滚动条以便查看其余的内容。
+inherit	 # 规定应该从父元素继承 overflow 属性的值。
+
+
 
 # 圆形头像示例
 <!DOCTYPE HTML>
@@ -2386,28 +2392,30 @@ overflow-y（设置垂直方向）
         <meta charset="UTF-8">
         <meta http-equiv="x-ua-compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>圆形的头像示例</title>
+        <title>overflow溢出之圆形的头像示例</title>
         <style>
             * {
-            margin: 0;
-            padding: 0;
-            background-color: #eeeeee;
+                margin: 0;
+                padding: 0;
+                background-color: #eeeeee;
             }
             .header-img {
-            width: 150px;
-            height: 150px;
-            border: 3px solid white;
-            border-radius: 50%;
-            overflow: hidden; # 溢出修剪
+                width: 150px;
+                height: 150px;
+                border: 3px solid white;
+                border-radius: 50%;
+                /*溢出修剪*/
+                overflow: hidden;
             }
             .header-img>img {
-            max-width: 100%;  # img的大小不能超过父标签的大小
+                /*img的大小不能超过父标签的大小*/
+                max-width: 100%;  
             }
         </style>
     </head>
     <body>
         <div class="header-img">
-        <img src="https://q1mi.github.io/Blog/asset/img/head_img.jpg" alt="">
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1591121887502&di=d1da827af532e0c0c8d5c9170aa9f191&imgtype=0&src=http%3A%2F%2Fimg2.imgtn.bdimg.com%2Fit%2Fu%3D1801881897%2C2508577962%26fm%3D214%26gp%3D0.jpg" alt="">
         </div>
     </body>
 </html>

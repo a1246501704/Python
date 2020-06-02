@@ -1,4 +1,4 @@
-<!--定位流-示范-->
+<!--定位流-示范相对定位-->
 <!--<!DOCTYPE html>-->
 <!--<html lang="en">-->
 <!--    <head>-->
@@ -64,11 +64,12 @@
 
 <!--            .box2 {-->
 <!--                background-color: green;-->
+<!--                /*相对定位*/-->
 <!--                position: relative;-->
 <!--                top: 20px;-->
 <!--                left: 20px;-->
 
-<!--                /*相对于该标签原来的位置进行偏移，上下加起来的结果。*/-->
+<!--                /*基于相对定位后再进行偏移*/-->
 <!--                margin-top: 50px;-->
 <!--            }-->
 
@@ -104,57 +105,61 @@
 <!--            }-->
 
 <!--            input:focus {-->
-<!--            outline: none;-->
-<!--            background-color: #eee;-->
+<!--                outline: none;-->
+<!--                background-color: #eee;-->
 <!--            }-->
 
 <!--            img {-->
 <!--                height: 50px;-->
 <!--                position: relative;-->
+<!--                /*往上上不去了就排在后面*/-->
 <!--                top: 20px;-->
 <!--            }-->
 <!--        </style>-->
 <!--    </head>-->
 <!--    <body>-->
 <!--        <input type="text" name="call" placeholder="请输入图片中的验证码">-->
-<!--        <img src="call.jpeg" alt="">-->
+<!--        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1591121887502&di=d1da827af532e0c0c8d5c9170aa9f191&imgtype=0&src=http%3A%2F%2Fimg2.imgtn.bdimg.com%2Fit%2Fu%3D1801881897%2C2508577962%26fm%3D214%26gp%3D0.jpg" alt="">-->
+<!--        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1591121887502&di=d1da827af532e0c0c8d5c9170aa9f191&imgtype=0&src=http%3A%2F%2Fimg2.imgtn.bdimg.com%2Fit%2Fu%3D1801881897%2C2508577962%26fm%3D214%26gp%3D0.jpg" alt="">-->
 <!--    </body>-->
 <!--</html>-->
+
+
 
 <!--绝对定位-->
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--    <head>-->
-<!--        <meta charset="UTF-8">-->
-<!--        <title></title>-->
-<!--        <style>-->
-<!--            div {-->
-<!--                width: 100px;-->
-<!--                height: 100px;-->
-<!--            }-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style>
+            div {
+                width: 100px;
+                height: 100px;
+            }
 
-<!--            .box1 {-->
-<!--                background-color: red;-->
-<!--            }-->
+            .box1 {
+                background-color: red;
+            }
 
-<!--            .box2 {-->
-<!--                position: absolute;-->
-<!--                left: 50px;-->
-<!--                top: 30px;-->
-<!--                background-color: green;-->
+            .box2 {
+                position: absolute;
+                left: 50px;
+                top: 30px;
+                background-color: green;
 
-<!--            }-->
-<!--            .box3 {-->
-<!--                background-color: blue;-->
-<!--            }-->
-<!--        </style>-->
-<!--    </head>-->
-<!--    <body>-->
-<!--        <div class="box1"></div>-->
-<!--        <div class="box2"></div>-->
-<!--        <div class="box3"></div>-->
-<!--    </body>-->
-<!--</html>-->
+            }
+            .box3 {
+                background-color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+    </body>
+</html>
 
 <!--默认情况下所有的绝对定位的元素，无论有无祖先元素，都会以body作为参考点-->
 <!--<!DOCTYPE html>-->
