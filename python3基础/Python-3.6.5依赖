@@ -1,8 +1,0 @@
-
-
-apt-get update
-apt-get install build-essential checkinstall
-apt-get install libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
-
-rm -rf /usr/local/bin/python3
-ln -s /usr/local/bin/python3.6 /usr/local/bin/python3
