@@ -83,7 +83,7 @@ print(str.partition("www"))      # 结果一样，('http://', 'www', '.w3cschool
 
 \列表转成字符串: join   
 # 可迭代对象必须都是字符串
-user_info='root:x:0:0::/root:/bin/bash'
+user_info='root:x:0:0::/root:/bin/bash'   
 l=user_info.split(':') # 切分后是个列表,['root', 'x', '0', '0', '', '/root', '/bin/bash']
 print(':'.join(l))     # 用join再还原回字符串的形式,root:x:0:0::/root:/bin/bash
 print(''.join(l))      # rootx00/root/bin/bash
