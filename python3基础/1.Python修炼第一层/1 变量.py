@@ -41,8 +41,13 @@ age = 18
 level=10
 aaa=level # 10
 level2=10+age # 28
+
 x,y=1,2   # 多元赋值
 print(x,y)
+name,age = 'zhy',18
+print(name)
+print(age)
+
 # 多行注释也可以赋值给变量
 name1='''
 aaaaaaaaa
@@ -73,7 +78,6 @@ print(name1,name2)
 
     #下划线(推荐使用)
     age_of_oldboy = 56 
-    
     number_of_students = 80
 
 \定义变量名不好的方式
@@ -85,7 +89,7 @@ print(name1,name2)
     #1 等号比较的是value，
     #2 is比较的是id
 \强调：
-    #1. id相同，意味着type和value必定相同
+    #1. id相同，type和value肯定相同。
     #2. value相同type肯定相同，但id可能不同,如下
 x='Info Egon:18'
 y='Info Egon:18'
@@ -100,7 +104,7 @@ True
 True
 '''
 
-\手动删除变量，无需del python有自动回收垃圾功能。
+\手动删除变量，无需del python有自动垃圾回收机制。
 del x
 print(x) # NameError: name 'x' is not defined
 
@@ -146,7 +150,11 @@ print('testvar' in dir())
 # True
 
 第三种方法使用内置函数vars()：
-vars().has_key('testvar')
+print('testvar' in vars().keys())
+
+# 对于 x = 1，这样的一个赋值语句，我们在执行后，名称 x 引用到值 1。这就像字典一样，键引用值，当然，变量和所对应的值用的是个"不可见"的字典。我们可以使用 vars 函数来返回这个字典：
+aaa = vars()
+print(aaa["testvar"]) #  1
 
 #测试如下:
 #testvar未定义
@@ -156,7 +164,7 @@ Out[1]: False
 In [2]: 'testvar' in dir()
 Out[2]: False
  
-In [3]: vars().has_key('testvar')
+In [3]: 'testvar' in vars().keys()
 Out[3]: False
  
 #定义testvar
@@ -168,9 +176,21 @@ Out[5]: True
 In [6]: 'testvar' in dir()
 Out[6]: True
  
-In [7]: vars().has_key('testvar')
+In [7]: 'testvar' in vars().keys()
 Out[7]: True
 # 还有使用try...except...自己定义的,总之方法很多
+
+\四个个内置函数的区别
+print(locals().keys())
+print(vars().keys())
+print(globals().keys())
+print(dir())
+"""
+dict_keys(['__name__', '__doc__', '__package__', '__loader__', '__spec__', '__annotations__', '__builtins__', '__file__', '__cached__', 'testvar'])
+dict_keys(['__name__', '__doc__', '__package__', '__loader__', '__spec__', '__annotations__', '__builtins__', '__file__', '__cached__', 'testvar'])
+dict_keys(['__name__', '__doc__', '__package__', '__loader__', '__spec__', '__annotations__', '__builtins__', '__file__', '__cached__', 'testvar'])
+['__annotations__', '__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'testvar']
+"""
 
 \变量运算
 # 字符串和数字不能相加，如果想相加需要转换类型。可以相乘。

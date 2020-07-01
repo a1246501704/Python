@@ -8,7 +8,7 @@ name=input('please input your name: ') # name='zhangsan'  name='18'
 print(name)
 print (id(name),type(name),name)
 
-\python2中input，用户必须输入带引号的值，输入的值是什么类型(输入：'egon'就存成str类型，输入:18就存成int类型)，就存成什么类型.开头添加 #!coding:utf-8 字符编码。
+\python2中input，用户必须输入带引号的值，输入的值是什么类型(例如输入：'egon'就存成str类型，输入:18就存成int类型)，就存成什么类型.开头添加 #!coding:utf-8 字符编码。
 name=input('plese input your name: ')  # input时给个提示符，比如冒号、提示信息便于查看。
 print(id(name),type(name),name)
 
