@@ -73,15 +73,15 @@ print(Person.attack) # <function Person.attack at 0x106532ae8>
 class Person: # 也可以写成 Person()，括号可写可不写。
     rol = '人'         # 数据属性、静态属性、类属性
     country = '中国'
-    def __init__(self,name,age,life_value): # __init__是初始化方法，参数必传。只要实例化实例就会触发__init__方法执行。
-        # self.__dict__['name'] = name # 同等于 self.name = name
-        self.name = name  # 属性、对象属性，__init__方法接收过来的参数如果没有和self关联。实例化后的对象无法操作没有关联的参数。
+    def __init__(self,name,age,life_value): # __init__是初始化方法，参数必传。只要实例化对象就会触发__init__方法执行。
+        # self.__dict__['name'] = name # 同等于 self.name = name # self就是实例化出来的这个对象自己
+        self.name = name  # 属性、对象属性，__init__方法接收过来的参数如果没有和self关联，实例化后的对象将无法操作没有关联的参数。
         self.theage = age
         self.life_value = life_value
         self.aggr = 200   # 共有且不需要初始化时传入的参数，可以在初始化方法中写死。
-        # return None  # __init__不需要返回值，默认就返回的self
-    def attack(self):     # 函数属性、动态属性、方法。self就是上面的self就是实例化的对象名。也可以写别的参数。
-        #self只是一个形式参数，可以叫其他名字，但正常没人会这样
+        # return None  # __init__初始化方法不需要返回值，默认就返回的self
+    def attack(self):     # 函数属性、动态属性、方法。self就是上面的self就是实例化的对象自己。也可以写别的参数。
+        #self只是一个形式参数（形参），可以叫其他名字，但正常没人会这样
         #self是水性杨花，哪个对象调这个方法，self就是谁。
         print('attack方法被%s执行了'%self.name)
 
