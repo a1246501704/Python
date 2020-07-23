@@ -112,6 +112,7 @@ classmethod 修饰符对应的函数不需要实例化，不需要 self 参数�
 # 绑定方法：
     # 对象使用时会将对象本身当作第一个对象传入
     # 类使用时会将类本身当作第一个对象传入
+    # 实例化的对象无法调用被 @classmethod装饰的方法
 
 # 限制
     # 可以使用类的 静态属性 ，但不能使用对象的变量。
@@ -124,7 +125,7 @@ class A:
     def func2(self):
         print('funrc 2')
 
-    @classmethod       # 类方法：就是不需要传具体的对象self，但是可以使用类的属性、静态属性、方法。可以使用一些公共变量，但不能使用对象的变量，因为没有给c_method传self。
+    @classmethod       # 类方法：就是不需要传具体的对象self，但是可以使用类的属性、静态属性、方法。可以使用一些公共变量，但不能使用对象的变量，因为不能给c_method传self。
     def c_method(cls): # cls固定传，就是自己这个类 A。被装饰的对象不需要实例化，直接使用 类名.方法名()  就可以调用。
         print('in class method')
         print(cls.country)

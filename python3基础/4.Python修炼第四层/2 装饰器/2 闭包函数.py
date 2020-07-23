@@ -4,7 +4,7 @@
 def counter():
     n=0
     def incr():
-        nonlocal n
+        nonlocal n # nonlocal 表示使用外部 但非全局作用域的名字
         x=n
         n+=1
         return x
@@ -33,12 +33,12 @@ def f1():
 f1()
 
 \二、闭包的意义与应用
-# 闭包的意义：返回的函数对象，不仅仅是一个函数对象，在该函数外还包裹了一层作用域，这使得，该函数无论在何处调用，优先使用自己外层包裹的作用域的
+# 闭包的意义：返回的函数对象，不仅仅是一个函数对象，在该函数外还包裹了一层作用域，这使得，该函数无论在何处调用，优先使用自己外层包裹的作用域的名字引用
 # 应用领域：延迟计算（原来我们是传参，现在我们是包起来）
 
 from urllib.request import urlopen
 
-# 函数体内内部需要一个变量，有两种解决方案
+# 函数体内部需要一个变量，有两种解决方案
 # 一种是：以参数的形式传入，每次都要传参，太low。
 def get(url):
     return urlopen(url).read()
@@ -72,7 +72,7 @@ def get(x,y):
 baidu=get('a','b')
 
 # 证明baidu函数中包了x和y
-print(baidu.__closure__)
+print(baidu.__closure__)                  # (<cell at 0x106433fd8: str object at 0x1030b07a0>, <cell at 0x10653a108: str object at 0x103076768>)
 print(baidu.__closure__[0].cell_contents) # 取到a
 print(baidu.__closure__[1].cell_contents) # 取到b
 
@@ -86,4 +86,5 @@ def get():
     return inner # 用于打破层级限制
 
 baidu=get()
-print(baidu.__closure__) # 可以看到只有一个值
+print(baidu.__closure__) # 可以看到只有一个值，查看被闭包的参数
+print(baidu.__closure__[0].cell_contents) # 111111
