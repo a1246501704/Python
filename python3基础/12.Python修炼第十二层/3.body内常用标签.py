@@ -1,8 +1,9 @@
 \HTML常用标签
-# 所有标签：https://www.w3school.com.cn/tags/tag_link.asp
+# HTML教程：https://www.w3school.com.cn/html/index.asp
+# 参考手册：https://www.w3school.com.cn/tags/index.asp
 
 \标签分类:
-	块儿级标签（单独占一行的）<h1> ~ <h6>,<div>,<p>,<hr>,<ul>,<li>, <ol>, <table>
+	块儿级标签（单独占一行的）<h1> ~ <h6>,<p>,<hr>,<ul>,<li>, <ol>, <div>,<table>,<form>
 		默认占浏览器宽度（在浏览器中单独占一行的）
 		可以设置长和宽
 	内联标签(行内标签)      <a>,<img> ,<u>, <s>, <i>, <b>,<td>, <span>、<input>     
@@ -29,7 +30,7 @@
 #6、<i>斜体</i> 倾斜
 #7、<s>删除</s> 删除线
 
-html5中推出了一些新的标签
+# html5中推出了一些新的语义化标签来替换类似以下单个字母无语义化的标签
     strong == b
     ins    == u
     em     == i
@@ -41,12 +42,10 @@ html5中推出了一些新的标签
     em的语义（emphasized）：倾斜，定义强调的文字
     del的语义（deleted）：删除线，定义被删除的文字
 
-\字符实体
+\字符实体 
+\https://www.w3school.com.cn/html/html_entities.asp
 #1、在HTML中对空格／回车／tab不敏感，会把多个空格／回车／tab当作一个空格来处理
-#2、字符实体指的是
-在HTML中
-有的字符是被HTML保留的比如大于号小于号
-有的HTML字符，在HTML中是有特殊含义的，是不能在浏览器中直接显示出来的，那么这些东西想显示出来就必须通过字符实体，如下
+#2、字符实体指的是在HTML中有的字符是被HTML保留的比如大于号小于号有的HTML字符，在HTML中是有特殊含义的，是不能在浏览器中直接显示出来的，那么这些东西想显示出来就必须通过字符实体，如下
 
 注释：实体名称对大小写敏感！
 # 内容	对应代码
@@ -60,7 +59,7 @@ html5中推出了一些新的标签
 # 特殊符号对照表：http://tool.chinaz.com/Tools/HtmlChar.aspx
 
 
-\h系列标签 标题
+\h标签 标题
 # 语义：标记内容为一个标题，全称headline
 h系列标签从h1-h6共6个，没有h7标签，标记内容为1~6级标题，h1用作主标题（代表最重要的），其次是h2。。。
 虽然h1-h6标签的显示样式是从大到小，但再次强调：记忆HTML标签的显示样式是没有意义的。
@@ -84,9 +83,7 @@ h系列标签从h1-h6共6个，没有h7标签，标记内容为1~6级标题，h1
 
 <h1> 定义标题的开始。
 <h1 align="center">      # 拥有关于对齐方式的附加信息。居中排列标题 。 align属性的值：left center right justify。不推荐使用。请使用CSS样式替代它。
-
 <body bgcolor="yellow">  # 拥有关于背景颜色的附加信息。
-
 注意：在企业开发中一定要慎用h系列标签，特别是h1标签，在企业开发中一般一个界面中只能出现一个h1标签（出于SEO考虑，搜索引擎会使用标题将网页的结构和内容编制索引）,比如www.163.com。
 
 \p标签 段落
@@ -107,7 +104,8 @@ h系列标签从h1-h6共6个，没有h7标签，标记内容为1~6级标题，h1
     </body>
 </html>
 
-\img标签 图像  https://www.w3school.com.cn/html/html_images.asp
+\img标签 图像  
+\https://www.w3school.com.cn/html/html_images.asp
 # 语义：标记一个图片，全称image
 # 用法
 <img src="本地或网络图片地址" alt="图片加载失败时显示的内容" title = "鼠标悬停到图片上时显示的内容" />
@@ -119,12 +117,12 @@ h系列标签从h1-h6共6个，没有h7标签，标记内容为1~6级标题，h1
 2.2 图片的格式可以是png、jpg和gif
 2.3 alt="图片加载失败时显示的内容"  为img标签加上该属性可用于支持搜索引擎和盲人读屏软件。
 2.4 title = "鼠标悬停到图片上时显示的内容"
-2.5 如果没有指定图片的width和height则按照图片默认的宽高显示，如果指定图片的width和height则可能让图片变形，那如果又想指定宽度和高度，又不想让图片变形，我们可以只指定宽度和高度的一个值即可
-只要指定了一个值，浏览器会根据该值计算另外一个值，并且都是等比拉伸的，图片将不会变形。
+2.5 如果没有指定图片的width和height则按照图片默认的宽高显示，如果指定图片的width和height则可能让图片变形，那如果又想指定宽度和高度，又不想让图片变形，我们可以只指定宽度和高度的一个值即可只要指定了一个值，浏览器会根据该值计算另外一个值，并且都是等比拉伸的，图片将不会变形。
 
 
 
-\a标签 超链接  https://www.w3school.com.cn/html/html_links.asp
+\a标签 超链接  
+\https://www.w3school.com.cn/html/html_links.asp  https://www.w3school.com.cn/tags/tag_a.asp
 # 语义：标记一个内容为超链接，全称anchor，锚
 # 超链接标签是超文本文件的精髓，可以控制页面与页面之间的跳转。 
 # HTML 链接是通过 <a> 标签进行定义的，在 href 属性中指定链接的地址。
@@ -225,7 +223,10 @@ name 属性：
 跳到首页
 #1、跳到首页
 <a href="">刷新页面，回到顶部，人类感觉不出来区别</a> 
-<a href="#">回到顶部</a>
+<a href="#">不刷新页面，跳回首页</a>
+
+<a href="" target="_self">刷新页面,回到顶部</a>
+<a href="#" target="_self">不刷新页面，回到顶部</a>
 
 #2、注意点：
     通过我们的a标签跳转到指定的位置，是没有过度动画的
@@ -249,7 +250,11 @@ p标签不能包含块级标签，p标签也不能包含p标签。
 比喻：div和span没有自己的什么特点，就像一张白纸。可以往上面画任何东西，比较干净。
 
 
-\HTML 列表     https://www.w3school.com.cn/html/html_lists.asp
+\ul标签 列表  组合标签  
+\https://www.w3school.com.cn/html/html_lists.asp
+\https://www.w3school.com.cn/tags/tag_ul.asp
+\https://www.w3school.com.cn/tags/tag_li.asp
+\https://www.w3school.com.cn/tags/tag_ol.asp
 语义：标记一堆数据是一个整体/列表
 html中列表标签分为三种：无序列表（ul-li） 、有序列表（ol-li） 、自定义列表（dl-dt-dl）
 # ul通常应该只嵌套li标签
@@ -345,6 +350,9 @@ ul与li是组合标签应该一起出现，并且ul的子标签只应该是li，
 
 
 3、自定义列表（也会经常使用）：definition list
+\https://www.w3school.com.cn/tags/tag_dl.asp
+\https://www.w3school.com.cn/tags/tag_dt.asp
+\https://www.w3school.com.cn/tags/tag_dd.asp
 #1、作用分析
 选择用什么标签的唯一标准，是看文本的实际语义，而不是看长什么样子
 无序列表：内容是并列的,没有先后顺序
@@ -373,11 +381,15 @@ dd：defination description，自定义描述
 </dl>
  #3、注意: 
  # 3.1 dl>dt+dd应该组合出现，dl中只应该存放dt和dd，而可以在dt和dd中添加任意其他标签 
- # 3.2 一个dt可以可以没有对应的dd，也可以有多个，但建议一个dt对应一个dd
+ # 3.2 一个dt可以没有对应的dd，也可以有多个，但建议一个dt对应一个dd
 
 
 \table 标签 表格  https://www.w3school.com.cn/html/html_tables.asp
 # 语义：标记一段数据为表格
+'''
+表格由 <table> 标签来定义。每个表格均有若干行（由 <tr> 标签定义），每行被分割为若干单元格（由 <td> 标签定义）。
+字母 td 指表格数据（table data），即数据单元格的内容。数据单元格可以包含文本、图片、列表、段落、表单、水平线、表格等等。
+'''
 #1、作用
 表格标签是一种数据的展现形式，当数据量非常大的时候，使用表格的形式来展示被认为是最清晰的.
 
@@ -427,8 +439,8 @@ th # 表示表头单元格
 
 属性:
     border:      # 表格边框
-    cellpadding: # 内边距 - 单元格边距
-    cellspacing: # 外边距 - 单元格间距
+    cellpadding: # 内边距 - 内容与单元格内部边的距离
+    cellspacing: # 外边距 - 单元格与单元格间距离
     width:   # 宽度  像素 百分比.（最好通过css来设置长宽）
     height   # 高度  像素 百分比.（最好通过css来设置长宽）
     rowspan: # 单元格竖跨多少行（即横着合并单元格）
@@ -437,8 +449,8 @@ th # 表示表头单元格
 \表格属性
 #1、宽度和高度
     可以给 table 和 td 设置width和height属性
-        给table 设置的 width和height 是代表整个表格的总体高和宽
-        给td 设置的 width和height 是代表给这一行设置的高和宽
+    给table 设置的 width和height 是代表整个表格的总体高和宽
+    给td 设置的 width和height 是代表给这一行设置的高和宽
     在不超过table 的 width和height的情况下 td 设置的高和宽优先级高
 
     1.1 默认情况下表格的宽高是按照内容的尺寸来调整的，也可以通过给table标签设置width和height来手动指定表格的宽高.
@@ -450,7 +462,7 @@ th # 表示表头单元格
 
     # ========水平对齐===========
     取值
-    align=“left”    # 左对齐
+    align=“left”    # 默认左对齐
     align=“center”  # 中间对齐
     align=“right”   # 右对齐
     2.1 给table标签设置水平对齐，可以让表格在水平方向上对齐。强调：table只能设置水平方向
@@ -465,10 +477,10 @@ th # 表示表头单元格
     2.4 给tr设置垂直对齐可以让当前行所有单元格内容都垂直对齐
     2.5 给td设置垂直对齐可以让当前单元格内容垂直对齐
 
-#3、外边距（表格和表格间的）和内边距（表格和表格内的内容）
+#3、外边距（单元格和单元格间的）和内边距（单元格内边和单元格内的内容）
     只能给table设置
     3.1 外边距：单元格与单元格之间的间隔，cellspacing="3px"，默认值为2px
-    3.2 内边距：单元格边框与文字之间的距离:cellpadding="200px"
+    3.2 内边距：单元格边框与文字之间的距离，cellpadding="200px"
 
 
 \三种方式细线表格
@@ -733,30 +745,36 @@ th # 表示表头单元格
 
 
 
-\form 标签 表单
+\form 标签 表单(接收用户的输入信息)
+\https://www.w3school.com.cn/tags/tag_form.asp
 # 重点 ：思维导图：https://www.processon.com/view/link/5aeea789e4b084d6e4bf6911#map
-# 语义：标记表单
+# 语义：表单
 # form ：前后端有数据交互的时候用form表单
-#1、什么是表单？
+注释：form 元素是块级元素，其前后会产生折行。
+
+# 1、什么是表单？
     表单就是专门用来接收用户输入或采集用户信息的，最后将输入的数据交给action去提交。
     表单元素指的是不同类型的 input 元素、复选框、单选按钮、提交按钮等等。
 
-#2、表单的格式
+# 2、表单的格式
     <form>
         <表单元素>
     </form>
 
 form表单提交数据的几个注意事项:
     1. 所有获取用户输入的标签都必须放在form表单里面
-    2. action控制着往哪儿提交
+    2. action控制着往哪儿提交，提交给action。
     3. input\select\textarea 都需要有name属性
     4. 提交按钮 <input type="submit">
-功能：
-    表单用于向服务器传输数据，从而实现用户与Web服务器的交互
-    表单能够包含input系列标签，比如文本字段、复选框、单选框、提交按钮等等。
-    表单还可以包含textarea、select、fieldset和 label标签。
 
-#3、form表单中的属性
+# 定义和用法
+    表单用于向服务器传输数据，从而实现用户与Web服务器的交互
+    <form> 标签用于为用户输入创建 HTML 表单。
+    表单能够包含 input 元素，比如文本字段、复选框、单选框、提交按钮等等。
+    表单还可以包含 menus、textarea、fieldset、legend 和 label 元素。
+
+
+# 3、form表单中的属性
 HTML <form> 元素，已设置所有可能的属性，是这样的：
 实例
 <form action="action_page.php" method="GET" target="_blank" accept-charset="UTF-8" enctype="application/x-www-form-urlencoded" autocomplete="off" novalidate>
@@ -768,28 +786,32 @@ form elements(元素)
 #下面是 <form> 属性的列表：
     属性	                      描述
     accept-charset # 规定在被提交表单中使用的字符集（默认：页面字符集）。
-    action	       # 规定向何处提交表单的地址（URL）（提交页面）。
+    action	       # 规定向何处提交表单的数据（URL）（提交页面）。
     autocomplete   # 规定浏览器应该自动完成表单（默认：开启）。
-    enctype	       # 规定被提交数据的编码（默认：url-encoded）。
+    enctype	       # 规定被提交数据的编码（默认：application/x-www-form-urlencoded）。
     method	       # 规定在提交表单时所用的 HTTP 方法，get和post（默认：GET）。
     name	       # 规定识别表单的名称（对于 DOM 使用：document.forms.name）。
     novalidate	   # 规定浏览器不验证表单。
-    target	       # 规定 action 属性中地址的目标，_self 和 _blank（默认：_self）。
+    target	       # 规定在何处打开 action URL，_self 和 _blank（默认：_self）。
 
 # action 属性
 action 属性定义在提交表单时执行的动作。向服务器提交表单的通常做法是使用提交按钮。
 通常，表单会被提交到 web 服务器上的网页。在上面的例子中，指定了某个服务器脚本来处理被提交表单：
 <form action="action_page.php">
 如果省略 action 属性，则 action 会被设置为当前页面。
+取值：
+    绝对URL：https://www.baidu.com/a/b/c.html
+    相对URL：/a/b/c.html
 
 
 # method 属性
-method 属性规定在提交表单时所用的 HTTP 方法（GET 或 POST）：
+method 属性规定在提交表单时所用的 HTTP 方法（取值：GET 或 POST）
 <form action="action_page.php" method="GET">
 或：
 <form action="action_page.php" method="POST">
     # 何时使用 GET？
     您能够使用 GET（默认方法）：如果表单提交是被动的（比如搜索引擎查询），并且没有敏感信息。
+    提交的数据直接显示在url地址中，安全性低。提交数据有大小限制，最大为2KB
 
     当您使用 GET 时，表单数据在页面地址栏中是可见的：
     如 https://www.aaa.com/action_page.php?firstname=Mickey&lastname=Mouse
@@ -797,18 +819,25 @@ method 属性规定在提交表单时所用的 HTTP 方法（GET 或 POST）：
 
     # 何时使用 POST？
     您应该使用 POST：如果表单正在更新数据，或者包含敏感信息（例如密码）。
-    POST 的安全性更加，因为在页面地址栏中被提交的数据是不可见的。
+    POST 提交的数据不会显示到url地址中，安全性更加。提交数据无大小限制。
 
 # enctype 属性
  form表单中enctype属性可以用来控制对表单数据的发送前的如何进行编码，enctype有三种，
- 分别为：
     multipart/form-data   # 不对字符编码，用于发送二进制的文件，其他两种类型不能用于发送文件；
     text/plain            # 用于发送纯文本内容，空格转换为 "+" 加号，不对特殊字符进行编码，一般用于email之类的；
-    application/x-www-form-urlencoded # 在发送前会编码所有字符，即在发送到服务器之前，所有字符都会进行编码（空格转换为 "+" 加号，"+"加号转换为空格，特殊符号转换为 ASCII HEX 值）。
- 其中application/x-www-form-urlencoded为默认类型。 
+    application/x-www-form-urlencoded # 默认类型,在发送前会编码所有字符，即在发送到服务器之前，所有字符都会进行编码（空格转换为 "+" 加号，"+"加号转换为空格，特殊符号转换为 ASCII HEX 值）。
 
+# target 属性
+    _blank	    # 在新窗口中打开。
+    _self	    # 默认。在相同的框架中打开。
+    _parent	    # 在父框架集中打开。
+    _top	    # 在整个窗口中打开。
+    framename	# 在指定的框架中打开。
 
 # 4、form表单中的元素
+表单能够包含 input 元素，比如文本字段、复选框、单选框、提交按钮等等。
+表单还可以包含 menus、textarea、fieldset、legend 和 label 元素。
+
 基本概念：
     HTML表单是HTML元素中较为复杂的部分，表单往往和脚本、动态页面、数据处理等功能相结合，因此它是制作动态网站很重要的内容。
     表单一般用来收集用户的输入信息
@@ -816,55 +845,85 @@ method 属性规定在提交表单时所用的 HTTP 方法（GET 或 POST）：
     访问者在浏览有表单的网页时，可填写必需的信息，然后按某个按钮提交。这些信息通过Internet传送到服务器上。
     服务器上专门的程序对这些数据进行处理，如果有错误会返回错误信息，并要求纠正错误。当数据完整无误后，服务器反馈一个输入完成的信息。
 
-# <input> 元素
-<input> 元素是最重要的表单元素。
-属性：
+# form表单控件之 <input> 元素 
+\https://www.w3school.com.cn/tags/tag_input.asp
+<input> 元素是最重要的表单元素。用于接收用户输入或搜集用户信息
+input元素的属性：
     type         # 给input设置类型
     name         # 给表单中的值定义一个 key
-    value        # 给表单中的key赋值 value
-    disabled     # 禁用，不往上提交。
-    placeholder  # 占位符（浅灰色提示信息）,placeholder主要是input中的提示信息，这个和value不同当input获取到焦点的时候这个会自动消失。
-<input> 元素有很多形态，根据不同的 type 属性。
+    value        # 给表单中的数据设置值
+    disabled     # 禁用此行input控件，并且数据不往上提交。如果设置了默认值，会成为灰色不可修改。
+    placeholder  # 占位符,提示用户应该输入什么样的数据（浅灰色提示信息）,placeholder主要是input中的提示信息，这个和value不同当input获取到光标时会自动消失。
+
+<input> 根据不同的 type 属性，元素有很多形态。
     #type属性的以及还有很多属性接下来先对常见type的值做一个介绍
         text     # 单行文本框（注意这个是单行文本框并且还是input里type属性的值。多行文本框是一个标签）
-        password # 密码域（这个会将输入将输入的文本用粗黑点表示）
+        password # 密码域（这个会将输入将输入的文本用粗黑点表示，不显示明文）
         checkbox # 复选框
-        radio    # 单选框
+        radio    # 单选框,默认情况下单选框不会互斥。name的值设置成一样的就是互斥，即实现单选。
+                   1、要想完成单选，多个input框的name属性值必须相同。
+                   2、要想设定单选框的默认值，必须给input边框添加checked属性：checked="checked"
+                   3、在html中如果属性的值和属性的名字一样，可以简写。比如checked="checked"简写为checked，但不建议。
         file     # 文件域（file后面是要有name的在file中name是只读的）
-        name     # 数据的名字（相当于给数据写名字）
-        value    # 提交数据（如果给了一个value还给了属性值那么这个属性值会默认的出现在input中的。如果要将input中的数据提交要有一个那么name）
-        button   # 提交按钮（这个要配合js使用）
-        submint  # 提交按钮（为保险起见不同浏览器编译出的不同在写这个属性是后面要加value属性）
+                   1、form表单的method必须为POST，enctype必须为multipart/form-data
+        button   # 普通可点击按钮，需要绑定onclick事件才能用 如：onclick="alert('123')"。不会跳转到form 的action地址。（这个要配合js使用）
+        submit   # 提交按钮（为保险起见不同浏览器编译出的不同在写这个属性是后面要加value属性）
         reset    # 重置按钮（（为保险起见不同浏览器编译出的不同在写这个属性是后面要加value属性）
-        image    # 图像域（会将form表单的数据进行点击图片提交，同时会将鼠标的坐标进行提交，这个的作用主要就是可以把一张图片当成一个提交按钮）
-        hideden  # 隐藏域(常用场景：不想让用户看到的地方使用。主要作用是将input隐藏)
+        image    # 定义图像形式的提交按钮。（会将form表单的数据进行点击图片提交，同时会将鼠标的坐标进行提交，这个的作用主要就是可以把一张图片当成一个提交按钮）
+        hideden  # 定义隐藏的输入字段。。(常用场景：不想让用户看到的地方使用。主要作用是将input隐藏)
+        date     # 时间
+        email    # 邮箱
+        number   # 电话
 
+# <button> 元素 定义可点击的按钮
+\https://www.w3school.com.cn/tags/tag_button.asp
+实例
+<button type="button" onclick="alert('Hello World!')">Click Me!</button>
 
+# label 元素  定义：<label> 标签为 input 元素定义标注（标记）
+\https://www.w3school.com.cn/tags/tag_label.asp
+属性	 值	        描述
+for	    id	    规定 label 绑定到哪个表单元素。
+form	formid	规定 label 字段所属的一个或多个表单。
 
-# label 元素  定义：<label> 标签为 input 元素定义标注（标记）。
+作用：关联文本与表单元素，实现点击文本时如同点击表单元素一样。如 点击 性别二字就如同点击了勾选。
 说明：
     label 元素不会向用户呈现任何特殊效果。
     <label> 标签的 for 属性值应当与相关元素的 id 属性值相同。
 
-作用：关联文本与表单元素，实现点击文本时如同点击表单元素一样。如 点击 性别二字就如同点击了勾选。
-
 当点到 "用户名“ 字样上时也就选中了，无须点到圈里。
+注释："for" 属性可把 label 绑定到另外一个元素。请把 "for" 属性的值设置为相关元素的 id 属性的值。
 <form action="">
   <input type="text"  name="username" id="un"><label for="un">用户名</label>
 </form>
 
 
-# select 元素  下拉列表
-<option> 元素定义待选择的选项。
-列表通常会把首个选项显示为被选选项。您能够通过添加 selected 属性来定义默认选中。
-select标签里有两个属性name和size
-    name  # 起名字的作用
-    size &nbnsp; # 想让列表出现几个选项属性值就填几
+# form表单控件之 select 元素  下拉列表
+\https://www.w3school.com.cn/tags/tag_select.asp
+#定义和用法
+select 元素可创建单选或多选菜单。
+<select&> 元素中的 <option> 标签用于定义列表中的可用选项。
 
-# <option> 元素 定义待选择的选项。
-option也有两个属性value和selected
+提示：select 元素是一种表单控件，可用于在表单中接受用户输入。
+
+#select元素的属性
+属性	        值	        描述
+autofocus	autofocus	规定在页面加载后文本区域自动获得焦点。
+disabled	disabled	规定禁用该下拉列表。
+form	    form_id	    规定文本区域所属的一个或多个表单。
+multiple	multiple	规定可选择多个选项。设置多选。
+name	    name	    规定下拉列表的名称，name属性指定提交给后台数据的key
+required	required	规定文本区域是必填的。
+size &nbnsp	 number	    规定下拉列表中可见选项的数目。取值大于1，则为滚动列表，否则就是下拉列表。
+
+
+# select 元素<option> 标签 value属性指定值提交给后台数据的value。
+option也有两个属性 value 和 selected
     value    # 属性是在option选项中写的，value的值适合后台商量好的值。
     selected # 默认选择到选项
+<option> 标签定义待选择的选项，列表通常会把首个选项显示为被选选项。您能够通过添加 selected 属性来定义默认选中。
+
+# optgroup 元素  label属性设置提示信息
 
 实例
 <option value="fiat" selected>Fiat</option>
@@ -884,7 +943,6 @@ option也有两个属性value和selected
             <option value="SZ" selected="selected">南京</option>
             <option value="GZ">成都</option>
         </optgroup>
-
     </select>
 </form>
 
@@ -897,8 +955,9 @@ option也有两个属性value和selected
     optgroup # 分组
 
 
-# textarea 元素 定义多行文本输入字段（文本域）
-# https://www.w3school.com.cn/tags/tag_textarea.asp
+# form表单控件之 textarea 元素 定义多行文本输入字段（文本域）
+\https://www.w3school.com.cn/tags/tag_textarea.asp
+
 <textarea name="memo" id="memo" cols="30" rows="10">
   默认内容
   ....
@@ -906,24 +965,25 @@ option也有两个属性value和selected
 
 # 属性	        值	            描述
 autofocus	autofocus	规定在页面加载后文本区域自动获得焦点。
-cols	    number	    规定文本区内的可见宽度。
+cols	    number	    规定文本区内的可见宽度。列（可以通过cols和row来指定宽度和高度，虽然指定了列数和行数，但仍可以无限往下输入。）
+rows	    number	    规定文本区内的可见行数。行（默认情况下，可以无限换行。）
+maxlength	number	    规定文本区域的最大字符数。
 disabled	disabled	规定禁用该文本区。
 form	    form_id	    规定文本区域所属的一个或多个表单。
-maxlength	number	    规定文本区域的最大字符数。
 name	    name_of_textarea	规定文本区的名称。
 placeholder	text	    规定描述文本区域预期值的简短提示。
 readonly	readonly	规定文本区为只读。
-required	required	规定文本区域是必填的。
-rows	    number	    规定文本区内的可见行数。
 wrap	    hard        规定当在表单中提交时，文本区域中的文本如何换行.
             soft
 
-# <button> 元素 定义可点击的按钮
-实例
-<button type="button" onclick="alert('Hello World!')">Click Me!</button>
-
 
 # <datalist> 元素 为 <input> 元素规定预定义选项列表
+\https://www.w3school.com.cn/tags/tag_datalist.asp
+定义和用法
+<datalist> 标签定义选项列表。请与 input 元素配合使用该元素，来定义 input 可能的值。
+datalist 及其选项不会被显示出来，它仅仅是合法的输入值列表。
+
+请使用 input 元素的 list 属性来绑定 datalist。
 用户会在他们输入数据时看到预定义选项的下拉列表。
 <input> 元素的 list 属性必须引用 <datalist> 元素的 id 属性。
 
@@ -941,6 +1001,7 @@ wrap	    hard        规定当在表单中提交时，文本区域中的文本�
 </form>
 
 # <fieldset> 元素 组合表单数据，给表单加个框.
+# https://www.w3school.com.cn/tags/tag_fieldset.asp
 <fieldset> 元素组合表单中的相关数据
 <legend> 元素为 <fieldset> 元素定义标题。
 
@@ -959,7 +1020,7 @@ wrap	    hard        规定当在表单中提交时，文本区域中的文本�
 </form> 
 
 
-# 练习
+\ 练习
 <html>
     <head>
         <title>表单练习</title>
@@ -1021,6 +1082,9 @@ wrap	    hard        规定当在表单中提交时，文本区域中的文本�
     </body>
 </html>
 
+
+
+
 # Django接收上传文件代码
 from django.conf.urls import url
 from django.shortcuts import HttpResponse
@@ -1079,7 +1143,8 @@ file	       文本选择框	<input type="file"  />
 
     # 定义按钮 https://www.w3school.com.cn/tiy/t.asp?f=html_input_button
     <input type="button> 定义普通按钮，必须绑定一个事件onclick。
-    实例
+    
+    \实例
     <body>
         <button type="button" onclick="alert('Hello World!')">Click Me!</button>
     </body>
@@ -1099,7 +1164,8 @@ file	       文本选择框	<input type="file"  />
     # 定义复选框checkbox https://www.w3school.com.cn/tiy/t.asp?f=html_input_checkbox
     <input type="checkbox"> 定义复选框。
     复选框允许用户在有限数量的选项中选择零个或多个选项。
-    实例
+    
+    \实例
     <form action="/demo/demo_form.asp">
             <input type="checkbox" name="hobbies" value="basketball">篮球
             <input type="checkbox" name="hobbies" value="football" checked>足球
@@ -1118,7 +1184,7 @@ file	       文本选择框	<input type="file"  />
     如果要正确地被提交，每个输入字段必须设置一个 name 属性。
     本例只会提交 "Last name" 输入字段：
 
-    实例
+    \实例
     <form action="action_page.php">
         First name:<br>
         <input type="text" value="Mickey"><br>
@@ -1138,7 +1204,7 @@ file	       文本选择框	<input type="file"  />
     <input type="number"> 用于应该包含数字值的输入字段。
     您能够对数字做出限制。根据浏览器支持，限制可应用到输入字段。
 
-    实例
+    \实例
     <form>
         Quantity (between 1 and 5):
         <input type="number" name="quantity" min="1" max="5">
@@ -1148,14 +1214,14 @@ file	       文本选择框	<input type="file"  />
     <input type="date"> 用于应该包含日期的输入字段。
     根据浏览器支持，日期选择器会出现输入字段中。
 
-    实例
+    \实例
     <form>
         Birthday:
         <input type="date" name="bday">
     </form>
 
     您可以向输入添加限制：
-    实例
+    \实例
     <form>
         Enter a date before 1980-01-01:
         <input type="date" name="bday" max="1979-12-31"><br>
@@ -1167,7 +1233,7 @@ file	       文本选择框	<input type="file"  />
     <input type="color"> 用于应该包含颜色的输入字段。
     根据浏览器支持，颜色选择器会出现输入字段中。
 
-    实例
+    \实例
     <form>
         Select your favorite color:
         <input type="color" name="favcolor">
@@ -1177,7 +1243,7 @@ file	       文本选择框	<input type="file"  />
     <input type="range"> 用于应该包含一定范围内的值的输入字段。
     根据浏览器支持，输入字段能够显示为滑块控件。
 
-    实例
+    \实例
     <form>
         <input type="range" name="points" min="0" max="10">
     </form>
@@ -1188,7 +1254,7 @@ file	       文本选择框	<input type="file"  />
 
     根据浏览器支持，日期选择器会出现输入字段中。
 
-    实例
+    \实例
     <form>
     Birthday (month and year):
         <input type="month" name="bdaymonth">
@@ -1199,7 +1265,7 @@ file	       文本选择框	<input type="file"  />
 
     根据浏览器支持，日期选择器会出现输入字段中。
 
-    实例
+    \实例
     <form>
         Select a week:
         <input type="week" name="week_year">
@@ -1209,7 +1275,7 @@ file	       文本选择框	<input type="file"  />
     <input type="time"> 允许用户选择时间（无时区）。
     根据浏览器支持，时间选择器会出现输入字段中。
 
-    实例
+    \实例
     <form>
         Select a time:
         <input type="time" name="usr_time">
@@ -1219,7 +1285,7 @@ file	       文本选择框	<input type="file"  />
     <input type="datetime"> 允许用户选择日期和时间（有时区）。
     根据浏览器支持，日期选择器会出现输入字段中。
 
-    实例
+    \实例
     <form>
         Birthday (date and time):
         <input type="datetime" name="bdaytime">
@@ -1229,7 +1295,7 @@ file	       文本选择框	<input type="file"  />
     <input type="datetime-local"> 允许用户选择日期和时间（无时区）。
     根据浏览器支持，日期选择器会出现输入字段中。
 
-    实例
+    \实例
     <form>
         Birthday (date and time):
         <input type="datetime-local" name="bdaytime">
@@ -1240,7 +1306,7 @@ file	       文本选择框	<input type="file"  />
     根据浏览器支持，能够在被提交时自动对电子邮件地址进行验证。
     某些智能手机会识别 email 类型，并在键盘增加 ".com" 以匹配电子邮件输入。
 
-    实例
+    \实例
     <form>
         E-mail:
         <input type="email" name="email">
@@ -1249,7 +1315,7 @@ file	       文本选择框	<input type="file"  />
     # 输入类型：search
     <input type="search"> 用于搜索字段（搜索字段的表现类似常规文本字段）。
 
-    实例
+    \实例
     <form>
         Search Google:
         <input type="search" name="googlesearch">
@@ -1260,7 +1326,7 @@ file	       文本选择框	<input type="file"  />
     <input type="tel"> 用于应该包含电话号码的输入字段。
     目前只有 Safari 8 支持 tel 类型。
 
-    实例
+    \实例
     <form>
         Telephone:
         <input type="tel" name="usrtel">
@@ -1272,7 +1338,7 @@ file	       文本选择框	<input type="file"  />
     根据浏览器支持，在提交时能够自动验证 url 字段。
     某些智能手机识别 url 类型，并向键盘添加 ".com" 以匹配 url 输入。
 
-    实例
+    \实例
     <form>
         Add your homepage:
         <input type="url" name="homepage">
@@ -1300,7 +1366,7 @@ file	       文本选择框	<input type="file"  />
     # value 属性
     value 属性规定输入字段的初始值：
 
-    实例
+    \实例
     <form action="">
     First name:<br>
     <input type="text" name="firstname" value="John">
@@ -1312,7 +1378,7 @@ file	       文本选择框	<input type="file"  />
     # readonly 属性
     readonly 属性规定输入字段为只读（不能修改）：
 
-    实例
+    \实例
     <form action="">
     First name:<br>
     <input type="text" name="firstname" value="John" readonly>
@@ -1327,7 +1393,7 @@ file	       文本选择框	<input type="file"  />
     被禁用的元素是不可用和不可点击的。
     被禁用的元素不会被提交。
 
-    实例
+    \实例
     <form action="">
     First name:<br>
     <input type="text" name="firstname" value="John" disabled>
@@ -1340,7 +1406,7 @@ file	       文本选择框	<input type="file"  />
     # size 属性
     size 属性规定输入框字段的尺寸（以字符计）：
 
-    实例
+    \实例
     <form action="">
     First name:<br>
     <input type="text" name="firstname" value="John" size="40">
@@ -1352,7 +1418,7 @@ file	       文本选择框	<input type="file"  />
     # maxlength 属性
     maxlength 属性规定输入字段允许的最大长度：
 
-    实例
+    \实例
     <form action="">
     First name:<br>
     <input type="text" name="firstname" maxlength="10">
@@ -1369,7 +1435,7 @@ file	       文本选择框	<input type="file"  />
     提示：您可以把表单的 autocomplete 设置为 on，同时把特定的输入字段设置为 off，反之亦然。
     autocomplete 属性适用于 <form> 以及如下 <input> 类型：text、search、url、tel、email、password、datepickers、range 以及 color。
 
-    实例
+    \实例
     自动完成开启的 HTML 表单（某个输入字段为 off）：
 
     <form action="action_page.php" autocomplete="on">
@@ -1383,7 +1449,7 @@ file	       文本选择框	<input type="file"  />
     novalidate 属性属于 <form> 属性。
     如果设置，则 novalidate 规定在提交表单时不对表单数据进行验证。
 
-    实例
+    \实例
     指示表单在被提交时不进行验证：
     <form action="action_page.php" novalidate>
         E-mail: <input type="email" name="user_email">
@@ -1394,7 +1460,7 @@ file	       文本选择框	<input type="file"  />
     autofocus 属性是布尔属性。
     如果设置，则规定当页面加载时 <input> 元素应该自动获得焦点。
 
-    实例
+    \实例
     使 "First name" 输入字段在页面加载时自动获得焦点：
     First name:<input type="text" name="fname" autofocus>
 
@@ -1403,7 +1469,7 @@ file	       文本选择框	<input type="file"  />
     formaction 属性覆盖 <form> 元素的 action 属性。
     formaction 属性适用于 type="submit" 以及 type="image"。
 
-    实例
+    \实例
     拥有两个两个提交按钮并对于不同动作的 HTML 表单：
     <!DOCTYPE HTML>
     <html>
@@ -1422,7 +1488,7 @@ file	       文本选择框	<input type="file"  />
     formenctype 属性覆盖 <form> 元素的 enctype 属性。
     formenctype 属性适用于 type="submit" 以及 type="image"。
 
-    实例
+    \实例
     发送默认编码以及编码为 "multipart/form-data"（第二个提交按钮）的表单数据（form-data）：
     <!DOCTYPE HTML>
     <html>
@@ -1442,7 +1508,7 @@ file	       文本选择框	<input type="file"  />
     formmethod 属性覆盖 <form> 元素的 method 属性。
     formmethod 属性适用于 type="submit" 以及 type="image"。
 
-    实例
+    \实例
     第二个提交按钮覆盖表单的 HTTP 方法：
     <form action="action_page.php" method="get">
         First name: <input type="text" name="fname"><br>
@@ -1458,7 +1524,7 @@ file	       文本选择框	<input type="file"  />
     formnovalidate 属性覆盖 <form> 元素的 novalidate 属性。
     formnovalidate 属性可用于 type="submit"。
 
-    实例
+    \实例
     拥有两个提交按钮的表单（验证和不验证）：
     <form action="action_page.php">
     E-mail: <input type="email" name="userid"><br>
@@ -1471,7 +1537,7 @@ file	       文本选择框	<input type="file"  />
     formtarget 属性会覆盖 <form> 元素的 target 属性。
     formtarget 属性可与 type="submit" 和 type="image" 使用。
 
-    实例
+    \实例
     这个表单有两个提交按钮，对应不同的目标窗口：
 
     <form action="action_page.php">
@@ -1487,7 +1553,7 @@ file	       文本选择框	<input type="file"  />
     height 和 width 属性仅用于 <input type="image">。
     注释：请始终规定图像的尺寸。如果浏览器不清楚图像尺寸，则页面会在图像加载时闪烁。
 
-    实例
+    \实例
     把图像定义为提交按钮，并设置 height 和 width 属性：
     <input type="image" src="img_submit.gif" alt="Submit" width="48" height="48">
 
@@ -1495,7 +1561,7 @@ file	       文本选择框	<input type="file"  />
     # list 属性  https://www.w3school.com.cn/tiy/t.asp?f=html5_datalist
     list 属性引用的 <datalist> 元素中包含了 <input> 元素的预定义选项。
 
-    实例
+    \实例
     使用 <datalist> 设置预定义值的 <input> 元素：
 
     <input list="browsers">
@@ -1512,7 +1578,7 @@ file	       文本选择框	<input type="file"  />
     min 和 max 属性规定 <input> 元素的最小值和最大值。
     min 和 max 属性适用于如需输入类型：number、range、date、datetime、datetime-local、month、time 以及 week。
 
-    实例
+    \实例
     具有最小和最大值的 <input> 元素：
     Enter a date before 1980-01-01:
     <input type="date" name="bday" max="1979-12-31">
@@ -1529,7 +1595,7 @@ file	       文本选择框	<input type="file"  />
     如果设置，则规定允许用户在 <input> 元素中输入一个以上的值。
     multiple 属性适用于以下输入类型：email 和 file。
 
-    实例
+    \实例
     接受多个值的文件上传字段：
     Select images: <input type="file" name="img" multiple>
 
@@ -1539,7 +1605,7 @@ file	       文本选择框	<input type="file"  />
     提示：请使用全局的 title 属性对模式进行描述以帮助用户。
     提示：请在我们的 JavaScript 教程中学习更多有关正则表达式的知识。
 
-    实例
+    \实例
     只能包含三个字母的输入字段（无数字或特殊字符）：
     Country code: 
     <input type="text" name="country_code" pattern="[A-Za-z]{3}" title="Three letter country code">
@@ -1549,7 +1615,7 @@ file	       文本选择框	<input type="file"  />
     该提示会在用户输入值之前显示在输入字段中。
     placeholder 属性适用于以下输入类型：text、search、url、tel、email 以及 password。
 
-    实例
+    \实例
     拥有占位符文本的输入字段：
     <input type="text" name="fname" placeholder="First name">
 
@@ -1558,7 +1624,7 @@ file	       文本选择框	<input type="file"  />
     如果设置，则规定在提交表单之前必须填写输入字段。
     required 属性适用于以下输入类型：text、search、url、tel、email、password、date pickers、number、checkbox、radio、and file.
 
-    实例
+    \实例
     必填的输入字段：
     Username: <input type="text" name="usrname" required>
 

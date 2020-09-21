@@ -1,4 +1,6 @@
 \head内 Meta相关标签
+# HTML教程：https://www.w3school.com.cn/html/index.asp
+# 参考手册：https://www.w3school.com.cn/tags/index.asp
 Meta标签介绍：
     <meta> 元素可提供有关页面的元信息（mata-information）,针对搜索引擎和更新频度的描述和关键词。
     <meta> 标签位于文档的头部，不包含任何内容。
@@ -6,7 +8,7 @@ Meta标签介绍：
 meta标签的组成：meta标签共有两个属性，它们分别是http-equiv属性和name 属性，不同的属性又有不同的参数值，这些不同的参数值就实现了不同的网页功能。 
 
 0.指定字符集
-<meta charset="gbk">
+<meta charset="UTF-8">
 
 1.http-equiv属性：相当于http的文件头作用，它可以向浏览器传回一些有用的信息，以帮助正确地显示网页内容，与之对应的属性值为content，content中的内容其实就是各个参数的变量值。
 <!--2秒后跳转到对应的网址，注意引号-->
@@ -109,5 +111,5 @@ meta标签的charset的信息参数如UTF-8时，代表世界通用的语言编�
 #4、定义内部样式
 <style></style>
 
-#4、定义JavaScript代码或引入JavaScript文件
+#5、定义JavaScript代码或引入JavaScript文件
 <script src="hello.js"></script>
