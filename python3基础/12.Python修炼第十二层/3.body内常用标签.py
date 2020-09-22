@@ -234,7 +234,9 @@ name 属性：
     如果跳到首页需要过渡动画，则不用a标签做，比如天猫主页
 
 
-\HTML div  span
+\div、span标签
+\https://www.w3school.com.cn/tags/tag_div.asp
+\https://www.w3school.com.cn/tags/tag_span.asp
 # div标签和span标签
 div  # 标签用来定义一个块级元素，并无实际的意义。主要通过CSS样式为其赋予不同的表现。
 span # 标签用来定义内联(行内)元素，并无实际的意义。主要通过CSS样式为其赋予不同的表现。
@@ -385,6 +387,7 @@ dd：defination description，自定义描述
 
 
 \table 标签 表格  https://www.w3school.com.cn/html/html_tables.asp
+
 # 语义：标记一段数据为表格
 '''
 表格由 <table> 标签来定义。每个表格均有若干行（由 <tr> 标签定义），每行被分割为若干单元格（由 <td> 标签定义）。
@@ -392,6 +395,12 @@ dd：defination description，自定义描述
 '''
 #1、作用
 表格标签是一种数据的展现形式，当数据量非常大的时候，使用表格的形式来展示被认为是最清晰的.
+
+# 定义和用法
+<table> 标签定义 HTML 表格。
+简单的 HTML 表格由 table 元素以及一个或多个 tr、th 或 td 元素组成。
+th 元素定义表头，tr 元素定义表格行，td 元素定义表格单元。
+更复杂的 HTML 表格也可能包括 caption、col、colgroup、thead、tfoot 以及 tbody 元素。
 
 #2、格式
 <table>
@@ -404,9 +413,40 @@ tr # 代表表格的一行数据
 td # 表一行中的一个普通单元格
 th # 表示表头单元格
 
+可选的属性
+属性	        值	        描述
+align	    left        不赞成使用。请使用样式代替。
+            center      规定表格相对周围元素的对齐方式。
+            right
+bgcolor	    rgb(x,x,x)  不赞成使用。请使用样式代替。
+            #xxxxxx     规定表格的背景颜色。
+            colorname
+border	    pixels	    规定表格边框的宽度。
+cellpadding	pixels      规定单元边沿与其内容之间的空白。# 内边距 - 内容与单元格内部边的距离
+            %
+cellspacing	pixels      规定单元格之间的空白。        # 外边距 - 单元格与单元格间距离
+            %
+frame	    void        规定外侧边框的哪个部分是可见的。
+            above
+            below
+            hsides
+            lhs
+            rhs
+            vsides
+            box
+            border
+rules	    none        规定内侧边框的哪个部分是可见的。
+            groups
+            rows
+            cols
+            all
+summary	    text	    规定表格的摘要。
+width	    %           规定表格的宽度。
+            pixels
+
+
 #3、注意点：
 表格标签有一个边框属性，这个属性决定了边框的宽度。默认情况下这个属性的值为0，所以看不到边框。
-
 表格是一个二维数据空间，一个表格由若干行组成，一个行又有若干单元格组成，单元格里可以包含文字、列表、图案、表单、数字符号、预置文本和其它的表格等内容。
 表格最重要的目的是显示表格类数据。表格类数据是指最适合组织为表格格式（即按行和列组织）的数据。
 
@@ -415,6 +455,191 @@ th # 表示表头单元格
   表格由 <table> 标签来定义。每个表格均有若干行（由 <tr> 标签定义）。table row
   每行被分割为若干单元格（由 <td> 标签定义）。字母 td 指表格数据，即数据单元格的内容。table data
   数据单元格可以包含文本、图片、列表、段落、表单、水平线、表格等等。
+
+# thead属性:
+\https://www.w3school.com.cn/tags/tag_thead.asp
+# 定义和用法
+<thead> 标签定义表格的表头。该标签用于组合 HTML 表格的表头内容。
+thead 元素应该与 tbody 和 tfoot 元素结合起来使用。
+tbody 元素用于对 HTML 表格中的主体内容进行分组，而 tfoot 元素用于对 HTML 表格中的表注（页脚）内容进行分组。
+注释：如果您使用 thead、tfoot 以及 tbody 元素，您就必须使用全部的元素。它们的出现次序是：thead、tfoot、tbody，这样浏览器就可以在收到所有数据前呈现页脚了。您必须在 table 元素内部使用这些标签。
+提示：在默认情况下这些元素不会影响到表格的布局。不过，您可以使用 CSS 使这些元素改变表格的外观。
+
+# 提示和注释
+注释：<thead> 内部必须拥有 <tr> 标签！
+注释：<thead>、<tbody> 以及 <tfoot> 很少被使用，这是因为糟糕的浏览器支持。
+
+# 属性	  值	            描述
+align   right       定义 thead 元素中内容的对齐方式。
+        left
+        center
+        justify
+        char
+char	character	规定根据哪个字符来进行文本对齐。
+charoff	number	    规定第一个对齐字符的偏移量。
+valign  top         规定 thead 元素中内容的垂直对齐方式。
+        middle
+        bottom
+        baseline
+
+# thbody属性:
+\https://www.w3school.com.cn/tags/tag_tbody.asp
+# 定义和用法
+<tbody> 标签表格主体（正文）。该标签用于组合 HTML 表格的主体内容。
+tbody 元素应该与 thead 和 tfoot 元素结合起来使用。
+thead 元素用于对 HTML 表格中的表头内容进行分组，而 tfoot 元素用于对 HTML 表格中的表注（页脚）内容进行分组。
+注释：如果您使用 thead、tfoot 以及 tbody 元素，您就必须使用全部的元素。它们的出现次序是：thead、tfoot、tbody，这样浏览器就可以在收到所有数据前呈现页脚了。您必须在 table 元素内部使用这些标签。
+提示：在默认情况下这些元素不会影响到表格的布局。不过，您可以使用 CSS 使这些元素改变表格的外观。
+
+# 提示和注释：
+注释：<thead> 内部必须拥有 <tr> 标签！
+注释：<thead>、<tbody> 以及 <tfoot> 很少被使用，这是因为糟糕的浏览器支持。
+# 属性	  值	            描述
+align   right       定义 thead 元素中内容的对齐方式。
+        left
+        center
+        justify
+        char
+char	character	规定根据哪个字符来进行文本对齐。
+charoff	number	    规定第一个对齐字符的偏移量。
+valign  top         规定 thead 元素中内容的垂直对齐方式。
+        middle
+        bottom
+        baseline
+
+# tfoot标签: 标签定义表格的页脚（脚注或表注）
+\https://www.w3school.com.cn/tags/tag_tfoot.asp
+
+#定义和用法
+<tfoot> 标签定义表格的页脚（脚注或表注）。该标签用于组合 HTML 表格中的表注内容。
+tfoot 元素应该与 thead 和 tbody 元素结合起来使用。
+thead 元素用于对 HTML 表格中的表头内容进行分组，而 tbody 元素用于对 HTML 表格中的主体内容进行分组。
+注释：如果您使用 thead、tfoot 以及 tbody 元素，您就必须使用全部的元素。它们的出现次序是：thead、tfoot、tbody，这样浏览器就可以在收到所有数据前呈现页脚了。您必须在 table 元素内部使用这些标签。
+提示：在默认情况下这些元素不会影响到表格的布局。不过，您可以使用 CSS 使这些元素改变表格的外观。
+
+# 提示和注释：
+注释：<thead> 内部必须拥有 <tr> 标签！
+注释：<thead>、<tbody> 以及 <tfoot> 很少被使用，这是因为糟糕的浏览器支持。
+
+# 属性	  值	            描述
+align   right       定义 tfoot 元素中内容的对齐方式。
+        left
+        center
+        justify
+        char
+char	character	规定根据哪个字符来进行文本对齐。
+charoff	number	    规定第一个对齐字符的偏移量。
+valign  top         规定 thead 元素中内容的垂直对齐方式。
+        middle
+        bottom
+        baseline
+
+
+# tr标签 ：tr 元素包含一个或多个 th 或 td 元素。
+\https://www.w3school.com.cn/tags/tag_tr.asp
+# 定义和用法
+<tr> 标签定义 HTML 表格中的行。
+tr 元素包含一个或多个 th 或 td 元素。
+
+# 属性	  值	            描述
+align   right       定义 thead 元素中内容的对齐方式。
+        left
+        center
+        justify
+        char
+bgcolor rgb(x,x,x)  不赞成使用。请使用样式取而代之。规定表格行的背景颜色。
+        #xxxxxx
+        colorname
+char	character	规定根据哪个字符来进行文本对齐。
+charoff	number	    规定第一个对齐字符的偏移量。
+valign  top         规定 thead 元素中内容的垂直对齐方式。
+        middle
+        bottom
+        baseline
+
+# th标签：定义表格内的表头单元格。
+\https://www.w3school.com.cn/tags/tag_th.asp
+#定义和用法
+HTML 表单中有两种类型的单元格：
+    表头单元格 - 包含表头信息（由 th 元素创建）
+    标准单元格 - 包含数据（由 td 元素创建）
+th 元素内部的文本通常会呈现为居中的粗体文本，而 td 元素内的文本通常是左对齐的普通文本。
+
+#提示和注释
+提示：如果需要将内容横跨多个行或列，请使用 colspan 和 rowspan 属性。
+
+# 属性	  值	            描述
+abbr	text	    规定单元格中内容的缩写版本。
+align   right       定义 thead 元素中内容的对齐方式。
+        left
+        center
+        justify
+        char
+abbr	text	    规定单元格中内容的缩写版本。
+bgcolor rgb(x,x,x)  不赞成使用。请使用样式取而代之。规定表格行的背景颜色。
+        #xxxxxx
+        colorname
+char	character	规定根据哪个字符来进行文本对齐。
+charoff	number	    规定第一个对齐字符的偏移量。
+colspan	number	    规定单元格可横跨的列数。
+headers	idrefs  	由空格分隔的表头单元格 ID 列表，为数据单元格提供表头信息。。
+width	pixels      不赞成使用。请使用样式取而代之。
+        %           规定表格单元格的宽度。
+height	pixels      不赞成使用。请使用样式取而代之。
+        %           规定表格单元格的高度。
+nowrap	nowrap	    不赞成使用。请使用样式取而代之。
+                    规定单元格中的内容是否折行。
+rowspan	number	    规定单元格可横跨的行数。
+scope	col         定义将表头数据与单元数据相关联的方法。
+        colgroup
+        row
+        rowgroup
+valign  top         规定 thead 元素中内容的垂直对齐方式。
+        middle
+        bottom
+        baseline
+
+# td标签 ：       
+\https://www.w3school.com.cn/tags/tag_td.asp
+#定义和用法
+<td> 标签定义 HTML 表格中的标准单元格。
+HTML 表格有两类单元格：
+    表头单元 - 包含头部信息（由 th 元素创建）
+    标准单元 - 包含数据（由 td 元素创建）
+td 元素中的文本一般显示为正常字体且左对齐。
+
+# 属性	  值	            描述
+align   right       定义 thead 元素中内容的水平对齐方式。
+        left
+        center
+        justify
+        char
+valign  top         规定 thead 元素中内容的垂直对齐方式。
+        middle
+        bottom
+        baseline
+bgcolor rgb(x,x,x)  不赞成使用。请使用样式取而代之。规定表格行的背景颜色。
+        #xxxxxx
+        colorname
+colspan	number	    规定单元格可横跨的列数。单元格横跨多少列（即竖着合并单元格）
+rowspan	number	    规定单元格可横跨的行数。单元格竖跨多少行（即横着合并单元格）
+width	pixels      不赞成使用。请使用样式取而代之。
+        %           规定表格单元格的宽度。
+height	pixels      不赞成使用。请使用样式取而代之。
+        %           规定表格单元格的高度。
+headers	header_cells'_id	规定与单元格相关的表头。
+nowrap	nowrap	    不赞成使用。请使用样式取而代之。
+                    规定单元格中的内容是否折行。
+scope	col         定义将表头数据与单元数据相关联的方法。
+        colgroup
+        row
+        rowgroup
+abbr	text	    规定单元格中内容的缩写版本。
+char	character	规定根据哪个字符来进行文本对齐。
+charoff	number	    规定第一个对齐字符的偏移量。
+
+
+# 案例
 <table border="1" cellpadding="10" cellspacing="10">
   <thead>
     <tr>
@@ -436,15 +661,6 @@ th # 表示表头单元格
     </tr>
   </tbody>
 </table>
-
-属性:
-    border:      # 表格边框
-    cellpadding: # 内边距 - 内容与单元格内部边的距离
-    cellspacing: # 外边距 - 单元格与单元格间距离
-    width:   # 宽度  像素 百分比.（最好通过css来设置长宽）
-    height   # 高度  像素 百分比.（最好通过css来设置长宽）
-    rowspan: # 单元格竖跨多少行（即横着合并单元格）
-    colspan: # 单元格横跨多少列（即竖着合并单元格）
 
 \表格属性
 #1、宽度和高度
@@ -569,7 +785,7 @@ th # 表示表头单元格
 
 \表格结构详解
 为了方便管理维护以及提升语义，我们将表格中存储的数据分为四类：
-#1、表格的标题:caption
+#1、表格的标题:caption https://www.w3school.com.cn/tags/tag_caption.asp
     特点:相对于表格宽度自动居中对齐
     注意:
         1.1 该标签一定要写在table标签里，否则无效。
@@ -628,18 +844,17 @@ th # 表示表头单元格
             </tr>
         </tfoot>
     </table>
-
 </body>
 </html>
 
   
 \单元格合并
 #1、水平向上的单元格colspan(跨列)
-    可以给td标签添加一个colspan属性，来把水平方向的单元格当做多个单元格来看待
+    可以给td标签添加一个colspan属性，来把水平方向的一个单元格当做多个单元格来看待
     <td colspan="2"></td>
 
 #2、垂直向上的单元格rowspan(跨行)
-    可以给td标签设置一个rowspan属性，来把垂直方向的的单元格当成多个去看待
+    可以给td标签设置一个rowspan属性，来把垂直方向的一个单元格当做多个单元格来看待
     <td rowspan="2"></td>
 
 #注意注意注意:
