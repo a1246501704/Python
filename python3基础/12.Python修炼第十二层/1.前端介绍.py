@@ -27,14 +27,21 @@
                 https://www.baidu.com/test/aaaaa/bbbbb.html?a=1&b=1#anc1
             请求方法：
                 GET
-                    参数是存放url地址的？后的
-                    参数大小有限制
-                    不安全
+                    请注意，查询字符串（名称/值对）是在 GET 请求的 URL 中发送的
+                    GET 请求可被缓存
+                    GET 请求保留在浏览器历史记录中
+                    GET 请求可被收藏为书签
+                    GET 请求不应在处理敏感数据时使用（不安全）
+                    GET 请求有长度限制
+                    GET 请求只应当用于取回数据
 
                 POST
-                    参数是存放请求体中的
-                    参数大小无限制
-                    相对安全
+                    请注意，查询字符串（名称/值对）是在 POST 请求的 HTTP 消息主体中发送的
+                    POST 请求不会被缓存
+                    POST 请求不会保留在浏览器历史记录中
+                    POST 不能被收藏为书签
+                    POST 请求对数据长度没有要求
+
 
             请求头：
                 user-agent
@@ -48,7 +55,9 @@
             ...
             \r\n
             相应体（即我们要从服务端下载的内容）
-
+        5、HTTP 状态消息
+           https://www.w3school.com.cn/tags/html_ref_httpmessages.asp
+           
 2、HTML
     1、是什么？
         超文本标记语言，即学习这门语言就是在一堆标记

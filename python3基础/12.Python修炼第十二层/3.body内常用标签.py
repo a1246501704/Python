@@ -1,6 +1,7 @@
 \HTML常用标签
 # HTML教程：https://www.w3school.com.cn/html/index.asp
-# 参考手册：https://www.w3school.com.cn/tags/index.asp
+# 标签列表（字母排序）：https://www.w3school.com.cn/tags/index.asp
+# 标签列表（功能排序）：https://www.w3school.com.cn/tags/html_ref_byfunc.asp
 
 \标签分类:
 	块儿级标签（单独占一行的）<h1> ~ <h6>,<p>,<hr>,<ul>,<li>, <ol>, <div>,<table>,<form>
@@ -103,6 +104,25 @@ h系列标签从h1-h6共6个，没有h7标签，标记内容为1~6级标题，h1
         <p>论才华，天下无敌</p>
     </body>
 </html>
+
+\hr标签 水平线分隔
+\https://www.w3school.com.cn/tags/tag_hr.asp
+# 定义和用法
+<hr> 标签在 HTML 页面中创建一条水平线。
+水平分隔线（horizontal rule）可以在视觉上将文档分隔成各个部分。
+
+# 可选的属性
+属性	    值	        描述
+align	center  不赞成使用。请使用样式取代它。
+        left    规定 hr 元素的对齐方式。
+        right
+noshade	noshade	不赞成使用。请使用样式取代它。
+                规定 hr 元素的颜色呈现为纯色。
+size	pixels	不赞成使用。请使用样式取代它。
+                规定 hr 元素的高度（厚度）。
+width	pixels  不赞成使用。请使用样式取代它。
+        %       规定 hr 元素的宽度。
+
 
 \img标签 图像  
 \https://www.w3school.com.cn/html/html_images.asp
@@ -239,7 +259,25 @@ name 属性：
 \https://www.w3school.com.cn/tags/tag_span.asp
 # div标签和span标签
 div  # 标签用来定义一个块级元素，并无实际的意义。主要通过CSS样式为其赋予不同的表现。
+# 定义和用法
+<div> 标签可定义文档中的分区或节（division/section）。
+<div> 标签可以把文档分割为独立的、不同的部分。它可以用作严格的组织工具，并且不使用任何格式与其关联。
+如果用 id 或 class 来标记 <div>，那么该标签的作用会变得更加有效。
+
+# 用法
+<div> 是一个块级元素。这意味着它的内容自动地开始一个新行。实际上，换行是 <div> 固有的唯一格式表现。可以通过 <div> 的 class 或 id 应用额外的样式。
+不必为每一个 <div> 都加上类或 id，虽然这样做也有一定的好处。
+可以对同一个 <div> 元素应用 class 或 id 属性，但是更常见的情况是只应用其中一种。这两者的主要差异是，class 用于元素组（类似的元素，或者可以理解为某一类元素），而 id 用于标识单独的唯一的元素。
+
+# 可选的属性
+属性	  值	    描述
+align	left    不赞成使用。请使用样式取而代之。
+        right   规定 div 元素中的内容的对齐方式。
+        center
+        justify
+
 span # 标签用来定义内联(行内)元素，并无实际的意义。主要通过CSS样式为其赋予不同的表现。
+
 
 块级元素与行内元素的区别：
 所谓块元素，是以另起一行开始渲染的元素，行内元素则不需另起一行。如果单独在网页中插入这两个元素，不会对页面产生任何的影响。
@@ -850,11 +888,11 @@ charoff	number	    规定第一个对齐字符的偏移量。
   
 \单元格合并
 #1、水平向上的单元格colspan(跨列)
-    可以给td标签添加一个colspan属性，来把水平方向的一个单元格当做多个单元格来看待
+    可以给td标签添加一个colspan属性，来把水平方向合并的一个单元格当做多个单元格来看待
     <td colspan="2"></td>
 
 #2、垂直向上的单元格rowspan(跨行)
-    可以给td标签设置一个rowspan属性，来把垂直方向的一个单元格当做多个单元格来看待
+    可以给td标签设置一个rowspan属性，来把垂直方向合并的一个单元格当做多个单元格来看待
     <td rowspan="2"></td>
 
 #注意注意注意:
@@ -1194,7 +1232,7 @@ wrap	    hard        规定当在表单中提交时，文本区域中的文本�
 
 # <datalist> 元素 为 <input> 元素规定预定义选项列表
 \https://www.w3school.com.cn/tags/tag_datalist.asp
-定义和用法
+# 定义和用法
 <datalist> 标签定义选项列表。请与 input 元素配合使用该元素，来定义 input 可能的值。
 datalist 及其选项不会被显示出来，它仅仅是合法的输入值列表。
 
@@ -1202,7 +1240,7 @@ datalist 及其选项不会被显示出来，它仅仅是合法的输入值列�
 用户会在他们输入数据时看到预定义选项的下拉列表。
 <input> 元素的 list 属性必须引用 <datalist> 元素的 id 属性。
 
-实例
+# 实例
 通过 <datalist> 设置预定义值的 <input> 元素：
 <form action="action_page.php">
 <input list="browsers">
