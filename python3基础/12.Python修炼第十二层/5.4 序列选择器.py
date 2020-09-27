@@ -4,20 +4,20 @@ css3中新推出的选择器中，最具代表性的的9个，又称为序列选
 
 #2、格式
 #2.1 同级别
-:first-child    p:first-child    同级别的第一个，body中所有标签层级中，每个层级中同级的第一个。并且得是一个p标签。
-:last-child     p:last-child     同级别的最后一个，body中所有标签层级中，每个层级中同级的最后一个。并且得是一个p标签。
-:nth-child(n)   p:nth-child(5)   同级别的第n个，body中所有标签层级中，每个层级中同级的第5个标签。并且得是一个p标签。
-:nth-last-child(n)  p:nth-last-child(5) 同级别的倒数第n个，body中所有标签层级中，每个层级中同级倒数第5个。并且得是一个p标签。
+:first-child    p:first-child    同级别的第一个，body中所有标签层级中，所有层级中同级的第一个。并且得是一个p标签。
+:last-child     p:last-child     同级别的最后一个，body中所有标签层级中，所有层级中同级的最后一个。并且得是一个p标签。
+:nth-child(n)   p:nth-child(5)   同级别的第n个，body中所有标签层级中，所有层级中同级的第5个标签。并且得是一个p标签。
+:nth-last-child(n)  p:nth-last-child(5) 同级别的倒数第n个，body中所有标签层级中，所有层级中同级倒数第5个。并且得是一个p标签。
 
 #2.2 同级别同类型
-:first-of-type                   同级别同类型的第一个
-:last-of-type                    同级别同类型的最后一个
-:nth-of-type(n)                  同级别同类型的第n个
-:nth-last-of-type(n)             同级别同类型的倒数第n个
+:first-of-type                   所有层级中同级别同类型的第一个
+:last-of-type                    所有层级中同级别同类型的最后一个
+:nth-of-type(n)                  所有层级中同级别同类型的第n个
+:nth-last-of-type(n)             所有层级中同级别同类型的倒数第n个
 
 #2.3 其他
-:only-of-type                    同类型的唯一一个
-:only-child                      同级别的唯一一个
+:only-of-type                    所有层级中同类型的唯一一个
+:only-child                      所有层级中同级别的唯一一个
 
 \示例：同级别
 #1、同级别的第一个

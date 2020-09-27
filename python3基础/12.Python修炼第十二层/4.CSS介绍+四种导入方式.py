@@ -1,11 +1,12 @@
 \一 什么是CSS
+\https://www.w3school.com.cn/css/index.asp
 CSS（Cascading Style Sheet，层叠样式表)定义如何显示HTML元素。
 当浏览器读到一个样式表，它就会按照这个样式表来对文档进行格式化（渲染）。
 
-CSS全称Cascading Style Sheet层叠样式表，是专用用来为HTML标签添加样式的。
-样式 # 指的是HTML标签的显示效果，比如换行、宽高、颜色等等
+CSS全称Cascading Style Sheet层叠样式表，是用来为HTML标签添加样式用的。
 层叠 # 属于CSS的三大特性之一，我们将在后续内容中介绍
-表  # 指的是我们可以将样式统一收集起来写在一个地方或者一个CSS文件里
+样式 # 指的是HTML标签的显示效果，比如换行、宽高、颜色等等
+表   # 指的是我们可以将样式统一收集起来写在一个地方或者一个CSS文件里
 
 
 \二 为何要用CSS
@@ -95,7 +96,7 @@ h1,p  称为选择器，用于body中哪些标签
     </style>
 </head>
 
-#3、导入式（先下载html再加载样式）
+#3、导入式（先下载html再加载样式，网速不好的话用户体验不好）
 <head>
     <style>
         /*形式一：*/

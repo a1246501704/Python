@@ -1,5 +1,5 @@
 \六 伪类选择器
-#1、作用：常用的几种伪类选择器。
+#1、作用：针对a标签常用的几种伪类选择器。
 
 #1.1 没有访问过的超链接a标签样式：
 a:link {
@@ -16,7 +16,7 @@ a:hover {
   background-color: #eee; 
 }
 
-#1.4 鼠标点击瞬间的样式：
+#1.4 鼠标点击不松手的样式：
 a:active {
   color: green;
 }
@@ -40,8 +40,7 @@ focus只给input标签使用
 <html lang="en">
   <head>
       <meta charset="UTF-8">
-      <title>后代选择器</title>
-
+      <title>伪类选择器</title>
       <style type="text/css">
           a:link {
               color: #cccccc;
@@ -55,7 +54,6 @@ focus只给input标签使用
           a:active {
               color: red;
           }
-
           input:hover {
               outline: none;
               background-color: #cccccc;

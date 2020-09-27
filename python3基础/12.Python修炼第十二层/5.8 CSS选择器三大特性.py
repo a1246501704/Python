@@ -3,9 +3,9 @@
 #1、定义：给某一个元素设置一些属性，该元素的后代也可以使用，这个我们就称之为继承性
 
 #2、注意：
-    1、只有以color、font-、text-、line-开头的属性才可以继承
+    1、只有以color、font-、text-、line- 开头的属性才可以继承
     2、a标签的文字颜色和下划线是不能继承别人的
-    3、h标签的文字大小是不能继承别人的，会变大，但是会在原来字体大小的基础上变大
+    3、h标签的文字大小是不能继承别人的，会变大，但是会在原来字体大小的基础上再加大
     
     ps:打开浏览器审查元素可以看到一些inherited from。。。的属性，就是代表继承自谁。
 #3、应用场景：
@@ -16,8 +16,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>后代选择器</title>
-
+        <title>CSS继承性</title>
         <style type="text/css">
             div {
                 color: red;
@@ -51,7 +50,7 @@
 
 #2、注意：
 1、层叠性只有在多个选择器选中了同一个标签，然后设置了相同的属性，才会发生层叠性
-2、层叠性由优先级来确定哪个生效。
+2、层叠性由下面的优先级来确定哪个样式生效。
 ps：通过谷歌浏览器可以查看到，一些属性被划掉了
 
 # 示例
@@ -86,7 +85,7 @@ ps：通过谷歌浏览器可以查看到，一些属性被划掉了
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>后代选择器</title>
+        <title>CSS优先级</title>
         <style type="text/css">
             #id1 {
                 color: red;
@@ -104,7 +103,7 @@ ps：通过谷歌浏览器可以查看到，一些属性被划掉了
     </body>
 </html>
 
-1、大前提：直接选中 > 间接选中(即继承而来的)
+1、不同选择器的优先级  大前提：直接选中 > 间接选中(即继承而来的)
 #1、以下为直接选中
     <style type="text/css">
         #id1 {
@@ -139,7 +138,7 @@ ps：通过谷歌浏览器可以查看到，一些属性被划掉了
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>后代选择器</title>
+        <title>优先级</title>
         <style type="text/css">
             /*离目标近*/
             li {
@@ -166,7 +165,7 @@ ps：通过谷歌浏览器可以查看到，一些属性被划掉了
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>后代选择器</title>
+        <title>优先级</title>
 
         <style type="text/css">
             p {
@@ -195,7 +194,7 @@ ps：通过谷歌浏览器可以查看到，一些属性被划掉了
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>后代选择器</title>
+        <title>优先级</title>
         <style type="text/css">
             /*打开浏览器依次去掉优先级高的来进行验证*/
             #id1 {
@@ -225,20 +224,19 @@ ps：通过谷歌浏览器可以查看到，一些属性被划掉了
 </html>
 
 
-5、优先级之!important
-#1、作用：还有一种不讲道理的!import方式来强制指定的属性的优先级提升为最高，但是不推荐使用。因为大量使用!import的代码是无法维护的。
+5、优先级之 !important
+#1、作用：还有一种不讲道理的 !import 方式来强制指定的属性的优先级提升为最高，但是不推荐使用。因为大量使用!import的代码是无法维护的。
   
 #2、注意：
-    1、!important只能用于直接选中，不能用于间接选中
-    2、!important只能用于提升被指定的属性的优先级，其他属性的优先级不会被提升
-    3、!important必须写在属性值分号的前面
+    1、!important 只能用于直接选中，不能用于间接选中
+    2、!important 只能用于提升被指定的属性的优先级，其他属性的优先级不会被提升
+    3、!important 必须写在属性值分号的前面
 
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>后代选择器</title>
-
+        <title>优先级</title>
         <style type="text/css">
             /*打开浏览器依次去掉优先级高的来进行验证*/
             #id1 {
@@ -256,7 +254,6 @@ ps：通过谷歌浏览器可以查看到，一些属性被划掉了
             li {
                 color: #7e1487;
             }
-
         </style>
     </head>
     <body>
@@ -288,49 +285,47 @@ id选择器权重       100
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>后代选择器</title>
+    <head>
+        <meta charset="UTF-8">
+        <title>优先级</title>
+        <style type="text/css">
+            #id1 #id2 #id3 .ppp{
+                color: red;
+            }
+            #id2 #id3.aaa p{
+                color: purple;
+            }
 
-    <style type="text/css">
-        #id1 #id2 #id3 .ppp{
-            color: red;
-        }
-        #id2 #id3.aaa p{
-            color: purple;
-        }
+            #id1.ccc>.bbb>.aaa>p {
+                color: pink;
+            }
 
-        #id1.ccc>.bbb>.aaa>p {
-            color: pink;
-        }
+            #id1 .aaa .ppp {
+                color: green;
+            }
 
-        #id1 .aaa .ppp {
-            color: green;
-        }
+            #id2 .aaa p {
+                color: yellow;
+            }
 
-        #id2 .aaa p {
-            color: yellow;
-        }
+            div ul li p {
+                color: blue;
+            }
 
-        div ul li p {
-            color: blue;
-        }
-
-        div ul p {
-            color: cyan;
-        }
-
-    </style>
-</head>
-<body>
-    <div id="id1" class="ccc">
-        <ul id="id2" class="bbb">
-            <li id="id3" class="aaa">
-                <p class="ppp">我是段落</p>
-            </li>
-        </ul>
-    </div>
-</body>
+            div ul p {
+                color: cyan;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="id1" class="ccc">
+            <ul id="id2" class="bbb">
+                <li id="id3" class="aaa">
+                    <p class="ppp">我是段落</p>
+                </li>
+            </ul>
+        </div>
+    </body>
 </html>
 
 
