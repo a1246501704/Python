@@ -96,7 +96,7 @@ while True:
 \前端语言
 HTML       # 内容
 CSS        # 样式
-JavaScript # 动态（雷锋和雷锋塔，名字上沾边。本质上没关系。）
+JavaScript # 动态（和java就好比 雷锋和雷锋塔，名字上沾边。本质上没关系。）
 
 \框架
 CSS # Bootstrap

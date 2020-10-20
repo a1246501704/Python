@@ -133,7 +133,7 @@ print(l)
 '''
 
 # 去除重复、去重
-比较容易记忆的是用内置的set
+比较容易记忆的是用内置的set,但是顺序会变。
 l1 = ['b','c','d','b','c','a','a'] 
 l2 = list(set(l1)) 
 print(l2)
@@ -150,7 +150,7 @@ print(l2)
 用list类的sort方法
 l1 = ['b','c','d','b','c','a','a'] 
 l2 = list(set(l1)) 
-l2.sort(key=l1.index) 
+l2.sort(key=l1.index)  # 将上一步的列表排序，按照l1中的顺序排序。
 print(l2)
 
 也可以这样写
@@ -167,12 +167,32 @@ if not i in l2:
 print(l2)
 
 上面的代码也可以这样写
-
 l1 = ['b','c','d','b','c','a','a'] 
 l2 = [] 
 [l2.append(i) for i in l1 if not i in l2] 
 print(l2)
 这样就可以保证排序不变了：['b', 'c', 'd', 'a']
+
+列表嵌套字典排序，按照年龄排序。
+l4 = [
+    {"name": "alex","age":38},
+    {"name": "egon","age":18},
+    {"name": "zhangsan","age":19},
+    {"name": "lisi","age":38},
+    {"name": "wangwu","age":30},
+]
+
+def tmp(x):
+    #  返回一个排序的依据 {"name": "alex","age":38}
+    return x["age"]
+l4.sort(key=tmp)
+print(l4)
+
+# 使用lambda表达式实现
+l4.sort(key=lambda x: x["age"])
+print(l4)
+
+
 
 \循环
 方法一：最简单常用的，用for遍历列表
