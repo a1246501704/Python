@@ -1,3 +1,9 @@
+\宽和高
+width   属性可以为元素设置宽度。
+height  属性可以为元素设置高度。
+块级标签才能设置宽度，内联标签的宽度由内容来决定。
+
+
 \CSS属性设置
 # 字体属性
 # 文本属性
@@ -7,7 +13,7 @@
 
 
 \一 字体属性
-# 1、font-weight：文字粗细
+# 1、font-weight：文字粗细、字重
 取值	 描述
 normal	# 默认值，标准粗细
 bord	# 粗体
@@ -94,20 +100,21 @@ justify	    # 两端对齐
 
 # 2、text-decoration：文本装饰
 值	                描述
-none	        # 默认。定义标准的文本，通常用来去掉a标签的下划线
+none	        # 默认。定义标准的文本，通常用来去掉a标签默认的下划线
 underline	    # 定义文本下的一条线。
 overline	    # 定义文本上的一条线。
 line-through	# 定义穿过文本下的一条线。
 inherit	        # 继承父元素的text-decoration属性的值。
 
 # 3、text-indent：首行缩进
-#将段落的第一行缩进 32像素,16px;=1em;
+#将段落的第一行缩进 32像素,16px;=1个字;
 p {
   text-indent: 32px;
 }
 
 # 4、line-height：行高
         见图
+        line-height: 200px;
 
 # 示例
 <!DOCTYPE html>
