@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>opacity</title>
+        <style>
+            body {
+                margin: 0;
+            }
+
+            .c1 {
+                height: 600px;
+                width: 600px;
+                /*rgba只能设置背景颜色和透明度，如果有文字或背景图片是不会跟着变颜色*/
+                /*background-color: rgba(0,0,0,0.65);*/
+
+                /*opacity既可以给背景颜色设置透明度，上面的文字也可以。背景图片也可以*/
+                /*background-color: rgb(0,0,0);*/
+
+                /*background会覆盖background-color属性，两个属性不能一起使用*/
+                background: url("https://img02.sogoucdn.com/app/a/100520093/2e69a82e05466cfb-d2bd525cfca4e92e-9cbedf08db56887f4cbe71abcbb206df.jpg");
+                opacity: 0.65;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="c1">
+            <div class="c2">c1里面的c2</div>
+        </div>
+    </body>
+</html>

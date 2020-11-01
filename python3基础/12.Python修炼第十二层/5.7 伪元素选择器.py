@@ -31,7 +31,7 @@ p:after {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>后代选择器</title>
+    <title>伪元素选择器</title>
 
     <style type="text/css">
         p:first-letter {

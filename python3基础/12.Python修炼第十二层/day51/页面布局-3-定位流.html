@@ -46,7 +46,6 @@
 <!--    <head>-->
 <!--        <meta charset="UTF-8">-->
 <!--        <title></title>-->
-
 <!--        <style>-->
 <!--            * {-->
 <!--                margin:0;-->
@@ -66,7 +65,9 @@
 <!--                background-color: green;-->
 <!--                /*相对定位*/-->
 <!--                position: relative;-->
+<!--                /*上边让出20px*/-->
 <!--                top: 20px;-->
+<!--                /*下边让出20px*/-->
 <!--                left: 20px;-->
 
 <!--                /*基于相对定位后再进行偏移*/-->
@@ -76,7 +77,6 @@
 <!--            .box3 {-->
 <!--                background-color: blue;-->
 <!--            }-->
-
 <!--        </style>-->
 <!--    </head>-->
 <!--    <body>-->
@@ -86,47 +86,9 @@
 <!--    </body>-->
 <!--</html>-->
 
-<!--相对定位的应用场景-->
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--    <head>-->
-<!--        <meta charset="UTF-8">-->
-<!--        <title></title>-->
-
-<!--        <style>-->
-<!--            * {-->
-<!--                margin:0;-->
-<!--                padding:0;-->
-<!--            }-->
-
-<!--            input {-->
-<!--                width: 200px;-->
-<!--                height: 50px;-->
-<!--            }-->
-
-<!--            input:focus {-->
-<!--                outline: none;-->
-<!--                background-color: #eee;-->
-<!--            }-->
-
-<!--            img {-->
-<!--                height: 50px;-->
-<!--                position: relative;-->
-<!--                /*往上上不去了就排在后面*/-->
-<!--                top: 20px;-->
-<!--            }-->
-<!--        </style>-->
-<!--    </head>-->
-<!--    <body>-->
-<!--        <input type="text" name="call" placeholder="请输入图片中的验证码">-->
-<!--        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1591121887502&di=d1da827af532e0c0c8d5c9170aa9f191&imgtype=0&src=http%3A%2F%2Fimg2.imgtn.bdimg.com%2Fit%2Fu%3D1801881897%2C2508577962%26fm%3D214%26gp%3D0.jpg" alt="">-->
-<!--        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1591121887502&di=d1da827af532e0c0c8d5c9170aa9f191&imgtype=0&src=http%3A%2F%2Fimg2.imgtn.bdimg.com%2Fit%2Fu%3D1801881897%2C2508577962%26fm%3D214%26gp%3D0.jpg" alt="">-->
-<!--    </body>-->
-<!--</html>-->
 
 
-
-<!--绝对定位-->
+<!--绝对定位 - 父标签没有定位，那就相对于body标签做绝对定位-->
 <!--<!DOCTYPE html>-->
 <!--<html lang="en">-->
 <!--    <head>-->
@@ -161,6 +123,8 @@
 <!--    </body>-->
 <!--</html>-->
 
+
+
 <!--默认情况下所有的绝对定位的元素，无论有无祖先元素，都会以body作为参考点-->
 <!--<!DOCTYPE html>-->
 <!--<html lang="en">-->
@@ -168,7 +132,6 @@
 <!--        <meta charset="UTF-8">-->
 <!--        <title></title>-->
 <!--        <style>-->
-
 <!--            * {-->
 <!--                margin: 0;-->
 <!--                padding: 0;-->
@@ -205,7 +168,7 @@
 <!--    </body>-->
 <!--</html>-->
 
-<!--验证2的说法-->
+<!--验证2.2.2的说法 - 祖先必须是定位流，此处的定位流指的是绝对定位、相对定位、固定定位(定位流中只有静态定位不行)-->
 <!--<!DOCTYPE html>-->
 <!--<html lang="en">-->
 <!--    <head>-->
@@ -221,6 +184,7 @@
 <!--                width: 300px;-->
 <!--                height: 300px;-->
 <!--                background-color: red;-->
+<!--                /*由一个非定位的标签变成一个定位的标签，不写top、right等参数代表位置不变动。仅仅只是变换了流*/-->
 <!--                position: absolute;-->
 <!--                /*position: relative;*/-->
 <!--                /*position: fixed;*/-->
@@ -258,7 +222,76 @@
 <!--    </body>-->
 <!--</html>-->
 
-<!--绝对定位水平居中-->
+<!--绝对定位的元素不区分块级元素/行内元素/行内块级元素-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--    <head>-->
+<!--        <meta charset="UTF-8">-->
+<!--        <title></title>-->
+<!--        <style>-->
+<!--            * {-->
+<!--                margin: 0;-->
+<!--                padding: 0;-->
+<!--            }-->
+
+<!--            .box1 {-->
+<!--                width: 100px;-->
+<!--                height: 100px;-->
+<!--                background-color: red;-->
+
+<!--                position: absolute;-->
+<!--            }-->
+<!--        </style>-->
+<!--    </head>-->
+<!--    <body>-->
+<!--        <span class="box1"></span>-->
+<!--    </body>-->
+<!--</html>-->
+
+<!--绝对定位相对于body定位是以首屏为准-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--    <head>-->
+<!--        <meta charset="UTF-8">-->
+<!--        <title></title>-->
+<!--        <style>-->
+<!--            * {-->
+<!--                margin: 0;-->
+<!--                padding: 0;-->
+<!--            }-->
+
+<!--            .box1 {-->
+<!--                width: 100px;-->
+<!--                height: 100px;-->
+<!--                background-color: red;-->
+
+<!--                position: absolute;-->
+<!--                right: 0;-->
+<!--                bottom: 0;-->
+
+<!--            }-->
+
+<!--            .box2 {-->
+<!--                width: 2000px;-->
+<!--                height: 100px;-->
+<!--                background-color: green;-->
+<!--            }-->
+
+<!--            .box3 {-->
+<!--                width: 100px;-->
+<!--                height: 2000px;-->
+<!--                background-color: blue;-->
+<!--            }-->
+<!--        </style>-->
+<!--    </head>-->
+<!--    <body>-->
+<!--        <div class="box1"></div>-->
+<!--        <div class="box2"></div>-->
+<!--        <div class="box3"></div>-->
+<!--    </body>-->
+<!--</html>-->
+
+<!--一个绝对定位的元素会忽略祖先元素的padding-->
 <!--<!DOCTYPE html>-->
 <!--<html lang="en">-->
 <!--    <head>-->
@@ -272,12 +305,50 @@
 <!--            }-->
 
 <!--            .box1 {-->
+<!--                width: 100px;-->
+<!--                height: 100px;-->
+<!--                background-color: red;-->
+
+<!--                padding: 20px;-->
+
+<!--            }-->
+<!--            .box2 {-->
+<!--                width: 50px;-->
+<!--                height: 50px;-->
+<!--                background-color: yellow;-->
+<!--                position: absolute;-->
+<!--                left: 0;-->
+<!--                top: 0;-->
+<!--            }-->
+<!--        </style>-->
+<!--    </head>-->
+<!--    <body>-->
+<!--        <div class="box1">-->
+<!--            <div class="box2"></div>-->
+<!--        </div>-->
+<!--    </body>-->
+<!--</html>-->
+
+<!--绝对定位水平居中-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--    <head>-->
+<!--        <meta charset="UTF-8">-->
+<!--        <title></title>-->
+<!--        <style>-->
+<!--            * {-->
+<!--                margin: 0;-->
+<!--                padding: 0;-->
+<!--            }-->
+
+<!--            .box1 {-->
 <!--                width: 200px;-->
 <!--                height: 50px;-->
 <!--                background-color: red;-->
 
 <!--                position: absolute;-->
 <!--                left: 50%;-->
+<!--                /*左边距缩小100px,减去元素宽度的一半（因为上面的左边让出50%,所以再往回退一半就正好居中了。）*/-->
 <!--                margin-left: -100px;-->
 <!--            }-->
 <!--        </style>-->
@@ -286,6 +357,46 @@
 <!--        <div class="box1"></div>-->
 <!--    </body>-->
 <!--</html>-->
+
+
+
+<!--固定定位 - -->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--    <head>-->
+<!--        <meta charset="UTF-8">-->
+<!--        <meta http-equiv="x-ua-compatible" content="IE=edge">-->
+<!--        <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--        <title>固定定位</title>-->
+<!--        <style>-->
+<!--            * {-->
+<!--                margin: 0;-->
+<!--            }-->
+
+<!--            .d1 {-->
+<!--                height: 3000px;-->
+<!--                background-color: #eeee;-->
+<!--            }-->
+
+<!--            .scrollTop {-->
+<!--                background-color: darkgrey;-->
+<!--                padding: 10px;-->
+<!--                text-align: center;-->
+<!--                /*固定定位*/-->
+<!--                position: fixed;-->
+<!--                /*左边让出10px*/-->
+<!--                right: 10px;-->
+<!--                /*底部让出20px*/-->
+<!--                bottom: 20px;-->
+<!--            }-->
+<!--        </style>-->
+<!--    </head>-->
+<!--    <body>-->
+<!--        <div class="d1">111</div>-->
+<!--        <div class="scrollTop">返回顶部</div>-->
+<!--    </body>-->
+<!--</html>-->
+
 
 <!--z-index属性：用于指定定位的元素的覆盖关系-->
 <!--<!DOCTYPE html>-->
@@ -300,43 +411,42 @@
 <!--                padding: 0;-->
 <!--            }-->
 
-<!--            /*div  {*/-->
-<!--                /*width: 100px;*/-->
-<!--                /*height: 100px;*/-->
-<!--            /*}*/-->
+<!--            div  {-->
+<!--                width: 100px;-->
+<!--                height: 100px;-->
+<!--            }-->
 
-<!--            /*.box1 {*/-->
-<!--                /*background-color: red;*/-->
-<!--                /*position: relative;*/-->
-<!--                /*top: 0px;*/-->
-<!--                /*left: 0px;*/-->
+<!--            .box1 {-->
+<!--                background-color: red;-->
+<!--                position: relative;-->
+<!--                top: 0px;-->
+<!--                left: 0px;-->
 
-<!--                /*!*z-index: 3;*!*/-->
-<!--            /*}*/-->
+<!--                /*z-index: 3;*/-->
+<!--            }-->
 
-<!--            /*.box2 {*/-->
-<!--                /*background-color: green;*/-->
-<!--                /*position: absolute;*/-->
-<!--                /*top: 50px;*/-->
-<!--                /*left: 50px;*/-->
+<!--            .box2 {-->
+<!--                background-color: green;-->
+<!--                position: absolute;-->
+<!--                top: 50px;-->
+<!--                left: 50px;-->
 
-<!--                /*!*z-index: 2;*!*/-->
-<!--            /*}*/-->
+<!--                /*z-index: 2;*/-->
+<!--            }-->
 
-<!--            /*.box3 {*/-->
-<!--                /*background-color: blue;*/-->
-<!--                /*position: fixed;*/-->
-<!--                /*left: 100px;*/-->
-<!--                /*top: 100px;*/-->
+<!--            .box3 {-->
+<!--                background-color: blue;-->
+<!--                position: fixed;-->
+<!--                left: 100px;-->
+<!--                top: 100px;-->
 
-<!--                /*!*z-index: 1;*!*/-->
-<!--            /*}*/-->
+<!--                /*z-index: 1;*/-->
+<!--            }-->
 
 <!--            .father1 {-->
 <!--                width: 200px;-->
 <!--                height: 200px;-->
 <!--                background-color: red;-->
-
 
 <!--                position: relative;-->
 <!--                z-index: 5;-->
@@ -349,6 +459,8 @@
 
 <!--                position: relative;-->
 <!--                z-index: 4;-->
+<!--                /*如果father2的z-index为6，比father1的z-index值大，那么son2就会覆盖son1*/-->
+<!--                /*z-index: 6;*/-->
 <!--            }-->
 
 <!--            .son1 {-->
@@ -368,308 +480,28 @@
 <!--                background-color: yellow;-->
 <!--                position: absolute;-->
 <!--                left: 250px;-->
-<!--                /*top: 250px;*/-->
-
-<!--                z-index: 2;-->
+<!--                /*top: 200px;*/-->
 <!--                top: 50px;-->
+<!--                /*son2的z-index的值大也没有用，因为son1的父级的z-index比son2父级的z-index值大*/-->
+<!--                z-index: 2;-->
+
 <!--            }-->
 <!--        </style>-->
 <!--    </head>-->
 <!--    <body>-->
-<!--    &lt;!&ndash;<div class="box1"></div>&ndash;&gt;-->
-<!--    &lt;!&ndash;<div class="box2"></div>&ndash;&gt;-->
-<!--    &lt;!&ndash;<div class="box3"></div>&ndash;&gt;-->
-<!--    <div class="father1">-->
-<!--        <div class="son1"></div>-->
-<!--    </div>-->
-<!--    <div class="father2">-->
-<!--        <div class="son2"></div>-->
-<!--    </div>-->
+<!--        <div class="box1"></div>-->
+<!--        <div class="box2"></div>-->
+<!--        <div class="box3"></div>-->
+<!--&lt;!&ndash;        <div class="father1">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="son1"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="father2">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="son2"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
 <!--    </body>-->
 <!--</html>-->
 
-<!--练习：博客页面-->
-<!doctype html>
-<html lang="zh">
-    <head>
-        <meta charset="UTF-8">
-        <title>Document</title>
-        <style>
-            * {
-                margin: 0;
-                padding: 0;
-            }
-
-            .clearfix {
-                *zoom:1
-            }
-
-            .clearfix:before,.clearfix:after {
-                content: " ";
-                display: table
-            }
-
-            .clearfix:after {
-                clear: both
-            }
-
-            .left {
-                /*display: none;*/
-                width: 20%;
-                height: 100%;
-                background-color: rgb(77,77,77);
-                position: fixed;
-                top: 0;
-                left: 0;
-                color: darkgrey;
-            }
-            .left .header-img {
-                width: 120px;
-                height: 120px;
-                border: 5px solid white;
-                border-radius: 50%;
-
-                overflow: hidden;
-                margin: 20px auto;
-            }
-            .left .header-img img {
-                max-width: 120px;
-            }
-
-            .left .blog-title {
-                text-align: center;
-            }
-            .left .blog-info {
-                font-size: 12px;
-                text-align: center;
-                margin-top: 10px;
-            }
-
-            ul li {
-                list-style: none;
-            }
-
-            a {
-                text-decoration: none;
-            }
-
-            .blog-link,.blog-tag {
-                margin-top: 20px;
-                text-align: center;
-
-                /*width: 100px;*/
-                /*border: 5px solid #000;*/
-                /*margin: 0 auto;*/
-            }
-
-            .blog-link a,.blog-tag a{
-                color: darkgrey;
-            }
-
-            .blog-link a:hover,.blog-tag a:hover{
-                color: white;
-                font-size: 14px;
-            }
-
-            .right {
-                width: 80%;
-                height: 1000px;
-                background-color: #eee;
-                float: right;
-
-            }
-            .article-list {
-                padding-left: 50px;
-                width: 80%;
-            }
-            .article-list .article {
-                background-color: white;
-                margin-top: 20px;
-
-                box-shadow: 3px 3px 3px rgba(0,0,0,0.2);
-            }
-            .article-list .article *{
-                padding: 10px;
-            }
-
-            .article-list .article .article-header p {
-                float: left;
-                font-size: 24px;
-                font-weight: bold;
-
-                border-left: 5px solid red;
-            }
-            .article-list .article .article-header span {
-                float: right;
-                margin: 10px 0;
-            }
-
-            .article-list .article .article-info {
-                border-bottom: 1px solid darkgrey;
-            }
-
-        </style>
-    </head>
-    <body>
-        <div class="left">
-            <div class="header-img">
-                <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1591209329597&di=5a887b0a5386c140a677738b79336cb1&imgtype=0&src=http%3A%2F%2Fimg2.imgtn.bdimg.com%2Fit%2Fu%3D1801881897%2C2508577962%26fm%3D214%26gp%3D0.jpg" alt="">
-            </div>
-            <div class="blog-title">
-                <p>我的博客</p>
-            </div>
-            <div class="blog-info">
-                <p>这个人很懒，什么都没留下</p>
-            </div>
-            <div class="blog-link">
-                <ul>
-                    <li><a href="#">关于我</a></li>
-                    <li><a href="#">微博</a></li>
-                    <li><a href="#">公众号</a></li>
-                </ul>
-            </div>
-
-            <div class="blog-tag">
-                <ul>
-                    <li><a href="#">JavaScript</a></li>
-                    <li><a href="#">Python</a></li>
-                    <li><a href="#">Golang</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="right">
-        <div class="article-list">
-            <div class="article">
-                <div class="article-header clearfix">
-                    <p>海燕</p>
-                    <span>2018-07-03</span>
-                </div>
-                <div class="article-info">
-                    <p>在苍茫的大海上，狂风卷积着乌云。在乌云和大海之间，海燕像黑色的闪电，在高傲的飞翔</p>
-
-                </div>
-                <div class="article-tag">
-                    <span># HTML</span>
-                    <span># CSS</span>
-                </div>
-            </div>
-            <div class="article">
-                <div class="article-header clearfix">
-                    <p>海燕</p>
-                    <span>2018-07-03</span>
-                </div>
-                <div class="article-info">
-                    <p>在苍茫的大海上，狂风卷积着乌云。在乌云和大海之间，海燕像黑色的闪电，在高傲的飞翔</p>
-
-                </div>
-                <div class="article-tag">
-                    <span># HTML</span>
-                    <span># CSS</span>
-                </div>
-            </div>
-            <div class="article">
-                <div class="article-header clearfix">
-                    <p>海燕</p>
-                    <span>2018-07-03</span>
-                </div>
-                <div class="article-info">
-                    <p>在苍茫的大海上，狂风卷积着乌云。在乌云和大海之间，海燕像黑色的闪电，在高傲的飞翔</p>
-
-                </div>
-                <div class="article-tag">
-                    <span># HTML</span>
-                    <span># CSS</span>
-                </div>
-            </div>
-            <div class="article">
-                <div class="article-header clearfix">
-                    <p>海燕</p>
-                    <span>2018-07-03</span>
-                </div>
-                <div class="article-info">
-                    <p>在苍茫的大海上，狂风卷积着乌云。在乌云和大海之间，海燕像黑色的闪电，在高傲的飞翔</p>
-
-                </div>
-                <div class="article-tag">
-                    <span># HTML</span>
-                    <span># CSS</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    </body>
-</html>
 
 
-<!--顶部导航菜单示例-->
-<!--<!DOCTYPE HTML>-->
-<!--<html>-->
-<!--<head>-->
-<!--  <meta charset="UTF-8">-->
-<!--  <meta http-equiv="x-ua-compatible" content="IE=edge">-->
-<!--  <meta name="viewport" content="width=device-width, initial-scale=1">-->
-<!--  <title>li标签的float示例</title>-->
-<!--  <style>-->
-<!--    /*清除浏览器默认外边距和内填充*/-->
-<!--    * {-->
-<!--      margin: 0;-->
-<!--      padding: 0;-->
-<!--    }-->
-<!--    a {-->
-<!--      text-decoration: none; /*去除a标签默认的下划线*/-->
-<!--    }-->
 
-<!--    .nav {-->
-<!--      background-color: black;-->
-<!--      height: 40px;-->
-<!--      width: 100%;-->
-<!--      position: fixed;-->
-<!--      top: 0;-->
-<!--    }-->
-
-<!--    ul {-->
-<!--      list-style-type: none; /*删除列表默认的圆点样式*/-->
-<!--      margin: 0; /*删除列表默认的外边距*/-->
-<!--      padding: 0; /*删除列表默认的内填充*/-->
-<!--    }-->
-<!--    /*li元素向左浮动*/-->
-<!--    li {-->
-<!--      float: left;-->
-<!--    }-->
-
-<!--    li > a {-->
-<!--      display: block; /*让链接显示为块级标签*/-->
-<!--      padding: 0 15px; /*设置左右各15像素的填充*/-->
-<!--      color: #b0b0b0; /*设置字体颜色*/-->
-<!--      line-height: 40px; /*设置行高*/-->
-<!--    }-->
-<!--    /*鼠标移上去颜色变白*/-->
-<!--    li > a:hover {-->
-<!--      color: #fff;-->
-<!--    }-->
-
-<!--    /*清除浮动 解决父级塌陷问题*/-->
-<!--    .clearfix:after {-->
-<!--      content: "";-->
-<!--      display: block;-->
-<!--      clear: both;-->
-<!--    }-->
-<!--  </style>-->
-<!--</head>-->
-<!--<body>-->
-<!--&lt;!&ndash; 顶部导航栏 开始 &ndash;&gt;-->
-<!--<div class="nav">-->
-<!--  <ul class="clearfix">-->
-<!--    <li><a href="">玉米商城</a></li>-->
-<!--    <li><a href="">MIUI</a></li>-->
-<!--    <li><a href="">ioT</a></li>-->
-<!--    <li><a href="">云服务</a></li>-->
-<!--    <li><a href="">水滴</a></li>-->
-<!--    <li><a href="">金融</a></li>-->
-<!--    <li><a href="">优品</a></li>-->
-<!--  </ul>-->
-<!--</div>-->
-<!--&lt;!&ndash; 顶部导航栏 结束 &ndash;&gt;-->
-<!--</body>-->
-<!--</html>-->
 

@@ -92,21 +92,8 @@ day52 2018-05-29
 					
 		9. 溢出
 			overflow
-					- none
+					- none     溢出的部分不处理
 					- hidden   溢出的部分隐藏起来
 					- scroll   用滚动条
 					- auto     根据内容自行调整
 				
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-	

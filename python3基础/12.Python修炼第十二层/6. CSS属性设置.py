@@ -204,6 +204,7 @@ ackground-position	        设置背景图片位置，前端的坐标系"：    
                 /*background-repeat: no-repeat;*/
                 /*background-position: right bottom;*/
                 /*background-size: 100px 100px;*/
+                # 下面是简写方式，同时设置背景的几个属性就直接使用 background 属性
                 background: red url("https://images2018.cnblogs.com/blog/1036857/201805/1036857-20180510215639652-367382094.jpg") no-repeat right bottom/100px 100px;
             }
         </style>
@@ -213,18 +214,57 @@ ackground-position	        设置背景图片位置，前端的坐标系"：    
     </body>
 </html>
 
+
+# 鼠标滚动背景不动
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>滚动背景图示例</title>
+    <style>
+        * {
+            margin: 0;
+        }
+        .box {
+            width: 100%;
+            height: 500px;
+            background: url("https://www.luffycity.com/static/img/width-bank.1c9d1b0.png") no-repeat center center;
+            background-attachment: fixed;
+        }
+        .d1 {
+            height: 500px;
+            background-color: tomato;
+        }
+        .d2 {
+            height: 500px;
+            background-color: steelblue;
+        }
+        .d3 {
+            height: 500px;
+            background-color: mediumorchid;
+        }
+    </style>
+</head>
+<body>
+    <div class="d1"></div>
+    <div class="box"></div>
+    <div class="d2"></div>
+    <div class="d3"></div>
+</body>
+</html>
+
+
 # 2、背景图片和插入图片的区别
 #1、
-背景图片仅仅只是一个装饰，不会占用位置，
-插入图片会占用位置
+背景图片仅仅只是一个装饰，不会占用位置，插入图片会占用位置。
 
 #2、
-背景图片有定位属性，可以很方便地控制图片的位置，
-而插入图片则不可以
+背景图片有定位属性，可以很方便地控制图片的位置，而插入图片则不可以。
 
 #3、
-插入图片语义比背景图片的语义要强，所以在企业开发中如果你的图片
-想被搜索引擎收录，那么推荐使用插入图片
+插入图片语义比背景图片的语义要强，所以在企业开发中如果你的图片想被搜索引擎收录，那么推荐使用插入图片。
 
 
 # 练习
@@ -429,6 +469,7 @@ solid	# 实线边框。
 
 # border-radius
 用这个属性能实现圆角边框的效果。将border-radius设置为长或高的一半即可得到一个圆形。
+border-radius: 300px;
 
 # display属性
 用于控制HTML元素的显示效果。

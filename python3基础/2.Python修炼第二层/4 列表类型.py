@@ -10,13 +10,13 @@ Python有6个序列的内置类型，但最常见的是列表和元组。序列�
 \列表方法
 list.append # 追加
 list.insert # 插入
-list.extend # 追加列表
+list.extend # 追加列表、合并
 list.count  # 统计个数
 list.pop    # 从末尾删除，返回值。
 list.remove # 按值删除，无返回值。
 list.reverse # 列表值反转
 list.index  # 查找索引
-list.sort   # 排序
+list.sort   # 排序、打乱顺序
 list.clear  # 清除列表
 
 
@@ -41,23 +41,54 @@ print(my_girl_friends[0:2])
 print(my_girl_friends[0:4:2])
 a=[1,2,3,4,5,6]
 print(a[0:-1:2]) # 输出 [1, 3, 5]，索引位置（121212，把1的都取出来。）
+print(my_girl_friends[10:]) # []  超出索引范围会取到一个空列表
 
 # 成员运算 in 和 not in: 返回True和False
 print('alex' in my_girl_friends)
 print(5 in my_girl_friends)
 
-# 追加: append,默认追加到最后
+# 追加,append: 默认追加到最后
 my_girl_friends.append('6号')
 print(my_girl_friends)
 
-# 扩展，extend: 以列表的形式一次添加多个值到原始列表的最后面。
+# 扩展\合并 extend: 以列表的形式一次添加多个值到原始列表的最后面。注意：使用extend方法会直接修改list数据，extend方法的返回值为None，所以直接打印my_girl_friends列表.
 my_girl_friends.extend([1,2,3,4])
 print(my_girl_friends)
 '''
 ['alex', 'wepeiqi', 'yuanhao', 4, 5,'6号', 1, 2, 3, 4]
 '''
+方法1: 直接使用"+"号合并列表
+aList =[1,2,3]
+bList =['www', 'xxx.com']
+cList =aList + bList
+dList =bList + aList
+print(cList)
+print(dList)
+输出为：
+[1, 2, 3, 'www', 'xxx.com']
+['www', 'xxx.com', 1, 2, 3]
 
-# 插入，insert: 指定索引位置插入
+方法2: 使用切片
+aList =[1,2,3]
+bList =['www', 'xxx.com']
+aList[len(aList):len(aList)] =bList
+print(aList)
+输出：
+[1, 2, 3, 'www', 'xxx.com']
+注：len（aList）代表要将bList插入aList中的位置
+
+方法3: 使用追加
+a.append(b)将b看成list一个元素和a合并成一个新的list，它和前面的方法的输出结果不同
+aList =[1,2,3]
+bList =['www', 'xxx.com']
+aList.append(bList)
+print(aList)
+输出：
+[1, 2, 3, ['www', 'xxx.com']]
+它直接把bList当成了一个元素整个放入了aList
+
+
+# 插入,insert: 指定索引位置插入
 my_girl_friends.insert(0,'sb_alex')
 my_girl_friends.insert(2,'yh')
 '''
@@ -65,7 +96,7 @@ my_girl_friends.insert(2,'yh')
 ['sb_alex', 'alex', 'yh', 'wepeiqi', 'yuanhao', 4, 5]
 '''
 
-# 删除: del，通用方法，和列表无关。可以删列表也可以删字符串。按照索引删除。
+# 删除,del: 通用方法，和列表无关。可以删列表也可以删字符串。按照索引删除。
 del my_girl_friends[2]
 print(my_girl_friends)
 del my_girl_friends[0:2]
@@ -120,6 +151,13 @@ print(l)
 [-1, 2, 3, 4]
 [4, 3, 2, -1]
 '''
+
+# 打乱一个有序列表
+list4 = [l1,l2,l3,l4,l5]
+import random
+random.shuffle(list4)
+print(list4)  # 打乱的是原始列表
+
 # 有如下列表，请按照年龄排序（涉及到匿名函数）
 l=[
     {'name':'alex','age':84},

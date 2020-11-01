@@ -192,7 +192,7 @@ HTML文档中的每个元素都被比喻成矩形盒子， 盒子模型通过四
     <body>
         <!--块级-->
         <div>我是div</div>
-        <p>我是段落 </p>
+        <p>我是段落</p>
         <h1>我是标题</h1>
         <hr>
 
@@ -220,7 +220,7 @@ display:"none"与visibility:hidden的区别：           visibility:hidden: 可�
 
 
 \5、div与span
-布局都是用块级元素，而行内元素是控制内容显示的。
+页面布局都是用块级元素，而行内元素是控制内容显示的。
 1、div标签
    一般用于配合css完成网页的基本布局
 
@@ -326,16 +326,16 @@ display:"none"与visibility:hidden的区别：           visibility:hidden: 可�
 
 \6、盒子模型各部分详解
 # 1、border边框
-同时设置四条边的边框	  border:边框的宽度 边框的样式 边框的颜色
+同时设置四条边的边框	  border: 边框的宽度 边框的样式 边框的颜色
 
-分别设置四条边的边框	  border-left:边框的宽度 边框的样式 边框的颜色
-                       border-top:边框的宽度 边框的样式 边框的颜色
-                       border-right:边框的宽度 边框的样式 边框的颜色
-                       border-bottom:边框的宽度 边框的样式 边框的颜色
+分别设置四条边的边框	  border-left: 边框的宽度 边框的样式 边框的颜色
+                       border-top: 边框的宽度 边框的样式 边框的颜色
+                       border-right: 边框的宽度 边框的样式 边框的颜色
+                       border-bottom: 边框的宽度 边框的样式 边框的颜色
 
 分别指定宽度、格式、颜色   1、连写：（分别设置四条边的边框）
                         border-width: 上 右 下 左
-                        border-style:上 右 下 左
+                        border-style: 上 右 下 左
                         border-color：上 右 下 左
                         2 、注意点：
                             1、这三个属性时按照顺时针，即上、右、下、左来赋值的
@@ -445,12 +445,12 @@ border-radius	        /* 单独设置一个角：数值越大，弧度越大*/
             使用下面的方法制作就可以
             */
             .box6 {
-                    width: 0px;
-                    height: 0px;
-                    border-width:25px;
-                    border-style: solid;
-                    border-color: black white skyblue white;
-                    border-bottom: none;
+                width: 0px;
+                height: 0px;
+                border-width:25px;
+                border-style: solid;
+                border-color: black white skyblue white;
+                border-bottom: none;
                 }
         </style>
     </head>
@@ -482,7 +482,7 @@ border-radius	        /* 单独设置一个角：数值越大，弧度越大*/
                 margin: 0 auto;
                 height: 100px;
                 width: 920px;
-                border-radius: 5px 5px 0px 0px;
+                border-radius: 20px 20px 0px 0px;
                 background-color: blue;
             }
         </style>
@@ -493,7 +493,7 @@ border-radius	        /* 单独设置一个角：数值越大，弧度越大*/
 </html>
 
 
-# border-radius练习
+# border-radius练习 - （圆形头像）
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -514,7 +514,7 @@ border-radius	        /* 单独设置一个角：数值越大，弧度越大*/
 
 
 
-# 2、padding内边距：边框与内容的距离就是内边距
+# 2、padding内边距：边框与内容之间的距离就是内边距
 非连写          padding-top：20px；
                padding-right：20px；
                padding-bottom：20px；
@@ -563,7 +563,6 @@ border-radius	        /* 单独设置一个角：数值越大，弧度越大*/
         </style>
     </head>
     <body>
-
         <div class="box1">
             我是文字我是文字我是文字我是文字我是文字我是文字我是文字
         </div>
@@ -587,7 +586,6 @@ border-radius	        /* 单独设置一个角：数值越大，弧度越大*/
         <div class="box5">
             我是文字我是文字我是文字我是文字我是文字我是文字我是文字
         </div>
-
     </body>
 </html>
 
@@ -947,7 +945,7 @@ margin: 0 auto;
 </html>
 
 
-# 6、防止文字溢出word-break: break-all;
+# 6、防止文字溢出 word-break: break-all;
 <!DOCTYPE html>
 <html>
     <head>
