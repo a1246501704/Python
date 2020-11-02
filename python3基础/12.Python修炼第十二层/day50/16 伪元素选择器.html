@@ -1,26 +1,125 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--    <head>-->
+<!--        <meta charset="UTF-8">-->
+<!--        <title>Title</title>-->
+<!--        <style>-->
+<!--            p:first-letter {-->
+<!--                font-size: 200px;-->
+<!--            }-->
+<!--            p::before {-->
+<!--                content: "alex is BigSB";-->
+<!--                color: green;-->
+<!--            }-->
+<!--            a:after {-->
+<!--                content: "?";-->
+<!--                color: red;-->
+<!--            }-->
+<!--        </style>-->
+<!--    </head>-->
+<!--    <body>-->
+<!--        <p>英雄不问出处，流氓不论岁数</p>-->
+<!--        <a href="#" class="help">老男孩是干什么的</a>-->
+<!--        <a href="#" class="help">老男孩是干什么的</a>-->
+<!--        <a href="#" class="help">老男孩是干什么的</a>-->
+<!--    </body>-->
+<!--</html>-->
+
+<!--nth-child( ) 与 nth-of-type( )的定义与用法-->
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <title>Title</title>
         <style>
-            p:first-letter {
-                font-size: 200px;
-            }
-            p::before {
-                content: "alex is BigSB";
-                color: green;
-            }
-            a:after {
-                content: "?";
-                color: red;
-            }
+            p:nth-child(2){color: red;}
+            h5:nth-of-type(2){color: blue;}
         </style>
     </head>
     <body>
-        <p>英雄不问出处，流氓不论岁数</p>
-        <a href="#" class="help">老男孩是干什么的</a>
-        <a href="#" class="help">老男孩是干什么的</a>
-        <a href="#" class="help">老男孩是干什么的</a>
+        <div>
+            <p>星期一</p>
+            <p>星期二</p>
+            <p>星期三</p>
+            <p>星期四</p>
+            <p>星期五</p>
+        </div>
+        <div>
+            <h5>段落一</h5>
+            <h5>段落二</h5>
+            <h5>段落三</h5>
+            <h5>段落四</h5>
+            <h5>段落五</h5>
+        </div>
     </body>
 </html>
+
+<!--现在我们对HTML代码做点改动，让他们出现一些不同，CSS样式不变。我们将第一个p元素和第一个h5元素改为h4，代码如下：-->
+<!--看看，现在是不是发现nth-of-type(2)结果变了，段落3变色了。h5:nth-of-type(2)要找的是第二个h5类型的元素，也就是段落3。-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            p:nth-child(2){color: red;}
+            h5:nth-of-type(2){color: blue;}
+        </style>
+    </head>
+    <body>
+        <div>
+            <p>星期一</p>
+            <p>星期二</p>
+            <p>星期三</p>
+            <p>星期四</p>
+            <p>星期五</p>
+        </div>
+        <div>
+            <h4>段落一</h4>
+            <h5>段落二</h5>
+            <h5>段落三</h5>
+            <h5>段落四</h5>
+            <h5>段落五</h5>
+        </div>
+    </body>
+</html>
+
+<!--继续改动HTML代码。我们恢复第一个p元素和第一个h5元素，将第二个p元素和第二个h5元素改为h4，样式仍保持不变，结果会怎样呢？-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            p:nth-child(2){color: red;}
+            h5:nth-of-type(2){color: blue;}
+        </style>
+    </head>
+    <body>
+        <div>
+            <p>星期一</p>
+            <h4>星期二</h4>
+            <p>星期三</p>
+            <p>星期四</p>
+            <p>星期五</p>
+        </div>
+        <div>
+            <h5>段落一</h5>
+            <h4>段落二</h4>
+            <h5>段落三</h5>
+            <h5>段落四</h5>
+            <h5>段落五</h5>
+        </div>
+    </body>
+</html>
+
+<!--结果可以看到nth-child没有效果，nth-of-type高亮的是段落3。-->
+<!--为什么会这样？-->
+<!--nth-child 是查找一堆兄弟元素里的第二个元素，不管那元素是什么，只要它排行第二就行。这里前一个div找到的是 星期二-->
+<!--后一个div找到的是 段落二。找到之后，再和前面的选择符进行匹配，如果匹配对了，那就应用样式。前面的选择符是p，也就是要求元素是p类型，-->
+<!--但这里都是h4，不匹配，两个元素都不会应用这个样式。-->
+
+<!--nth-of-type 是在一堆兄弟元素里找到相同HTML标记类型元素中排行第二的元素。在第一个div中 星期三是p类型里排行第二的元素；在后一个div中-->
+<!--段落三 是h5类型里排行第二的元素。找到之后，再和前面的选择符进行匹配，如果匹配对了，那就应用样式。前面的选择符是h5, 那么只有后一个div中-->
+<!--段落三 元素应用了样式，前一个div的 星期二则不会。-->
+
