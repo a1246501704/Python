@@ -147,43 +147,47 @@ js是动态语言：变量里面能够存储数字、字符串等。变量会自
 JavaScript不区分整型和浮点型，就只有一种数字类型，即number
 var x = 3;
 var y = 3.1;
-var z = 13e5;
+var z = 13e5;  # 13 * 10的5次方
 var m = 13e-5;
-var n = NaN; // typeof n结果"number"
+var n = NaN;  # NaN也是数值类型 typeof n;是Number类型，其结果表示不是一个数字（Not a Number）
+# 常用方法： pasreInt方法是将字符串转换为整形数字
+parseInt("123")  # 返回123
+parseInt("ABC")  # 返回NaN,NaN属性是代表非数字值的特殊值。该属性用于指示某个值不是数字。
+parseFloat("123.456") # 返回123.456
 
 # 四舍五入
 var num=1.3456
-num.toFixed(2) // "1.35"
+num.toFixed(2) # "1.35"
 
 # 字符串类型转成数字
-    #字符串转numbber
-    parseInt("123")  #  返回123
+    # 字符串转numbber
+    parseInt("123")  # 返回123
 
-    #NaN属性是代表非数字值的特殊值。该属性用于指示某个值不是数字。
-    parseInt("ABC")  #  返回NaN
+    # NaN属性是代表非数字值的特殊值。该属性用于指示某个值不是数字。
+    parseInt("ABC")  # 返回NaN
 
-    #带有自动净化的功能；只保留字符串最开头的数字，后面的中文自动消失。例如：
+    # 带有自动净化的功能；只保留字符串最开头的数字，后面的中文自动消失。例如：
     console.log(parseInt("18林海峰")); # 18
 
-    #只去末尾的中文，不会去开头的
-    console.log(parseInt("林海峰18")); #  NaN
+    # 只去末尾的中文，不会去开头的
+    console.log(parseInt("林海峰18")); # NaN
 
     # 字符串中的数字转浮点
-    parseInt("123.456")  #  返回123
-    parseFloat("123.456")#  返回123.456 
+    parseInt("123.456")  # 返回123
+    parseFloat("123.456")# 返回123.456 
 
-    #自动带有截断小数的功能：取整，不四舍五入
+    # 自动带有截断小数的功能：取整，不四舍五入
     var a = parseInt("1.3") + parseInt("2.6");     # a=3
     var a = parseFloat("1.3") + parseFloat("2.6"); # a=3.9
 
 # 数字类型转成字符串
-    #数字转成字符串类型
+    # 数字转成字符串类型
     var x=10;
     var y='20';
     var z=x+y; # z='1020'
     typeof z;  # String
 
-    #数字转成字符串类型
+    # 数字转成字符串类型
     var m=123;
     var n=String(m)
 
@@ -244,14 +248,16 @@ ES6中引入了模板字符串。模板字符串（template string）是增强�
     var age = 18;
     var msg = `my name is ${name}, my age is ${age}`;
     注意：如果模板字符串中需要使用反引号，则在其前面要用反斜杠转义。
+    pycharm启用ES6语法支持: 方法1、设置 —— Languages —— Javascript
+                          方法2、在js文件顶部添加  /* jshint esversion: 6 */
 
 # 3、布尔值（Boolean）
 区别于Python，true和false都是小写。
 var a = true;
 var b = false;
-任何数据类型都可以转换为boolean类型：空字符串、0、null、undefined、NaN都是false。
+任何数据类型都可以转换为boolean类型：空字符串、0、null、undefined、NaN 都是false。
 
-#布尔值为假的数据类型
+# 布尔值为假的数据类型
 Boolean('')
 Boolean(0)
 Boolean(null)
