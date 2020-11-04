@@ -88,16 +88,14 @@
 				X-UA-Compatible:IE=10
 						
 				服务端响应体：将网站源码做为“字符串”返回给用户到浏览器（看到页面效果，由浏览器解析并渲染）
-				
-	
+			
+			问题1：随便打什么url都返回同样的内容，看其他网站点不同的功能跳转不同的url
+				  修改程序：寻找请求头中的\r\n\r\n 后面的就是请求体
 
 
-		
-		
+		总结:
 		1. Http，无状态，短连接
-		2. 
-			浏览器（socket客户端）
-			网站（socket服务端）
+		2. 浏览器（socket客户端）网站（socket服务端）
 			
 		3. 自己写网站
 			a. socket服务端
@@ -105,118 +103,20 @@
 				路由系统：
 					URL -> 函数
 			c. 字符串返回给用户
-				模板引擎渲染：
+				模板引擎渲染:
 					HTML充当模板（特殊字符）
 					自己创造任意数据
 				字符串
 				
-		4. Web框架：
-			框架种类：
-				- a,b,c					 --> Tornado
-				- [第三方a],b,c          --> wsgiref -> Django 
+		4. Web框架:
+			框架种类:
+				- a,b,c				   --> Tornado
+				- [第三方a],b,c         --> wsgiref模块 -> Django 
 				- [第三方a],b,[第三方c]  --> flask,
 				
-			分类：
-				- Django框架（Web。。。。。。）
+			分类:
+				- Django框架（Web。。。。。。） # Python的WEB框架有Django、Tornado、Flask 等多种，Django相较与其他WEB框架其优势为：大而全，框架本身集成了ORM、模型绑定、模板引擎、缓存、Session等诸多功能。
 				- 其他
-		
-
-		
-	2. Django框架
-		pip3 install django
-		
-		命令：
-			# 创建Django程序
-			django-admin startproject mysite
-			# 进入程序目录
-			cd mysite
-			# 启动socket服务端，等待用户发送请求
-			python manage.py runserver 127.0.0.1:8080
-	
-		pycharm：
-			...
-			
-		Django程序目录：
-			mysite
-				mysite
-					- settings.py  # Django配置文件
-					- url.py       # 路由系统：url->函数
-					- wsgi.py      # 用于定义Django用socket, wsgiref,uwsgi
-			
-				# 对当前Django程序所有操作可以基于 python manage.py runserver
-				manage.py 
-	
-	
-		1. 创建project
-		2. 配置：
-				- 模板路径
-					template目录
-					
-					TEMPLATES = [
-						{
-							'BACKEND': 'django.template.backends.django.DjangoTemplates',
-							'DIRS': [os.path.join(BASE_DIR, 'template')],
-							'APP_DIRS': True,
-							'OPTIONS': {
-								'context_processors': [
-									'django.template.context_processors.debug',
-									'django.template.context_processors.request',
-									'django.contrib.auth.context_processors.auth',
-									'django.contrib.messages.context_processors.messages',
-								],
-							},
-						},
-					]
-				- 静态文件路径
-					static目录
-					
-					STATIC_URL = '/static/'
-					STATICFILES_DIRS = (
-						os.path.join(BASE_DIR,'static'),
-					)
-
-		3. 额外配置
-			MIDDLEWARE = [
-				'django.middleware.security.SecurityMiddleware',
-				'django.contrib.sessions.middleware.SessionMiddleware',
-				'django.middleware.common.CommonMiddleware',
-				#'django.middleware.csrf.CsrfViewMiddleware',
-				'django.contrib.auth.middleware.AuthenticationMiddleware',
-				'django.contrib.messages.middleware.MessageMiddleware',
-				'django.middleware.clickjacking.XFrameOptionsMiddleware',
-			]
-				
-	
-	
-	        4. url 对应关系
-		GET请求  -> 只有request.GET有值
-		POST请求 -> request.GET 和 request.POST都可能有值
-
-			/login/  login
-			
-			def login(request):
-			    request.method
-			    request.POST -> 请求体
-			    request.GET  -> 请求头中的url中
-
-			    return HttpResponse(..)
-			    return render(request,'login.html',{...})
-			    return redirect('要跳转的网址')
-
-
-		5. 模版引擎中的特殊标记
-			login.html
-			    {{name}}
-
-			def login(request):
-				
-			    return render(request,'login.html',{'name': 'alex'})
-	
-
-		6. 作业
-			django + pymysql实现
-				- 用户登陆
-				- 查看用户列表
 	
 	
 	

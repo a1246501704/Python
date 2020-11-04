@@ -10,15 +10,18 @@
             <tr>
                 <th>ID</th>
                 <th>用户名</th>
-                <th>邮箱</th>
+                <th>性别</th>
+                <th>年龄</th>
             </tr>
         </thead>
         <tbody>
+            <h1>{{name}}</h1>
             {% for row in xxxxx %}
                 <tr>
                     <td>{{row.id}}</td>
-                    <td>{{row.username}}</td>
-                    <td>{{row.password}}</td>
+                    <td>{{row.name}}</td>
+                    <td>{{row.sex}}</td>
+                    <td>{{row.age}}</td>
                 </tr>
             {% endfor %}
         </tbody>

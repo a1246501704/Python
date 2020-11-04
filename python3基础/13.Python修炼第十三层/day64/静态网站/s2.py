@@ -11,11 +11,11 @@
 import socket
 def f1(request):
     """
-    处理用户请求，并返回相应的内容
+    接收用户提交的数据并处理用户请求，并返回相应的内容。
     :param request: 用户请求的所有信息
     :return:
     """
-    f = open('index.fsw','rb')
+    f = open('index.zhy','rb')
     data = f.read()
     f.close()
     return data
@@ -39,12 +39,13 @@ def run():
 
     while True:
         conn,addr = sock.accept() # hang住
+        print(addr)
         # 有人来连接了
         # 获取用户发送的数据
         data = conn.recv(8096)
-        data = str(data,encoding='utf-8')
-        headers,bodys = data.split('\r\n\r\n')
-        temp_list = headers.split('\r\n')
+        data = str(data,encoding='utf-8') # bytes('abcd',encoding='utf-8')
+        request_headers,request_bodys = data.split('\r\n\r\n')
+        temp_list = request_headers.split('\r\n')
         method,url,protocal = temp_list[0].split(' ')
         conn.send(b"HTTP/1.1 200 OK\r\n\r\n")
 
@@ -57,7 +58,7 @@ def run():
         if func_name:
             response = func_name(data)
         else:
-            response = b"404"
+            response = b"404 not found"
 
         conn.send(response)
         conn.close()

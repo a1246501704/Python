@@ -6,7 +6,7 @@ def f1(request):
     :param request: 用户请求的所有信息
     :return:
     """
-    f = open('index.fsw','rb')
+    f = open('index.zhy','rb')
     data = f.read()
     f.close()
     return data
@@ -17,42 +17,41 @@ def f2(request):
     f.close()
     import time
     ctime = time.time()
-    data = data.replace('@@sw@@',str(ctime))
+    data = data.replace('@@sw@@',str(ctime))  # 使数据变动，访问时刷新就变。html充当模版的角色，放点占位符替换即可。
     return bytes(data,encoding='utf-8')
 
 def f3(request):
     import pymysql
-
+    # create table userinfo(id int,name varchar(50),sex enum('male','female'),age int(3));
     # 创建连接
-    conn = pymysql.connect(host='127.0.0.1', port=3306, user='root', passwd='', db='db666')
+    conn = pymysql.connect(host='127.0.0.1', port=3306, user='root', passwd='', db='db1')
     cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
-    cursor.execute("select id,username,password from userinfo")
+    cursor.execute("select id,name,sex,age from userinfo")
     user_list = cursor.fetchall()
     cursor.close()
     conn.close()
 
     content_list = []
     for row in user_list:
-        tp = "<tr><td>%s</td><td>%s</td><td>%s</td></tr>" %(row['id'],row['username'],row['password'])
+        tp = "<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>" %(row['id'],row['name'],row['sex'],row['age'])
         content_list.append(tp)
-    content = "".join(content_list)
-
+    content = "".join(content_list) # 全部拼接到一起
 
     f = open('userlist.html','r',encoding='utf-8')
     template = f.read()
     f.close()
 
     # 模板渲染（模板+数据）
-    data = template.replace('@@sdfsdffd@@',content)
+    data = template.replace('@@sadfasdfadf@@',content)
     return bytes(data,encoding='utf-8')
 
 def f4(request):
     import pymysql
 
     # 创建连接
-    conn = pymysql.connect(host='127.0.0.1', port=3306, user='root', passwd='', db='db666')
+    conn = pymysql.connect(host='127.0.0.1', port=3306, user='root', passwd='', db='db1')
     cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
-    cursor.execute("select id,username,password from userinfo")
+    cursor.execute("select id,name,sex,age from userinfo")
     user_list = cursor.fetchall()
     cursor.close()
     conn.close()
@@ -64,14 +63,14 @@ def f4(request):
     # 基于第三方工具实现的模板渲染
     from jinja2 import Template
     template = Template(data)
-    data = template.render(xxxxx=user_list,user='sdfsdfsdf')
+    data = template.render(xxxxx=user_list,user='用户信息查询',name='用户信息列表') # xxxxx成为模版中被循环的数据对象，user被替换里面的{{user}}
     return data.encode('utf-8')
 
 
 routers = [
     ('/xxx', f1),
     ('/ooo', f2),
-    ('/userlist.htm', f3),
+    ('/userlist.html', f3),
     ('/host.html', f4),
 ]
 
