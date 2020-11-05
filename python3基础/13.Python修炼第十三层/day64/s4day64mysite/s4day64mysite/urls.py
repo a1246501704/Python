@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
+from django.urls import path
 from django.contrib import admin
 
 from django.shortcuts import HttpResponse,render,redirect
@@ -33,11 +34,13 @@ def login(request):
         return render(request,'login.html')
     else:
         # 用户POST提交的数据（请求体）
+        # print(request.POST)  # <QueryDict: {'user': ['root'], 'pwd': ['123123']}>
+        # u = request.POST['username']  # 不使用这种方式，如果用户提交的叫user会报错，使用get不会报错，会给u赋值None
         u = request.POST.get('user')
         p = request.POST.get('pwd')
         if u == 'root' and p == '123123':
             # 登录成功
-            # return redirect('http://www.oldboyedu.com')
+            # return redirect('http://www.baidu.com')
             return redirect('/index/')
         else:
             # 登录失败
@@ -62,6 +65,7 @@ def index(request):
 
 urlpatterns = [
     # url(r'^admin/', admin.site.urls),
-    url(r'^login/', login),
+    # path('login/', login),
+    url(r'^login/', login),  # 注意一定要写逗号
     url(r'^index/', index),
 ]

@@ -1,0 +1,43 @@
+<!--使用 render 渲染的模板文件 并返回返给用户浏览器呈现-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--    <link rel="stylesheet" href="/static/commons.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h1>用户登陆</h1>-->
+<!--&lt;!&ndash;    提交方式为post请求&ndash;&gt;-->
+<!--        <input type="text" name="user">-->
+<!--        <input type="password" name="pwd">-->
+<!--        <input type="submit" value="登陆">-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" href="/static/commons.css">
+    </head>
+    <body>
+        <h1>用户登陆</h1>
+    <!--    提交方式为post请求-->
+<!--        action 重定向 url到login页面-->
+        <form method="post" action="/login/">
+            <input type="text" name="user">
+            <input type="password" name="pwd">
+            <input type="submit" value="登陆">
+    <!--        {-->
+    <!--            username: root   # 浏览器访问时输入的数据最终会组成一个字典-->
+    <!--            password: 123123-->
+    <!--        }-->
+            {{ msg }}
+        </form>
+    </body>
+</html>

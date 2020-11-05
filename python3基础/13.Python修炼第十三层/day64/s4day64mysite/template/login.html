@@ -7,10 +7,15 @@
 </head>
 <body>
     <h1>用户登录</h1>
+<!--    提交方式为post请求-->
     <form method="POST" action="/login/">
         <input type="text" name="user" />
         <input type="password" name="pwd" />
         <input type="submit" value="登录" />
+<!--        {-->
+<!--            username: root   # 浏览器访问时输入的数据最终会组成一个字典-->
+<!--            password: 123123 -->
+<!--        }-->
         {{ msg }}
     </form>
 </body>
