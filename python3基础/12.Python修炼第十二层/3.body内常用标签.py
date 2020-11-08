@@ -1016,7 +1016,10 @@ charoff	number	    规定第一个对齐字符的偏移量。
 
 form表单提交数据的几个注意事项:
     1. 所有获取用户输入的标签都必须放在form表单里面
-    2. action控制着往哪儿提交，提交给action。
+    2. action 控制着往哪儿提交（向何处发送表单数据），提交给action后面的路径。
+       可能的值：
+        绝对 URL - 指向其他站点（比如 src="www.example.com/example.htm"）
+        相对 URL - 指向站点内的文件（比如 src="example.htm"）
     3. input\select\textarea 都需要有name属性
     4. 提交按钮 <input type="submit">
 

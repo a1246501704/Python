@@ -1,6 +1,21 @@
 \Django框架 : https://www.cnblogs.com/Dominic-Ji/p/10881214.html
 
 \1. Django介绍
+# MVC框架
+MVC，全名是Model View Controller，是软件工程中的一种软件架构模式
+把软件系统分为三个基本部分：模型(Model)、视图(View)和控制器(Controller)，具有耦合性低、重用性高、生命周期成本低等优点。
+见 MVC框架图
+
+Django框架的设计模式借鉴了MVC框架的思想，也是分成三部分，来降低各个部分之间的耦合性。
+Django框架的不同之处在于它拆分的三部分为：Model（模型）、Template（模板）和View（视图），也就是MTV框架。
+
+# MTV框架
+Model(模型)：负责业务对象与数据库的对象(ORM)
+Template(模版)：负责如何把页面展示给用户
+View(视图)：负责业务逻辑，并在适当的时候调用Model和Template
+
+此外，Django还有一个urls分发器，它的作用是将一个个URL的页面请求分发给不同的view处理，view再调用相应的Model和Template
+
 
 \2. Django安装
 下载:https://www.djangoproject.com/download/
@@ -9,17 +24,15 @@ pip3 install django==3.0.8
 pip3 list | grep Django
 \3. 运行Django
 # 命令运行
-    # 创建Django项目
-    django-admin startproject mysite
-    # 进入程序目录(在哪执行的命令就在哪生成文件夹)
-    cd mysite
+    django-admin startproject mysite # 创建Django项目
+    cd mysite # 进入程序目录(在哪执行的命令就在哪生成文件夹)
     # 启动socket服务端，等待用户发送请求,如果不加 127.0.0.1:8080 即监听8000端口。
     python3 manage.py runserver
     或
     python3 manage.py runserver 127.0.0.1:8080  
     或
     python3 manage.py runserver 0.0.0.0:8080
-
+    # 在浏览器输入：http://127.0.0.1:8000 会看到Django的欢迎页面。
     # 其他常用命令
 　　 python manage.py runserver 0.0.0.0
 　　 python manage.py startapp appname
@@ -144,18 +157,57 @@ def index(request):
 # 2.render
 除request参数外 还可以接收 一个待渲染的模板文件 和 一个保存具体数据的字典参数。
 将数据填充进模板文件，最后把结果返回给浏览器。（类似于我们上面用到的jinja2）
-例如：
+例如：结合一个给定的模板和一个给定的上下文字典, 并返回一个html渲染后的HttpResponse对象。
+参数讲解:
+    request: 是一个固定参数, 没什么好讲的。
+    template_name: templates 中定义的文件, 要注意路径名. 比如'templates\polls\index.html', 参数就要写‘polls\index.html’
+    context: 要传入文件中用于渲染呈现的数据, 默认是字典格式
+    content_type: 生成的文档要使用的MIME 类型。默认为DEFAULT_CONTENT_TYPE 设置的值。
+    status: http的响应代码,默认是200.
+    using: 用于加载模板使用的模板引擎的名称。
 def index(request):
     # 业务逻辑代码
     return render(request, "index.html", {"name": "alex", "hobby": ["烫头", "泡吧"]})
 
 # 3.redirect
+参数可以是:
+    一个模型: 将调用模型的get_absolute_url()函数
+    一个视图, 可以带有函数:　可以使用urlresolvers.reverse来反向解析名称
+    一个绝对的或相对的URL, 将原封不动的作为重定向的位置.
+默认返回一个临时的重定向, 传递permanent=True可以返回一个永久的重定向.
 接受一个URL参数，表示跳转到指定的URL。
-例如：
-def index(request):
-    # 业务逻辑代码
-    return redirect("/home/")
+
+示例:
+你可以用多种方式使用redirect()函数.
+传递一个具体的ORM对象(了解即可).
+将调用具体ORM对象的get_absolute_url()方法来获取重定向的URL.
+from django.shortcuts import redirect
+def my_view(request):
+    ...
+    object = MyModel.objects.get(...)
+    return redirect(object)
+
+传递一个视图的名称
+def my_view(request):
+    ...
+    return redirect("some-view-name", foo="bar")　
+
+传递要重定向到的一个具体的路径
+def my_view(request):
+    ...
+    return redirect("/some/url/")
+
+当然也可以是一个完整的网址
+def my_view(request):
+    ...
     return redirect("www.baidu.com")
+
+默认情况下, redirect()返回一个临时重定向. 以上所有的形式都接收一个permanent参数; 如果设置为True, 将返回一个永久的重定向:
+def my_view(request):
+    ...
+    object = MyModel.objects.get(...)
+    return redirect(object, permanent=True)
+
 
 \11. 实操案例: 查看 mysite工程和 s4day64mysite工程
 
@@ -166,7 +218,7 @@ def index(request):
 
 
 
-\12. 模版引擎中的特殊标记
+\12. Django模版语言引擎中的特殊标记（一）
     login.html
         {{name}}
 

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h1>添加班级</h1>
+    <!-- 把用户在表单中输入的数据提交给urls.py中的 add_class路由 -->
+    <form method="POST" action="/add_class/">
+        <p>班级名称：<input type="text" name="title" /></p>
+        <input type="submit" value="提交" />
+    </form>
+</body>
+</html>
