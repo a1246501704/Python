@@ -6,21 +6,20 @@
 </head>
 <body>
     <h1>编辑学生</h1>
-    <form method="POST" action="/edit_student/?nid={{  current_student_info.id }}">
-
-        <p>学生姓名<input type="text" name="name"  value="{{ current_student_info.name }}" /></p>
+    <form method="POST" action="/edit_student/?nid={{ current_student_info.id }}">
+        <p>学生姓名:<input type="text" name="name" value="{{ current_student_info.name }}"/></p>
         <p>
             所属班级
             <select name="class_id">
                 <!-- 循环所有的班级 -->
                 {% for row in class_list %}
-                    <!-- 如果是当前学生所在班级，则默认选中 -->
+                    <!-- 如果是当前学生所在班级，则默认选中。selected表示默认选中-->
+                    <!-- row.id 是循环的每个班级的id，current_student_info.class_id是当前学生的班级id -->
                     {% if row.id == current_student_info.class_id %}
                         <option selected value="{{ row.id }}">{{ row.title }}</option>
                     {% else %}
                         <option value="{{ row.id }}">{{ row.title }}</option>
                     {% endif %}
-
                 {% endfor %}
             </select>
         </p>

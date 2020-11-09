@@ -77,7 +77,8 @@ def students(request):
     conn = pymysql.connect(host='127.0.0.1', port=3306, user='root', passwd='123456', db='day65', charset='utf8')
     cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
     cursor.execute(
-        "select student.id,student.name,class.title from student left JOIN class on student.class_id = class.id")
+        "select student.id,student.name,class.title from student left join class on student.class_id = class.id;")
+    # 查询学生信息，包括学生所属的班级名称，这是一个连表查询操作。
     student_list = cursor.fetchall()
     cursor.close()
     conn.close()
@@ -94,19 +95,31 @@ def add_student(request):
         cursor.close()
         conn.close()
 
-        return render(request, 'add_student.html', {'class_list': class_list})
+        # 将查询到的班级列表（class_list）传给render，render将数据填入add_student.html后返回给浏览器
+        return render(request, 'add_student.html', {'class_list': class_list}) 
     else:
-        name = request.POST.get('name')
-        class_id = request.POST.get('class_id')
+        name = request.POST.get('name') # 从requets提交的数据中获取 input的name的值
+        class_id = request.POST.get('class_id') # 从request提交的数据中获取 select的class_id的值{{ row.id }}
         conn = pymysql.connect(host='127.0.0.1', port=3306, user='root', passwd='123456', db='day65', charset='utf8')
         cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
         cursor.execute("insert into student(name,class_id) values(%s,%s)", [name, class_id, ])
         conn.commit()
         cursor.close()
         conn.close()
-        return redirect('/students/')
+        return redirect('/students/') # 添加完成后跳转到 /students/ 路由
 
-from utils import sqlheper
+def del_student(request):
+    nid = request.GET.get('nid')
+
+    conn = pymysql.connect(host='127.0.0.1', port=3306, user='root', passwd='123456', db='day65', charset='utf8')
+    cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
+    cursor.execute("delete from student where id=%s", [nid, ])
+    conn.commit()
+    cursor.close()
+    conn.close()
+    return redirect('/student/')
+
+from utils import sqlheper # 每次都写很多连接数据库的语句，太多重复代码。使用自定义 sqlheper数据库操作模块操作数据库
 def edit_student(request):
     if request.method == "GET":
         nid = request.GET.get('nid')

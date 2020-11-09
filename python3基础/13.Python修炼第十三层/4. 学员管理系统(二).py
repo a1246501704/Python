@@ -13,8 +13,9 @@
 		- 删除
 		PS：views中对用户提交的数据进行判断（Form组件）
 		
-	1. 学生管理
-		- 添加
+	1. 学生管理（连表查询,用户在查询到学生信息时，不能把学生的班级id展示出来，要展示真实的班级名称）
+	    - 查询 sql: select student.id,student.name,class.title from student left join class on student.class_cid = class.id;
+		- 添加 
 		- 编辑
 		- 删除
 		

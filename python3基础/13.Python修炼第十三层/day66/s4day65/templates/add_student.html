@@ -6,11 +6,14 @@
 </head>
 <body>
     <h1>添加学生</h1>
+    <!-- 如果form中不写action会提交到当前url -->
     <form method="POST" action="/add_student/">
         <p>学生姓名<input type="text" name="name" /></p>
         <p>
             所属班级
             <select name="class_id">
+                <!-- select的name的值做为key接收option选项的value的值做为value -->
+                <!-- value定义送往服务器的选项值，赋值给select标签name的值 -->
                 {% for row in class_list %}
                     <option value="{{ row.id }}">{{ row.title }}</option>
                 {% endfor %}

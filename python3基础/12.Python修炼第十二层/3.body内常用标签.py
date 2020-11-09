@@ -1105,11 +1105,33 @@ method 属性规定在提交表单时所用的 HTTP 方法（取值：GET 或 PO
 \https://www.w3school.com.cn/tags/tag_input.asp
 <input> 元素是最重要的表单元素。用于接收用户输入或搜集用户信息
 input元素的属性：
-    type         # 给input设置类型
-    name         # 给表单中的值定义一个 key
-    value        # 给表单中的数据设置值
+    type         # 规定 input 元素的类型
+    name         # 定义 input 元素的名称。
+    value        # 规定 input 元素的值。
+    size         # 定义输入字段的宽度。
+    width        # 定义 input 字段的宽度。（适用于 type="image"）
+    height       # 定义 input 字段的高度。（适用于 type="image"）
+    max          # 规定输入字段的最大值，请与 "min" 属性配合使用，来创建合法值的范围。
+    maxlength    # 规定输入字段中的字符的最大长度。
+    min          # 规定输入字段的最小值，请与 "max" 属性配合使用，来创建合法值的范围。
+    multiple     # 如果使用该属性，则允许一个以上的值。
+    pattern      # 规定输入字段的值的模式或格式，例如 pattern="[0-9]" 表示输入值必须是 0 与 9 之间的数字。
+    placeholder  # 规定帮助用户填写输入字段的提示。
+    readonly     # 规定输入字段为只读。
+    required     # 规定输入的字段必需有值（不能为空）。
+    src          # 定义以提交按钮形式显示的图像的 URL。
+    step         # 规定输入字的的合法数字间隔。
+    formaction   # 覆盖表单的 action 属性，适用于 type="submit" 和 type="image"
+    formenctype  # 覆盖表单的 enctype 属性，适用于 type="submit" 和 type="image"
+    formmethod   # 覆盖表单的 method 属性，适用于 type="submit" 和 type="image"
+    formnovalidate# 覆盖表单的 novalidate 属性，如果使用该属性，则提交表单时不进行验证。
+    checked	     # 规定此 input 元素首次加载时应当被选中。值 checked	
     disabled     # 禁用此行input控件，并且数据不往上提交。如果设置了默认值，会成为灰色不可修改。
     placeholder  # 占位符,提示用户应该输入什么样的数据（浅灰色提示信息）,placeholder主要是input中的提示信息，这个和value不同当input获取到光标时会自动消失。
+全局属性
+<input> 标签支持 HTML 中的全局属性：https://www.w3school.com.cn/tags/html_ref_standardattributes.asp
+事件属性
+<input> 标签支持 HTML 中的事件属性：https://www.w3school.com.cn/tags/html_ref_eventattributes.asp
 
 <input> 根据不同的 type 属性，元素有很多形态。
     #type属性的以及还有很多属性接下来先对常见type的值做一个介绍
@@ -1168,19 +1190,24 @@ autofocus	autofocus	规定在页面加载后文本区域自动获得焦点。
 disabled	disabled	规定禁用该下拉列表。
 form	    form_id	    规定文本区域所属的一个或多个表单。
 multiple	multiple	规定可选择多个选项。设置多选。
-name	    name	    规定下拉列表的名称，name属性指定提交给后台数据的key
+name	    name	    规定下拉列表的名称，name属性指定提交给后台数据的key,option选项的value的值做为value赋值给name
 required	required	规定文本区域是必填的。
 size &nbnsp	 number	    规定下拉列表中可见选项的数目。取值大于1，则为滚动列表，否则就是下拉列表。
 
 
 # select 元素<option> 标签 value属性指定值提交给后台数据的value。
-option也有两个属性 value 和 selected
-    value    # 属性是在option选项中写的，value的值适合后台商量好的值。
+option也有两个属性 value 和 selected： https://www.w3school.com.cn/tags/tag_option.asp
+    value    # 为option带值，value的值可以从其他地方获取。页面不显示value但是提交时会提交value的值
     selected # 默认选择到选项
 <option> 标签定义待选择的选项，列表通常会把首个选项显示为被选选项。您能够通过添加 selected 属性来定义默认选中。
+#可选的属性
+#属性	        值	            描述
+disabled	disabled	#规定此选项应在首次加载时被禁用。
+label	      text	    #定义当使用 <optgroup> 时所使用的标注。
+selected	selected	#规定选项（在首次显示在列表中时）表现为选中状态。
+value	      text	    #定义送往服务器的选项值。select的name参数的值做为key
 
 # optgroup 元素  label属性设置提示信息
-
 实例
 <option value="fiat" selected>Fiat</option>
 
