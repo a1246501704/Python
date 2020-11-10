@@ -19,7 +19,7 @@ def add_class(request):
     else:
         print(request.POST)
         v = request.POST.get('title')
-        if len(v) > 0:
+        if len(v) > 0 and v.isspace() == False: # 判断添加班级时输入的班级名称不能为空，也不能是空格。
             conn = pymysql.connect(host='127.0.0.1', port=3306, user='root', passwd='123456', db='day65', charset='utf8')
             cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
             cursor.execute("insert into class(title) values(%s)", [v, ])
@@ -100,6 +100,7 @@ def add_student(request):
     else:
         name = request.POST.get('name') # 从requets提交的数据中获取 input的name的值
         class_id = request.POST.get('class_id') # 从request提交的数据中获取 select的class_id的值{{ row.id }}
+        print(name,class_id)
         conn = pymysql.connect(host='127.0.0.1', port=3306, user='root', passwd='123456', db='day65', charset='utf8')
         cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
         cursor.execute("insert into student(name,class_id) values(%s,%s)", [name, class_id, ])
@@ -110,19 +111,20 @@ def add_student(request):
 
 def del_student(request):
     nid = request.GET.get('nid')
-
+    print(nid)
     conn = pymysql.connect(host='127.0.0.1', port=3306, user='root', passwd='123456', db='day65', charset='utf8')
     cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
     cursor.execute("delete from student where id=%s", [nid, ])
     conn.commit()
     cursor.close()
     conn.close()
-    return redirect('/student/')
+    return redirect('/students/')
 
 from utils import sqlheper # 每次都写很多连接数据库的语句，太多重复代码。使用自定义 sqlheper数据库操作模块操作数据库
 def edit_student(request):
     if request.method == "GET":
         nid = request.GET.get('nid')
+        print(nid)
         class_list = sqlheper.get_list("select id,title from class",[])
         current_student_info = sqlheper.get_one('select id,name,class_id from student where id=%s',[nid,])
         return render(request,'edit_student.html',{'class_list': class_list,'current_student_info':current_student_info})
@@ -130,11 +132,12 @@ def edit_student(request):
         nid = request.GET.get('nid')
         name = request.POST.get('name')
         class_id = request.POST.get('class_id')
+        print(nid,name,class_id)
         sqlheper.modify('update student set name=%s,class_id=%s where id=%s',[name,class_id,nid,])
         return redirect('/students/')
 
 
-# ############################ 对话框 ############################
+# ############################ 模态对话框 ############################
 
 
 def modal_add_class(request):

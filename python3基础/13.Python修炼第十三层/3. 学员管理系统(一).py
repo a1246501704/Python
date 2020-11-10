@@ -42,7 +42,7 @@ INSERT INTO class VALUES(6,'班级6');
   name varchar(255) DEFAULT NULL,
   class_id int(11) DEFAULT NULL,
   PRIMARY KEY (id),
-  KEY fk_student_class (cid)
+  KEY fk_student_class (id)
 ) ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8;
 INSERT INTO student VALUES(1,'学生1',1);
 INSERT INTO student VALUES(2,'学生2',1);

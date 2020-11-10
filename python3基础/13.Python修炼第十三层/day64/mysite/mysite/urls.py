@@ -103,7 +103,7 @@ def index(request):
     )
 urlpatterns = [
     # path('admin/', admin.site.urls),
-    path('login/', login),
+    path('login/', login ),
     url('^login/',login),
     path('index/',index),
 ]

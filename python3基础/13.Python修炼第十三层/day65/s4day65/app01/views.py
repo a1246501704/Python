@@ -13,6 +13,7 @@ def classes(request):
 def add_class(request):
     if request.method == "GET":
         return render(request,'add_class.html') # 展示添加页面给用户（第一次http请求）
+    
     else:
         print(request.POST)
         v = request.POST.get('title') # 在响应体中获取add_class.html中定义的title，通过POST 提交上来的。（第二次http请求）
