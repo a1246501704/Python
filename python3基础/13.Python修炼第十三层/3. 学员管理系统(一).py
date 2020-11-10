@@ -1,6 +1,6 @@
 
 \学员管理: day65
-	表结构：班级\学生\老师
+	# 表结构：班级\学生\老师
 		
 		班级表（第一天）:
 			id    title
@@ -23,7 +23,7 @@
 			 2       1          2
 			 3       2          2
 
-	创建表:
+	# 创建表:
 	CREATE TABLE class (
   id int(11) NOT NULL AUTO_INCREMENT,
   title varchar(255) DEFAULT NULL,
