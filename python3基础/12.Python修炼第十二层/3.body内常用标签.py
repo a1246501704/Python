@@ -1128,6 +1128,7 @@ input元素的属性：
     checked	     # 规定此 input 元素首次加载时应当被选中。值 checked	
     disabled     # 禁用此行input控件，并且数据不往上提交。如果设置了默认值，会成为灰色不可修改。
     placeholder  # 占位符,提示用户应该输入什么样的数据（浅灰色提示信息）,placeholder主要是input中的提示信息，这个和value不同当input获取到光标时会自动消失。
+    onkeyup="this.value=this.value.replace(/\s+/g,'')" # 不允许输入空格。通过正则匹配解决问题，此处涉及 \s匹配任意空白符  \S匹配任意非空白字符
 全局属性
 <input> 标签支持 HTML 中的全局属性：https://www.w3school.com.cn/tags/html_ref_standardattributes.asp
 事件属性

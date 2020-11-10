@@ -19,7 +19,7 @@ def add_class(request):
     else:
         print(request.POST)
         v = request.POST.get('title')
-        if len(v) > 0 and v.isspace() == False: # 判断添加班级时输入的班级名称不能为空，也不能是空格。
+        if len(v) > 0 and v.isspace() == False: # 判断添加班级时输入的班级名称不能为空，也不能是空格。其他函数也需要做判断。
             conn = pymysql.connect(host='127.0.0.1', port=3306, user='root', passwd='123456', db='day65', charset='utf8')
             cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
             cursor.execute("insert into class(title) values(%s)", [v, ])
@@ -138,7 +138,6 @@ def edit_student(request):
 
 
 # ############################ 模态对话框 ############################
-
 
 def modal_add_class(request):
     title = request.POST.get('title')

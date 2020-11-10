@@ -63,6 +63,7 @@
             <p>
                 <input id="title" type="text" name="title" />
             </p>
+            <!-- onclick绑定事件，页面点击时触发事件。 -->
             <input type="button" value="提交" onclick="AjaxSend();"  /><span id="errormsg"></span>
             <input type="button" value="取消" onclick="cancleModal();"  />
         </div>
@@ -76,6 +77,7 @@
                 document.getElementById('shadow').classList.add('hide');
                 document.getElementById('modal').classList.add('hide');
             }
+            //form表单提交页面会刷新，使用ajax实现不刷新（比如注册页面填写错误信息时，页面并没有刷新。但是数据偷偷的提交到后台做来校验并返回提示信息提示是否符合规范）。
             function AjaxSend(){
                 $.ajax({
                     url: '/modal_add_class/',
@@ -84,6 +86,7 @@
                     success: function(data){
                         // 当服务端处理完成后，返回数据时，该函数自动调用
                         // data=服务端返回的值
+                        // 这里使用ajax提交时，服务端就不能使用redirect了
                         console.log(data);
                         if(data == "ok"){
                             location.href= "/classes/";

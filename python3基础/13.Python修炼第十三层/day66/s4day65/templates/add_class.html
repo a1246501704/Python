@@ -7,8 +7,8 @@
 <body>
     <h1>添加班级</h1>
     <form method="POST" action="/add_class/">
-        <!-- 在input中添加 required 参数也能实现 不让用户输入空值 -->
-        <p>班级名称：<input type="text" name="title" required="required"/></p>
+        <!-- 在input中添加 required 参数实现必须输入值。onkeyup实现不让用户输入空值 -->
+        <p>班级名称：<input type="text" name="title" required="required" onkeyup="this.value=this.value.replace(/\s+/g,'')"/></p>
         <input type="submit" value="提交" />{{ msg }}
     </form>
 </body>
