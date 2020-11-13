@@ -1,0 +1,4388 @@
+ css2————>css3
+html4.01 ——————> html5(有些标签，需要和javascript)
+	javascript
+	jquery(js的封装版本)
+	jquery源码
+	zepto
+	css3（和js配合,进行非常高难度的操作）
+	html5
+	bootstarp
+	es6.0
+	react(模块化编程)
+	redusx(模块化编程)
+	angular
+	nodejs(chrome v8引擎)
+
+一：web发展史
+	[
+		难在纵向、深度、广度————>刻苦
+	]
+	1. 浏览器发展历史
+		Mosaic(马赛克)，是互联网历史上第一个获普遍使用和能够显示图片的网页浏览器。于1993年问世。
+
+	   1994年4月,马克·安德森和Silicon Graphic(简称为SGI，中译则是“视算科技”和“硅图”)公司的创始人吉姆·克拉克在美国加州设立了MOSAIC Communication Corp。Mosaic公司成立后，由于伊利诺大学拥有Mosaic的商标权，且伊利诺大学已将技术转让给Spy Class公司，开发团队
+	必须重新撰写浏览器程式码，且浏览器更名为Netscape Navigator，公司名字于1994年11月改名为Netscape Communication Corporation，
+	此后沿用至今，中译为“网景”。微软的Internet Explorer及Mozilla Firfox等，其早起的版本皆以Mosaic为基础而开发。微软随后买下了Spy Class公司的技术，开发出了IE浏览器(1994年IE 1.0)，而Mozilla Firefox(2004年fx1.0)则是网景通讯家开源代码后的衍生出的版本
+
+	2. javascript历史
+		javascript作为Netscape Navigator浏览器的一部分首次运行出现在1996年。他最初设计的目的是改善网页用户体验。
+		作者：Brendan Eich
+
+		初期，JavaScript被命名为：LiveScript，后因与sun公司合作，因市场宣传需要改名为JavaScript。后来Sun公司被Oracle公司收购，
+		JavaScript版权归Oracle所有。
+
+二：JS入门
+	1. 浏览器组成
+		1. 外壳(shell部分)
+		2. 内核部分
+				渲染引擎（语法规则和渲染）——————> 绘制(浏览器帧频)
+				js引擎
+				其他引擎
+
+	2. JS引擎
+		2001年发布IE6(Microsoft XP)，首次实现了对JS引起的优化和分离。
+
+		2008年Google发布最新浏览器chrome(联合apple公司)，他采用优化后的javascript引擎，代号V8(C语言)，因可以把js代码转为机械码来执行，进而以速度快而闻名。
+
+		后Firefox也推出了具备强大功能的js引擎。
+		Firefox3.5 TraceMonkey(对频繁执行的代码，进行路径优化)。
+		Firefox4.0 JeagerMoney
+
+	3. JS逼格
+		解释性语言 —— （不需要编译成文件） 跨平台
+
+			程序————> 翻译——————> 机械码
+			翻译：
+				编译：
+					本质：通篇翻译后生成一个文件，然后系统执行该文件
+					优点：快
+					不足：生成文件上出问题了，(C和C++不能跨平台)，依赖平台编译器，移植性不好（不跨平台）
+					例子：C、C++、Ruby、R语言
+
+				解释：
+					本质：翻译一行，执行一行，不生产特定的文件
+					优点：跨平台
+					不足：稍微慢
+					特点：（基本上带尖角型符号,PHP、Python、JavaScript）
+
+				JAVA(原叫OAK语言)：
+					既不是编译型也不是解释型语言
+					.java——>翻译——>.class文件(系统执行)
+					（JVM虚拟机）编译生成文件时，产生.obj文件(跨平台)
+
+					java——>javac(编译器)——>编译成.class文件(字节码文件)————>JVM——>解释执行————>在目标机器上生成目标机器码
+
+				C语言
+					源代码————>编译————>汇编————>链接————>可执行文件
+						gcc -E hello.c 生成 hello.i 
+						gcc -S hello.i 生成 hello.s 
+						gcc -c hello.s 生成 hello.o 
+						gcc -o hello.o 生成 hello 
+
+						 
+				js属于动态语言，动态语言基本上都是解释性语言，解释性语言基本上都是脚本语言
+
+		单线程
+			滑动块演示
+		ECMA标准(欧洲计算机制造商协会)——————为了取得技术优势，微软推出JScript，CEnvi推出ScriptEase，与JavaScript同样可以在浏览器上运行。为了统一规格，JavaScript兼容于ECMA标准，因此也称为ECMAScript
+
+		ECMAScript ————> ES
+		JavaScript的三大阶段：
+			ECMAScript 原生部分
+			DOM  操作文档
+			BOM  操作浏览器
+
+	4. JS的执行队列
+		JS执行主线程，轮流的执行各项任务
+		轮转时间片：
+			把任务分成端后形成队列（排列时随机的，每一个任务按照时间送），送到js引擎进行执行。
+			轮转时间片：即允许执行的时间
+
+	5. 如何引入JS
+		页面内嵌：<script type="text/javscript"></script>标签
+			type="text/tpl"存储数据...h5中用到
+		外部引入：<script src="js路径"></script>
+		为符合Web标准（w3c标准中的一项）：结构、行为、样式相分离， 通常采用外部引入
+
+	6. JS的语法规则
+		变量(variable):变量申明赋值、单一var两种方式，多个变量申请使用单一var方式
+
+		// var a;//变量申明
+		// a = 23232;//变量赋值
+		// javascript天生就是浮点数
+
+		命名规则：
+		1. 变量名必须为英文、字母、下划线、$开头
+		2. 变量名可以包括：英文、字母、下划线、$、数字
+		3. 不可以使用系统关键字、保留字作为变量名
+
+		基本语法
+		1. 语句后面用英文符号结束';'
+		2. js语法错误会引发后续代码终止，但不会影响其他js代码块
+			低级错误（语法解析错误）：在真正解析一行，执行一行之前，先会通篇大题扫描一遍，什么都不会执行(一行都不会执行)
+			逻辑错误（标准错误，情有可原）
+		3. 书写格式要规范，"=/+/-"两边应该有空格
+
+	7. 值类型（由值绝对类型）
+		1. 不可改变原始值(栈数据)
+			Number, String, Boolean, undefined, null, NaN;
+
+			undefined: 一个变量申明但没有赋值，就是undefined
+
+			————>特点：存在stack：栈，规则为FILO,栈内存与栈内存之间的赋值为copy，副本关系。
+			————>特点：不可改变的原始值(见该图片)————> 类似与系统的文件系统的恢复功能,内存中的数据删除
+			只是关系剪短了，但内容还存在。内存满了之后，数据会进行抹除指针（二次覆盖）
+
+		2. 引用值(堆数据)
+			array, object, function, date, RegExp
+
+			存在heap：堆，为散列结构（首尾相连？---）
+
+			[说明]
+				栈内存：当一个方法执行时，每个方法都会建立自己的内存栈，在这个方法中定义的变量将会逐个放到
+			这块栈内存里，随着方法的执行结束，这个方法内存栈也会自然销毁。因此，所有的方法定义的变量都在栈内存中
+
+				堆内存：当在程序中创建一个变量时，这个对象将被保存到运行时的内存区域中，以便反复使用（因为对象占用的空间较大），这个运行时的内存区就是堆内存。堆内存不会随着方法运行停止而销毁。即使方法结束，这个对象还可能被另外一个引用变量所引用（方法的参数传递较常用），则这个对象依然不会被销毁，只有当对象没有任何引用变量应用它时，系统的垃圾回收机制才会核实并回收它。
+
+		[总结]原始值和应用值唯一的不同是赋值形式的不同。
+	8. js运算符
+		1. 算术运算符
+			+
+				1. 数学运算，字符串链接
+				2. 任何数据类型加字符串都等于字符串
+				{
+					var a = 1 + 1 + "b" + 1 + 1;
+					var b = 1 + 1 + "a" + (1 + 2);
+				}
+			-、*、/、%、=、()
+				{
+					var a = 1 / 0;  // Infinity
+					var a = -1 / 0; //-Infinity
+					var a = 0 / 0;  // NaN：能计算得出数字类型，但不是数，用NaN表示
+				}
+
+			优先级=最弱，()优先级最高
+			++、--、+-、-=、*=、/=、%=
+
+			{
+					var b = 3;
+					b *= 1 + 2;//求解b的值
+			}
+
+		2. 比较运算符
+			>、<、>=、<=、!= 、==、===
+			{
+				'a' > 'b'//ASCII码
+				'10' > '8';
+				'测试' > '好的'//'测试'.charCodeAt()
+
+				null == null;
+				undefined == undefined;
+				null == undefined;
+				NaN == NaN;
+				Infinity == Infinity;
+			}
+
+
+		3. 逻辑运算符
+			&&、||、!
+			{
+				1 && 2;
+				0 && 2 || 3
+				var a = 2 + 1 || 2 + 2;
+				var a = 2 + 1 && 2 + 2;
+				var a = "8" > "10";
+				var a = "1" > "8";
+
+				短路语句用法(不关注返回值)----
+				1 > 2 && document.write("fsdf");//通常处理来自后端处理的数据，做校验判断(和if的关系)
+				data && function(data);
+
+				div.click = function(e){
+
+					var event = e;//非IE
+					var event = window.event;//IE
+
+					var event = e || window.event;//通过或运算符做浏览器兼容处理
+				}
+				!NaN
+			}
+			&& 先看第一个表达式转换为布尔值的结果。如果结果为真，直接返回第二个表达式的结果值。如果第一个表达式
+			的布尔值转换为假，不在往后看，返回第一个表达式的结果值.
+			{
+				被认定为false的值
+				undefined、NaN、""、0、false、null
+			}
+
+		4. 预算符优先级
+			一元运算符>二元运算符
+			算术运算符>比较运算符>逻辑运算符>赋值运算符
+
+	9. 条件结构与循环结构
+		{
+			var i = 1;
+			for( ; i; ){
+				document.write('a');
+				i ++;
+				if(i==11){
+
+					i = 0;
+				}
+			}
+
+
+
+			var i = 10;
+			for(; i--;){
+
+				document.write('a');
+			}
+
+			while(){
+
+			}
+
+			do{
+
+			}while(条件)
+		}
+
+		{
+			var flag;
+			for(var i = 1; i <= 100; i++){
+
+				flag = 0;
+				for(var j = 1; j <= parseInt(Math.sqrt(i)); j++){
+
+					if(i % j == 0){
+						flag++;
+					}
+					if(flag>1){
+						break;
+					}
+				}
+				if(flag == 1){
+					document.write(i + " ");
+				}
+			}
+		}
+	10. 条件语句补充
+		switch case
+		break;
+		continue;
+
+
+	11. 认识引用值
+		数组
+		对象
+
+	12. 编程形式的区别
+		面向过程
+		面向对象
+
+		JavaScript之前是面向对象，后是面向过程，现在的理念是回归面向对象，其既对象也面向过程
+
+三：typeof操作符
+		区分目标数据的类型,有以下6种值的情况，其返回值是string类型
+		boolean,
+		string,
+		number,
+		function,
+		undefined,
+		object————> 不是单纯的对象，而是范范的引用值（null也是object类型，最早null是作为代替空对象使用的，做占位使用的）
+
+		写法有：typeof(target)  或 typeof target
+
+四：类型转换
+	1. 显示类型转换
+		Number(target)
+			true——————>1
+			false——————>0
+			null——————>0
+			undefined————> NaN
+			""——————>0
+			" "——————>0
+			NaN————>NaN
+			[]——————>0
+			{}——————>NaN
+			"a"————>NaN
+			"123abc"————>NaN
+
+		parseInt(target, radix)
+			1. 将目标内容转换为整数（从数字位开始往后看，一直到非数字位截止）
+			2. 以target为基地机制数，转换为10进制
+
+				[radix]取值范围为2-36
+				非数字情况————>NaN
+
+				100px————> parseInt()——————>100			
+
+		parseFloat(target);
+			100.2.abcd————> 100.2
+
+		String(target)
+
+		Boolean(target)
+			除了六种值会转换为false，其他均为true
+			0、""、false、null、undefined、NaN
+
+		toString(radix)
+			将目标值当作10进制转换为指定进制的值
+			[注意]undefined、null不能使用toString方法
+
+		toFixed()————> 四舍五入
+
+
+	2. 隐式类型转换
+		isNaN()
+		++、--、+、-（一元正负）
+		+
+        -、-、*、/
+		<、>、<=、>=、==、!=
+		! && || 
+		[注意]隐式类型转换实质上调用的都是显示类型转换的方法
+		isNaN：底层通过Number进行计算，然后在和NaN进行比对
+
+		++、--、、-、*、/：在执行前先调用Number()做转换为数字
+
+		+： 在执行时，会自动调用String()做字符串转换
+
+
+		<、>、<=、>=、==、!=：如果是字符和数字相比或者是数字和数字(非字符串)比较，内部调用number(),如果是字符串和字符串比较，则是ASCII码进行比较
+		{
+			1 > "2"
+			"3" > "2"
+			2 > 1 > 3
+
+			2 < 3
+			10 > 100 > "23"
+			undefined > 0
+			undefined < 0
+			undefined == 0
+			null > 0
+			null < 0
+			null == 0
+
+			null == undefined
+			NaN == NaN
+			null == false
+			null == true
+			undefined == false
+			undefined == true
+		}
+		[注意]
+			1. 特殊情况，当且仅当使用typeof(a),a变量没有申明，语句不报错，结果为undefined，原因是a变量实际为
+			window对象的属性，在对象中，如果没有用的属性，则该对象类型为undefined
+
+			2. typeof(typeof(undefined))
+
+
+	3. 不发生类型转换
+		=== !==
+
+
+五：函数
+	1. 定义
+		————————>函数声明 function test(){}
+		命名函数表达式 var test = function abc(){}——————>test代表函数体，而不是abc代表函数体。表达式会转换为匿名表达式
+		—————————>匿名函数表达式 var test = function (){}
+
+		[注意]
+			另外针对函数表达式和匿名表达式在函数名获取上有点不同
+			函数表达式：test.name  ————>"abc"
+			匿名表达式：test.name ————> "test"
+
+			匿名表达式更常用，所以直接叫为表达式
+
+
+
+	2. 组成形式
+		函数名称(高内聚，弱耦合)
+		参数
+			形参
+			实参
+		返回值
+		[注意点]
+			1. 函数的定义
+			2. 函数名的命名规则
+			3. 解释性语言，永远都不会输出地址(打印函数名)
+			{
+				function test(a, b){
+					var a, b;
+				}
+			}
+			4. JavaScript中函数参数不限制位数，形参和实参个数对应不拘泥。而针对每一个函数，都有一个隐式的
+		arguments变量（类数组）——>实参列表。而形参的长度可以通过函数名.length来获取
+			5. 不定义形参个数，体现其更多的可能性。比如计算某些数的和，可以通过实参列表arguments来计算实现。
+			6. 函数中形参与实参列表中对应的值形成映射关系，有一个在函数内发生变化，另外一个也跟着变化，但是两个不同
+			的变量。
+			**形参比实参多，则多出的形参值变化，arguments中的值不会跟着变化(不映射，只有相等的时候，才映射)。
+			**实参比形参多时，多出的实参可以通过arguments获取到
+			{
+				function test(a, b){
+
+					a = 23;
+					//arguments[0]也跟着变化...
+				}
+
+				function test(a, b){
+
+					a = 23;//arguments[0]跟着变
+
+					b = 2;//arguments[1]不跟着变
+				}
+				test(1);
+			}
+			7. 函数结束+返回值return(两点功能)
+				1. 终止函数：每个函数最后，不论有没有return，都会有隐式的添加return ;进行函数结束
+				2. 返回值
+			8. 有个特殊的typeof(target)函数，也可以用typeof target，中间加空格的方式来实现。
+
+六：初识作用域
+		javascript字符串底层是基于数组实现
+		函数作用域：里面的可以看到外面的，外面看不到里面的。
+
+		全局变量和局部变量(相对的链条关系)————>作用域范围
+		{
+			看特殊实例
+			{
+				//函数作用域内连续赋值的小区别
+				function test(){
+					var a = b = 23;
+				}
+				test();
+				console.log(b);
+			}
+
+			{
+				//全局变量的小区别
+				var a = 23;
+				b = 23;
+				console.log(delete a,typeof(a));
+				console.log(delete b,typeof(b));
+			}
+		}
+
+七：递归
+		1. 递归：
+			找规律、找出口
+			先执行的，最后被执行完(——————>字符串倒序)
+		[练习题]
+		针对字符hello world!，逆向输出，不使用函数，怎么实现？
+		{
+			var str = "hello world";
+			function reverse(str){
+
+				if(typeof str == 'undefined' || str.length < 1){
+
+					console.log(str);
+				}else{
+					console.log(str[str.length - 1]);
+					reverse(str.substr(0, str.length - 1));
+				}
+			}
+		}
+
+八：预编译
+		1. 作用域初探
+			作用域定义：变量（变量作用域又称为上下文）和函数生效（能被访问）的区域
+			全局变量、局部变量
+			作用域的访问顺序
+
+		2. 预编译
+			js的两大特点：单线程，解释型。解释型：读一行执行一行；
+
+		3. js三部曲
+			语法分析（通篇扫描一遍，但不执行）、预编译、解释执行
+			{
+				test();//按照读一行执行一行，这个地方理论上不能执行
+				function test(){
+
+					console.log('a');
+				}
+				console.log(a);//结果为undefined，而不是a is not defined
+				var a = 123;
+			}
+			[
+				函数声明整体提升
+				变量：声明提升
+				{
+					function a(){
+						var a = 234;
+						var a = function(){
+						}
+						a();
+					}
+					var a = 123;
+				}
+			]
+		4. 预编译前奏
+			————>imply global 暗示全局变量：即任何变量，未经声明直接赋值，此变量就为全局对象所有。
+				eg: a = 123;
+				eg: var a = b = 123;
+			————>一切申明的全局变量，全是window的属性(window就是全局的域)=====>window就是全局的域
+				eg：var a = 123;——————>window.a = 123;
+
+			[差异]
+				第一种情况，window上的属性a，使用delete可以删除；而二种情况window上的变量受保护
+
+		5. 预编译四部曲（按照下面的顺序从上到下）
+			————>创建AO(活跃对象:Activation Object)对象————————>执行期上下文
+			————>找出形参和变量声明，将变量名和形参名作为OA属性名，值为undefined
+			————>将实参和形参相统一
+			————>在函数体里面找函数声明，值赋予函数体
+
+			[注]预编译发生在函数执行前一刻，调和矛盾
+			{
+				function fn(a){
+
+					console.log(a);
+					var a = 123;
+
+					console.log(a);
+
+					function a(){}
+					console.log(a);
+
+
+					var b = function (){}
+					console.log(b);
+
+					function d(){}
+					console.log(d);
+				}
+				fn(1);
+			}
+
+			{
+				function test(a, b){
+					console.log(a);
+
+					c = 0;
+					var c;
+					a = 3;
+					b = 2;
+
+					console.log(b);
+					function b(){}
+					function d(){}
+					console.log(b);
+				}
+				test(1);
+			}
+			[注]
+				另外预编译，不止发生在函数体内，还发生在全局。而在全局预编译的四部曲中，
+		生成的对象为GO(Global Object) GO===window, 这样AO和GO会形成一个链式关系
+
+			{	
+				//先生成GO还是先生成AO? GO全局。。。
+
+				console.log(test);
+				function test(test){
+
+					console.log(test);
+					var test = 234;
+
+					console.log(test);
+					function test(){}
+				}
+				test(1);
+
+				var test = 123;
+				console.log(test);
+			}
+
+			{
+				global  = 100;
+				function fn(){
+
+					console.log(global);
+
+					global = 200;
+
+					console.log(global);
+					var global = 300;
+				}
+				fn();
+				var global;
+			}
+
+			{
+				function test(){
+					console.log(b);
+					if(a){
+						var b = 100;
+					}
+					console.log(b);
+					c = 234;
+
+					console.log(c);
+				}
+				var a;
+				test();
+				a = 100;
+				console.log(c);
+			}
+
+
+			{
+				function bar(){
+
+					return foo;
+					foo = 100;
+					function foo(){
+						//body...
+					}
+
+					var foo = 11;
+				}
+				console.log(bar());
+			}
+
+
+			{
+
+				function bar(){
+					foo = 100;
+					function foo(){}
+
+					var foo = 11;
+
+					return foo;
+				}
+				console.log(bar());
+			}
+			[注意]：if中不能声明function，示例如下：
+			{
+				var a = 23;
+				function fn(){
+
+					if(a){
+
+						function c(){
+
+						}
+					}
+					var a;
+					console.log(a); 
+					console.log(c);
+				}
+				fn();
+			}
+
+九： 作用域精解（最恶心）
+	{
+		function a(){
+
+			function b(){
+
+				var b = 234;
+			}
+			var a = 123;
+			b();
+		}
+		var glob = 100;
+		a();
+	}
+	函数是一种特殊的对象，该对象中有可访问的name、length。有不可访问的如[[scope]]，而[[scope]]为隐式属性，系统会定期调用该属性（其仅供javascript引擎存储），其真实存在。
+
+	1. [[scope]]
+		[[scope]]指的就是我们所说的作用域，其中存储了运行期的上下文的集合。
+		换句话说：[[scope]]中存储的是作用域链，而作用域链是执行上下文的集合 
+
+	2. 作用域链
+		[[scope]]中所存储的执行期上下文(AO、GO)对象的集 合，这个集合呈链式链接，我们把这种链式链接叫做作用域链
+
+	3. 运行期上下文
+			当函数执行时(执行的前一刻)，会创建一个"执行期上下文"的内部对象。一个执行期上下文定义了一个函数执行时的环境，函数每次执行时
+		对应的执行上下文都是独一无二的，所以多次调用一个函数会导致创建多个执行上下文，当函数执行完毕，它所产生的的执行期上下文被销毁。
+
+	4. 查找变量
+			从作用域链顶端依次向下查找。
+			在哪个函数中查找变量，就到哪个函数的作用域链的顶端自上而下查找 
+
+	根据上面的例子有以下两个问题要考虑
+	a. b函数执行时，是基于a的生成执行期上下文。那a和b中指向的内容是否为同一个
+	b. 什么时候这些作用域的对象会销毁 
+	{
+
+		function a(){
+
+			function b(){
+
+
+				function c(){
+
+				}
+
+				c();
+			}
+			b();
+		}
+		a();
+		这也就理解了，为什么外部的看不到里面的变量
+	}
+
+	{
+
+	————————————————————>跳转到闭包的流程
+		function a(){
+
+			function b(){
+
+				var bbb = 234;
+				console.log(aaa);
+			}
+
+			var aaa = 123;
+			return b;
+		}
+
+		var glob = 100;
+		var demo = a();
+
+		demo();
+	}
+
+十：立即执行函数
+	[场景]
+		有些函数从出生到执行完，就执行了一次。针对初始化功能的函数。
+	此类函数没有申明，在一次执行过后释放。适合做初始化工作。
+
+		格式为:
+			(function(){
+
+			}())
+
+		为匿名执行函数，javascript唯一一个立即销毁的函数。除了执行完就释放外，没有其他特别的，也可以写参数
+
+			(function(a, b, c){
+
+				console.log(arguments);
+			}(1,2,3))
+		也可以有返回值
+			var ret = (function(a, b, c){
+
+				return a + b + c;
+			}(1,2,3));
+		其内部也经过预编译、执行期上下文的流程...
+	1. 立即执行函数的写法
+		官方写法： (function (){}())——————————> W3C建议这种
+		另外一种写法： (function (){})()
+
+		[注意]： 
+
+		函数（函数申明）转换为表达式后，函数名自动忽略，而此情况下，可以被执行符号解决
+		只有表达式才能被执行符号执行。（函数有两种定义方式，函数声明和表达式）
+		{
+			function test(){}
+
+			test();//这个能执行
+			function test(){}();//这个不能执行
+
+			var t = function test(){}(); //这个可以执行
+		}
+
+		{
+			var str = 1;
+			if(function fn(){}){
+
+				str += typeof(fn);
+			}
+
+		}
+		[注意]：能被执行符号执行的函数，函数名会被自动忽略。
+		{
+			var test = function (){ console.log("我是函数表达式，我可以被执行哟"); }(); //这个可以执行
+		}
+		下面为变更后的多种写法
+		{
+			- function test(){
+
+				console.log("哈哈");
+			}();
+
+			+ function test(){
+
+				console.log("哈哈");
+			}();
+
+			! function test(){
+
+				console.log("哈哈");
+			}();
+			......
+
+			(function test(){
+
+			}())
+		}
+
+		{
+
+			看下面的执行生成
+			function test(a, b, c, d){
+
+			}(1,2,3,4);
+		}
+
+十一：闭包
+	但凡内部的函数保存到外面执行，一定生成闭包。
+	——————> 当内部函数被保存到外部时，将会生成闭包。闭包会导致原有内容作用域链不释放，照成内存泄漏。
+
+	——————>
+			内存泄漏（memory leak）：指程序在申请内存时，无法释放已申请的内存，一次内存泄漏危害可以忽略，
+			但内存泄漏堆积后果严重，无论多少内存，迟早会被占光。（更危害严重的是内存泄漏堆积）
+
+
+			内存溢出（out of memory）：指程序在申请内存时，浪费使用。出现out of memory：比如申请了一个int类型，但给他存了long才能存的数，那就是内存溢出了。
+
+	{
+		function a(){
+			function b(){
+
+				var bbb = 234;
+				console.log(aaa);
+			}
+			var aaa = 123;
+			return b;
+		}
+		var glob = 100;
+		var demo = a();
+		demo();
+
+		————————————————————————————————
+		
+		function a(){
+
+			var num = 100;
+
+			function b(){
+				num ++;
+				console.log(num);
+			}
+			return b;
+		}
+		var demo = a();
+		demo();
+		demo();
+
+		——————————————————————————————————
+			function test(){
+
+				var num = 100;
+				function a(){
+
+					num ++;
+					console.log(num);
+				}
+
+				function b(){
+
+					num --;
+					console.log(num);
+				}
+				return [a,b];
+			}
+			var flag = test();
+			flag[0]();
+			flag[1]();
+	}
+
+	闭包的作用
+		1. 实现公用变量
+			不依赖外部变量，通过函数实现变量累加
+			eg：函数累加器
+			{
+				function count(){
+
+					var num = 100;
+					function b(){
+
+						num++;
+						console.log(num);
+					}
+					return b;
+				}
+				var counter = count();
+				counter();
+				counter();
+				counter();
+				counter();
+				counter();
+			}
+
+		2. 可以做缓存（存储结构）
+			eg：eater
+			{
+				外部不可见，但是存储结构，可以设置，可以获取
+				function eater(){
+
+					var food = "";
+					var obj = {
+
+						eat: function(){
+
+							food = "";
+							console.log(food);
+						},
+
+
+						push: function(thinks){
+
+							food = thinks;
+							console.log(food);
+						}
+					}
+					return obj;
+				}
+				var rs = eater();
+				rs.push("fish");
+				rs.eat();
+			}
+
+		3. 可以实现封装，属性私有化
+			eg:Peron();
+
+			function Person(){
+
+				var hobby = "single";
+				this.showHobby = function(){
+
+					console.log(hobby);
+				}
+
+				this.changeHobby = function(newHobby){
+
+					hobby  = newHobby
+				}
+			}
+
+		4. 模块化开发，防止污染全局变量
+		{
+			var init = (function(){
+				var name = "abc";
+				function showName(){
+
+					console.log(name);
+				}
+				return function (){
+					console.log("----");
+				}
+			}())
+			init();
+		}
+
+		————————————————————————————————————————————————
+		{
+			//10 对 1的 的操作
+			var arr = [];
+			function test(){
+
+				for(var i = 0; i < 10 ; i ++){
+
+					arr[i] =  function (){
+						console.log(i);
+					}
+				}
+				return arr;
+			}
+			var myArr = test();
+			for(var j = 0; j < myArr.length; j++){
+
+				myArr[j]();
+			}
+
+
+			//立即执行函数与1的关系是1对1(************)
+			var arr = [];
+			function test(){
+
+				for(var i = 0; i < 10 ; i ++){
+					(function(j){//套现，理解执行函数。。。。只有一种执行方法...
+
+						arr[j] = function(){
+							console.log(j);
+						}
+					}(i));
+					
+				}
+				return arr;
+			}
+			var myArr = test();
+			for(var j = 0; j < myArr.length; j++){
+
+				myArr[j]();
+			}
+		}
+
+		{
+			----综合性题
+			function test(){
+
+				var a = 23;
+				function a(){
+
+					console.log(a);
+				}
+				return a;
+			}
+			var fn = test();
+			console.log(typeof(fn));
+		}
+
+十二：对象、包装类
+	1. 对象
+		属性的增、删、改、查
+
+			删除：delete 对象.属性
+			对象方法中this的使用
+			[注意]
+				变量没有申明，访问会报错，对象没有属性，访问会出现undefined
+
+	2. 对象的创建方法
+		javascript中的对象是所有语言，最灵活自然的。。。
+
+		——————字面量
+			var obj = {} plainObject	对象字面量/对象直接量
+
+		——————构造函数
+			系统自带(构造方法) new  (); Array(); Boolean(); Number(); String(); Date();
+			自定义*****
+
+			function Person(){
+
+			}
+
+			var person1 = new Person();
+			[注意]
+				命名要按照大驼峰式命名
+			{
+				function Person(name, color){
+
+					this.color = color;
+					this.name = "fsdf";
+					this.eat = function(){
+
+						console.log("eating");
+					}
+				}
+				var pe = new Person("king", "red");
+			}
+
+		——————Object.create(原型)方法
+
+	3. 构造函数内部原理
+			前提：函数前加new
+			（1）在函数体最前面隐式的加上this = {};
+			（2）执行this.xxx = xxx;
+			（3） 隐式的返回this
+
+			[注意]
+				自定义构造函数，最后一行隐式的返回this：return this，也可以使用 return {}，返回空对象，破坏隐式返回
+			但如果返回原始值，则会被忽略。而针对返回其他的原始值，则会被自动忽略。
+
+	4. 包装类
+		new String
+		new Number
+		new Boolean
+			[注意]
+			原始值是没有属性和方法的。数字分为两种数字（原始值和引用值），字符串也同理。针对引用类型的数字和字符串有自己的属性和方法，因为经过了包装类的过程。
+
+			{
+				var num = new Number(123);//该数字型也可参与运算，但运算完，又转换成原始的数，又不是对象了。
+				var num = 123;
+
+				//undefined 和null不能设置属性和方法
+			}
+
+			{
+				var str = "bcd";
+				str.abc = "abc";
+
+				//访问str.abc 为undefined,但可以访问str.length
+
+				//原理:
+					隐式的环节为包装类
+					str.length————> new String("bcd").length ——————>delete new String("bcd");
+			}
+
+			{
+				var num = 4;
+				num.len = 3;————> new Number(4).len————>delete;
+
+				num.len————> new Number(4).len---->undefined;
+			}
+
+
+
+			{
+
+				var arr = [1,2,3,4];
+
+				arr.length;//访问执行为：4
+				arr.length = 2;//设置后，数组会被截断，arr结果为[1,2]
+
+
+				/**——————————————**/
+				基于上面类似结构
+				var str = "abcd";
+				str.length;//访问为4
+
+				str.length = 2;//设置后，并没有生效
+
+				[总结]
+					数组为什么可以通过修改长度，截取和改变数组的值...
+			}
+
+			[试题]
+			{
+				var str = "abc";
+				str += 1;
+				var test = typeof(str);
+
+				if(test.length == 6){
+
+					test.sign = "typeof的返回值可能为string";
+
+				}
+				console.log(test.sign);
+
+			}
+
+			[练习题]
+			{
+
+				//test()和new test()分别输出什么内容?
+				var a = 5;
+				function test(){
+
+					a = 0;
+					console.log(a);
+					console.log(this.a);
+					var a;
+					console.log(a);
+					console.log(this);
+				}
+
+
+				//请输出console.log的值
+				function Person(name, age, sex){
+
+					var a  = 0;
+					this.name = name;
+					this.age = age;
+					this.sex = sex;
+					this.say = function(){
+
+						a ++;
+						console.log(a);
+					}
+				}
+				var oPerson = new Person();
+				oPerson.say();
+				oPerson.say();
+
+				var oPerson1 = new Person();
+				oPerson1.say();
+
+				//请输出x，y，z的值
+				var x = 1, y = z = 0;
+				function add(n){
+
+					return n = n + 1;
+				}
+				y = add(x);
+
+				function add(n){
+
+					return n = n + 3;
+				}
+				z = add(x);
+
+				//str.charCodeAt(number)，返回str中第number个字符串的unicode码，<=255是英文，>255是中文
+				//根据输入的字符串，输出对于字符串的字节长度...
+			}
+
+			[/*——————读书笔记——————*/]
+				javascript模式： 0-35页上半部分， 交读书笔记。能力强的一直看到50页的上班部分，其中35页面上半部分到38上班部分不用看..
+
+十三：原型，原型链，call/apply
+
+	上面说了对象是怎么来的，该部分讲解对象怎么更美好的来。。。。
+	1. 原型
+			————————定义：	
+				原型是function对象的一个属性, 他定义了构造函数制造出的对象的共有祖先。通过构造函数产生的对象，可以继承该原型的属性和方法。原型也是对象。
+			{
+				函数在出身的时候，属性prototype已经存在，且其为空对象	
+
+				Person.prototype.name = "test";
+				function Person(){
+
+				}
+				var per1 = new Person();
+				per1.name;//访问其，存在test
+
+				var per2 = new Person();
+				per2.name;//访问其，存在test
+
+				//当构造函数创建的对象与prototype有通用属性或方法时，如果有则是用自己的，没有的则是用祖先的。
+
+				//原型的真正应用：是通过原型特点，将共有的属性或函数抽取为公共的部分放到原型。
+			}
+
+			————————利用原型特点和概念，可以提取公用属性。
+			————————对象如何查看原型————> 隐式属性__proto__
+			{
+				原型的增、删、改、查
+
+				增加：Person.prototype.lastName = "fsdfd":而不能通过后代添加，其会自动加到子类
+				修改：通过后代不能修改原型属性
+				删除：通过后代不能删除原型属性
+				查找：通过后代可以访问
+			}
+
+			————————对象如何查看对象的构造函数：constructor
+			{
+				constructor：用于查看，某个对象被构建时，用的什么构造器。该构造器存在Person.prototype上
+				Person.prototype.constructor;对象的构造器可以被修改，但内部获取属性时，不会被修改..
+
+				function test(){
+
+				}
+
+				Person.prototype.constructor = test;
+				function Person(){
+
+
+				}
+				var per1 = new Person();
+			}
+
+			{
+				//特殊情况——————原型覆盖......
+				function Person(){
+
+				}
+				Person.prototype.name = "name";
+				var person = new Person();
+				console.log(person.constructor);
+
+				——————————————————————————————————————
+				function Person(){
+
+				}
+				Person.prototype = {
+					name: "name"
+				}
+				var person = new Person();
+				console.log(person.constructor);
+
+
+			}
+
+	2. __proto__
+			[注]
+				通常在函数内部定义_开头的属性为私有属性，不希望别人修改该值。而前面__，后面__为系统定义的，建议尽量不要修改(但可以修改)
+			
+			在构造函数内部三段式中(1. var this = {}, 2.this各个属性赋值, 3.return this)中第一步实际上为
+			var this = {
+				__proto__： Person.prototype
+			}
+
+			如下Demo
+			{
+				Person.prototype.name = "Frank";
+				function Person(){
+
+					// var this = {__proto__: Person.prototype}
+				}
+				var per = new Person();
+				per.name;//当访问per.name值时，会自动从this.__proto__对应的上面查找，可以通过修改__proto__的值，修改其指向关系
+				未必需要修改Person.prototype的值来修改，而真正意义作出变动的是Person.__proto__的值
+				{
+
+				//__proto__的基本应用
+					Person.prototype.name = "---";
+					Person.prototype.sex = "boy";
+					var obj = {
+						name: "obj",
+						sex: "girl"
+					}
+					function Person(){
+					}
+					var per = new Person();
+					per.__proto__ = obj;
+				}
+
+			}
+
+
+			{
+					Person.prototype.name = "frank";
+					function Person(){
+
+					}
+					var per = new Person();
+					Person.prototype = {
+						name : "test"
+					}
+
+
+					——————————————————————————
+
+
+					Person.prototype.name = "frank";
+					function Person(){
+
+					}
+
+					Person.prototype = {
+						name : "test"
+					}
+					var per = new Person();
+					
+
+
+
+			}
+
+			{
+				Person.prototype.name = "suny";
+				function Person(){
+
+				}
+				Person.prototype = {
+					name : "chery"
+				}
+				var person = new Person();
+			}
+
+
+		3. 原型链
+			对象通过__proto__找到属性，关键链接点为__proto__，访问的顺序和作用链顺序差不多。近的没有一直往上捋
+			{
+				function Person(){
+
+				}
+				var per = new Person();
+
+				per.toString();//toString()方法来自哪里？？
+
+				per.__proto__.__proto__ == Object.prototype  == Person.prototype.__proto__//所有对象的最终模型
+			}
+
+			——————如何构成原型链
+
+			——————原型链上属性的增、删、改、查
+				增加、删除、修改：只能是他自己修改，子对象不能修改
+
+				针对修改，并不是绝对的不能改，当子对象拿到父对象的引用时，可以修改，其算是调用的修改。仅限于引用值的修改。
+				{
+					function Parent(){
+						this.sex = "boy";
+						this.card = {
+							card1 : "bankcard"
+						}
+					}
+					var par  = new Parent();
+					Person.prototype = par;
+					function Person(){
+					}
+					var per = new Person();
+				}
+
+
+
+				{
+					//特殊情况(从父对象获取值，获取完后，变成自己的)
+					function Parent(){
+						this.num = 100;
+						this.sex = "boy";
+						this.card = {
+							card1 : "bankcard"
+						}
+					}
+
+					var par  = new Parent();
+
+
+					Person.prototype = par;
+					function Person(){
+
+
+
+					}
+
+					var per = new Person();
+				}
+
+				————————————————————————
+					{
+						Person.prototype = {
+							name: "hello",
+							sayName: function (){
+								console.log(this.name);
+							}
+						}
+						function Person(){
+
+							this.name = "world";
+						}
+						var per = new Person();
+					}
+				[注]
+					per.sayName，sayName里面的this指向是，谁调用的方法this就指向谁？
+					Person.prototype.sayName();
+					per.sayName();
+
+			——————绝大多数对象的最终继承来自Object.prototype（有特例）
+				[注意]
+					之前学的所有对象都是继承自Object.prototype，只有针对Object.create(null)的情况，会破坏继承关系
+				{
+					var obj = Object.create(null);
+
+					obj.__proto__ = {name: "frank", age: 23};
+
+					//访问obj.name 为undefined
+				}
+				__proto__的赋值为内部情况，无法人为赋值。
+
+			——————Object.create(原型)
+
+
+			[注意]
+				undefined、null不能调用toString()，因为这两个值没有原型(不是对象、不能经过包装类)。
+
+				A. 
+					var num = 123; num.toString();
+					new Number(123).toString();
+				B. 
+					var bol = false; bol.toString();
+					new Boolean(false).toString();
+				C. 
+					var obj = {};obj.toString();
+
+				Number.prototype.__proto__  = Object.prototype
+
+				Number.prototype.toString = function(){
+
+				}
+				原型上有toString方法，Number又重写了一个相同的方法名，但功能不同的方法，叫做重写。
+
+				[注意]
+					var obj = Object.create(null);
+					document.write(obj);//这个地方会隐式的调用obj.toString()方法.....这个地方会报错，
+				因为没有toString()方法...
+
+				[bug]精度不准偏差：
+					0.14 * 100
+
+					Math.random().toFixed(2) * 100改为：Math.floor(Math.random()*100)
+
+					可正常计算的范围：小数点前16 ～～ 后16位
+					{
+						for(var i = 0; i < 10; i++){
+
+							//var num = Math.random().toFixed(2) * 100;//方式一：有误
+							var num = Math.floor(Math.random()*100);//方式二：无误
+							console.log(num);
+						}
+					}
+					Math.random()————>(0,1)
+		4. call / apply
+			作用：改变this指向
+			区别：后面传的参数形式不同.
+			{
+				function test(){
+
+				}
+				//一般调用方式为:test(), 其真实面目执行为：test.call()
+
+				*.call(对象, 参数1, 参数2, 参数3, ...);
+				*.apply(对象, [参数1, 参数2, 参数3, ...]);
+			}
+			{
+				举例：
+				function Person(name, age, sex){
+
+					this.name = name;
+					this.age = age;
+					this.sex = sex;
+				}
+				function Student(name, age, sex, tel, hobbit){
+
+					Person.call(this,name, age, sex);
+					this.tel = tel;
+					this.hobbit = hobbit;
+				}
+				var st = new Student("frank", 22, "male", "15501053088", "smoke");
+			}
+
+十四：继承模式、命名空间、对象枚举
+
+	继承发展史——————————————————————————
+		1.  传统形式：通过原型
+			原型链越长，原型链上会有越多不想继承的属性被获取
+			[注意]
+				过多得继承了没用的属性
+
+		2. 借调构造函数
+			call、apply
+			实质是函数的调用，且每多调用一次函数，增加了复杂度
+			无法借调构造函数的原型
+
+		3. 使用共享原型实现
+			{
+				Person.prototype.name = "Lily";
+				Person.prototype.sayName = function(){
+					console.log("我会说话");
+				}
+				Person.prototype.card =  {
+					card1: "money"
+				}
+				function Person(){}
+				function Son(){}
+				function inherit(Target, Source){
+
+					Target.prototype = Source.prototype;
+				}
+				inherit(Son, Person);//必须在上面	
+				var s = new Son();
+
+				//通过子来修改父元素
+				s.__prototype__.kill = "gun";
+			}
+			[注]
+				该模式下， 可通过子对象修改父对象的属性，影响了父对象，违背了面向对象的思想。
+
+		4. 圣杯模式
+			{
+				Person.prototype.name = "Frank";
+				Person.prototype.sex = "Boy";
+				Person.prototype.sayName = function (){
+
+					console.log("我的名字叫做名字。。。");
+				}
+				function Person(){
+				}
+
+
+				function Student(){
+				}
+
+				function F(){}
+
+				#------------------------------------#
+				function inherit(Target, Origin){
+
+					function F(){}
+					F.prototype（有特例） = Origin.prototype;//下面一行和该行顺序不能调整
+					Target.prototype = new F();//
+
+					Target.prototype.constructor = Target;
+					Target.prototype.uber = Origin.prototype;
+				}
+				inherit(Student, Person);
+
+										F.prototype  = Origin.prototype
+									F
+		Target.prototype = new F()
+
+				#---------------------------------#
+
+				#-------------使用闭包，私有化设置变量-----------------------#
+				var inherit = (function(){
+
+					var F = function (){};
+
+					return function(Target, Origin){
+
+						F.prototype = Origin.prototype;
+						Target.prototype = new F();
+
+						Target.prototype.constructor = Target;
+						Target.prototype.uber = Origin.prototype;
+					}
+				}());
+				inherit();
+				#-------------------------------------------------------#
+
+				Student.prototype.kill = "mi";
+				Student.prototype.singe = "好汉歌";
+				var st = new Student();
+			}
+
+	————命名空间——————————————
+		企业开发困扰的问题：解决JS冲突（多个js文件引入，变量冲突或覆盖情况）
+
+		作用：管理变量，防止污染全局，适用于模块开发
+
+		命名空间：就是对象
+			命名空间问题：对象多个嵌套————> 给长引用赋值给短引用
+			如何解决：webpack、grunt、闭包（变量私有化，返回出一个函数调用内部的功能）
+			{
+				var init = (function(){
+					var name = "abc";
+					function showName(){
+
+						console.log(name);
+					}
+					return function (){
+						console.log("----");
+					}
+				}())
+				init();
+			}
+
+			fex前端合并代码
+
+	—————————属性的表示方法———————————————————
+	>>>obj.pop
+	>>>obj['pop']
+	[注意]
+		每次访问obj.pop时，内部会自动隐式的转换为：obj["pop"]，如果访问后者更快，用法上后面的更灵活。
+		{
+			var obj = {
+				wife1: {name: "laodeng"},
+				wife2: {name: "laodensdsg"},
+				wi fe3: {name: "laosdeng"},
+				sayWife: function(i){
+					return this["wife"+i]
+				}
+			};
+		}
+	————————————对象的枚举——————————————————————————
+	for in  可以用来便利数组或对象(更多情况下，arr使用for、obj使用for in)
+		[注意]
+			在循环对象的时候，只能使用变量[索引]，而不能使用变量.索引，另外定义在原型上的属性和Object.prototype上自定义的属性也会输出
+
+
+	hasOwnProperty：任何一个对象都有hasOwnProperty，检查是否为自身属性(不考虑原型链上对象和Object属性情况)
+		{
+			obj.hasOwnProperty(attrNames)
+		}
+
+	isPrototypeOf: 判断一个对象是否为另外一个对象原型链上的对象
+		{
+			Man.prototype.sex = "Male";
+			function Man(){
+
+			}
+			var man = new Man();
+			Person.prototype = man;
+			function Person(name, age){
+
+					this.name = name;
+					this.age = age;
+			}
+
+			var obj = new Person();
+			console.log( man.isPrototypeOf(obj) );
+		}
+
+	in ：判断能否调用对象上的属性，原型链上的属性使用in返回值也为true（方法和属性都可以使用）————>不分青红皂白 
+		{
+			"name" in obj
+		}
+
+	instanceof
+		A instanceof B：A对象是不是B构造函数构造出来的。
+		{
+			function Person(){}
+			var person = new Person();
+			console.log(person instanceof Person);
+			person instanceof Object
+		}
+
+		看A对象的原型链上有没有B的原型
+		{
+			给定一个变量obj，如何区分对象或数组
+			1. 通过obj.constructor方法
+			2. 通过instanceof ——————> 针对父子域情况(iframe)，里面是否属于外面大的，返回值为false，比较特殊
+			3. 通过toString方法
+				Object.prototype.toString.call(变量)
+		}
+		[作业]
+			克隆(浅层克隆、深层克隆)
+			浅层克隆：存在目标值修改后，原址也修改
+			深度克隆：重新构建对象进行赋值
+十五. this
+	1. 在函数预编译过程中this————> window
+		{
+			function test(a){
+				var b = 123;
+				function c(){}
+			}
+			test(1);
+
+			AO{
+				arguments: [1],
+				this: window
+				a: 1,
+				b: undefined
+				c: function c(){}
+			}
+
+			var te = new test();在test内部会有this初始化
+			var this = {
+				__proto__: test.prototype				
+			}
+			var this = Object.create(test.prototype);
+		}
+	2. 全局作用域里this————> window
+	3. call/apply可以改变函数运行时this的指向
+	4. obj.func()；func()里面this的指向是obj
+
+	[例题]
+			var name = "222";
+			var a = {
+				name: "111",
+				say: function (){
+					console.log(this.name);
+				}
+			}
+			var fun = a.say;
+			fun();
+
+			a.say();
+			var b = {
+				name: "333",
+				say: function(fun){
+
+					fun();
+				}
+			}
+			b.say(a.say);
+			b.say = a.say;
+			b.say();
+
+十六：函数引用
+	1. arguments.callee
+	所处函数的引用
+	{
+			var num = (function (num){
+				if(num == 1 || num == 0){
+
+					return 1;
+				}
+
+				return num  * arguments.callee(num - 1);
+
+			}(4));
+			console.log(num);
+	}
+
+	2. func.caller
+		func被调用的环境
+		{
+			function test(){
+
+				demo();
+			}
+			test();
+			function demo(){
+
+				console.log(demo.caller);
+			}
+		}
+
+	[注意]
+		function test(){
+
+			var this = {// var this = Object.create(test.prototype)
+				__proto__: test.prototype
+			}
+			this.name = "232";
+		}
+		new test();
+
+
+十七：数组
+	1. 数组定义
+		字面量和数组构造函数
+		{
+			var arr = [];
+			var arr1 = new Array(Content/Length);
+		}
+		[注意]
+			但两种方式有些许区别，针对构造函数定义，Array()参数可以为内容或定义数组长度（只有一位数时），另外针对构造函数定义
+		值不能为小数
+
+	2. 数组的读写
+		在数组中除非用了不存在的方法，否则不会出现报错情况，js中数组是基于对象的，数组是一种特殊的对象
+
+	3. 数组常用方法
+		{
+			es3.0(最基础、通式标准方法) es5.0(新老版本支持问题)  es6.0(es3.0和5.0基础上，最新最强大，最飘逸的)
+		}
+		————改变原数组
+			pop()、push()、shift()、unshift()
+			sort()、reverse();
+			splice()
+
+		[练习]
+			可以自己写一个push、unshift的内部实现方法
+			splice(从第几位开始, 截取多少长度, 在切口出添加新的数据):
+			{
+				在arr中3的后面加入4
+				var arr = [1,2,3,5];
+				arr.splice(3,0,4);
+				console.log(arr);
+			}
+
+			sort默认按照ASCII码排序，sort有个回调提供了排序规则的自定义，可以按照自己定义的任何想法去排序
+			{
+				var arr = [1,-1,0,10,2,4];
+				arr.sort(function(a, b){
+
+					return a - b;//a大于b，从小到大排序
+					return b - a;//b大于a，从大到小排序
+				});
+			}
+		[练习]
+			A. 给一个有序的数组乱序
+			B. 在js中，怎么将两个对象，按照某个对象属性进行排序
+			C. 按数组中个元素的字符串长度排序
+			D. 按字节长度排序
+			{
+				计算字节长度：charCodeAt()>255 为2， charCodeAt()<=255 为1
+			}
+		————不改变原数组
+		concat()、join()————>split()、toString()、slice()
+		{
+			concat:参数中的数或数组拼接到前面数组的后面
+			arr.slice(从第几位开始，截取到该位);//不包含第二个参数位
+			arr.slice(从第几位开始);//如果是一个参数，则从第n位截取到最后
+			arr.slice();当不写任何参数时，空截，则会将类数组转换为数组
+
+			join：将数组各个元素用join参数符合链接起来，不传参数，使用默认值,逗号
+			split：将字符串按照参数，分隔为数组，如果参数为空字符串，则会按照每个字符分隔成数组,分割符会丢弃
+		}
+
+		[练习]
+			将多个字符串a="abc"、b="sfds"，c="fsd",d="fsd"拼接在一起，可以通过什么方式实现
+			{
+				字符串的拼接实际上是栈内存的存储，通过字符串追加，循环的将变量取出，存入，很浪费资源。
+				所以采用数组的存储方式
+
+				var arr = [a,b,c,d];
+				arr.join("");比字符串操作更高效
+			}
+
+十八：类数组
+	{
+		--例题
+		var obj = {
+			"0": "a",
+			"1": "b",
+			"2": "c",
+			"length": 3,
+			"push": Array.prototype.push
+		}
+
+		--考题
+		var obj = {
+			"2": "a",
+			"3": "b",
+			"length": 2,
+			"push": Array.prototype.push
+		}
+		obj.push("c");
+		obj.push("d");
+	}
+		长的想数组，但不是数组，如函数中arguments
+		1. 类数组的组成部分：
+			A. 属性必须为索引(数字)属性
+			B. 必须有length属性(*)------------->关键点...
+			C. 最好有push方法
+			D. 加splice方法(*)
+				一旦一个对象添加length后，再加splice方法，这个对象就变成了类数组
+
+		2. 类数组的好处
+			即具备了数组，又具备了对象的属性，在存、读上面灵活度更高。但并不是所有的数组方法都可以用，需要填写
+
+			【补充】
+				DOM方法中所有类似数组的都是类数组
+		[作业]
+			A. 封装一个type方法，取代typeof完全分辨出来是什么类型
+			typeof([])————>array
+			typeof({})—————>object
+			typeof(function)————>object
+			typeof(new Nuimber)————>[object Number]
+			typeof(number)————>number
+			B. 数组去重，要求在原型链上编程
+			Array.prototype.unique = function(){
+
+			}
+十九：try..catch,ES5标准模式
+
+	1. try{
+		//尝试执行的代码
+	}catch(e){
+		//捕捉错误的代码块
+	}finally{
+		//无论try、catch代码块如何，都会执行到finally
+	}
+	[说明]
+		语法定义：在try里面发生的错误，不会执行错误后try里面的后面代码；
+				只有当try中出错时，catch中的代码才会执行；否则catch中代码不会执行;
+		{
+			例子
+			try{
+				document.write('a');
+				document.write('b');
+				document.write(c);
+			}catch(e){
+				// console.log(e.name, e.message);
+				document.write('d');
+			}
+			document.write('e');
+		}
+
+		{
+			举例
+			var data = null;
+			有网络传输值的时候，因为网络问题导致值没有收到，此种场景下，可以用try...catch
+		}
+
+	2. catch错误类型(error.name)
+		EvalError		eval()的使用和定义不一致
+		RangeError		数值越值
+		ReferenceError	非法或不能识别的引用值
+		SyntaxError 	发生语法解析错误
+		TypeError		操作类型错误
+		URIError		URL处理函数使用不当
+
+
+	3. ES5严格模式
+		————>"use strict"
+			不在兼容es3的一些不规则语法。使用全新的es5规范。
+			使用该方式主要是用ES3的松散特点，以及向前兼容(ES3)的特点
+		————>两种写法：全局严格模式、局部函数内严格模式（推荐）[写在最顶端的第一行]
+		————>就是一行字符串，不会对不兼容严格模式的浏览器产生影响
+
+		————>
+			不支持with，arguments.callee，func.caller，
+			变量赋值前必须声明，局部this必须赋值（Person.call(null/undefined)赋值什么就是什么）
+			{
+				// "use strict"
+				function Test(){
+
+					console.log(this);
+				}
+				Test.call(123);
+			}
+			拒绝重复属性(重复属性问题：不报错)和参数(参数问题：报错)
+		[说明]
+			ES3.0   ES5.0   ES6.0(一门新课程)
+
+			1). 现在的浏览器是基于ES3.0和ES5.0的新增方法(针对冲突的部分：用ES3.0的方法)
+
+			2). es3.0和es5.0的产生冲突的部分，用es5.0的部分，js定义这种为ES5.0严格模式，一旦启用ES5.0严格模式
+			则冲突部分使用es5.0否则使用3.0的部分(es5.0严格模式的启动)
+				唯一启用方式: "use strict"（写在页面逻辑的最顶端）
+				{
+					"use strict"
+					function test(){
+
+					}
+				}
+
+
+				{
+					function test(){——————>优先
+						"use strict"
+					}
+				}
+
+
+				{
+					"use strict"
+					function test(){
+
+						console.log(this);
+					}
+					test();
+				}
+
+				{
+					"use strict"
+					function test(){
+
+						console.log(this);//构造函数
+					}
+
+					new test();
+				}
+				[说明]
+					严格模式下，this指向还是window,和非全局模式下一样
+
+	2. with使用说明
+		with(){//括号中填写对象后，会把下面代码体作用域链的最顶端
+
+		}
+		{
+			var obj = {name: "frank"};
+			var name = "window";
+			function test(){
+
+				var name = "maoamo";
+				with(obj){//会把参数中的值改为with代码段作用域的最顶端
+					console.log(name);//frank
+				}
+			}
+			test();
+		}
+
+		可以简化代码
+		{
+			var obj = {
+				develop:{
+					ui:"zhang",
+					js:"wang"
+				},
+				finance: {
+					kj:"xiao",
+					cw:"sx"
+				}
+			}
+			with(obj.develop){
+				console.log(ui);
+			}
+		}
+
+		{
+			with(document){
+				write("a");
+			}
+		}
+		缺点：修改作用域链，程序会消耗太多的内存空间，效率有降低
+
+	3. eval()使用说明
+		参数中字符串，可以当作代码来执行
+		有独立的作用域，可以改变原型链...
+		{
+			写一个扫雷棋盘
+			IE6混杂模式的盒模型，使用box-sizing
+			border + padding + content = 盒模型
+			box-sizing: border-box;
+		}
+二十：Dom初探
+	1. 什么是DOM
+		DOM————>Document Object Model
+
+		DOM定义了表示和修改文档所需的方法。DOM对象即宿主对象，由浏览器厂商定义，用来操作html和xml(标签时自定义的)功能的一类对象的集合。也有人称DOM是Html以及xml的标准编程接口
+
+		[练习]
+			写一个多标签，每个标签显示对应标签的容器内容
+
+	2. DOM基本操作
+	{
+		[描述]
+			document代表整个文档，而html只是document中的根标签，还不能代表整个文档...
+	}
+		———查
+			2.1 查看元素节点（选择元素的方法类操作）
+				document代表整个文档
+				document.getElementById();
+				--元素id ，该情况是区分大小写的。
+				--是在ie8及以下的浏览器，不区分大小写，而且匹配name属性的元素。也就是说在ie8以下的浏览器中通过document.getElementById("元素的name值")可以取出东西;
+				--开发中很少通过id来取值，会被一些框架替换...
+				document.getElementsByTagName();//标签名，其最主流、最常用的用法。
+				document.getElementsByClassName();//类名， ie9以下版本没有
+				document.getElementsByName();//需注意，只有部分标签可使用(img, iframe，表单)
+
+				querySelector(); //css选择器,ie8及以下没有(实时性问题)
+				querySelectorAll();//css选择器，ie8及以下没有(实时性问题)
+				{
+					querySelector和querySelectorAll的实时性问题例子如下：
+
+						html:
+							<div></div>
+							<div class="demo"></div>
+							<div></div>
+
+						js:
+							var div = document.getElementsByTagName("div");----->实时性
+							var div1 = document.getElementsByClassName("demo")[0];
+							var newDiv = document.createElement("div");
+							document.body.appendChild(newDiv);
+						js:
+							var div = document.querySelectorAll("div");----->未实时性
+							var div1 = document.getElementsByClassName("demo")[0];
+							var newDiv = document.createElement("div");
+							document.body.appendChild(newDiv);
+
+						接下来执行：
+							div1.remove();div是否自动变化
+				}
+			2.2 遍历节点树(选择元素非方法类操作)
+				parentNode	父节点（最顶端parentNode为#document）
+				{
+					var strong = document.getElementsByTagName("strong")[0];
+					strong.parentNode.parentNode.parentNode.parentNode;//最顶端document
+				}
+				childNodes  子节点们
+				{
+					html:
+						<div>
+							<strong></strong>
+							<span></span>
+							<em></em>
+						</div>
+					js:
+						var div = document.getElementsByTagName("div")[0];
+						div.childNodes;//7
+
+					//------>跳转到查看节点类型
+				}
+				{
+					html:
+						<div>123
+							 <!-- This is comment -->
+							 <strong></strong>
+							 <span></span>
+						</div>
+					js:
+						var div = document.getElementsByTagName("div")[0];
+						div.childNodes;//看下面有多少个子节点...
+				}
+				firstChild  第一个子节点
+				lastChild 	最后一个子节点
+				nextSibling 后一个兄弟节点
+				previousSibling 前一个兄弟节点
+
+			2.3 基于元素节点树的遍历(选择元素非方法类操作)
+				parentElement  返回当前元素的父元素节点（ie不兼容）
+				{
+					var div = document.getElementsByTagName("div")[0];
+					div.parentElement.parentElement.parentElement;//到html为止...
+				}
+				children 		只返回当前元素的子节点
+				node.childElementCount === node.children.length 当前元素节点的子元素节点个数(ie不兼容)
+				firstElementChild 	返回第一个元素的节点(ie不兼容)
+				lastElementChild 	返回最后一个元素的节点(ie不兼容)
+				nextElementSilbling /previousElementSilbling 返回下一个/前一个兄弟元素 
+
+				[注意]
+					除了children外，其他均为ie9及以下不兼容。
+					ie9及以下遵循的规范走个性自定义,从ie9开始，基本上都一样....
+
+			2.4 节点的四个属性
+				nodeName 以大写形式表现，只读。
+				nodeValue Text节点或Comment节点的文本内容，可读写。
+				nodeType 该节点类型，只读(**)
+				attributes 查看Element节点的属性集合
+				{
+					可以借助该方式，直接修改属性值
+					html: 
+						<div class="cl1" id="cl1"></div>
+					js: 
+						var div = document.getElementsByTagName("div")[0];
+						div.attributes[0].value = "class1";//修改第一个属性class的值
+						div.attributes[1].value = "id1";//修改第二个属性id的值
+
+					属性值可以修改，属性名可以修改。但通过setAttribute和getAttribute来修改
+				}
+				节点的一个方法：Node.hasChildNodes();检查节点是否为空...
+				{
+					html:
+						<div></div>
+					js
+						var div = document.getElementsByTagName("div")[0];
+						div.hasChildNodes();//false
+					html:
+						<div>
+						</div>
+					js
+						var div = document.getElementsByTagName("div")[0];
+						div.hasChildNodes();//true
+				}
+			2.5 nodeType节点类型
+				1 元素节点
+				2 属性节点
+				3 文本节点
+				8 注释节点
+				9 document
+				11 DocumentFragment
+				[练习]：封装一个方法，不使用children()方法，根据一个容器对象，获取内部直接标签元素。
+
+	3. DOM结构树
+			3.1 见DOM结构树图...
+				document——>HTMLDocument——>Document——>Node——>EventTarget——>Object
+
+			3.2 DOM基本操作
+				1. getElementById()方法定义在	Document.prototype上，即Element节点不能使用该方法
+				2. getElementsByName()方法定义在HTMLDocument.prototype上，即非html中的document不能使用
+				3. getElementsByTagName()方法定义在Document.prototype和Element.prototype上里面可以为* 
+					document.getElementsByTagName("*");//所有标签...
+				4. 在HTMLDocument.prototype定义了一些常用属性，body、head分别代表Html中<body>、<head>标签
+				5. Document.prototype上定义了documentElement属性，指代文档的根元素
+				6. getElementsByClassName、querySelector、querySelectorAll在Document.prototype和
+				Element.prototype均有定义
+
+		[练习]
+
+		{
+				//练习题
+			1) 遍历元素节点树
+			2）封装函数，返回元素e的第n层祖先元素节点
+			3）封装函数，返回元素e的第n个兄弟元素，n为正，返回后面的兄弟元素节点，n为负，返回前面的兄弟元素节点，n为0返回自己
+			4）编辑函数，封装myChild()功能，解决以前部分浏览器的兼容性问题
+			5) 自己封装hasChildren()方法，不能使用children属性
+		}
+
+			--遍历元素节点树（在原型链上编程）——————(*****)
+			{
+				var span = document.getElementsByTagName("span")[0];
+				Element.prototype.retChildNode = function(){
+
+					if(this.nodeType==1){
+
+						console.log(this.nodeName);
+					}
+
+					var item;
+					for(var i = 0 ; i < this.children.length; i ++){
+
+						item = this.children[i];
+						if(item.nodeType == 1){
+
+							arguments.callee.call(item);
+						}
+					}
+				};
+				span.retChildNode();
+			}
+			--封装函数，返回元素e的第n层上祖先元素节点
+			--封装函数，返回元素e的第n个兄弟元素节点，n为正，返回后面的兄弟元素节点，n为负，返回前面的，n为0，返回自己
+			{
+				function retSibling(e, n){
+
+					while(e && n){
+						if(n>0){
+
+							if(e.nextElementSibling){
+
+								e = e.nextElementSibling;
+							}else{
+
+								for(e = e.nextSibling; e && e.nodeType != 1; e = e.nextSibing);
+							}
+							n--;
+						}else{
+							
+							if(e.previousElementSibling){
+								e = e.previousElementSibling;
+							}else{
+								for(e = e.previousSibling; e && e.nodeType != 1; e = e.previousSibling);
+							}
+							n++;
+						}
+					}
+					return e;
+				}
+			}
+			--编辑函数，封装myChild()功能，解决以前部分浏览器的兼容性问题
+			--自己封装hasChildren()方法，不可用children属性
+
+	————————增
+			document.createElement();
+			document.createTextNode();
+			document.createComment();
+			documnet.createDocumentFragment();//创建文档碎片节点
+
+	———————插
+			PARENTNODE.appendChild();//将已有元素插入到存在元素中，做的是剪切操作...
+			{
+				var div = document.getElementsByTagName("div")[0];
+				div.appendChild(document.createElement("span"));//将新元素append到指定节点
+
+				var div = document.getElementByTagName("div")[0];
+				div.appendChild(document.getElementsByTagName("span")[0]);//将span剪切出来插入到指定节点
+			}
+			PARENTNODE.insertBefore(a, b);//div插入a，在b之前.可为元素节点也可以节点
+			{
+				div.insertBefore(a, b); insert a before b...;
+			}
+
+	———————删
+			parent.removeChild(target);//将父元素中的对象删除,返回值为删除的值
+			child.remove();//自身删除，没有返回值
+
+	———————替换
+			parent.replaceChild(new, origin);
+			[练习]
+				写一个insertAfter的方法
+
+	4.  基本操作
+			Element节点的一些属性
+				innerHTML 			设置（覆盖）、获取div中的html内容
+				{
+					在此输入html内容是可以的，但innerText是不好使的
+					var div = documnet.getElementsByTagName("div")[0];
+					div.innerHTML = "<p style='background-color:red'>好的</p>";//好使
+
+					div.innerText = "<p style='background-color:red'>好的</p>";//不好使
+				}
+				innerText(火狐不兼容)		写、取标签内的文本类内容(危险，会直接覆盖)
+				innerText不兼容，但火狐中可以使用textContent，/ 老版本ie不好使
+
+			Element节点的一些方法
+				ele.setAttribute(proK);//属性可以设置系统没有的
+				ele.getAttribute(proK, proV);
+
+			[注意]
+				elm.id 可以直接设置id的值,class可以通过setAttribute来赋值...
+			{
+				封装函数insertAfter()功能；类似insertBefore()，可以忽略浏览器兼容，直接在原型链上编程..
+			}
+
+
+二十一：date对象、定时器
+	
+	1. date对象
+		var date = new Date();
+		date.getFullYear();//以四位数返回年份
+		date.getMonth();返回月份(0-11)
+		date.getDate();//一个月中第几天(1-31)
+		date.getHours();返回小时(0-23)
+		date.getMinutes();返回分钟(0-59)
+		date.getSeconds();返回秒数(0-59)
+		date.getMilliseconds();返回毫秒数(0-999)
+
+		date.getDay();返回一周中第几天（0-6）
+		date.getTime();返回距1970年1月1日的毫秒数*******
+		{
+			----date对象记录了出生那一时刻的时间属性值...不是实时的值。
+			----计算机的纪元时间是1970-01-01 ,而getTime()是当前时刻距离纪元时间的毫秒数
+		}
+
+	2. 定时器
+		setInterval(fn, millisecond)//每隔N毫秒执行一次fn——————>循环执行
+			[注意]
+				--第2个参数只识别一次，不能修改此值
+				——定时器不准！！，不能拿定时器做为记时（为什么不准....）
+				该方法的实现，是基于红黑树数据结构实现的----
+
+		setTimeout(fn , millisecond)//推迟一段时间在执行fn———————>推迟执行
+			[注意]
+				--只执行一次...
+				--应用场景：免费观影期（针对会员清楚---, 3-5秒不展示广告）
+
+		clearInterval
+		clearTimeout
+			[说明]
+				---setInterval和setTimeout的返回值为数字，代表了定时器的唯一标识(编号)
+				---全局对象window上的方法，内部函数this指向window
+			[注意]
+				---setInterval("func()", 1000);//该反模式不建议使用,字符串会当作js来执行...
+
+	高性能javascript————>你不知道的javascript
+
+二十二：BOM相关
+	{
+		IE9以上支持W3C标准，IE9以下部分不支持W3C标准...	
+	}
+	1. 基本操作
+		查看滚动条的距离：
+			window.pageXOffset/pageYOffset（IE8及以下不兼容）
+
+				document.body.scrollLeft/scrollTop
+				document.documentElement.scrollLeft/scrollTop
+			(兼容性比较混乱，用时取两个值相加,因为不可能存在两个同时有值)
+
+			[说明]
+				IE9以下不支持W3C标准，IE9以上支持W3C标准
+
+			[练习]
+				封装方法：求滚动轮距离getScrollOffset()
+
+	2. 查看可视区窗口口尺寸
+			{
+				可视区窗口：编写的html代码能看到的地方，不包含地址栏上面的部分..
+			}
+
+			window.innerWidth、window.innerHeight（IE8及IE以下不兼容）
+
+			document.documentElement.clientWidth/clientHeight(标准模式下，任意浏览器都兼容)
+
+			document.body.clientWidth/clientHeight(适用于怪异模式下的浏览器)
+
+			[练习]
+				封装方法：封装兼容性方法，返回浏览器尺寸getViewportOffset();
+
+
+			[区别]
+				标准模式于怪异模式："<!DOCTYPE html>",添加此段代码代表为标准模式，如果删除该代码则为怪异模式
+			针对之前用IE6语法写的HTML、CSS代码，到了IE7可以倒回到IE6的解析，即怪异模式的用途是向后兼容。浏览器
+			有两种渲染模式（识别语法，并绘制成页面）:
+				标准模式：
+				怪异模式（混杂模式）：一经启用，则会识别之前的语法，试图去兼容之前的（chrome可以兼容近几代的，差别微乎其微;只有IE下存在这种小问题的解决方式）,将头部<!DOCTYPE html>删除，则会自动启用混杂模式。DOCTYPE 为文档类型，
+				也为DTD，DTD有很多中模式。而<!DOCTYPE html>为h5的形式
+
+			识别标准模式还是怪异模式：
+				document.compatMode：BackCompat(怪异模式)、CSS1Compat(标准模式)
+
+			一般也是针对IE才会用到这种情况，其他浏览器会兼容很多版本，一般情况下用不到。
+
+ 
+	3. 查看元素集合尺寸
+			domElement.getBoundingClientRect();(兼容性很好)
+			[说明]
+				该方法返回一个对象，对象里面有left、top、right、bottom等属性。left和top代表该元素左上角的x和y坐标。
+			right和buttom代表元素右下角的x和y坐标。
+				返回值即为四个边的像素位置
+
+			height和width在老版本的IE中并没有实现
+			返回的结果并不是实时的
+			{
+				html:
+					<div style="height: 100px;width: 100px;background-color:red;position:absolute;left:100px;top:100px;"></div>
+
+				js:
+					var div = document.getElementsByTagName("div")[0];
+					var box = div.getBoundingClientRect();
+					div.style.height = "200px";
+					div.style.width = "200px";
+					div.style.backgroundColor = "red";
+
+			}
+	4. 查看元素尺寸
+		dom.offsetWidth、dom.offsetHeight
+		[说明]表示视觉上的尺寸(盒子模型)，其不带单位...
+
+	5. 查看元素位置
+		dom.offsetLeft、dom.offsetTop
+		对于无定位父级的元素，返回相对于文档的坐标。对于有定位父级的元素，返回相对最近有定位父级的坐标
+
+		dom.offsetParent
+		返回最近有定位的父级，如无，返回body、body.offsetParent返回null
+
+		[练习]
+			求元素相对文档的坐标：getElementPosition
+			{
+				css...
+				.wapper{
+					height: 300px;
+					width: 300px;
+					border: 2px solid black;
+					margin-left: 100px;
+					margin-top: 100px;
+				}
+				.content{
+					height: 100px;
+					width: 100px;
+					margin-left: 100px;
+					margin-top: 100px;
+					background-color: red;
+					position: absolute;
+				}
+
+				html....
+				<div class="wapper">
+					<div class="content"></div>
+				</div>
+
+				js
+				var div = document.getElementsByClassName("content")[0];
+				div.offsetLeft
+				div.offsetTop
+			}
+
+	6. 让滚动条滚动
+			window上有三个方法: scroll()、scrollTo()、scrollBy()
+			三个方法功能类似，用法都是将x、y坐标传入。即实现让滚动条滚动到当前位置
+
+			区别:
+				scrollBy() 会在之前的数据基础上进行累加
+			eg:
+				利用scrollBy()快速阅读功能
+
+
+	7. 脚本化CSS
+		7-1) 读写元素css的属性
+			dom.style.prop
+				可读写行间样式属性，没有兼容性问题，碰到float这样的保留关键字，前面加css（eg:float——>cssFloat）；
+				复合属性必须拆解，组合单词为小驼峰式；
+				写入值必须是字符串格式
+			[注意]
+				这个地方读写的是行间样式。。。
+
+		7-2）查询计算样式
+			window.getComputedStyle(ele, null);
+			计算样式只读；返回的计算样式的值都是绝对值，没有相对单位
+			IE8及IE8下不兼容(currentStyle)
+			该值不含padding、边框的值
+
+			[说明]
+				都有默认值，获取的是当前元素一切css属性的显示值(包括默认值);
+				上述方法计算是绝对的值，比如css中用到的单位是em，但返回值是px
+
+				domEle.currentStyle（该值为属性）
+				样式只读；返回计算样式的值不是经过转换的绝对值
+				IE独有的属性
+			[注意]
+				这个地方获取的是经过计算的属性值，有个特例:
+				{
+				  html:
+					<div style="height: 100px;width: 100px;border: 2px solid black;"></div>
+
+				  js: 
+				  	var div = document.getElementsByTagName("div")[0];
+					var obj = window.getComputedStyle(div);
+				}
+
+				其他浏览器和IE下的计算样式 方式
+				{
+					//非IE
+					window.getComputedStyle(div, null);--->CSSStyleDeclaration
+
+
+					//IE
+					div.currentStyle;---->CSSStyleDeclaration
+				}
+			[特殊]
+				getComputedStyle()中第二个参数解决伪元素的问题，可以获取伪元素的样式
+				{
+					div{
+						width: 100px;
+						height: 100px;
+						background-color:red;
+					}
+					div:after{
+						content: "span";
+						height:60px;
+						width: 60px;
+						background-color: green;
+						display: inline-block;
+					}
+					var div = document.getElementsByTagName("div")[0];
+					var afterDiv = window.getComputedStyle(div, "after");	
+				}
+
+			{
+				关于伪元素的操作需求....
+				m.sm.cn中下一页的尖叫符号，是用伪元素写的...
+
+
+				想让伪元素的样式发生变动
+				css
+					div{
+						height: 300px;
+						width: 300px;
+						background-color: red;
+					}
+					
+					div::after{
+						content: "之后";
+						height: 60px;
+						width: 60px;
+						display: inline-block;
+						background-color: green;
+					}
+					.changeColor::after{
+						background-color: yellow;
+					}
+				js
+					var div = document.getElementsByTagName("div")[0];
+					div.onclick = function(){
+						this.className = "changeColor";
+					}
+
+					var  afterObj = window.getComputedStyle(div, "after");
+			}
+
+			{
+
+				//css可以通过js直接进行修改，如以下代码
+				css:
+					div{
+						height: 100px;
+						width: 100px;
+						background-color: red;
+					}
+				html:
+					<div></div>
+				js:
+					var div = document.getElementsByTagName("div")[0];
+					div.onclick = function(){
+
+						this.style.height = "200px";
+						this.style.width = "200px";
+						this.style.backgroundColor = "yellow";
+					}
+
+				//但一般不通过上面这种方式修改，而是通过下面这种方式来操作。。。
+				css: 
+					div{
+						height: 100px;
+						width: 100px;
+						background-color: red;
+					}
+
+					div.active {
+						height: 200px;
+						width: 200px;
+						background-color: yellow;
+					}
+				html:
+					<div></div>
+
+				js:
+					var div = document.getElementsByTagName("div")[0];
+					div.onclick = function(){
+
+						this.className = "active";
+					}
+
+				通过这种方式修改有以下几个好处
+				a. 效率问题：针对DOM的操作，需要js和html进行桥操作，每一次操作都需要一个来回，损耗效率。相比较一次style
+				就要浪费一次效率...每一次点的获取是对象的效率损失
+				b. 好维护...
+
+				但并不是所有的情况都符合，比如方块的动态运动，则需要js和html的频繁操作。。。
+			}
+
+
+			[练习]
+				A.封装方法：getStyle(elem, prop)
+				B.写一个运动的方块。。。
+				C. 图片轮播图
+
+二十三：事件
+	{
+		前端<交互>体验核心
+
+		事件 = 交互类型 + 反馈要执行的函数...
+
+		----交互(事件类型)类型
+	}
+	1. 	如何绑定事件处理函数
+		A. elm.onxxx = function(event){};——————>句柄绑定方式...比较lower
+			兼容性很好，但是一个元素的同一个事件上只能绑定一个处理程序，最后的覆盖前面的；
+			基本等同于写在HTML行间上
+
+		B. obj.addEventListener(type, fn, false);
+			IE9以下不兼容，可以为一个事件绑定多个处理程序，但不能为同一个,w3c标准的。。。
+			[注意]
+				事件监听机制也是耗精力的，非js引擎做的，也是其他部分做的功能。
+				{
+					//执行两次
+					var div = document.getElementsByTagName("div")[0];
+					div.addEventListener('click', function (){
+						console.log('a');
+					}, false);
+
+					div.addEventListener('click', function (){
+						console.log('a');
+					}, false);
+
+					//执行一次
+					var div = document.getElementsByTagName("div")[0];
+					div.addEventListener('click', test, false);
+					div.addEventListener('click', test, false);
+					function test(){
+						console.log('a');
+					}
+
+					两个函数的引用是否一致.....即不能针对同一个函数绑定多次
+				}
+
+		C. obj.attachEvent('on'+type, fn);
+			IE独有，一个事件同样可以多个处理程序
+			[特殊说明]
+				同一个类型事件， 针对同一个函数，可以绑定多次，而addEventListener针对绑定同一个函数只能执行一次
+
+				//下面的程序执行多次...
+				var div = document.getElementsByTagName("div")[0];
+				div.attachEvent('onclick', test);
+				div.attachEvent('onclick', test);
+				function test(){
+					console.log('a');
+				}
+
+		[练习]：神马笔试题
+			针对ul下面的3个li分别绑定click事件，如果是1000个该如何绑定事件
+
+		基础课：操作系统、计算机网络、数据结构、数据库
+
+	2. 事件处理程序的运行环境(this)
+		A. elm.onxxx = function(event){}——————>句柄方式(最传统，兼容性最好的方式)
+			程序this指向是dom元素本身
+
+		B. obj.addEventListener(type, fn ,false);
+			程序this指向dom元素本身
+
+		C. obj.attachEvent('on'+type, fn);
+			程序this指向window，为解决方法体内this为window的情况，可以通过下面代码解决
+			{
+				js: 
+					var div = documnet.getElementsByTagName("div")[0];
+					div.attachEvent('onclick', function(){
+
+						handle.call(div);
+					});
+					function handle(){
+
+						//this == div, 可以通过this来修改
+					}
+			}
+		[练习]
+			封装兼容性addEvent(elem, type, fn);方法
+
+	3. 解除事件处理程序
+		A. ele.onclick = false / '' / null
+
+		B. ele.removeEventListener(type, fn, false);
+
+		C. ele.detachEvent('on'+type, fn);
+
+		[注意]
+			若绑定匿名函数，则无法解除
+
+		[说明]
+			一个广告生命周期只能触发一次....
+
+	4. 事件处理模型——冒泡事件、事件捕获
+		事件冒泡：
+			结构上（非视觉上）嵌套关系的的元素，会存在事件冒泡的功能，即同一事件，自子元素冒泡向父元素（自底向上）
+
+		事件捕获：
+			结构上（非视觉上）嵌套关系的元素，会存在事件捕获功能，即统一事件，自父元素捕获至子元素（事件源元素）。（自顶向下）
+			[注意]
+				w3c标准，只有chrome实现了。。。事件捕获只有一款浏览器google chrome上好使
+
+		IE上没有事件捕获事件
+
+		触发顺序：先捕获，后冒泡
+		focus、blur、submit、reset、change、select等事件不冒泡
+		[说明]
+			事件冒泡有很多用处，也有很多不想用的地方。在后续的事件委托，有用到事件冒泡的功能...
+			*****一个对象的一个事件类型，上面绑定了一个函数只能遵循一种事件模型。
+			*****一个对象的一个事件类型，上面绑定了两个函数，遵循的事件模型优先顺序是先捕获，后冒泡。
+
+
+		{
+			示例代码
+			事件模型上是先捕获后冒泡，但谁先绑定谁先执行。。。
+			html: 
+				<div class="wapper">
+					<div class="content">
+						<div class="box"></div>
+					</div>
+				</div>
+			js: 
+				var wapperObj = document.getElementsByTagName("div")[0];
+				var contentObj = document.getElementsByTagName("div")[1];
+				var boxObj = document.getElementsByTagName("div")[2];
+
+				wapperObj.addEventListener('click',function (){
+
+					console.log('wapper-冒泡');
+				}, false);
+
+				contentObj.addEventListener('click',function (){
+
+					console.log('content-冒泡');
+				}, false);
+
+				boxObj.addEventListener('click',function (){
+
+					console.log('box-冒泡');
+				}, false);
+				wapperObj.addEventListener('click',function (){
+
+					console.log('wapper-捕获');
+				}, true);
+
+				contentObj.addEventListener('click',function (){
+
+					console.log('content-捕获');
+				}, true);
+
+				boxObj.addEventListener('click',function (){
+
+					console.log('box-捕获');
+				}, true);
+		}
+
+	5. 取消冒泡和阻止默认事件
+		//针对以下例子，说明了取消冒泡的重要性
+		{
+			document.onclick = function(){
+				console.log('你闲的呀');
+			}
+
+			var div = document.getElementsByTagName("div")[0];
+			div.addEventListener('click', function(event){
+
+				this.style.background  = "orange";
+				//需要取消冒泡...
+			}, false);
+		}
+
+		取消冒泡
+			W3C标准 event.stopPropagation()；但不支持IE9以下的版本
+			IE独有event.cancelBubble = true;--->chrome也封装了该属性的使用...
+			封装取消冒泡的函数stopBubble(event);
+
+		阻止默认事件
+			{
+				//背景说明
+				有些事件为了不影响用的功能，需要提前取消默认事件的绑定。比如鼠标右键菜单。。。
+				document.oncontextmenu = function(event){
+
+					//以下方式为阻止默认事件执行的方法...
+				}
+			}
+			默认事件——表单提交、a标签跳转、右键菜单等
+			A. return false; 兼容性非常好， 句柄的方式阻止默认事件，只有句柄的方式绑定才好使（attachEvent不好使）
+			B. event.preventDefault();W3C标准，IE9以下不兼容
+			C. event.returnValue = false;兼容IE
+			封装阻止默认事件函数cancelHandler(event);
+
+			[说明]
+				比如右键菜单:document.oncontextmenu、a标签(<a href="javascript:void(0);">点击</a>、<a href="javascript:void(false);">点击</a>,void中参数相当于返回内容)
+
+			{
+				document.oncontextmenu = function(event){
+
+					cancelHandler(event);
+				}
+
+				a标签，有个特殊的现象，href="#"的情况，每次点击都会到第一行。。。通常情况下，a标签被当作按钮来用，这样a就没有跳转功能了。跳转是a标签的默认事件，可以将a标签的默认事件取消。
+				var a = document.getElementsByTagName("a")[0];
+				a.onclick = function(){
+
+					return false;
+				}
+				这样失去了点击事件的能力且有了返回值..，通常为了简便，写成下面这种方式...
+				<a href="javascript:void(0)">demo</a>
+
+				void(0)--> 代表返回值为0
+				void(false)————>代表返回值为false
+			}
+
+	6. 事件源对象
+		{
+			作用： 记录了事件发生时的一些关键信息
+		}
+		event || window.event 用于IE
+		A. 事件源对象：
+				event.target  		火狐只有这个
+				event.srcElement 	IE只有这个
+				这两chrome都有
+			兼容性写法
+
+			[说明]
+				事件event对象中
+					srcElement、target标记了事件源的一些信息(事件源对象)
+					clientX、clientY(pageX、pageY): 触发时鼠标的坐标点
+			[意义]
+				源对象主要是用于事件委托...
+
+		B. 事件委托
+			[背景]一个ul下面有个10个li，针对li上面绑定click对象
+
+			利用时间冒泡，和事件源对象进行处理。
+			优点：
+				1. 性能：不需要循环所有的元素一个个绑定事件
+				2. 灵活： 当有新的子元素时，不需要重新绑定事件
+			{
+
+				html:
+					<ul>
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+					</ul>
+				js:
+					var ul = document.getElementsByTagName("ul")[0];
+					ul.onclick = function(e){
+
+						var event = e.event || window.event;
+						var srcElm = event.target || event.srcElement;
+
+						console.log(srcElm.innerText);
+					}
+			}
+			[作业]
+				了解onmouseenter(onmouseover) 、onmouseleave(onmouseout)、onmousemove
+				写一个拖拽模块的功能
+		[捡漏]
+			过时的面试问题： 事件捕获除了addEventListener第三个参数为true，还有没有其他的方法。 
+			事件有事件捕获、事件冒泡，但其他的办法说的是真实的事件捕获过程，用于解决鼠标拖拽，移动等问题。。。。。
+			以前针对方块拖动，因为快，捕获慢问题导致的。仅在IE生效:
+				div.setCapture();div会捕获页面内所有事件硬到自己身上来（如拖拽的，移除div，但通过div.setCapture仍然可以获取事件信息）；对应的函数有
+				div.releaseCapture();用于取消捕获
+
+	7. 事件分类
+		鼠标事件
+			{
+				click = mousedown + mouseup，顺序为 mousedown > mouseup > click
+				mouseenter     mouseleave      mousemove
+				mouseover      mouseout
+
+				上面mouseenter 和mouseleave是html5的新规范，取代了mouseover和mouseout
+
+				html、css、js互相参透，之前底层调用引擎来做的，速度效率更高、更快...
+			}
+			click、mousedown、mousemove、mouseup
+			contextmenu、mouseover、mouseout、mouseenter、mouseleave
+
+			[说明]
+				区分鼠标左右键的只有mouseup 、mousedown，其他事件不可能
+				{
+
+					div.onmousedown = function(e){
+
+						console.log(e.button); //0、1、2
+						console.log(e.buttons);//代表同时有几个按键下去
+					}
+				}
+				A. 用button来区分鼠标的按键：0/1/2 (0-左键、1-中间键、2-右键)
+				B. DOM3标准规定：click事件只能监听鼠标左键、只能通过onmousedown、onmouseup来判断鼠标键
+
+			[问题]
+				如何解决mousedown和click的冲突
+
+
+			[注意说明]
+				A. click、mousedown、mouseup顺序为：mousedown > mouseup > click
+				B. mouseenter、mouseleave、mousemove顺序为：mouseenter(mouseover) > mousemove > mouseleave(mouseout)
+				C. js、html、css底层存在互用情况，但效率上要高很多
+				D. event.button 只有onmousedown上才会获取到，即只有onmousedown才能获取鼠标准确事件,click只能监听左键
+
+			[练习]
+				A. 拖拽应用
+				B. 应用mousedown、mousemove、mouseup
+				C. 随机移动的方块
+				D. mouseover
+
+			{
+				移动端，onmousedown就不好使了。。。则使用touch相关的事件
+				touchstart、touchmove、touchend
+			}
+
+		键盘事件
+			keydown、keyup、keypress顺序为：keydown > keypress > keyup
+
+			keydown 与 keypress的区别：
+				{
+					event.charcode   keydown没有，keypress有
+					event.charcode  keydown针对键盘上的按钮都有触发， keypress只针对ASCII码有触发
+				}
+				keydown：可以检测任意键盘的按键(除了Fn)
+				keypress：只可以响应字符类键盘 按键；返回ASCII码，可以转换成相应的字符
+				
+				[补充]
+					String.fromCharCode();将参数中的ASCII编码转为ASCII字符
+					String.fromCharCode(97);————>'a'
+
+					string.charCodeAt(0);将字符对象转为ASCII编码
+					"a".charCodeAt(0);————>97
+
+					A. 移动端onmousedown不好使——>为touch事件
+						touchstart、touchmove、touchend
+
+		文本操作事件
+			input: 但凡内容发生变化就会调用input事件
+			focus: 得到焦点时触发
+			blur: 失去焦点时触发
+			change: 数据改变时触发
+
+			[说明]
+				input————>this.value
+
+				focus、blue、change顺序为：focus  > change  > blue
+
+		窗体操作类（window上的事件）
+			window.onscroll 、window.ononload
+			[练习]
+				fixed定位js兼容性(IE6没有fixed定位)
+			{
+				//针对onload事件说明
+				页面读取到javascript时，阻断页面，所以javascript需要写到div或标签的下面，才能通过js读取到dom元素
+				所以有些高手这样写
+				window.onload = function(){//-----效率是最低的。。。
+
+					var div = documnet.getElementsByTagName("div")[0];
+					div.style.height =  "100px";
+					div.style.width = "100px";
+					div.style.backgroundColor = "red";
+				}
+				但。。上面的方式不提倡使用。。。没有意义且这种方式是最慢的。。。需要了解浏览器的机制。。。 
+
+				将script写到html标签下面的好处是： 文档(html\css)刚解析完成的时候，js就可以操作dom了，速度更快些。。。没有必要下载完
+				而window.onload要等文档解析并下载完之后，onload要等待一个状态 （renderTree构建完之后， dom的所有文档、内容、图片都下载完之后，页面全部就绪————>自动阶段）
+				才会进行onload函数的执行...
+
+				window.onload的作用在于，提醒整个页面可以正常运行的一个时刻(等待交互体验)--->不要把主程序放到里面...比如可以有一些广告图片进行加载。。。
+			}
+
+		[作业]
+			A. 完善轮播图
+			B. 提取密码框中密码
+			C. 输入框功能完善
+			D. 菜单栏（二级菜单栏...）
+			E. 贪吃蛇游戏
+			F. 扫雷游戏
+
+	8. 浏览器时间线机制
+		[背景知识]
+			时间线：每一步和下一步按时间顺序来执行...
+			浏览器访问某个页面：html和css会进行同时下载（并行解析...形成树--二叉树）
+			html代码——>解析——>DOMTree
+			css代码———>解析——>CSSTree
+					——————————————————————>
+						DOMTree + CSSTree == RenderTree(渲染树)
+											——————————————————————>绘制页面...
+
+								DOM节点的解析............
+			在html代码解析的时候，譬如针对img标签，解析(认出来后)后就直接挂到dom树节点上，而针对图片的下载浏览器会再开一个线程
+			（先解析、后下载，异步下载。。。）
+			而window.onload函数会在页面所有内容全部下载(包含图片)之后，才会执行该函数...
+
+
+二十四：json、异步加载、时间线
+		{
+			html、css在展示的时候，已经“绘制”完了(浏览器中有渲染引擎，以一个像素为单位，会一行一行的绘制渲染页面)。
+
+			css: 
+				div{
+					height: 100px;
+					width: 100px;
+					background-color: red;
+				}
+			html: 
+				<div></div>
+
+			上面这段代码是怎么运行的？浏览器内核会针对代码进行一步步检索，先识别/解析html代码(将标签挂在树上)，生成domTree，绘制domTree的时候，符合深度优先原则而不是广度优先 （如先看head，在解析head中的内容，head中没有内容后，再去解析与head同级的其他标签中的内容）
+
+											(1)html
+						(2)head 						(6)body
+			(3)meta   (4)title   (5)style     (7)div  			(8)script
+		}
+		1. json
+			json是一种传输数据的格式（以对象为模版，本质上就是对象，但用途有区别：对象是本地用的，json是用来数据传输的）
+
+			json——>string  JSON.stringify()
+			string——>json  JSON.parse()
+
+			[注意]
+				json串需要加引号...
+
+		2. 异步加载
+			[背景知识]
+				A. 浏览器请求页面，当看到某个页面的时候，实际上已经绘制完成(按照html、css的语法)了。该绘制操作由[渲染引擎]一行一行的完成。绘制的时候，符合深度优先规则（head--->meta——>直到枝干走完，再走另外一条枝干），再广度优先。
+
+				B. DOMTree的生成代表DOM的解析完毕；并不代表执行完毕; 即所有DOM加载完一定在解析完之后(解析的过程是dom树生成的过程)————>DOM树生成后，等着....CSSTree的形成
+
+
+				C. CSSTree生成和DOMTree类似；和DOM节点是对应的；也是深度优先规则；等CSSTree生成后，会与DOMTree
+				一起生成RenderTree（绘制树）
+					domTree + cssTree  = renderTree
+
+				renderTree生成后，渲染引擎开始绘制页面...按照renderTree的规则去绘制...
+
+				D. 而在上面三个阶段的过程中，js可以修改domTree和cssTree，而随之也会引起renderTree的变动(这样会引起渲染引擎从第一行重新开始渲染绘制页面，效率比较低...)。所以优化应该尽量避免domTree和cssTree的增、删、改操作...最好也是一次性的做完，不要出现反复和频繁的操作，这样会导致renderTree的反复构建。
+
+					renderTree的反复重建————>reflow 重排（重构）——————>效率最低
+						出现reflow的情况有：
+								dom节点的删除、增加
+								dom节点的宽、高变化、位置变化（display none——>block）
+								offsetWidth、offsetHeight
+
+					repaint(重绘)
+							例如针对背景颜色修改，都会进行repaint重绘操作。。。(先针对cssTree修改完后修改renderTree其影响比较小，只是重绘一部分...)
+				{
+					默认情况下，js是同步加载的。在执行js加载的时候，会阻断html、css的加载线。。。
+
+					为什么js会阻断了html、css的加载线。。。
+					js会修改html、css如果不阻断renderTree的生成会乱套
+
+					有些时候，是想让js异步加载。。。。。比如下面的场景（不影响dom修改）:
+					{
+						引入工具包，其并不影响dom的修改，做初始化数据使用。。。
+
+						经常遇到页面留白，其实是在加载js，阻塞了其他数据的加载,Js文件越多，需要延迟加载的风险就越高，针对不处理页面dom的，工具类的换成异步页面加载， 甚至是按需加载。。。
+						正常情况下，js是解析下载完立即执行...执行完之后，再接着下载html、css
+					}
+				}
+			——js加载缺点：加载工具类js方法没必要阻塞页面，这样反而影响加载效率。一旦网速不好，整个网站将等待js加载而不进行
+					后续渲染等工作。有些工具方法需要按需加载。
+
+			——异步加载的三种方案：
+					A. defer 异步加载，但要等到dom文档全部解析完才开始被执行。只有IE能用(IE9以下可以用)，也可以将代码写在内部(凡是属性名和属性值相等的，只写一个属性名就可以)
+					{
+						1. 外部引入
+						<script type="text/javascript" defer="defer"></script>
+
+						2. 写入内部
+						<script type="text/javscript" defer="defer">
+							var a = 23;
+
+						两个不能同时使用。。。
+						</script>
+
+						该方式需要等dom页面解析完毕(发生在加载完之前)才会被执行， 这个时候有图片没有下载完。。。
+					}
+					B. async 异步加载，加载完就执行。async只能加载外部的脚本，不能把js写到script标签里
+						A、B. 执行时，也不阻塞页面（W3C标准，IE9以上可用）
+						{
+							只能加载外部文档,格式如下
+							<script type="text/javascript" src="tools.js" async="async"></script>
+						}
+					——————————————————————————————兼容性考虑
+						{
+							这个时候，浏览器的兼容性需要考虑...不能同时设置defer和async的属性，同时写两段script代码也不可取。不允许一个资源进行代码加载以及加载代码的冲突、覆盖问题。这个时候用第三种方法(可以按需加载:比如根据用户的点击，才会决定是否加载js文件，只有当用户点击的时候，才动态的下载及执行js文件)。
+						}
+					C. 创建script，插入到DOM中，加载完后callback
+					{
+							var script = document.createElement("script");
+							script.type = "text/javascript";
+							script.src = "demo.js";
+							document.head.appendChild(script);
+
+							而针对上面代码，如果引入的文件中，下面有调用方法时，查找不到方法，原因是还没下载完，什么时候才能下载完？使用load事件，但凡涉及到资源文件的下载就有load事件可以使用，这种方式的兼容性(firefox、chrome、oprea、Safari)非常好，针对IE只有script上没有onload事件
+
+							var script = document.createElement("script");
+							script.type = "text/javascript";
+							script.src = "demo.js";
+							script.onload = function(){
+								console.log('第二步 ');
+								test();
+							}
+							document.head.appendChild(script);
+
+
+							而针对IE，使用下面的方法
+							readyState: loading-->complete、loaded
+							有监听该属性变动的方法，onreadystatechange
+							var script = document.createElement("script");
+							script.type = "text/javascript";
+							script.src = "demo.js";
+							script.onreadystatechange = function(){
+								if(script.readyState == 'loaded' || script.readyState == 'complete'){
+									//这个地方调用事件
+								}
+							}
+							document.head.appendChild(script);
+
+							而针对IE情况下，onreadystatechange，如果速度非常快的话，则不会触发该方法。类似obj.onload事件，如果页面都加载完，后面有代码obj.onload则将不会执行该方法。。。则需要将绑定事件放到加载事件之前
+
+
+							//封装方法...
+							function asyncLoadScript(scriptFile, callBack){
+
+								var script = document.createElement("script");
+								script.type = "text/javascript";
+								if(script.readyState){
+
+									script.onreadystatechange = function(){
+										if(script.readyState == 'loaded' || script.readyState == 'complete'){
+
+											callBack();
+
+										}
+									};
+								}else{
+									script.onload = function(){
+
+										callBack();
+									};
+								}
+								script.src = scriptFile;
+								document.head.appendChild(script);
+							}
+
+						asyncLoadScript("demo.js", function(){
+							test();
+						});
+
+						上面传参可以改为字符串"test",方法体中使用eval， 另外一种高级的办法就是将外部类封装成对象，然后进行引用
+						function asyncLoadScript(scriptFile, callBack){
+
+							var script = document.createElement("script");
+							script.type = "text/javascript";
+							if(script.readyState){
+
+								script.onreadystatechange = function(){
+									if(script.readyState == 'loaded' || script.readyState == 'complete'){
+
+										tools[callBack]();
+									}
+								};
+							}else{
+								script.onload = function(){
+
+									tools[callBack]();
+								};
+							}
+							script.src = scriptFile;
+							document.head.appendChild(script);
+						}
+						asyncLoadScript("demo.js", "run");
+					}
+
+				[说明]
+					A. 正常情况，javascript下载完进行执行。执行完才继续解析html、css
+					dom文档全部解析完执行——>浏览器从第一行代码到最后一行全部解析完(dom树)——>解析完一定在加载页面之前
+
+					B. IE9以上都可以使用(chrome、firefox)——>w3c标准写法
+
+					C. 如何任何浏览器都想进行异步js加载；实现了异步加载和按需加载
+					{
+						var script = document.createElement("script");
+						script.type = "text/javascript";
+						script.src = "tools.js";//这行执行完，开始下载tools.js（异步下载）————>实际上已经下载下来——>灯塔模式(缓存模式)
+						document.head.appendChild(script);//只有将script标签添加到body中时，才会进行执行
+
+
+						// test();//为什么不能执行?这个地方还没下载完...
+						// setTimeout(function(){//什么时候才能用呢？？？有没有一个下载完，有个提示，下载就可以执行...
+						// 	test();
+						// }, 1000);
+						// script.onload = function(){
+
+						// 	//chrome 、firefox、opera、safari
+						// 	test();
+						// }
+
+						//针对IE有状态记录是否加载完
+						//script.readyState = "";
+						//一开始是：loading，会根据script标签里的内容动态修改该属性值，如果加载完该值会变为：
+						//complete或loaded
+						/*script.onreadystatechange  = function(){
+
+							if(script.readyState == "complete" || script.readyState == "loaded"){
+
+								test();
+							}
+						}*/
+						if(script.readyState){
+							script.onreadystatechange  = function(){
+
+								if(script.readyState == "complete" || script.readyState == "loaded"){
+
+									test();
+								}
+							}
+						}else{
+							 script.onload = function(){
+
+								test();
+							}
+						}
+					}
+
+					{
+						优化后的。。
+						function loadScript(url, callback){
+							var script = document.createElement("script");
+							script.type = "text/javascript";
+							document.head.appendChild(script);
+							if(script.readyState){
+								script.onreadystatechange  = function(){
+
+									if(script.readyState == "complete" || script.readyState == "loaded"){
+
+										// callback();
+										eval(callback);
+									}
+								}
+							}else{
+								 script.onload = function(){
+
+									// callback();
+									eval(callback);
+								}
+							}
+							script.src = url;
+						}
+						// loadScript('tools.js', test);
+						// loadScript('tools.js', function(){
+						// 	test();
+						// });
+						// 
+						loadScript('tools.js', 'test()')
+					}
+					更好的办法是，在函数中将要调用的功能封装到对象中，然后通过方框好tools[callback]来调用。
+
+		3. js加载时间线
+			js时间线
+				3-1）创建Document对象，开始解析web页面。解析HTML元素和他们的文本内容后添加Element对象和Text节点到文档中。此阶段document.readyState = 'loading';
+
+				3-2）遇到link外部css，创建线程加载，并继续解析文档。
+
+				3-3）遇到script外部js，并且没有设置async、defer，浏览器加载，并阻塞，等待js加载完成并执行脚本，然后继续解析html、css。
+
+				3-4）遇到script外部js，并且设置async、defer，浏览器创建线程加载，并继续解析文档。对于async属性的脚本，脚本
+				加载完立即执行（异步禁止使用document.write()）
+
+				3-5）遇到img等，先正常解析dom结构，然后浏览器异步加载src，并继续解析文档。
+
+				3-6) 当文档解析完成, document.readyState='interactive'
+
+				3-7）文档解析完成后，所有设置defer的脚本会按照顺序执行。（注意与async不同，但同样禁止使用document.write()）
+
+				3-8） document对象触发DOMContentLoaded事件，这也标记着程序执行从同步脚本执行阶段到事件驱动阶段。
+
+				3-9） 当所有async的脚本加载并执行后、img等等加载完后，document.readyState = 'complete'，window对象
+				触发load事件
+
+				3-10） 从此，以异步响应方式处理用户输入、网络事件等。
+
+			[注意]优化后东西提供依赖依据。。。
+
+			[特殊情况]
+			{
+				<div style="height: 100px;width: 100px;background-color: red;"></div>
+				<script type="text/javascript" >
+					// document.write("a");
+					// 
+					window.onload = function(){
+
+						document.write("a");//-----有消除文档流的功能
+					}
+				</script>
+
+				//当文档解析完时，执行document.write(),将会清空之前所有的文档流，然后打印内容。
+			}
+ 
+			{
+				document.onDOMContentLoaded = function(){
+
+					console.log('----');
+				}
+
+				DOMContentLoaded的执行有些特殊...
+				document.addEventListener('DOMContentLoaded', function(){
+
+					console.log(document.readyState);
+				}, false);
+			}
+
+			针对dom解析完，有方法专门监听onready，而script标签放到最后一行还是onload都不是最精确的。
+			{
+				//当dom解析完就执行的部分。。。
+				$(document).ready(function(){
+
+				});
+				[问]
+					window.onload和$(document).ready的区别，而原生$(document).ready方法为
+					document.addEventListener('DOMContentLoaded', function(){
+
+						//ready要执行的内容
+					}, false)
+
+					底层$(document).ready的实现，则是addEventListener、DOMContentLoaded、document.readyState的应用
+					这样，效率更高。...可以放到最上面。。。
+			}
+
+			{
+				console.log(document.readyState);
+				document.onreadystatechange = function(){
+
+					console.log(document.readyState);
+				}
+
+				document.addEventListener('DOMContentLoaded', function(){
+
+					console.log('程序由同步执行阶段到异步脚本执行');
+				}, false);
+
+
+				$(document).ready(function(){
+
+					//当dom解析完时，要执行的函数体...底层的原理就是DOMContentLoaded和document.readyState='interactive'
+				});
+
+				window.onload = function(){
+					console.log("页面全部加载完了。。。");
+				}
+			}
+
+			{
+				//下面的效率更高。。。
+
+
+				//js在上面...
+				<script type="text/javascript">
+		
+					document.addEventListener("DOMContentLoaded", function(){
+
+						var div = document.getElementsByTagName("div")[0];			
+					}, false);
+				</script>
+
+				//html在下面。。。
+				<div style="height: 100px;width: 100px;background-color: red;"></div>
+			}
+二十五：正则表达式
+	[补充]
+		转义字符："\"
+		多行字符串：\
+		{
+			var str = "abcd\
+			fdsfsf\
+			fsdfsfs";
+
+			document.body.innerHTML = "<div></div>\
+			<p>\
+				<span></span>\
+			</p>\
+			";
+		}
+
+		字符串换行符：\n
+		{
+			windows系统中回车，相当于\r\n(\r为行结束符)；在类linux系统中，回车相当于\n
+
+			\t————>table缩近符号
+		}
+
+	[作用]
+		检查字符串内是否有片段..
+		格式校验(复杂或简单)..
+		字符修改、替换..
+	1. 两种创建方式RegExp
+		A. 直接量————————————>推荐使用
+			格式：/pattern/attributes
+		B. new RegExp();
+			格式：new RegExp(pattern, attributes)
+			{
+				特殊情况一）：
+				var reg = /abc/;
+				var reg1 = new RegExp(reg);
+
+				reg.abc = "abc";
+				访问reg1.abc为undefined
+
+				特殊情况二）：
+				var reg = /abc/;
+				var reg1 = RegExp(reg);
+
+				reg.abc = "abc";
+				可以访问到reg1.abc
+			}
+
+		[说明]
+			attributes包含有：
+				i   ignore 忽略大小写
+				{
+					var reg = /abc/i;
+					var str =  "ABCE";
+					reg.test(str);
+				}
+
+				g   global 全局匹配(一个还不算，往后匹配..)
+				{
+					var reg = /a/g;
+					var str = "aaaaa";
+					str.match(reg);
+
+					!!!!!含有g属性，则会自动去除结果集显
+					{
+						0:
+						groups:
+						input:
+						index:
+						length:
+					}
+				}
+
+				m 	multiline 多行匹配
+				{
+					var reg = /^a/gm;
+					var str = "abcdef\nabs";
+					str.match(reg);
+				}
+
+	2. 正则表达式对象常用方法
+		test()：reg.test()检查字符串是否满足正则表达式；是否包含reg的片段;（返回值为boolean）
+		match()：string.match()用于匹配满足reg的字符串，返回匹配的字符串列表（返回值为object）
+
+
+	3. 表达式[]：用于查找范围内的任意字符
+		一个方括号代表一位
+		{
+			从一个长串字符串中，匹配三个数字连续的子串
+			var reg = /[1234567890][1234567890][1234567890]/g;
+			var str = "fsdfsafsaw3w32";
+			str.match(reg);
+		}
+
+		{
+			使用情况
+			[0-9] (0|1|2) [^0-2]  [A-z]
+			上述^放在表达式中优先级低，注意(0|1|2)--[012]--[0-2]和(012)的区别
+		}
+
+	4. 元字符:拥有特殊含义的字符
+		{
+			.  查找单个字符、除了换行和行结束符，相当于[^\r\n]
+			\w 查找单词字符（A-z、0-9、_）
+			\W ^\w
+			\d 查找数字字符
+			\D ^\d
+			\s 查找空白字符,空白字符包括：空白符、制表符、回车符、换行符、垂直制表符、换页符
+				[ \t\r\n\v\f]
+			\S [^\s]
+			\b 查找匹配单词边界;\b开头以后面的字符开头的单词、\b结尾以前面字符结尾的单词
+			{
+				var str = "hello world i am";
+				var reg = /\b[hw]/g;
+			}
+			\r 查找回车符
+			\n 查找换行符
+			\f 查找换页符
+			\t 查找制表符
+			\v 查找垂直制表符
+			\xxx 查找以八进制规定的字符
+			\xdd 查找以十六进制dd开头的字符
+			\uxxxx查找以xxxx规定的Unicode字符
+			\0 匹配NUL字符
+
+			[说明]
+				其中，\w、\d、\s、\b均有大写字符,代表反区间
+		}
+		[编码说明]
+			ASCII(American Standard Code for Information Interchange，美国信息交换标准代码)：最早计算机采用一个字节代表一个字符,区间表示范围（0-255），用来表示大小写字母、数字、一些符号
+
+			如果表示中文，显然一个字节不够用，至少用两个字节，为了解决于ASCII的冲突，中国制定GB2312，为了兼容台湾等繁体字，制定扩展版本BGK。而其他国家与此类似，制定了韩文、日文等。。
+
+			为了处理不同国家的语系兼容问题，Unicode(万国码)应运而生。Unicode把所有语言都统一到一套编码里，这样就不会再有乱码问题了
+			{
+				Unicode是分层的：(每一位是十六进制数)————>一共十七平面(0x0000到0x10FFFF)
+				0平面有65535个码点,但并不是全部
+
+					\u000000
+
+					第一层：\u010000 ~ \u0100ff  ---->忽略01
+					第二层：\u020000 ~ \u0200ff
+					....
+				 第十六进制：\u100000 ~ \u10ffff
+
+				 前两位代表层
+			}
+			Unicode 的基础是一个编号的字符集，在字符集之上又规定了模块化的编码等等技术层次，各种具体的编码形式并不一致
+
+
+			而针对Unicode实际是一个字符集合，有两个问题没解决：
+				1) 如何区分ASCII和Unicode
+				2) 针对Unicode的存储尴尬（小而浪费）
+
+			UTF-8：就是在互联网上使用最广的一种Unicode的实现方式,其是一种变成编码，可以用1-4个字节表示符号
+			{
+				var reg = /[\u0000-\ua000]/g;
+				var str = '老邓身体好';
+			}
+	5. 量词
+		{
+			n+ 		{1,}  	 匹配至少1个字符
+			n* 		{0,} 	 匹配0个或多个
+			n? 		{0,1}	 匹配0个或1个字符
+			
+
+			n{X}   	=X 			匹配包含X个字符串
+			n{X,Y} 	Y >= ? >= X 匹配包含 X 至 Y 字符串
+			n{X,}   >=X	 		匹配包含至少X个字符串
+			^n 					匹配以n开头的字符
+			n$					匹配以n结尾的字符
+			{
+				//*的逻辑匹配：会匹配空和有字符
+				var reg = /\w*/;
+				var str = "abcd";
+
+				var reg = /\d*/g;
+				var str = "abc";
+
+				var reg = /\w+/;
+				var str = "aaaaa";//只匹配aaaa————>贪婪匹配原则
+
+
+				var reg = /\w{2,3}/g;
+				var str = "aaaaa";
+
+				var reg = /^abcabc$/;
+				var str = "abcabc";
+			}
+
+			{
+				//练习题
+				写一个正则表达式，检测字符串首尾是否含有数字？
+
+				跳转到exec和lastIndex的使用
+
+				跳转到子表达式.....
+				var str = "aaaa";
+				var reg = /(a)/;//()在平时没有什么特别大的作用，但其会记录匹配里面的匹配的内容，记录完之后，可以通过\1来反向引用第一个子表达式中的内容
+
+				var reg = /(\w)\1/g; 当为(\w)时，会拷贝一个一摸一样的字符串出来,多个\1的话，则会匹配多个
+
+				//xxxx
+				var str = "aaaa";
+				var reg = /(\w)\1\1\1/;
+
+				//xxyy
+				var str = "abab12129090";
+				var reg = /(\w)\1(\w)\2/g;
+
+
+				//xyxy
+				var str = "aabbababattqq2344ss11";
+				var reg = /(\w)\1(\w)\2/g;
+			}
+
+			————————正向预查(正向断言)
+			[说明]
+				{
+					背景...
+					var str = "abaaaaaa";
+					想通过正则表达式找出后面是b的a，修饰目标的字符
+				}
+				*用来匹配通过紧跟在某字符串的目标字符串片段。其不参与选择，只负责修饰(限定)
+				{
+						//查找后面紧跟着b的a是否存在---必须要加括号
+						var str = "abaaaaaaaa";
+						var reg = /a(?=b)/g;
+						console.log(reg.test(str));
+
+						//用来查找后面不跟着b的字符串a
+						var str = "abaaaakaaata";
+						var reg = /a(?!b)/g;
+						console.log(str.match(reg));
+				}
+
+
+			[注意]
+				(?=)会作为匹配校验，但不会出现在匹配结果字符串里面
+				(?:)会作为匹配校验，并出现在匹配结果字符里面，它跟(?=)不同的地方在于，不作为子匹配返回。
+				{
+					var data = 'windows 98 is ok';
+					data.match(/windows (?=\d+)/);  // ["windows "]
+					data.match(/windows (?:\d+)/);  // ["windows 98"]
+					data.match(/windows (\d+)/);    // ["windows 98", "98"]
+				}
+
+		}
+
+	6. 属性
+		{
+			global、mutliline、ignoreCase、source、lastIndex
+		}
+	7. 方法
+		{
+	>>>>>>>>>>正则对象方法
+			test:  测试目标字符 是否符合正则表达式规则
+			exec:  针对global查找，和属性lastIndex匹配使用，循环轮训变动该值；
+					而修改lastIndex属性，则exec的结果会收到影响；
+					不加属性global，则该属性不动...
+					**能准确知道exec后的结果是什么????
+					{
+						var str = "testStrtesting";
+						var reg = /test/g;
+
+						alert(reg.exec(str));
+						alert(reg.exec(str));
+					}
+				{
+					针对exec执行结果有以下两种情况:
+					A. 
+						var reg = /1[0-9]{10}/;
+						var str = "15501053088";
+						console.log(reg.exec(str));
+							——————————————————————————>执行的结果为:
+								{
+									0: "15501053088",
+									groups: undefined, 
+									index: 0,
+									input: "15501053088",
+									length: 1
+									__proto__:....
+								}
+
+					B. 
+						var reg = /(\w)\1(\w)\2/;
+						var str = "aabb";
+						console.log(reg.exec(str));
+							——————————————————————————>执行的结果为：
+								{
+									0: "aabb",
+									1: "a",
+									2: "b",
+									groups: undefined,
+									index: 0,
+									input: "aabb",
+									__proto__:....
+								}
+
+					了解A、B的区别，在jquery源码中有大量使用
+				}
+	>>>>>>>>>>字符串方法
+			match ：和正则对象的exec方法类似，但针对正则对象中如果加global属性的情况，没有其他groups、index等信息列表，区别
+
+
+			search: 返回匹配的索引值,查找不到返回-1；(和lastIndex没关系)
+
+
+			split: 将字符串通过分割符号变为数组，也可以用正则表达式作为参数
+				{
+					var str = "hello world";
+					str.split(" ");————>["hello","world"]
+
+
+					var str = "hello world";
+					str.split("");————>["h", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d"]
+
+
+					var str = "hello world";
+					str.split("",4);————>["h", "e", "l", "l"]
+
+
+					var str = "hello world";
+					str.split(/\s+/);————>["hello", "world"]
+
+
+					var str = "ab2cdefgsdfs3hd";
+					var reg = /\d/;
+					str.split(reg);——————>["ab", "cdefgsdfs", "hd"]
+
+
+					——————>子表达式特殊情况
+					var str = "232ss323t34t5rty32srrdsfdgfhw";
+					var reg = /(\w)\1/;
+					str.split(reg);——————> ["232", "s", "323t34t5rty32s", "r", "dsfdgfhw"]
+				}
+
+			*** replace 
+				[说明]
+					如果用正则表达式做替换时，需要针对正则表达式对象添加全局的属性
+				{
+					A. 
+							所有a替换成b
+							var str = "abd2dsfdsafdfsipkooa";
+						str.replace(/a/g, "b");
+
+						[注意]
+							replace没有全局匹配的能力。。。。
+							{
+								//错误的情况
+								var str = "aa";
+								str.replace("a","b");//不会变为bb的情况
+							}
+
+					B.
+						形如aabb，通过正则表达式输出bbaa
+						var str = "aabb";
+						var reg = /(\w)\1(\w)\2/g;
+						console.log(str.replace(reg,"$2$2$1$1"));
+
+
+					C. 
+						B中情况也可以通过替换函数的方式实现
+						console.log(str.replace(reg, function($, $1, $2){
+
+							return $2 + $2 + $1 + $1;
+						}));
+
+					D. 
+						将下面字符变为小驼峰式写法(theFirstName)
+						var str = "the-first-name";
+						// 方法一：
+						// var reg = /-[A-z]/g;
+						// console.log(str.replace(reg, function($, $1, $2){
+						// 	return $.substr(1,1).toUpperCase();
+						// }));
+
+
+						//方法二：
+						var reg = /-(\w)/g;
+						console.log(str.replace(reg, function($, $1){
+							return $1.toUpperCase();
+						}));
+				}
+		}
+
+	8. 子表达式
+		表示符号：()
+		意义说明：一般情况下没什么作用，但当括号里面有内容时，括号会记录里面的内容，之后可以用  \1  反向引用出来。
+
+		\1 反向引用第一个表达式中的内容； \2 反向引用第二个表达式中的内容。同理....
+
+		拷贝第一个表达式中的内容
+		{
+			匹配类似于aaaa格式的正则
+			var str = "aaaa";
+			var reg = /(\d)\1{3}/;
+
+			var reg = /(\d|\D)\1{3}/;
+			var str = "aaaa";
+
+			匹配类似abab格式的正则表达式
+			var str = "aabb";
+			var reg = /(\w)\1(\w)\2/;
+		}
+
+
+	9. 正则表达式的贪婪匹配和非贪婪匹配
+		{
+			//默认贪婪匹配(能多就不少)
+			var str = "aaaaaaaa";
+			var reg = /a+/g;
+
+
+			//在量词后面多添加一个？————>变为非贪婪模式：能少就不多...
+			var str = "aaaaaaaa";
+			var reg = /a+?/g;
+
+			var str = "aaaaaaaa";
+			var reg = /a{1,3}?/g;
+
+			var str = "aaaaaaaa";
+			var reg = /a??/g;
+		}
+
+	10. 特殊注意点补充
+		{
+			//如果想针对目标字符片段替换为$，需要用两个$
+			var str = "hello world";
+			var reg = /(\w+)\s(\w+)/;
+			console.log(str.replace(reg, "$$ $$"));
+		}
+
+		其他用\进行转译
+		{
+			var str = "aaa//a";
+			var reg = /(\/)/g;
+
+			var str = "aaa?a";
+			var reg = /(\?)/g;
+
+			类似的有* () ....
+		}
+
+	11. 关于正则表达式去重(高难度>>>)
+
+		{
+			var str = "aaaaaaaaabbbbbcccccccc";
+			变为abc
+
+			var str = "aaaaaaaaaaaaabbbbbbbbbbbbbbbcccccccccccc";
+			var reg = /(\w)\1*/g;
+			console.log(str.replace(reg, "$1"));
+		}
+
+	12. 打点
+		一串连续的数字，请实现打点功能如：100000000转换为100.000.000(提示；用正则表达式可满分，其他酌情给分---百度)
+		{
+			var str = "100000000";//100.000.000
+			var reg = /(?=(\B)(\d{3})+$)/g;
+			console.log(str.replace(reg,".")
+		}
+
+		区分下面两种情况
+		{
+			//后面跟着c的b
+			var reg = /b(?=c)/;
+			console.log(str.replace(reg, '-'));
+
+			//后面跟着a的单词边界|非单词边界
+			var reg = /\B(?=a)/;
+			console.log(str.replace(reg, '-'));
+
+			//前后顺序
+			 var reg = /(?=(\B)a)/;
+			 var reg = /a(?=e)/;
+			 console.log(str.replace(reg, '-'));
+
+			 //强烈注意下面两个区别
+		     var reg = /f(?=s)/g;//后面为s的f替换掉---->替换的是f
+        	 var reg = /(?=(\B)d)/;//d前面的非单词边界替换掉---替换的是单词边界
+             var reg = /(?=(\B))d/g;//前面跟着单词边界的d替换掉---替换的是d
+		} 
+
+二十六：BOM
+	1. 定义：Browser Object Model 主要处理浏览器(window)和框架(iframe)，描述了与浏览器进行交互的方法和接口，可以对
+	浏览器的窗口进行访问、操作。不过通常浏览器特定的javascript扩展被看作BOM的一部分，扩展如下:
+		1). 弹出新的浏览器窗口
+		2). 移动、关闭浏览器窗口及调整窗口大小
+		3). 提供web浏览器详细的定位信息
+		4). 提供用户分辨率详细信息的屏幕对象
+		5). 对cookie的支持
+		6). IE扩展了BOM，加入了ActiveXObject类，通过Javascript实例化ActiveX对象
+
+	2. BOM核心——Window
+		window对象就是BOM最顶层的对象，操作BOM就是操作window的象的属性和方法
+		window具有双重特性，即是js访问浏览器的窗口，也是全局对象，这意味着在浏览器中任意位置定义的变量、函数、对象都是window的属性
+
+	3. BOM和DOM的关系
+		Javascript的标注组织ECMA
+		DOM的标准组织：W3C
+		BOM....很尴尬...（很多情况不是兼容，开发也很少...）
+
+	4. BOM的组成
+		Window Javascript层级中顶层对像表示浏览器窗口
+		Navigator 包含客户端浏览器信息
+		History 包含浏览器访问过的URL
+		Location 包含当前URL信息
+		Screen 包含客户端显示屏信息
+
+	5. 详解—Window
+		看pdf文档...
+			clientHeight、clientWidth——>不包含滚动条宽度
+			window.innerHeight、window.innerWidth ————>包含滚动条宽度
+			{
+				window.innerHeight、window.innerWidth
+				document.documentElement.clientHeight、document.documentElement.clientWidth
+				document.body.clientHeight、document.body.clientWidth
+			}
+
+
+			淘宝：懒加载。。。
+			{
+					dom.offsetTop  window.pageYOffset window.innerHeight
+			}
+
+
+			window.top、window.parent iframe 同源策略问题
+
+			定义变量时，不要和window的属性冲突
+
+			window.name 定义窗口名字，倔强...
+
+			window.onbeforeunload = function(){
+
+				//是否要退出。。。
+
+				return ;//IE11 及以下返回什么就显示什么...
+			}
+
+
+			window.open("http://www.baidu.com", "name", "height=100,width=100");
+			window.open("http://www.baidu.com", 'name', "height=100,width=100");
+
+	6. 详解-Navigator
+			浏览器嗅探（当前用的是哪个浏览器）
+
+			navigator.appName;-->Netscape
+
+			navigator.userAgent(常用)
+			navigator.appVersion
+
+			navigator.cookieEnabled
+			navigator.onLine 当前是否脱机状态(是否上网)...(做离线缓存...Hbird, 混合app中使用了。。。)
+
+	7. 详解——History
+			在一个窗口下进行多次变动
+
+			back()
+			forward();
+			history(数字[正数或负数];
+
+
+	8. 详解——Screen
+
+
+	9. 详解——Location
+			url : 资源定位器(协议、域名、端口、参数、锚点)
+			location.protocol
+			location.host
+			location.port
+			location.pathname
+			location.search
+			location.hash 锚点————>这个地方必须加#
+			location.href 
+
+			除了修改hash值外，其他都页面刷新了，利用location.hash这个特点，可以做目前比较流行的东西，“单页面应用”，在后面的VUE中有广泛使用，后面有路由操作。。在VUE中路由不一样其实，其实是#后面的值不变，页面会监控锚地点的变化。现在非常火。在之前每点一个导航栏，其会返回一个新的页面（传统做法）。而单页面引用，点不同的内容会进行相应的切换，只会进行锚点的修改。spa(single page application)非常流行，非常火。。。
+			其也载入了history中了。。。
+
+			页面第一次载入后
+
+			1. 根据锚点的信息展示对应的内容
+			2. 切换内容时，我们映射到锚点中
+			3. 能检测锚点被修改的能力，一旦修改再映射回内容中。。。
+
+			location.reload();//服务器告诉浏览器缓存,当参数为true时，重新从服务器获取。
+			location.replace();//替换，没有历史记录
+	
+
+二十七：必会常用知识点
+
+	1. DOCTYPE——渲染模式(文档解析规范DTD)
+		IE6以前，各浏览器处于相对封闭的状态（基本没有兼容性）。随着web的发展，对兼容的需求越来越迫切，随即各浏览器厂商出现了
+	标准模式（遵循厂商制定的统一标准）的工作浏览器，比如IE6就是其中的一种。但考虑到之前的网站建设并没有标准模式，所以在引入标准模式的同时，加入了混杂模式（即以前未按照标准工作模式，也叫怪异模式）
+		document.compatMode  
+				CSS1Compat 标准模式
+				BackCompat 怪异模式
+
+		{
+			在IE6以下盒子模型计算区别
+				标准模式下盒子大小:content(100*100) + padding(10) + border(10) =  盒子大小（140*140）
+				混杂模式下盒子大小：盒子大小为100 * 100， content(60 * 60)
+			在IE6中，行内元素
+				标准模式：不可以设置宽高
+				混杂模式：可以设置宽高 
+
+			在IE中，margin值问题
+				标准模式： margin: 0 auto;  生效
+				混杂模式： margin: 0 auto;  无效
+		}
+
+	2. 三种标准模式的写法，最常用的是<!DOCTYPE html>
+		
+	
+	3. 穿插的知识点
+		1) input和label 
+			label for 属性——>htmlfor 
+			属性映射：HTML属性映射到Element属性
+			{
+				针对html中元素，先天就有的元素(特性)，是可以通过dom一一映射上去的，而针对自定义的属性，则无法通过dom进行操作。但
+				如果非要针对自定义的属性映射，(属性)可通过setAttribute进行设置，通过getAttribute进行取值
+
+				属性包含了特性
+				{
+					<label for="iBlock">用户姓名</label>
+    				<input type="text" id="iBlock" value="">
+				}
+			}
+
+		2) img图片预加载
+			{
+				预加载：图片提前加载
+				{
+					var oImg = new Image();
+					oImg.src = "图片地址";
+					oImg.onload = function(){//图片加载完成后,防止出现一点一点出来。。。插入到dom
+
+						document.body.appendChild(oImg);
+					}
+				}
+
+				懒加载: 一开始不会提前加载图片，按需加载(省流)
+				{
+					var btn = document.getElementsByTagName("button")[0];
+			        btn.onclick = function(){
+
+			            var oImg = new Image();
+			            oImg.src = "https://img.alicdn.com/bao/uploaded/TB2hGlvb4b9F1JjSZFqXXbotVXa_!!906524601-0-beehive-scenes.jpg_360x360xzq90.jpg_.webp";
+			            document.body.appendChild(oImg);
+			        }
+				}
+
+				淘宝图片的加载用了懒加载+预加载
+				var btn = document.getElementsByTagName("button")[0];
+		        btn.onclick = function(){
+
+		            var oImg = new Image();
+		            oImg.src = "https://img.alicdn.com/bao/uploaded/TB2hGlvb4b9F1JjSZFqXXbotVXa_!!906524601-0-beehive-scenes.jpg_360x360xzq90.jpg_.webp";
+		            oImg.onload = function(){
+
+		            	document.body.appendChild(oImg);
+		            }
+		        }
+			}
+			byClassName 自定义的写法还没写呢
+			Math.random() 和彩票程序0-36的随机数
+			{
+				Math.random(); 左闭右开[0,);
+
+				若生成0-n的随机整数，使用parseInt(Math.random() * n)
+				若生成m-n的随机数的整数，使用(Math.random() * m) + (n-m)
+
+
+				var num = Math.random() * 100;
+		        console.log(num);
+		        if(num < 0.0001){
+
+		            console.log('一等奖');
+		        }else if(num < 0.001){
+
+		            console.log('二等奖');
+		        }else if (num < 0.01){
+
+		            console.log('三等奖');
+		        }else{
+		            console.log('谢谢抽奖');
+		        }
+			}
+
+		3) 文档碎片
+			对dom进行集中操作，提高dom性能,比如往ul中循环一万个li
+			不创建dom元素
+			{
+				var ulObj = document.getElementsByTagName('ul')[0];
+				var frar = document.createDocumentFragment();
+				var i;
+				for(i =0 ;i < 10000; i++){
+
+				    var liObj = document.createElement('li');
+				    liObj.innerHTML= i;
+				   frar.appendChild(liObj);
+				}
+				ulObj.appendChild(frar);
+
+				另外通过拼接字符串，效率也很高...
+			}
+
+		4） CDN
+			{
+				Content Delivery  Network 内容分发网络...
+				会找到最近的缓存服务器(综合响应效率高的，而不是去总部获取数据)，
+				1) 解决了环境网络中不稳定，拥塞的问题
+				2) 针对同一个CDN缓存文件，会取浏览器中的缓存
+			}
+
+		5） 断点调试
+
+
+
+		6) typeof(new Array).__proto__.constructor()执行顺序，先执行后面的，再执行前面的。。
+
+		{
+			Array.prototype.slice = function(a, b){
+
+				var newArr = [];
+				for(var i = a, i < b; i++){
+
+					newArr.push(this[i]);
+				}
+				return newArr;
+			}
+
+			Document.prototype.getElementsByClassName = function(className){
+
+
+				function dealClass(dom){
+
+					var reg = /\s+/g;
+					var arrClassName = dom.className.replace(reg, ' ').trim();
+					return arrClassName;
+				}
+
+				
+				var allObj = Array.prototype.slice.call(documnet.getElementsByTagName("*"),0)
+				var retArr = [];
+				allObj.forEach(function(elem, index){
+
+					var itemClassArr = dealClass(elem).split(' ');
+					for(var i = 0; i < itemClassArr.length; i++){
+
+						if(itemClasssArr[i]==className){
+							retArr.push(elem);
+							break;
+						}
+					}
+				})
+				return retArr;
+			}
+		}
+
+
+
+二十八：数组完美收官
+	1. forEach 循环数组元素 
+		不改变原元素
+		了解forEach底层是怎么实现的(另注意：不能使用break、continue)
+		第三方个参数代表数组
+		格式
+		arr.forEach(function(elem, index, array){
+
+		})
+
+	2. filter筛选数组
+		不改变原数组，生成新数组
+		返回值为筛选后的新数组,由循环中返回值true|false决定
+
+	3. map数组方法
+		有可能改变原数组(返回值为elem时)，有可能不改变原数组
+		返回值为数组，该数组中存储了每一次调用回调函数的返回值，若没有返回值，则使用默认的undefined的返回值
+		当回调函数中返回还是elem时，修改了原数组
+		了解map的底层拷贝原理(区分深拷贝和浅拷贝)
+		使用map完成深拷贝过程...
+
+	4. reduce数组方法
+
+	--从左向右执行
+		用来做累加器，每一次preVal返回的是上一次循环return返回的值
+		arr.reduce(function(preValue, elem, index, array){
+
+		}, preValue初始值);
+		了解内部实现的机制...
+
+		如果初始值没有传递，则会取数组中的第2位（下标为1），将第一位作为前一个返回值
+		如果传递了第一个值，则会从数组第1位开始
+
+		累加器
+		arr.reduce(function(preVal, elem, index, array){
+
+            return elem + preVal;
+        }, 0);
+		其做累加器的效率比for循环高很多
+
+	5. reduceRight 数组方法
+	———从右向左执行
+		如果初始值没传，从数组右数，将第一个数作为返回值，从第二位开始
+		如果初始值传值，从数组右数，将传递的值作为返回值，从第一个数开始
+		{
+			function deepClone(src, target){
+
+				for(var index in src){
+
+					var obj = src[index];
+					if(typeof obj == 'object'){
+						
+						if(Object.prototype.toString.call(obj) == '[object Array]'){
+
+							var tmpTarget = [];
+						}else{
+							var  tmpTarget = {};
+						}
+						deepClone(obj, tmpTarget);
+						target[index] = tmpTarget;
+					}else{
+						target[index] = obj;
+					}
+				}
+        	}
+
+
+			Array.prototype.myReduce = function(callBack, lastVal){
+
+				var i ;
+				if(typeof lastVal == "undefined"){
+
+					i = 1;
+					lastVal = this[0];
+				}else{
+					i = 0;
+				}
+				for(i; i < this.length; i++){
+
+					lastVal = callBack(lastVal, this[i], i, this);
+				}
+				return lastVal;
+			}
+
+			Array.prototype.myReduceRight = function (callBack, lastV) {
+
+                var i;
+                var len = this.length;
+                if (typeof lastV == 'undefined') {
+
+                    i = len - 2
+                    lastV = this[len - 1];
+                } else {
+                    i = len;
+                }
+                for (i; i > 0; i--) {
+
+                    lastV = callBack(lastV, this[i], i , this);
+                }
+                return lastV;
+            }
+
+			 Array.prototype.myMap = function(callBack){
+
+				var newArray = [];
+				for(var i = 0; i < this.length; i++){
+
+					newArray[i] = callBack(this[i], i, this);
+				}
+
+				return newArray;
+			}
+
+			Array.prototype.myFilter = function(callBack){
+
+				var newArray = [];
+				for(var i = 0 ; i < this.length; i++){
+
+					if(callBack(this[i], i, this)){
+						newArray.push(this[i]);
+					}
+				}
+				return newArray;
+			}
+
+			Array.prototype.myForEach = function(callBack){
+
+				for(var i = 0; i < this.length; i++){
+
+					callBack(this[i], i, this);
+				}
+			}
+		}
+		
+二十九：技术提升
+	1. 遇到css属性时，
+		display: inline|block|inline-block
+		position: absolute|relative|fixed
+		类似的属性往前写
+		{
+			1) 文档流
+				position、clear、display、float
+
+			2) 盒子属性
+				width、height、margin、padding、border
+
+			3） 排版信息
+				text-align list-style
+
+			4) 装饰属性
+				color、background-color
+
+			5) 内容属性
+				content
+
+			reflow--重排
+			repaint--重绘
+		}
+
+	2. 压缩代码
+		前端构建工具： webpack
+
+		google内核css属性加webkit 
+		-webkit-transition像这种直接交给webpack工具来做自动添加。。。
+
+	3. 当元素的有属性id时，可以将id值作为变量来获取对象取代document.getElementById('id的值');
+	只有id值好使
+
+
+	4. 前端开发常用的框架
+		Vue(轻量级)、React(版权问题...)
+		Node
+
+
+		1) 项目在github上面的更新，在github上面的火热程度
+		2) 人用的多的会减少踩坑
+		3) api写的好不好
+
+		Vue的api文档github火热，api文档是由中国人写的
+
+		Angular 小公司仍然用着angular
+		通过node来写后台接口...
+		[
+			现在ajax能跨域了。。。
+		]
+
+		json的名必须使用双引号
+
+		百度的搜索框是用jsonp来传输的，是一种跨域的方式
+
+		iframe 与iframe之间传输数据，看是否同源
+			同源：变量调用
+				获取子window的变量: contentWindow
+				获取父页window的变量： window.parent
+
+			不同源
+				借助hash值或者借助window.name来获取
+
+				HashChangeEvent + window.name
+				如果属于不同源清空，不是自己页面的话，则无法操作其页面的属性值
+	
+	document.write的问题
+		https://segmentfault.com/a/1190000007958530

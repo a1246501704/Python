@@ -1179,6 +1179,7 @@ form	formid	规定 label 字段所属的一个或多个表单。
 
 # form表单控件之 select 元素  下拉列表
 \https://www.w3school.com.cn/tags/tag_select.asp
+\事件属性: https://www.w3school.com.cn/tags/html_ref_eventattributes.asp
 #定义和用法
 select 元素可创建单选或多选菜单。
 <select&> 元素中的 <option> 标签用于定义列表中的可用选项。
@@ -1238,6 +1239,29 @@ value	      text	    #定义送往服务器的选项值。select的name参数的
     size     # 同一时间显示几条
     optgroup # 分组
 
+
+# 案例1: select联动
+<select id="type" onchange="choose();">
+  <option value="1">电影</option>
+  <option value="2">游戏</option>
+</select>
+
+<select id="content"></select >
+
+<script type="text/javascript">
+  function choose(){
+    var value=document.getElementById("type").value;
+    var content=document.getElementById("content");
+    content.options.length=0;
+    if(value==1){
+      content.add(new Option("国内","国内"))
+      content.add(new Option("国外","国外"))
+    }else{
+      content.add(new Option("单机","单机"))
+      content.add(new Option("网络","网络"))
+    }
+  }
+</script>
 
 # form表单控件之 textarea 元素 定义多行文本输入字段（文本域）
 \https://www.w3school.com.cn/tags/tag_textarea.asp
