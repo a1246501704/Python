@@ -1,5 +1,5 @@
 \Django框架 : https://www.cnblogs.com/Dominic-Ji/p/10881214.html
-
+\官方: https://docs.djangoproject.com
 \1. Django介绍
 # MVC框架
 MVC，全名是Model View Controller，是软件工程中的一种软件架构模式

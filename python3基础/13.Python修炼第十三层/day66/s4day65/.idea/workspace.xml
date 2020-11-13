@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac1b840f-26bb-4dc5-ae1b-a318f3aa814b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../1 web框架本质.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../1 web框架本质.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../2 初试Django框架.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../2 初试Django框架.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -79,7 +81,7 @@
       <workItem from="1604994721535" duration="34000" />
       <workItem from="1604994786122" duration="221000" />
       <workItem from="1604995011055" duration="6421000" />
-      <workItem from="1605077939745" duration="377000" />
+      <workItem from="1605077939745" duration="1017000" />
     </task>
     <servers />
   </component>
