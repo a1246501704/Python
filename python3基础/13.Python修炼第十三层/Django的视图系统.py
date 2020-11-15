@@ -64,8 +64,8 @@ class AddClass(View):
         models.Classes.objects.create(name=class_name)
         return redirect("/class_list/")
 
-# 使用CBV时要注意，请求过来后会先执行dispatch()这个方法，如果需要批量对具体的请求处理方法，如get，post等做一些操作的时候，这里我们可以手动改写dispatch方法，这个dispatch方法就和在FBV上加装饰器的效果一样。
-
+# 使用CBV时要注意，请求过来后会先执行dispatch()这个方法，如果需要批量对具体的请求处理方法，
+# 如get，post等做一些操作的时候，这里我们可以手动改写dispatch方法，这个dispatch方法就和在FBV上加装饰器的效果一样。
 class Login(View):
     def dispatch(self, request, *args, **kwargs):
         print('before')
