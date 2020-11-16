@@ -50,12 +50,47 @@ def add_class(request):
 
 # 使用装饰器装饰CBV
 类中的方法与独立函数不完全相同，因此不能直接将函数装饰器应用于类中的方法 ，我们需要先将其转换为方法装饰器。
-Django中提供了method_decorator装饰器用于将函数装饰器转换为方法装饰器。
+Django中提供了method_decorator的作用是为函数视图装饰器补充第一个self参数，以适配类视图方法。
+
+def my_decorator(view_func):
+    def wrapper(request, *args, **kwargs):
+        print('装饰器被调用')
+        print(request.path)
+        return view_func(request, *args, **kwargs)
+    return wrapper
+
+# method_decorator的作用是为函数视图装饰器补充第一个self参数，以适配类视图方法。
+@method_decorator(my_decorator, name='dispatch')
+class DemoView(View):
+
+    def get(self, request):
+        return HttpResponse('get page')
+
+    def post(self, request):
+        return HttpResponse('post page')
+# 如果将装饰器本身改为可以适配类视图方法的，类似如下，则无需再使用method_decorator。
+def my_decorator(view_func):
+    def wrapper(self, request, *args, **kwargs):
+        print('装饰器被调用')
+        print(request.path)
+        return view_func(self, request, *args, **kwargs)
+    return wrapper
+    
+@my_decorator
+class DemoView(View):
+
+    def get(self, request):
+        return HttpResponse('get page')
+	
+    def post(self, request):
+        return HttpResponse('post page')
+
+-----------
 from django.views import View
 from django.utils.decorators import method_decorator
 
 class AddClass(View):
-    @method_decorator(wrapper)
+    @method_decorator(wrapper) # 装饰某一请求方法
     def get(self, request):
         return render(request, "add_class.html")
 
@@ -67,7 +102,7 @@ class AddClass(View):
 # 使用CBV时要注意，请求过来后会先执行dispatch()这个方法，如果需要批量对具体的请求处理方法，
 # 如get，post等做一些操作的时候，这里我们可以手动改写dispatch方法，这个dispatch方法就和在FBV上加装饰器的效果一样。
 class Login(View):
-    def dispatch(self, request, *args, **kwargs):
+    def dispatch(self, request, *args, **kwargs): 
         print('before')
         obj = super(Login,self).dispatch(request, *args, **kwargs)
         print('after')
@@ -80,6 +115,79 @@ class Login(View):
         print(request.POST.get('user'))
         return HttpResponse('Login.post')
 
+\案例:
+# 类视图使用装饰器
+为类视图添加装饰器，可以使用两种方法。
+为了理解方便，我们先来定义一个为函数视图准备的装饰器（在设计装饰器时基本都以函数视图作为考虑的被装饰对象），及一个要被装饰的类视图。
+def my_decorator(func):
+    def wrapper(request, *args, **kwargs):
+        print('自定义装饰器被调用了')
+        print('请求路径%s' % request.path)
+        return func(request, *args, **kwargs)
+    return wrapper
+ 
+class DemoView(View):
+    def get(self, request):
+        print('get方法')
+    return HttpResponse('ok')
+ 
+    def post(self, request):
+        print('post方法')
+    return HttpResponse('ok')
+
+# 1、在URL配置中装饰
+urlpatterns = [
+    url(r'^demo/$', my_decorate(DemoView.as_view()))
+]
+此种方式最简单，但因装饰行为被放置到了url配置中，单看视图的时候无法知道此视图还被添加了装饰器，不利于代码的完整性，不建议使用。
+此种方式会为类视图中的所有请求方法都加上装饰器行为（因为是在视图入口处，分发请求方式前）。
+
+# 2、在类视图中装饰
+在类视图中使用为函数视图准备的装饰器时，不能直接添加装饰器，需要使用method_decorator将其转换为适用于类视图方法的装饰器。
+method_decorator装饰器使用name参数指明被装饰的方法。
+# 2.1 为全部请求方法添加装饰器
+from django.utils.decorators import method_decorator
+@method_decorator(my_decorator, name='dispatch')
+class DemoView(View):
+    def get(self, request):
+        print('get方法')
+    return HttpResponse('ok')
+ 
+    def post(self, request):
+        print('post方法')
+    return HttpResponse('ok')
+ 
+# 2.2 为特定请求方法添加装饰器
+from django.utils.decorators import method_decorator
+@method_decorator(my_decorator, name='get')
+class DemoView(View):
+    def get(self, request):
+        print('get方法')
+    return HttpResponse('ok')
+ 
+    def post(self, request):
+        print('post方法')
+    return HttpResponse('ok')
+
+# 2.3 如果需要为类视图的多个方法添加装饰器，但又不是所有的方法，可以直接在需要添加装饰器的方法上使用method_decorator，如下所示
+from django.utils.decorators import method_decorator
+ 
+# 为特定请求方法添加装饰器
+class DemoView(View):
+    @method_decorator(my_decorator) # 为get方法添加了装饰器
+    def get(self, request):
+        print('get方法')
+    return HttpResponse('ok')
+ 
+    @method_decorator(my_decorator) # 为post方法添加了装饰器
+    def post(self, request):
+        print('post方法')
+    return HttpResponse('ok')
+ 
+    def put(self, request): # 没有为put方法添加装饰器
+        print('put方法')
+    return HttpResponse('ok')
+
 \Request对象和Response对象
 \request对象
 当一个页面被请求时，Django就会创建一个包含本次请求原信息的HttpRequest对象。
@@ -87,11 +195,11 @@ Django会将这个对象自动传递给响应的视图函数，一般视图函�
 官方：https://docs.djangoproject.com/en/1.11/ref/request-response/
 
 # 请求相关的常用值
-path_info      返回用户访问url，不包括域名
-method         请求中使用的HTTP方法的字符串表示，全大写表示。
-GET            包含所有HTTP  GET参数的类字典对象
-POST           包含所有HTTP POST参数的类字典对象
-body           请求体，byte类型 request.POST的数据就是从body里面提取到的
+path_info      # 返回用户访问url，不包括域名
+method         # 请求中使用的HTTP方法的字符串表示，全大写表示。
+GET            # 包含所有HTTP  GET参数的类字典对象
+POST           # 包含所有HTTP POST参数的类字典对象
+body           # 请求体，byte类型 request.POST的数据就是从body里面提取到的
 
 # request属性相关
 所有的属性应该被认为是只读的，除非另有说明。
@@ -266,7 +374,7 @@ request.POST.getlist("hobby")
 HttpResponse类位于django.http模块中。
 
 # 使用
-传递字符串
+# 传递字符串
 from django.http import HttpResponse
 response = HttpResponse("Here's the text of the Web page.")
 response = HttpResponse("Text only, please.", content_type="text/plain")
@@ -291,10 +399,10 @@ b'{"foo": "bar"}'
 response = JsonResponse([1, 2, 3], safe=False)
 
 \Django shortcut functions(基础三剑客)
-官方: https://docs.djangoproject.com/en/1.11/topics/http/shortcuts/
+# 官方: https://docs.djangoproject.com/en/1.11/topics/http/shortcuts/
 
 \render()
-结合一个给定的模板和一个给定的上下文字典，并返回一个渲染后的 HttpResponse 对象。
+# 结合一个给定的模板和一个给定的上下文字典，并返回一个渲染后的 HttpResponse 对象。
 
 参数：
     request： 用于生成响应的请求对象。
@@ -302,7 +410,7 @@ response = JsonResponse([1, 2, 3], safe=False)
     context：添加到模板上下文的一个字典。默认是一个空字典。如果字典中的某个值是可调用的，视图将在渲染模板之前调用它。
     content_type：生成的文档要使用的MIME类型。默认为 DEFAULT_CONTENT_TYPE 设置的值。默认为'text/html'
     status：响应的状态码。默认为200。
-　　useing: 用于加载模板的模板引擎的名称。
+　　 useing: 用于加载模板的模板引擎的名称。
 
 # 一个简单的例子
 from django.shortcuts import render
@@ -331,30 +439,31 @@ def my_view(request):
 # 示例
 你可以用多种方式使用redirect() 函数。
 
-传递一个具体的ORM对象（了解即可）
-将调用具体ORM对象的get_absolute_url() 方法来获取重定向的URL：
+1、传递一个具体的ORM对象（了解即可）
+将调用具体ORM对象的 get_absolute_url() 方法来获取重定向的URL。
+
 from django.shortcuts import redirect
 def my_view(request):
     ...
     object = MyModel.objects.get(...)
     return redirect(object)
 
-传递一个视图的名称
+2、传递一个视图的名称
 def my_view(request):
     ...
     return redirect('some-view-name', foo='bar')
 
-传递要重定向到的一个具体的网址
+3、传递要重定向到的一个具体的网址
 def my_view(request):
     ...
     return redirect('/some/url/')
 
-当然也可以是一个完整的网址
+4、当然也可以是一个完整的网址
 def my_view(request):
     ...
     return redirect('http://example.com/')
 
-默认情况下，redirect() 返回一个临时重定向。以上所有的形式都接收一个permanent 参数；如果设置为True，将返回一个永久的重定向：
+5、默认情况下，redirect() 返回一个临时重定向。以上所有的形式都接收一个permanent 参数；如果设置为True，将返回一个永久的重定向：
 def my_view(request):
     ...
     object = MyModel.objects.get(...)

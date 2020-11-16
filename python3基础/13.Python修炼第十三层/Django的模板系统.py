@@ -4,13 +4,13 @@
 # 方式一：通过键值对的形式传参，指名道姓的传参
 n = 'xxx'
 f = 'yyy'
-return render(request,'reg.html',{'n':n,'f':f})  #前面的n是参数名，后面的n才是具体的值
+return render(request,'reg.html',{'n':n,'f':f})  # 前面的n是参数名，后面的n才是具体的值
 
 # 方式二：使用local()传全部的值，该方法虽好但是挺浪费空间资源的（一般都使用这种方式）
 return render(request,'reg.html',locals()) 
 
 \常用语法
-只需要记两种特殊符号：
+# 只需要记两种特殊符号：
     {{  }}  # 变量相关的用 {{ }}
     {%  %}  # 逻辑相关的用 {% %}
 
@@ -63,7 +63,7 @@ def template_test(request):
 在Django的模板语言中，通过使用 过滤器 来改变变量的显示。
 
 过滤器的语法： 
-    {{ value|filter_name:参数 }} # 使用管道符 "|" 来应用过滤器。
+    {{ value|filter_name:参数 }} # 使用管道符 "|" 后面来应用各种过滤器。
 例如：
     {{ name|lower }} # 会将name变量应用lower过滤器之后再显示它的值。lower在这里的作用是将文本全都变成小写。
 
