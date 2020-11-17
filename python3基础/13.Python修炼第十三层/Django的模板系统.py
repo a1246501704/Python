@@ -1,6 +1,7 @@
 官方文档: https://docs.djangoproject.com/en/1.11/ref/templates/builtins/#std:templatetag-for
+博客图文并茂: https://www.cnblogs.com/mmyy-blog/p/9828692.html
 
-\视图层(views)给模板传值的两种方法
+\视图层(views)给模板(html)传值的两种方法
 # 方式一：通过键值对的形式传参，指名道姓的传参
 n = 'xxx'
 f = 'yyy'
@@ -19,7 +20,7 @@ return render(request,'reg.html',locals())
 当模版引擎遇到一个变量，它将计算这个变量，然后用结果替换掉它本身。变量的命名包括任何字母数字以及下划线 ("_")的组合。 变量名称中不能有空格或标点符号。
 
 点（.）在模板(html)语言中有特殊的含义。当模版系统遇到点(".")，它将以这样的顺序查询：
-    1. 在字典中查询
+    1. 先在字典中查询
     2. 属性或方法查询,先找属性再找方法
     3. 数字索引查询
 
@@ -68,10 +69,10 @@ def template_test(request):
     {{ name|lower }} # 会将name变量应用lower过滤器之后再显示它的值。lower在这里的作用是将文本全都变成小写。
 
 # 注意事项：
-    1. 过滤器支持“链式”操作。即一个过滤器的输出 作为另一个过滤器的输入。
+    1. 过滤器支持“链式”操作。即一个过滤器的输出 作为另一个过滤器的输入。(加多个管道？)
     2. 过滤器可以接受参数，例如：{{ sss|truncatewords:30 }}，这将显示sss的前30个词。
     3. 过滤器参数包含空格的话，必须用引号包裹起来。比如使用逗号和空格去连接一个列表中的元素，如：{{ list|join:', ' }}
-    4. '|'左右没有空格没有空格没有空格
+    4. '|'左右不能有空格 不能有空格 不能有空格
 
 
 \Django的模板语言中提供了大约六十个内置过滤器
@@ -114,8 +115,7 @@ def template_test(request):
   a	         'a.m.'或'p.m.'（请注意，这与PHP的输出略有不同，因为这包括符合Associated Press风格的期间）	'a.m.'
   A	         'AM'或'PM'。	                                                                    'AM'
   b	         月，文字，3个字母，小写。                                                          	'jan'
-  B	         未实现。	 
-  c	         ISO 8601格式。 （注意：与其他格式化程序不同，例如“Z”，“O”或“r”，如果值为naive datetime，则“c”格式化程序不会添加时区偏移量（请参阅datetime.tzinfo） 。	2008-01-02T10:30:00.000123+02:00或2008-01-02T10:30:00.000123如果datetime是天真的
+  c	         ISO 8601格式。 （注意：与其他格式化程序不同，例如“Z”，“O”或“r”，如果值为naive datetime，则“c”格式化程序不会添加时区偏移量（请参阅datetime.tzinfo） 。	2008-01-02T10:30:00.000123+02:00 或 2008-01-02T10:30:00.000123 如果datetime是天真的
   d	         月的日子，带前导零的2位数字。	                                                        '01'到'31'
   D	         一周中的文字，3个字母。	                                                            “星期五”
   e	         时区名称 可能是任何格式，或者可能返回一个空字符串，具体取决于datetime。	        ''、'GMT'、'-500'、'US/Eastern'等
@@ -146,15 +146,16 @@ def template_test(request):
   u	         微秒。	                                                                            000000 to 999999
   U	         自Unix Epoch以来的二分之一（1970年1月1日00:00:00 UTC）。	 
   w	         星期几，数字无前导零。	                                                            '0'（星期日）至'6'（星期六）
-  W	         ISO-8601周数，周数从星期一开始。	                                                       1，53
   y	         年份，2位数字。	                                                                    '99'
   Y	         年，4位数。	                                                                        '1999年'
   z	         一年中的日子	                                                                         0到365
   Z	         时区偏移量，单位为秒。 UTC以西时区的偏移量总是为负数，对于UTC以东时，它们总是为正。	        -43200到43200
 
 \safe
-# 如果有html标签就会转化,取消转义
-# Django的模板中会对HTML标签和JS等语法标签进行自动转义，原因显而易见，这样是为了安全。但是有的时候我们可能不希望这些HTML元素被转义，比如我们做一个内容管理系统，后台添加的文章中是经过修饰的，这些修饰可能是通过一个类似于FCKeditor编辑加注了HTML修饰符的文本，如果自动转义的话显示的就是保护HTML标签的源文件。为了在Django中关闭HTML的自动转义有两种方式，如果是一个单独的变量我们可以通过过滤器“|safe”的方式告诉Django这段代码是安全的不必转义。
+# 如果有html标签就会转化,取消转义.显示真实的html内容
+# Django的模板中会对HTML标签和JS等语法标签进行自动转义，原因显而易见，这样是为了安全。但是有的时候我们可能不希望这些HTML元素被转义，比如我们做一个内容管理系统，
+# 后台添加的文章中是经过修饰的，这些修饰可能是通过一个类似于FCKeditor编辑加注了HTML修饰符的文本，如果自动转义的话显示的就是保护HTML标签的源文件。
+# 为了在Django中关闭HTML的自动转义有两种方式，如果是一个单独的变量我们可以通过过滤器“|safe”的方式告诉Django这段代码是安全的不必转义。
 比如：value = "<a href='#'>点我</a>"
      {{ value|safe}}
 
@@ -195,9 +196,9 @@ cut
 
 
 \自定义filter
-自定义过滤器只是带有一个或两个参数的Python函数:
-变量（输入）的值 - -不一定是一个字符串
-参数的值 - 这可以有一个默认值，或完全省略
+    1. 自定义过滤器只是带有一个或两个参数的Python函数
+    2. 变量（输入）的值 不一定是一个字符串
+    3. 参数的值 这可以有一个默认值，或完全省略
 例如，在过滤器{{var | foo:'bar'}}中，过滤器foo将传递变量var和参数“bar”。
 
 # 自定义filter代码文件摆放位置：
@@ -224,10 +225,10 @@ def add_sb(value):
     return "{} SB".format(value)
 
 # 使用自定义filter
-{# 先导入我们自定义filter那个文件 #}
-{% load app01_filters %}
+# 先导入我们自定义filter那个文件
+{% load app01_filters %} # app01_filters是py文件名
 
-{# 使用我们自定义的filter #}
+# 使用我们自定义的filter
 {{ somevariable|cut:"0" }}
 {{ d.name|addSB }}
 
@@ -247,9 +248,9 @@ def test(request):
 
 # 普通for循环
 <ul>
-{% for user in user_list %}
-    <li>{{ user.name }}</li>
-{% endfor %}
+    {% for user in user_list %}
+        <li>{{ user.name }}</li>
+    {% endfor %}
 </ul>
 
 
@@ -308,9 +309,9 @@ forloop.parentloop	本层循环的外层循环
 # 例如: 未登录时显示登陆和注册，登陆时显示 注销和修改密码
 <div>
     {% if login_user %}
-    <p>{{ login_user.name }}</p>
-    <a href="">注销</a>
-    <a href="">修改密码</a>
+        <p>{{ login_user.name }}</p>
+        <a href="">注销</a>
+        <a href="">修改密码</a>
     {% else %}
         <a href="">登陆</a>
         <a href="">注册</a>
@@ -336,17 +337,25 @@ forloop.parentloop	本层循环的外层循环
     {{ total }} employee{{ total|pluralize }}
 {% endwith %}
 
-2.with as 配套使用可以给一个比较复杂的取值操作取一个别名，之后在with语句中，就可以使用该别名(用的多)
+2.with as 
+# 配套使用可以给一个比较复杂的取值操作取一个别名，之后在with语句中，就可以使用该别名(用的多)
 {% with business.employees.count as total %}     # total是别名和business.employees.count取值是一样的
     {{ total }} 
-    {{business.employees.count}}
+    {{ business.employees.count }}
 {% endwith %}
 
 \csrf_token
-这个标签用于跨站请求伪造保护。在页面的form表单里面写上 {% csrf_token %}
+# 这个标签用于跨站请求伪造保护。在页面的form表单里面写上 {% csrf_token %}。
+# 还记得settings里面的设置吗有一句话注释掉了，如果不注释，提交表单的时候报错。
+'django.middleware.csrf.CsrfViewMiddleware',
+
+如何解决呢，加入{% csrf_token %}
+效果：在form表单中加入一个隐藏的input标签，name="csrfmiddlewaretoken" value是64位长度的字符串，就可以提交post请求了。value会随着刷新而改变。
+
 
 # 注释
     {# ... #}
+
 # 注意事项
 1. Django的模板语言不支持连续判断，即不支持以下写法：
 {% if a > b > c %}
@@ -398,9 +407,9 @@ def xx(request):
 
 # 1.使用模板的继承
 写一个母版，需要留一个或多个可以扩展的区域。母版中主要是使用空的block完成页面的搭建
-{%block 名字 %}
+{% block名字 %}
   可以修改的内容
-{%endblock%}
+{% endblock %}
 
 
 # 母版页面
@@ -412,18 +421,17 @@ def xx(request):
         <meta http-equiv="x-ua-compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Title</title>
-        {% block css %}   #母版的css 内容
+        {% block css %}   # 母版的css 内容
         
         {% endblock %}
     </head>
     <body>
         <h1>这是母板的标题</h1>
-
-        {% block content %}  #母版的content内容
+        {% block content %}  # 母版的content内容
 
         {% endblock %}
         <h1>母板底部内容</h1>
-        {% block js %}      #母版js内容
+        {% block js %}      # 母版js内容
 
         {% endblock %}
     </body>
@@ -437,7 +445,7 @@ def xx(request):
     子模板的内容
 {% endblock 名字 %}
 
-----------------------------------------------
+# 例如:
 {% extends 'home.html' %}
 {% block css %}
     <style>
@@ -448,7 +456,7 @@ def xx(request):
 {% endblock %}
 
 {% block content %}
-    {% include 'beautiful.html' %}
+    {% include 'beautiful.html' % }
     <h1>登陆页面</h1>
     <form action="">
         <p>username:<input type="text" class="form-control"></p>
@@ -462,12 +470,12 @@ def xx(request):
 {% endblock %}
 
 # 2.强调（注意点）
-如果母版的block中写了内容，子模板页面没有重写，那么就会使用母版的内容，所以我们在设置母版的block时，一般都是设置空内容。
-一旦子模板页面重写了母版的block,往里面写值了，那么就会覆盖掉母版中block的内容
-不能在一个模板中定义多个相同的block标签
+    (1)如果母版的block中写了内容，子模板页面没有重写，那么就会使用母版的内容，所以我们在设置母版的block时，一般都是设置空内容。
+    (2)一旦子模板页面重写了母版的block,往里面写值了，那么就会覆盖掉母版中block的内容
+    (3)不能在一个模板中定义多个相同的block标签
 
 \模板的导入
-要反复的使用一个组件，可以将该组件写在一个文件中，在使用的时候导入就可以，在模板中使用
+# 要反复的使用一个组件，可以将该组件写在一个文件中，在使用的时候导入就可以，在模板中使用
 语法
 {% include '模板名字' %}
 {% include 'beautiful.html' %}
@@ -483,12 +491,45 @@ def xx(request):
   <p>雨送黄昏花易落</p>
 {% endblock %}
 
-\组件
+\组件: 将一个页面当成一个独立的部分传给其他页面
 # 可以将常用的页面内容如导航条，页尾信息等组件保存在单独的文件中，然后在需要使用的地方按如下语法导入即可。
 {% include 'navbar.html' %}
 
+1. include 标签的基本用法
+假设我们在多个 HTML 模板中都需要用到显示用户自定义的 HTML 片段，显示的方式是一个标题加上需要显示的具体内容。
+下面的这个模板文件 html-section.html 就满足了基本的需求，我们可以在不同的 HTML 模板中引入这个子模版。
+include 后面可以使用字符串或者变量名来指定模板路径.
+# html-section.html 
+<div class="section-title">
+  <span>{{title}}</span>
+</div>
+
+<div class="section-content">
+  <div id="{{section_id}}">{% autoescape off %}{{content | default:''}}{% endautoescape %}</div>
+</div>
+
+在各个父模板中就可以使用 include 指令来引入这个子模版。
+由于默认情况下子模版可以访问复模版中的变量，子模版可以正常显示指定的 HTML 内容。
+{% include 'html-section.html' %}
+
+2. include with
+如果需要在一个网页多次引入同一个子模版，上面的方式就会出现问题。
+因为在子模版中我们指定了变量名称，这个时候我们可以使用 with 关键字给子模版指定变量
+{% include 'html-section.html' with title="Summary" content=article_summary section_id="article-summary" %}
+{% include 'html-section.html' with title="Article Body" content=article_body section_id="article-body" %}
+{% include 'html-section.html' with title="Contact US" content=article_footer section_id="article-contact" %}
+
+2.1 阻止子模版访问除了 `with` 指定的变量
+默认情况下子模版可以访问父模板的所有变量，在 Django 中还可以通过使用 only 选项来阻止这个默认行为
+{% include "html-section.html" with title="Summary" content=article_summary section_id="article-summary" only %}
 
 \静态文件相关
+# 在settings里面有个静态文件的设置
+STATIC_URL = '/static/' # 如果这个名称改了，后面的路径就有问题了，那么怎么去灵活修改呢，即使 static 改成 static111,后面的都不要修改了
+STATICFILES_DIRS=[
+    os.path.join(BASE_DIR,'static'),
+
+# 格式如下:
 \{% static %}
 {% load static %}
 <img src="{% static "images/hi.jpg" %}" alt="Hi!" />
@@ -502,7 +543,7 @@ def xx(request):
 {% static "images/hi.jpg" as myphoto %}
 <img src="{{ myphoto }}"></img>
 
-\{% get_static_prefix %}
+\{% get_static_prefix %} : 打印静态文件的前缀
 {% load static %}
 <img src="{% get_static_prefix %}images/hi.jpg" alt="Hi!" />
 
@@ -512,8 +553,16 @@ def xx(request):
 <img src="{{ STATIC_PREFIX }}images/hi.jpg" alt="Hi!" />
 <img src="{{ STATIC_PREFIX }}images/hi2.jpg" alt="Hello!" />
 
-\simple_tag
-和自定义filter类似，只不过接收更灵活的参数。
+\simple_tag: 自定义tag
+# 和自定义filter类似，只不过接收更灵活的参数。
+
+自定义标签要注意几个地方：
+    1. 在app01目录下建的目录名字必须叫 templatetags 
+    2. 在templatetags下面建的可以是任意名称的.py 文件
+    3. 在这个py文件中导入模块，并实例化，并且在函数上面使用 register.simple_tag
+    　　from django import template
+    　　@register.simple_tag
+    4. 在模板 html文件中使用时 {% load 标签名 %}，然后使用例如：{% 函数名 "参数1" "参数2" ... %}
 
 # 定义注册simple tag
 @register.simple_tag(name="plus")
@@ -527,10 +576,10 @@ def plus(a, b, c):
 
 
 \inclusion_tag
-多用于返回html代码片段
+# 自定义带有html的代码片段,多用于返回html代码片段
 
 示例：
-templatetags/my_inclusion.py
+# templatetags/inclusion_tag_test.py
 from django import template
 
 register = template.Library()
@@ -549,6 +598,7 @@ def show_results(n):
 </ul>
 
 # templates/index.html
+# 最后在哪些页面需要用到这个 “自定义带有html的代码片段”的就加上下面的一小段代码就好了，10是给函数传的参数。
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -565,5 +615,7 @@ def show_results(n):
 
 
 
-
-
+\自定义标签 和 自定义过滤器的区别：
+    1. 标签，是为了做一些功能。过滤器，是对斜杠前面的数据做过滤。
+    2. 标签可以写任意个形参，而过滤器最大只能写2个形参。如果过滤器需要接收多个参数，需要将参数存放在列表，元组，字典等数据中。
+    3. 过滤器可以用在if等语句后，标签不可以
