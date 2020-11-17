@@ -50,7 +50,7 @@ mysite/
 └── mysite     # 项目目录
     ├── __init__.py
     |—— asgi.py      # 异步服务网关接口
-    ├── settings.py  # Django配置文件
+    ├── settings.py  # Django配置文件;包含了项目的默认设置，包括数据库信息，调试标志以及其他一些工作的变量。
     ├── urls.py  # 路由系统：url->函数 的对应关系(路径与视图函数的映射关系)
     └── wsgi.py  # 用于定义Django用socket, wsgiref（本地测试用，性能低）,uwsgi（生产用）。WSGI（Web Server Gateway Interface）是一种规范，它定义了使用python编写的web app与web server之间接口格式，实现web app与web server间的解耦。runserver命令就使用wsgiref模块做简单的web server
 
@@ -117,13 +117,14 @@ INSTALLED_APPS = [
     'book.apps.BookConfig',	#第二种方式
 ]
 
-\8. Django - 静态文件配置
+\8. Django - 表示静态文件的路径，可以有多个
 - 静态文件路径
 	static目录（见图2.2）
 在配置文件settings.py中修改静态文件位置
 STATIC_URL = '/static/'  # HTML中使用的静态文件夹前缀，可以起其它的名字。通常都和真实静态文件目录名称一致。
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),  # 静态文件真实存放位置
+    os.path.join(BASE_DIR,'static99'),
 ]
 
 
